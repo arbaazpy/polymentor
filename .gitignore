@@ -1,0 +1,16 @@
+.env
+.env.*
+*.pem
+*.key
+*.sqlite3
+__pycache__/
+.venv/
+.ruff_cache/
+.pytest_cache/
+node_modules/
+dist/
+build/
+.DS_Store
+staticfiles/
+media/
+_scratch/
