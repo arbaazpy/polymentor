@@ -280,13 +280,41 @@ class NugenClient:
         }
         return self._request("POST", self.EP_BENCH_CREATE, json_body=payload).json()
 
-    def upload_benchmark(self, *, name: str, qa_items: list[dict[str, Any]]) -> dict[str, Any]:
+    def upload_benchmark(
+        self,
+        *,
+        name: str,
+        qa_items: list[dict[str, Any]],
+        document_id: str,
+        filename: str = "benchmark.json",
+    ) -> dict[str, Any]:
         """Upload a hand-authored QA benchmark.
 
-        qa_items is the list of {question_num, question, answer} objects.
+        The endpoint expects multipart form data: a `file` (the QA JSON) and the
+        `document_id` the benchmark is attached to. `qa_items` is the list of
+        {question_num, question, answer} objects.
         """
-        payload = {"name": name, "data": qa_items}
-        return self._request("POST", self.EP_BENCH_UPLOAD, json_body=payload).json()
+        url = self._url(self.EP_BENCH_UPLOAD)
+        content = json.dumps(qa_items).encode("utf-8")
+        files = [("file", (filename, content, "application/json"))]
+        data = {"document_id": document_id, "name": name}
+        try:
+            resp = self._session.post(
+                url,
+                headers={"Authorization": f"Bearer {self.api_key}"},
+                files=files,
+                data=data,
+                timeout=DEFAULT_TIMEOUT,
+            )
+        except requests.RequestException as exc:
+            raise NugenError(f"Network error uploading benchmark: {exc}") from exc
+        if resp.status_code >= 400:
+            raise NugenError(
+                f"Benchmark upload failed: {resp.status_code}",
+                status=resp.status_code,
+                body=_safe_body(resp),
+            )
+        return resp.json()
 
     def benchmark_status(self, benchmark_id: str) -> dict[str, Any]:
         return self._request("GET", self.EP_BENCH_STATUS.format(benchmark_id=benchmark_id)).json()

@@ -184,7 +184,12 @@ class Command(BaseCommand):
         if mode == "upload":
             qa = json.loads(spec.benchmark_path.read_text())
             self.stdout.write(f"Uploading gold benchmark ({len(qa)} items)...")
-            resp = client.upload_benchmark(name=f"{spec.key}-gold", qa_items=qa)
+            resp = client.upload_benchmark(
+                name=f"{spec.key}-gold",
+                qa_items=qa,
+                document_id=document_ids[0],
+                filename=f"{spec.key}-benchmark.json",
+            )
         else:  # auto
             self.stdout.write("Creating benchmark from documents (auto)...")
             resp = client.create_benchmark_from_documents(
