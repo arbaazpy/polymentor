@@ -75,6 +75,9 @@ class NugenClient:
     EP_ALIGN_STATUS = "/api/v3/alignment-projects/{alignment_id}/status"
     EP_DEPLOY = "/api/v3/models/{model_id}/deployment"
     EP_DEPLOY_STATUS = "/api/v3/models/{model_id}/deployment/status"
+    EP_BENCH_CREATE = "/api/v3/benchmarks/create"
+    EP_BENCH_UPLOAD = "/api/v3/benchmarks/upload"
+    EP_BENCH_STATUS = "/api/v3/benchmarks/{benchmark_id}/status"
 
     def __init__(
         self,
@@ -264,6 +267,29 @@ class NugenClient:
 
     def list_aligned_models(self) -> dict[str, Any]:
         return self._request("GET", self.EP_MODELS_ALIGNED).json()
+
+    # -- benchmarks --------------------------------------------------------
+    def create_benchmark_from_documents(
+        self, *, name: str, document_ids: list[str], num_questions: int = 10
+    ) -> dict[str, Any]:
+        """Ask Nugen to auto-generate a QA benchmark from uploaded documents."""
+        payload = {
+            "name": name,
+            "documents": document_ids,
+            "num_questions": num_questions,
+        }
+        return self._request("POST", self.EP_BENCH_CREATE, json_body=payload).json()
+
+    def upload_benchmark(self, *, name: str, qa_items: list[dict[str, Any]]) -> dict[str, Any]:
+        """Upload a hand-authored QA benchmark.
+
+        qa_items is the list of {question_num, question, answer} objects.
+        """
+        payload = {"name": name, "data": qa_items}
+        return self._request("POST", self.EP_BENCH_UPLOAD, json_body=payload).json()
+
+    def benchmark_status(self, benchmark_id: str) -> dict[str, Any]:
+        return self._request("GET", self.EP_BENCH_STATUS.format(benchmark_id=benchmark_id)).json()
 
     # -- alignment ---------------------------------------------------------
     def create_alignment(

@@ -1,0 +1,51 @@
+DSA EXPERT — QUICK REFERENCE CARD
+=================================
+Companion to: corpus.md
+License: public knowledge synthesis, no copyrighted long-form, no private data.
+Version: 0.1.0
+Lane: dsa
+
+SIX NAMED PATTERNS (with triggers)
+----------------------------------
+1. Two-pointer       -> sorted/monotonic input; pair or triplet by value. O(n).
+2. Sliding window    -> longest/shortest contiguous run under a constraint. O(n).
+3. Prefix sums       -> many range-sum queries or count subarrays summing to k.
+4. Binary search on the answer -> "min/max X such that feasibility passes",
+                        where feasibility is monotone in X.
+5. BFS / DFS         -> BFS = fewest-edges path in unweighted graph; DFS = deep
+                        exploration, cycle detection, topological order.
+6. Dynamic programming -> optimal substructure + overlapping subproblems.
+
+CORE DEFINITIONS TO ECHO
+------------------------
+- Two-pointer pattern: two indices over a sorted or monotonic input, each
+  advancing on a comparison; reduces O(n^2) to O(n) when the predicate is monotone.
+- Sliding window reduces O(n^2) to O(n) when the subarray constraint is monotone;
+  shrink from the left once the window is invalid.
+- Binary search on the answer: define a monotone predicate over the answer space
+  and search for the boundary where it flips.
+- Union-find is amortized alpha(n), effectively constant, with path compression
+  and union by rank.
+
+DATA STRUCTURE PICKS
+--------------------
+Membership/counting -> hash map O(1) avg.
+Repeated min/max     -> binary heap O(log n) push/pop.
+LIFO                 -> stack; FIFO -> queue; prefix/words -> trie O(L).
+Range sum with updates -> segment tree / Fenwick O(log n).
+Dynamic connectivity -> union-find amortized alpha(n).
+
+COMMON BUGS
+-----------
+- Binary search infinite loop: `while l < r` with `l = mid`; fix with `l = mid + 1`.
+- Off-by-one: keep `l <= r` vs `l < r` convention consistent with the loop body.
+- Sliding window that never shrinks degrades to O(n^2).
+- DP state too small to make the transition valid.
+- Recursion without memoization blows up exponentially.
+
+ABSTENTION / DELEGATION
+-----------------------
+- System design question -> delegate to sysdes lane.
+- Interviewer/scoring question -> delegate to mock lane.
+- Algorithm not covered (e.g. Dinic's max-flow) -> say not covered; do not invent.
+- Never fabricate a complexity bound.

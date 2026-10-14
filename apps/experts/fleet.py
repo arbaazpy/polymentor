@@ -1,0 +1,61 @@
+"""PolyMentor expert fleet manifest.
+
+Single source of truth mapping each lane to its base model, corpus files, gold
+benchmark, and the sub-claim namespaces it owns (used later by the aggregator's
+lane-ownership reconciliation). The bootstrap command reads this to upload,
+align, and deploy each expert.
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass, field
+from pathlib import Path
+
+from django.conf import settings
+
+CORPORA_DIR = Path(settings.BASE_DIR) / "corpora"
+BENCHMARKS_DIR = Path(settings.BASE_DIR) / "benchmarks"
+
+
+@dataclass(frozen=True)
+class ExpertSpec:
+    key: str
+    lane: str
+    description: str
+    base_model: str
+    corpus_files: list[str]
+    benchmark_file: str
+    owned_namespaces: list[str] = field(default_factory=list)
+
+    @property
+    def corpus_paths(self) -> list[Path]:
+        return [CORPORA_DIR / f for f in self.corpus_files]
+
+    @property
+    def benchmark_path(self) -> Path:
+        return BENCHMARKS_DIR / self.benchmark_file
+
+
+# v1 fleet. More lanes are added as their corpora land.
+FLEET: dict[str, ExpertSpec] = {
+    "dsa": ExpertSpec(
+        key="dsa",
+        lane="Data Structures & Algorithms",
+        description=(
+            "Complexity analysis, interview patterns (two-pointer, sliding window, "
+            "prefix sums, binary search on the answer, BFS/DFS, DP, union-find), and "
+            "common implementation bugs."
+        ),
+        base_model="Qwen/Qwen2.5-3B-Instruct",
+        corpus_files=["dsa/corpus.md", "dsa/quickref.txt"],
+        benchmark_file="dsa.json",
+        owned_namespaces=["complexity", "pattern", "hash", "ds"],
+    ),
+}
+
+
+def get_spec(key: str) -> ExpertSpec:
+    try:
+        return FLEET[key]
+    except KeyError as exc:
+        raise KeyError(f"Unknown expert '{key}'. Known: {', '.join(FLEET)}") from exc

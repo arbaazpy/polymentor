@@ -1,0 +1,102 @@
+[
+  {
+    "question_num": 1,
+    "question": "Define the two-pointer pattern. When does it apply, and why does it reduce complexity?",
+    "answer": "The two-pointer pattern uses two indices moving over a sorted or monotonic input, each advancing based on a comparison. It applies to pair or triplet problems on sorted data and reduces an O(n^2) brute force to O(n) because each pointer moves monotonically when the predicate is monotone."
+  },
+  {
+    "question_num": 2,
+    "question": "Define the sliding window pattern and state when it reduces complexity.",
+    "answer": "The sliding window pattern maintains a contiguous range [left, right] and expands or contracts it to satisfy a constraint. It reduces O(n^2) to O(n) when the subarray constraint is monotone, so the window can always shrink from the left once it becomes invalid."
+  },
+  {
+    "question_num": 3,
+    "question": "Define binary search on the answer and the condition that makes it applicable.",
+    "answer": "Binary search on the answer defines a monotone predicate over the answer space and binary-searches for the boundary where the predicate flips. It applies when you can check whether a candidate answer is feasible faster than solving directly, and feasibility is monotone in the candidate."
+  },
+  {
+    "question_num": 4,
+    "question": "What is amortized complexity? Give the dynamic-array append example.",
+    "answer": "Amortized complexity is the average cost per operation across a worst-case sequence of operations. A dynamic array append is amortized O(1) even though a single append that triggers a resize costs O(n), because resizes are rare relative to the number of appends."
+  },
+  {
+    "question_num": 5,
+    "question": "Distinguish the two-pointer pattern from the sliding window pattern. When would you reach for each?",
+    "answer": "Two-pointer typically works on sorted or monotonic input comparing values from both ends or tracking a pair, while sliding window maintains a contiguous range for longest/shortest subarray or substring constraints. Reach for two-pointer on sorted pair/triplet problems; reach for sliding window for contiguous runs under a monotone constraint where you grow on the right and shrink from the left."
+  },
+  {
+    "question_num": 6,
+    "question": "Distinguish memoization from tabulation in dynamic programming.",
+    "answer": "Memoization is top-down: you recurse and cache subproblem results as you encounter them. Tabulation is bottom-up: you fill a DP table from base cases upward. Both avoid recomputing overlapping subproblems; memoization follows the natural recursion while tabulation iterates an explicit order."
+  },
+  {
+    "question_num": 7,
+    "question": "Distinguish BFS from DFS and name one problem each is best suited for.",
+    "answer": "BFS explores by increasing distance using a queue and finds fewest-edges paths in an unweighted graph, so it is best for shortest path by number of edges or level-order traversal. DFS explores deeply using recursion or a stack and is best for cycle detection, topological ordering, or flood fill."
+  },
+  {
+    "question_num": 8,
+    "question": "List the six named algorithmic patterns and give the trigger for each.",
+    "answer": "1) Two-pointer: sorted/monotonic input with pair or triplet by value. 2) Sliding window: longest/shortest contiguous run under a constraint. 3) Prefix sums: many range-sum queries or counting subarrays summing to k. 4) Binary search on the answer: min/max value such that a monotone feasibility check passes. 5) BFS/DFS: shortest unweighted path, connectivity, cycles, topological order. 6) Dynamic programming: optimal substructure with overlapping subproblems."
+  },
+  {
+    "question_num": 9,
+    "question": "Walk through binary search on the answer for 'minimum ship capacity to deliver all packages within D days'.",
+    "answer": "Define feasibility(capacity) = can we deliver within D days if each day we load packages in order up to that capacity. Feasibility is monotone: larger capacity is never worse. Binary-search capacity between max(package) and sum(packages); for each candidate, simulate days greedily and check days <= D. Return the smallest feasible capacity where the predicate flips from false to true."
+  },
+  {
+    "question_num": 10,
+    "question": "Walk through Kadane's algorithm for maximum subarray sum and its complexity.",
+    "answer": "Maintain best_ending_here = max(x, best_ending_here + x) while scanning, and track the global best. Each element either extends the previous subarray or starts a new one, and a prefix with negative running sum is discarded because it cannot help a future subarray. It runs in O(n) time and O(1) space."
+  },
+  {
+    "question_num": 11,
+    "question": "Walk through solving two-sum on a sorted array with two pointers.",
+    "answer": "Place left at the start and right at the end. If the pair sum is too small, move left rightward to increase it; if too large, move right leftward to decrease it; if equal, return the pair. Each pointer moves monotonically, giving O(n) time and O(1) space."
+  },
+  {
+    "question_num": 12,
+    "question": "Walk through why BFS finds the shortest transformation in a word ladder.",
+    "answer": "Treat each word as a node and connect words differing by one letter. BFS from the start word explores nodes in order of increasing distance, so the first time it reaches the target it has used the fewest transformations. Mark words visited as you enqueue them to avoid revisiting."
+  },
+  {
+    "question_num": 13,
+    "question": "A candidate wrote a binary search with `while l < r` and `l = mid` and it loops forever. Which failure mode is this and what is the fix?",
+    "answer": "This is the binary search infinite loop: when the midpoint rounds down, `l = mid` never advances l, so the loop never terminates. The fix is to advance past mid on the branch that excludes it, for example `l = mid + 1` while keeping `r = mid`, so the search space strictly shrinks each iteration."
+  },
+  {
+    "question_num": 14,
+    "question": "A sliding-window solution is running in O(n^2). What common mistake causes this and how is it fixed?",
+    "answer": "The window is not shrinking from the left. If you only ever grow the right end and never move left when the constraint breaks, the inner work rescans elements and degrades to O(n^2). The fix is to shrink the window from the left as soon as the constraint is violated, so each element enters and leaves the window at most once."
+  },
+  {
+    "question_num": 15,
+    "question": "A recursive solution to an overlapping-subproblem problem times out. Which failure mode is this and what is the fix?",
+    "answer": "This is recursion without memoization, which causes exponential blowup because the same subproblems are recomputed. The fix is to add memoization to cache subproblem results, or convert the recursion to bottom-up tabulation."
+  },
+  {
+    "question_num": 16,
+    "question": "A DP transition seems impossible to write because it needs information the state does not carry. Which failure mode is this and how do you fix it?",
+    "answer": "This is a wrong or too-small DP state: the chosen state does not capture enough history for the transition. The fix is to write the recurrence in words first, identify exactly which variables it depends on, and expand the state to include them so the transition becomes well-defined."
+  },
+  {
+    "question_num": 17,
+    "question": "Which data structure gives O(log n) push and pop with O(1) access to the current min or max, and when do you use it?",
+    "answer": "A binary heap gives O(log n) push and pop and O(1) peek of the min or max. Use it when you repeatedly need the smallest or largest element, such as Dijkstra's algorithm, merging k sorted lists, or maintaining a running median with two heaps."
+  },
+  {
+    "question_num": 18,
+    "question": "What is union-find, what is its amortized cost, and when is it the right choice?",
+    "answer": "Union-find (disjoint set union) tracks a partition of elements into disjoint sets and is the right choice for dynamic connectivity and grouping or merging queries. With path compression and union by rank, its operations are amortized alpha(n), effectively constant."
+  },
+  {
+    "question_num": 19,
+    "question": "A user asks you to design a horizontally scalable rate limiter for an API. How should the DSA expert respond?",
+    "answer": "This is a system design question, not a data-structures-and-algorithms question, so the DSA expert should not answer it from this lane and should delegate to the system design (sysdes) lane rather than inventing an architecture."
+  },
+  {
+    "question_num": 20,
+    "question": "A user asks for the details of Dinic's maximum-flow algorithm. How should the DSA expert respond?",
+    "answer": "Dinic's maximum-flow algorithm is not covered by this corpus, so the expert should say it is not covered rather than fabricating details, and may offer the closest covered concept such as graph traversal with BFS/DFS instead of inventing specifics or complexity bounds."
+  }
+]
