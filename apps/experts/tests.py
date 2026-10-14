@@ -79,6 +79,25 @@ def test_chat_stream_parses_sse_lines():
     assert "".join(out) == "Hello"
 
 
+def test_chat_stream_raises_on_embedded_error():
+    """Undeployed models return HTTP 200 with an error frame; we must raise."""
+    lines = [
+        'data: {"error": {"message": "Nugen inference failed: Model not deployed", '
+        '"type": "server_error", "code": 404}}',
+        "",
+    ]
+    fake_resp = mock.Mock()
+    fake_resp.status_code = 200
+    fake_resp.iter_lines.return_value = iter(lines)
+
+    client = NugenClient(api_key="k", base_url="https://api.nugen.in")
+    with mock.patch.object(client._session, "request", return_value=fake_resp):
+        with pytest.raises(NugenError) as excinfo:
+            list(client.chat_stream(model="m", messages=[{"role": "user", "content": "hi"}]))
+    assert excinfo.value.status == 404
+    assert "not deployed" in str(excinfo.value).lower()
+
+
 def test_error_hints():
     assert "401" in NugenError("x", status=401).hint
     assert "404" in NugenError("x", status=404).hint

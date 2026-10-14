@@ -185,6 +185,17 @@ class NugenClient:
                 chunk = json.loads(line)
             except json.JSONDecodeError:
                 continue
+            # Nugen returns errors (e.g. "Model not deployed") as HTTP 200 SSE
+            # frames with an `error` key. Surface them instead of yielding "".
+            err = chunk.get("error") if isinstance(chunk, dict) else None
+            if err:
+                message = err.get("message") if isinstance(err, dict) else str(err)
+                code = err.get("code") if isinstance(err, dict) else None
+                raise NugenError(
+                    f"Nugen streaming error: {message}",
+                    status=code,
+                    body=json.dumps(err)[:2000],
+                )
             delta = _extract_delta(chunk)
             if delta:
                 yield delta
