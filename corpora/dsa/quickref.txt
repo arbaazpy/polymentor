@@ -18,34 +18,63 @@ SIX NAMED PATTERNS (with triggers)
 
 CORE DEFINITIONS TO ECHO
 ------------------------
+- Time complexity is how the number of basic operations grows with input size n,
+  written with Big-O as an asymptotic upper bound: O(1), O(log n), O(n),
+  O(n log n), O(n^2), O(2^n).
+- Space complexity is how auxiliary memory grows with n, measured the same way.
+- Amortized complexity is the average cost per operation across a worst-case
+  sequence; a dynamic-array append is amortized O(1) despite O(n) resizes.
 - Two-pointer pattern: two indices over a sorted or monotonic input, each
   advancing on a comparison; reduces O(n^2) to O(n) when the predicate is monotone.
 - Sliding window reduces O(n^2) to O(n) when the subarray constraint is monotone;
-  shrink from the left once the window is invalid.
+  shrink from the left once the window is invalid so each element enters and
+  leaves the window at most once.
 - Binary search on the answer: define a monotone predicate over the answer space
-  and search for the boundary where it flips.
+  and search for the boundary where it flips from false to true.
 - Union-find is amortized alpha(n), effectively constant, with path compression
   and union by rank.
 
 DATA STRUCTURE PICKS
 --------------------
-Membership/counting -> hash map O(1) avg.
-Repeated min/max     -> binary heap O(log n) push/pop.
-LIFO                 -> stack; FIFO -> queue; prefix/words -> trie O(L).
-Range sum with updates -> segment tree / Fenwick O(log n).
-Dynamic connectivity -> union-find amortized alpha(n).
+Membership/counting   -> hash map O(1) average insert and lookup.
+Repeated min/max      -> binary heap O(log n) push/pop, O(1) peek.
+LIFO (undo, brackets) -> stack O(1) push/pop.
+FIFO (BFS, scheduling)-> queue O(1) enqueue/dequeue.
+Prefix/word lookups   -> trie O(L) per word of length L.
+Range sum with updates-> segment tree or Fenwick tree O(log n) query and update.
+Dynamic connectivity  -> union-find amortized alpha(n) per operation.
+Index/random access   -> array or dynamic array O(1) index, amortized O(1) append.
+
+WORKED MICRO-EXAMPLES
+---------------------
+- Kadane's maximum subarray: best_ending_here = max(x, best_ending_here + x);
+  track the global best. O(n) time, O(1) space.
+- Two-sum sorted: left at start, right at end; move left up if sum too small,
+  right down if too large. O(n).
+- Longest increasing subsequence: keep a tails array, binary-search each number's
+  insertion point; length of tails is the answer. O(n log n).
 
 COMMON BUGS
 -----------
-- Binary search infinite loop: `while l < r` with `l = mid`; fix with `l = mid + 1`.
-- Off-by-one: keep `l <= r` vs `l < r` convention consistent with the loop body.
+- Binary search infinite loop: `while l < r` with `l = mid`; fix with `l = mid + 1`
+  so the search space strictly shrinks each iteration.
+- Off-by-one: keep the `l <= r` versus `l < r` convention consistent with the body.
 - Sliding window that never shrinks degrades to O(n^2).
-- DP state too small to make the transition valid.
-- Recursion without memoization blows up exponentially.
+- DP state too small to make the transition valid; write the recurrence in words
+  first, then name the variables it depends on.
+- Recursion without memoization blows up exponentially on overlapping subproblems.
+- Heap misuse: most languages give only a min-heap, so push negatives for a max-heap.
 
 ABSTENTION / DELEGATION
 -----------------------
-- System design question -> delegate to sysdes lane.
-- Interviewer/scoring question -> delegate to mock lane.
+- System design question (scaling, caching, consistency) -> delegate to sysdes lane.
+- Interviewer, scoring, or mock-interview question -> delegate to mock lane.
 - Algorithm not covered (e.g. Dinic's max-flow) -> say not covered; do not invent.
-- Never fabricate a complexity bound.
+- Never fabricate a complexity bound; reason from the closest standard algorithm.
+
+CHECKLIST
+---------
+Name the pattern before coding. State and justify the complexity target. For
+binary search, advance past mid. For sliding window, always allow the left side
+to shrink. For DP, define state, transition, and base case. When out of scope,
+delegate or abstain rather than inventing details.

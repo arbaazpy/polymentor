@@ -35,6 +35,7 @@ from apps.experts.nugen_client import NugenClient, NugenError
 READY_STATES = {"READY", "COMPLETED", "SUCCEEDED", "SUCCESS", "DONE"}
 FAIL_STATES = {"FAILED", "ERROR", "CANCELLED", "CANCELED"}
 DEPLOYED_STATES = {"DEPLOYED", "LIVE", "ACTIVE"}
+MIN_CORPUS_WORDS = 500  # Nugen rejects documents with fewer words.
 
 
 class Command(BaseCommand):
@@ -72,7 +73,9 @@ class Command(BaseCommand):
         self.stdout.write(f"benchmark:   {opts['benchmark']}")
         for p in spec.corpus_paths:
             self._require_file(p)
-            self.stdout.write(f"corpus:      {p}  ({p.stat().st_size} bytes)")
+            words = len(p.read_text().split())
+            flag = "" if words >= MIN_CORPUS_WORDS else self.style.ERROR("  ** < 500 words! **")
+            self.stdout.write(f"corpus:      {p}  ({words} words){flag}")
         bpath = spec.benchmark_path
         self._require_file(bpath)
         qa = json.loads(bpath.read_text())
@@ -152,6 +155,12 @@ class Command(BaseCommand):
         files: list[tuple[str, bytes]] = []
         for p in spec.corpus_paths:
             self._require_file(p)
+            words = len(p.read_text().split())
+            if words < MIN_CORPUS_WORDS:
+                raise CommandError(
+                    f"{p.name} has {words} words; Nugen requires >= {MIN_CORPUS_WORDS}. "
+                    "Expand the file before uploading."
+                )
             files.append((p.name, p.read_bytes()))
         self.stdout.write(f"Uploading {len(files)} corpus file(s)...")
         resp = client.create_document(files=files, categories=[spec.key])
