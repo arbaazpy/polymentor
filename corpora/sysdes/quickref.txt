@@ -1,0 +1,88 @@
+SYSTEM DESIGN EXPERT — QUICK REFERENCE CARD
+===========================================
+
+Version 0.1.0. Lane: sysdes. Public knowledge synthesis only. This card
+repeats the critical lists and phrases from the main corpus.
+
+THE 8-STEP DESIGN PROCEDURE
+---------------------------
+1. Clarify requirements (functional and non-functional).
+2. Capacity estimation (QPS, read:write ratio, storage, bandwidth, cache).
+3. API design (endpoints, pagination, idempotency keys).
+4. Data model (entities, keys, access patterns, SQL or NoSQL).
+5. High-level architecture (load balancer, stateless services, cache, DB, queues).
+6. Deep dives (key generation, hot keys, fanout).
+7. Scaling and reliability (partitioning, replication, caching, rate limiting).
+8. Trade-offs and failure handling (what breaks first, 10x plan).
+
+CORE PHRASES TO ECHO
+--------------------
+- Consistent hashing minimizes key reshuffling when nodes join or leave; only
+  about 1/N of keys move.
+- Read-your-writes is a session-level guarantee weaker than linearizability.
+- Idempotency keys collapse retried writes to a single effect.
+- Back-pressure propagates slowness upstream to prevent queue blowup.
+- Horizontal scaling adds machines; vertical scaling makes one machine bigger.
+- PACELC: if Partition, choose Availability or Consistency; Else, Latency or
+  Consistency.
+
+CONSISTENCY LADDER
+------------------
+Linearizability > bounded staleness > session (read-your-writes) > eventual.
+
+CACHE STRATEGIES
+----------------
+- Cache-aside: read cache, on a miss read the DB and populate the cache.
+- Write-through: every write updates cache and DB together; never stale,
+  slower writes.
+- Write-back: write to cache, flush to DB later; fast, risk of loss.
+
+PARTITIONING AND REPLICATION
+----------------------------
+- Hash partitioning spreads point lookups evenly; range partitioning keeps
+  adjacent keys together for range scans but risks hot ranges.
+- Consistent hashing with virtual nodes balances load and moves few keys.
+- Leader-follower replication: one leader takes writes, followers serve reads
+  with replication lag. Route a user's reads to the leader briefly after a
+  write to get read-your-writes.
+- Multi-leader replication accepts writes in several regions but needs
+  conflict resolution.
+- Quorums: with N replicas, W + R > N means reads overlap the latest write.
+
+QUEUEING PATTERNS
+-----------------
+- Work queue: one consumer per message (background jobs).
+- Pub/sub: every subscriber group gets every message (event broadcast).
+- Transactional outbox: business row and outbox row in one transaction.
+- Saga: local steps with compensating actions.
+
+WORKED NUMBERS: URL SHORTENER
+-----------------------------
+1B redirects/day is about 11,600 reads/s average, about 35,000/s peak. At
+100:1 read:write, 10M new URLs/day, about 116 writes/s, 36.5B URLs in 10 years,
+about 18 TB at 500 bytes per row. 7-char base62 = 62^7, about 3.5 trillion
+codes. Use a distributed counter encoded in base62 to avoid collisions; cache
+the hottest 20% of codes with cache-aside.
+
+COMMON FAILURES AND FIXES
+-------------------------
+- Database as a queue: lock contention and hot rows; move to a message queue.
+- Synchronous fanout: latency grows with followers; fan out asynchronously.
+- Missing idempotency: duplicate charges on retry; add idempotency keys.
+- Cache stampede: hot key expires; request coalescing, locks, jittered TTLs.
+- Unbounded queue: memory blowup; bounded queues with back-pressure.
+- Dual write: lost events; transactional outbox.
+
+ABSTENTION / DELEGATION
+-----------------------
+- Algorithm complexity, data-structure internals, hash collision math: delegate
+  to dsa.
+- Behavioral stories: delegate to behav. Resumes: resume. Mock scoring: mock.
+- Not covered: CRDT merge semantics, Raft or Paxos internals, vendor pricing.
+  Say it is not covered and point to the closest covered concept.
+
+CHECKLIST
+---------
+Requirements, capacity math, API, data model, architecture, deep dives,
+scaling, trade-offs. Queue plus back-pressure for spiky load. Idempotency keys
+on retried writes. Never fan out in the request path.

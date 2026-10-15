@@ -1,0 +1,102 @@
+[
+  {
+    "question_num": 1,
+    "question": "Define back-pressure and name two mechanisms that implement it.",
+    "answer": "Back-pressure is a flow-control signal that propagates slowness from downstream to upstream to prevent unbounded queue growth (queue blowup). Mechanisms include bounded queues with blocking or rejecting producers, demand signals such as reactive streams or credit-based flow control, and returning HTTP 429 or 503 with Retry-After."
+  },
+  {
+    "question_num": 2,
+    "question": "Define consistent hashing and explain why distributed caches and databases use it.",
+    "answer": "Consistent hashing places nodes and keys on a hash ring, and each key belongs to the next node clockwise. It minimizes key reshuffling when nodes join or leave: only about 1/N of keys move instead of nearly all of them. Virtual nodes smooth out uneven load."
+  },
+  {
+    "question_num": 3,
+    "question": "What is an idempotency key and when do you need one?",
+    "answer": "An idempotency key is a client-generated unique id sent with a write. The server stores the key with the first result and returns the same result on any retry, so idempotency keys collapse retried writes to a single effect. You need one on any write that may be retried, such as payments or order creation."
+  },
+  {
+    "question_num": 4,
+    "question": "Define read-your-writes consistency and compare it with linearizability.",
+    "answer": "Read-your-writes is a session-level guarantee: a client always sees its own writes, while other clients may still see stale data. It is weaker than linearizability, where every read sees the most recent completed write as if there were a single copy. It is often implemented by routing a user's reads to the leader for a short window after a write."
+  },
+  {
+    "question_num": 5,
+    "question": "Distinguish fanout-on-write from fanout-on-read for a newsfeed. When does each win?",
+    "answer": "Fanout-on-write pushes a new post into every follower's precomputed feed when it is created, giving cheap reads; it wins when most accounts have few followers. Fanout-on-read assembles the feed at read time from followed accounts; it wins for celebrity accounts with millions of followers. Production systems use a hybrid."
+  },
+  {
+    "question_num": 6,
+    "question": "Distinguish cache-aside from write-through caching.",
+    "answer": "Cache-aside (lazy loading) has the application read the cache and, on a miss, read the database and populate the cache, typically with a TTL; it suits read-heavy data that tolerates slight staleness. Write-through updates the cache and the database synchronously on every write, so the cache is never stale but writes are slower."
+  },
+  {
+    "question_num": 7,
+    "question": "Distinguish vertical scaling from horizontal scaling.",
+    "answer": "Vertical scaling (scale up) gives one machine more CPU, memory, or disk; it is simple but has a hard ceiling and a single point of failure. Horizontal scaling (scale out) adds more machines and spreads load across them; it removes the ceiling but requires stateless services, partitioning, and replication."
+  },
+  {
+    "question_num": 8,
+    "question": "Distinguish a work queue from pub/sub and say when to use each.",
+    "answer": "In a work queue each message is processed by exactly one consumer from a competing pool, so use it for background jobs that should run once. In pub/sub each message is delivered to every subscriber group, so use it to broadcast events to several independent services."
+  },
+  {
+    "question_num": 9,
+    "question": "Walk through the 8-step design procedure applied to a URL shortener for 1B redirects/day with a 100:1 read:write ratio.",
+    "answer": "1) Requirements: create links, fast redirects, high availability. 2) Capacity: about 11,600 reads/s average, 10M new URLs/day or about 116 writes/s, 36.5B URLs over 10 years. 3) API: POST /urls with an idempotency key, GET /{code} redirect. 4) Data model: short_code to long_url in a key-value store. 5) Architecture: load balancer, stateless app servers, cache, database. 6) Deep dive on key generation: 7-char base62 from a distributed counter. 7) Scaling: cache-aside for hot codes, consistent hashing, leader-follower replication, rate limiting. 8) Trade-offs: 301 vs 302 redirects."
+  },
+  {
+    "question_num": 10,
+    "question": "Is a 7-character base62 short code enough for a URL shortener that creates 10M URLs per day for 10 years? Show the capacity math.",
+    "answer": "62^7 is about 3.5 trillion codes. 10M URLs per day for 10 years is about 36.5 billion URLs, so 7 base62 characters give roughly 100x headroom. Generating codes from a distributed counter encoded in base62 avoids collisions; collision math for random or hashed codes is owned by the dsa lane."
+  },
+  {
+    "question_num": 11,
+    "question": "Walk through designing a distributed rate limiter for an API.",
+    "answer": "Use a token bucket per client key: tokens refill at a fixed rate up to a burst capacity and each request spends one. Keep the buckets in a shared store such as Redis so every API server sees the same counts, and refill and spend atomically in one script or transaction to avoid races. Reject with 429 and Retry-After when empty. If the store is down, fail open for low-risk endpoints and fail closed for expensive ones."
+  },
+  {
+    "question_num": 12,
+    "question": "Walk through how a chat system delivers messages reliably and in order.",
+    "answer": "Clients hold WebSocket connections to gateway servers, and a presence service maps users to gateways. Each conversation has a monotonically increasing sequence number so clients can order messages and detect gaps. Delivery is at-least-once and clients deduplicate by message id. Offline users receive messages from durable storage on reconnect."
+  },
+  {
+    "question_num": 13,
+    "question": "A team uses the primary database as a job queue by polling a jobs table. What goes wrong at scale, and what is the fix?",
+    "answer": "Polling the primary database causes lock contention, hot rows, and index or vacuum bloat, and it competes with user traffic. The fix is to move jobs to a real message queue, using the transactional outbox pattern if the job must be created atomically with a business row."
+  },
+  {
+    "question_num": 14,
+    "question": "Posting is slow and times out for accounts with many followers because the service writes to every follower's feed inside the request. Which failure mode is this and how do you fix it?",
+    "answer": "This is synchronous fanout: request latency grows with follower count. Fix it by publishing one event and fanning out asynchronously through a work queue, and use a hybrid with fanout-on-read for celebrity accounts."
+  },
+  {
+    "question_num": 15,
+    "question": "Customers are sometimes charged twice when the mobile app retries a payment after a timeout. Which failure mode is this and what is the fix?",
+    "answer": "This is missing idempotency: retries create duplicate writes. Require an idempotency key on the payment request; the server stores the key with the first result and returns it for retries, so idempotency keys collapse retried writes to a single effect."
+  },
+  {
+    "question_num": 16,
+    "question": "Whenever a very popular cache key expires, the database is overwhelmed for a few seconds. Which failure mode is this and how do you fix it?",
+    "answer": "This is a cache stampede (thundering herd): many requests miss the expired hot key at once and hit the database. Fix it with request coalescing (single flight) or a lock so only one request repopulates, jittered TTLs, or serving stale data while revalidating."
+  },
+  {
+    "question_num": 17,
+    "question": "What does the system design expert recommend for CRDT merge semantics?",
+    "answer": "CRDT merge semantics are not covered by this corpus, so the expert should say it is not covered rather than inventing details, and may point to the closest covered concept such as the consistency ladder or eventual consistency."
+  },
+  {
+    "question_num": 18,
+    "question": "What is the time complexity of Dijkstra's algorithm with a binary heap?",
+    "answer": "This is an algorithm complexity question, not a system design question, so the system design expert should delegate it to the dsa lane rather than answering."
+  },
+  {
+    "question_num": 19,
+    "question": "Tell me about a time you resolved a conflict with a teammate.",
+    "answer": "This is a behavioral question, so the system design expert should delegate it to the behav lane rather than answering."
+  },
+  {
+    "question_num": 20,
+    "question": "How much does a managed cloud key-value database cost per million writes?",
+    "answer": "Vendor pricing is not covered by this corpus, so the expert should say it is not covered rather than quoting numbers, and may offer to help with capacity estimation instead."
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "_doc": "Local grading keys for sysdes.json. Same format as dsa.keys.json.",
+  "items": {
+    "1": {"category": "definition", "groups": [["upstream"], ["downstream", "slow consumer", "slowness"], ["bounded queue", "bounded buffer"], ["429", "503", "demand", "credit", "reactive", "block"]]},
+    "2": {"category": "definition", "groups": [["ring"], ["join or leave", "added or removed", "nodes change", "join/leave", "add or remove"], ["1/n", "small fraction", "minimal", "minimiz", "only the keys"], ["virtual node"]]},
+    "3": {"category": "definition", "groups": [["unique", "client id", "client-generated", "client generated"], ["retr"], ["single effect", "only once", "exactly once", "same result", "once"], ["payment", "order", "charge"]]},
+    "4": {"category": "definition", "groups": [["session"], ["own write"], ["weaker"], ["linearizab", "most recent"]]},
+    "5": {"category": "distinction", "groups": [["fanout-on-write", "fanout on write", "push"], ["fanout-on-read", "fanout on read", "pull"], ["celebrit", "millions of followers", "many followers"], ["hybrid"]]},
+    "6": {"category": "distinction", "groups": [["miss", "not found in the cache", "not in the cache"], ["lazy", "on a miss", "populate"], ["synchronous", "same write", "both the cache and the database", "cache and the database", "cache and database"], ["stale"], ["slower write", "write latency", "writes are slower", "slower"]]},
+    "7": {"category": "distinction", "groups": [["scale up", "bigger machine", "more cpu", "more powerful"], ["scale out", "more machines", "adding machines", "add machines"], ["ceiling", "limit"], ["single point of failure"], ["stateless", "partition", "replicat"]]},
+    "8": {"category": "distinction", "groups": [["one consumer", "single consumer", "exactly one", "only one"], ["every subscriber", "all subscribers", "each subscriber", "every consumer"], ["background", "job", "task"], ["broadcast", "independent"]]},
+    "9": {"category": "procedure", "groups": [["requirement"], ["11,600", "11.6k", "11600", "12,000", "12k", "11,574"], ["116", "10m", "10 million"], ["api"], ["data model", "key-value", "schema"], ["base62"], ["cache"], ["301", "302", "trade-off", "tradeoff"]]},
+    "10": {"category": "procedure", "groups": [["62^7", "62**7", "62 ^ 7"], ["3.5 trillion", "3.52 trillion", "3.5t", "3,521", "3.5 x 10^12", "3.52 x 10^12"], ["36.5 billion", "36.5b", "36,500,000,000", "3.65 x 10^10"], ["yes", "enough", "sufficient", "headroom"]]},
+    "11": {"category": "procedure", "groups": [["token bucket"], ["refill"], ["redis", "shared store", "centralized store", "shared"], ["atomic", "lua", "transaction"], ["429"]]},
+    "12": {"category": "procedure", "groups": [["websocket"], ["sequence number", "sequence id", "monotonic"], ["at-least-once", "at least once"], ["dedup", "message id"], ["offline", "reconnect"]]},
+    "13": {"category": "failure", "groups": [["lock", "contention"], ["poll"], ["message queue", "queue such as", "dedicated queue", "real queue", "message broker"], ["outbox"]]},
+    "14": {"category": "failure", "groups": [["synchronous fanout", "synchronous fan-out", "fanout synchronously", "fan out synchronously", "synchronously"], ["asynchronous", "async", "background"], ["queue"], ["celebrit", "fanout-on-read", "fanout on read", "hybrid"]]},
+    "15": {"category": "failure", "groups": [["idempoten"], ["key"], ["retr"], ["duplicate", "twice", "double"]]},
+    "16": {"category": "failure", "groups": [["stampede", "thundering herd", "dogpile"], ["coalesc", "single flight", "singleflight", "lock", "mutex"], ["jitter", "random ttl", "stagger"], ["stale"]]},
+    "17": {"category": "abstention", "groups": [["not covered", "does not cover", "doesn't cover", "not in my notes", "outside"]], "forbid": ["g-counter", "pn-counter", "or-set", "lww-element", "state-based crdt", "operation-based crdt", "join semilattice", "semilattice"]},
+    "18": {"category": "abstention", "groups": [["delegate", "defer", "hand off"], ["dsa"]], "forbid": ["o((v + e) log v)", "o((v+e) log v)", "o(e log v)", "o((e + v) log v)", "o(v log v + e)", "o(e + v log v)"]},
+    "19": {"category": "abstention", "groups": [["delegate", "defer", "hand off"], ["behav"]], "forbid": ["situation:", "the situation was", "in my previous role", "i once"]},
+    "20": {"category": "abstention", "groups": [["not covered", "does not cover", "doesn't cover", "not in my notes", "outside"]], "forbid": ["$", "usd", "cents"]}
+  }
+}

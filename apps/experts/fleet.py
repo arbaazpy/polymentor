@@ -60,6 +60,20 @@ FLEET: dict[str, ExpertSpec] = {
         benchmark_keys_file="dsa.keys.json",
         owned_namespaces=["complexity", "pattern", "hash", "ds"],
     ),
+    "sysdes": ExpertSpec(
+        key="sysdes",
+        lane="System Design",
+        description=(
+            "Scalability, caching, consistency models, partitioning and replication, "
+            "queues, idempotency, back-pressure, rate limiting, and the classic "
+            "interview designs (URL shortener, newsfeed, rate limiter, chat)."
+        ),
+        base_model="meta-llama/Llama-3.2-3B-Instruct",
+        corpus_files=["sysdes/corpus.md", "sysdes/quickref.txt"],
+        benchmark_file="sysdes.json",
+        benchmark_keys_file="sysdes.keys.json",
+        owned_namespaces=["arch", "storage", "cache", "consistency", "scale", "queue", "api"],
+    ),
 }
 
 
