@@ -118,7 +118,9 @@ class Command(BaseCommand):
             stream=True,
             timeout=DEFAULT_TIMEOUT,
         )
-        self.stdout.write(f"HTTP {resp.status_code}  content-type={resp.headers.get('content-type')}")
+        self.stdout.write(
+            f"HTTP {resp.status_code}  content-type={resp.headers.get('content-type')}"
+        )
         count = 0
         for line in resp.iter_lines(decode_unicode=True):
             self.stdout.write(repr(line))

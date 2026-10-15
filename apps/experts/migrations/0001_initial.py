@@ -7,53 +7,91 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Expert',
+            name="Expert",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True, db_index=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('key', models.SlugField(max_length=32, unique=True)),
-                ('lane', models.CharField(max_length=64)),
-                ('description', models.TextField(blank=True)),
-                ('owned_namespaces', models.JSONField(blank=True, default=list)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4, editable=False, primary_key=True, serialize=False
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True, db_index=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("key", models.SlugField(max_length=32, unique=True)),
+                ("lane", models.CharField(max_length=64)),
+                ("description", models.TextField(blank=True)),
+                ("owned_namespaces", models.JSONField(blank=True, default=list)),
             ],
             options={
-                'ordering': ['key'],
+                "ordering": ["key"],
             },
         ),
         migrations.CreateModel(
-            name='ExpertVersion',
+            name="ExpertVersion",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('created_at', models.DateTimeField(auto_now_add=True, db_index=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('semver', models.CharField(max_length=20)),
-                ('nugen_model_id', models.CharField(blank=True, max_length=256)),
-                ('base_model', models.CharField(blank=True, max_length=128)),
-                ('status', models.CharField(choices=[('PENDING', 'Pending'), ('ALIGNING', 'Aligning'), ('DEPLOYING', 'Deploying'), ('EVALUATING', 'Evaluating'), ('LIVE', 'Live'), ('GATED_OUT', 'Gated out'), ('FAILED', 'Failed')], default='PENDING', max_length=16)),
-                ('metrics', models.JSONField(blank=True, default=dict)),
-                ('gate_reason', models.CharField(blank=True, max_length=256)),
-                ('expert', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='versions', to='experts.expert')),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4, editable=False, primary_key=True, serialize=False
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True, db_index=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                ("semver", models.CharField(max_length=20)),
+                ("nugen_model_id", models.CharField(blank=True, max_length=256)),
+                ("base_model", models.CharField(blank=True, max_length=128)),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("PENDING", "Pending"),
+                            ("ALIGNING", "Aligning"),
+                            ("DEPLOYING", "Deploying"),
+                            ("EVALUATING", "Evaluating"),
+                            ("LIVE", "Live"),
+                            ("GATED_OUT", "Gated out"),
+                            ("FAILED", "Failed"),
+                        ],
+                        default="PENDING",
+                        max_length=16,
+                    ),
+                ),
+                ("metrics", models.JSONField(blank=True, default=dict)),
+                ("gate_reason", models.CharField(blank=True, max_length=256)),
+                (
+                    "expert",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="versions",
+                        to="experts.expert",
+                    ),
+                ),
             ],
             options={
-                'ordering': ['-created_at'],
+                "ordering": ["-created_at"],
             },
         ),
         migrations.AddField(
-            model_name='expert',
-            name='current_version',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='experts.expertversion'),
+            model_name="expert",
+            name="current_version",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="+",
+                to="experts.expertversion",
+            ),
         ),
         migrations.AddConstraint(
-            model_name='expertversion',
-            constraint=models.UniqueConstraint(fields=('expert', 'semver'), name='uniq_expert_semver'),
+            model_name="expertversion",
+            constraint=models.UniqueConstraint(
+                fields=("expert", "semver"), name="uniq_expert_semver"
+            ),
         ),
     ]

@@ -195,6 +195,10 @@ LOGGING = {
     },
     "root": {"handlers": ["console"], "level": "INFO"},
     "loggers": {
-        "polymentor": {"handlers": ["console"], "level": "DEBUG" if DEBUG else "INFO", "propagate": False},
+        "polymentor": {
+            "handlers": ["console"],
+            "level": "DEBUG" if DEBUG else "INFO",
+            "propagate": False,
+        },
     },
 }
