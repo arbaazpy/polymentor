@@ -28,8 +28,8 @@ from pathlib import Path
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
+from apps.experts import services
 from apps.experts.fleet import FLEET, ExpertSpec, get_spec
-from apps.experts.models import Expert, ExpertVersion
 from apps.experts.nugen_client import NugenClient, NugenError
 
 READY_STATES = {"READY", "COMPLETED", "SUCCEEDED", "SUCCESS", "DONE"}
@@ -238,26 +238,7 @@ class Command(BaseCommand):
         raise NugenError(f"No aligned model found for alignment {alignment_id}.")
 
     def _record_version(self, spec: ExpertSpec, model_id: str):
-        expert, _ = Expert.objects.update_or_create(
-            key=spec.key,
-            defaults={
-                "lane": spec.lane,
-                "description": spec.description,
-                "owned_namespaces": spec.owned_namespaces,
-            },
-        )
-        # Next semver: 0.1.0 for first, else bump minor.
-        existing = expert.versions.count()
-        semver = f"0.{existing + 1}.0"
-        version = ExpertVersion.objects.create(
-            expert=expert,
-            semver=semver,
-            nugen_model_id=model_id,
-            base_model=spec.base_model,
-            status=ExpertVersion.Status.LIVE,
-        )
-        expert.current_version = version
-        expert.save(update_fields=["current_version"])
+        services.register_live_version(spec=spec, model_id=model_id)
 
     # -- polling -----------------------------------------------------------
     def _poll(

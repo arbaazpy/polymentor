@@ -1,13 +1,13 @@
-"""HTTP surface for inference.
+"""HTTP surface for single-expert inference.
 
-For H 0-4 this exposes a minimal ask endpoint (streaming + non-streaming) so we
-can prove the Nugen client works end-to-end before experts are aligned. The
-full router/aggregator flow lands in later milestones.
+Exposes a direct expert ask (streaming + non-streaming). The router/aggregator
+flow builds on the same services in later milestones.
 """
 
 from __future__ import annotations
 
 import json
+from dataclasses import asdict
 
 from django.http import StreamingHttpResponse
 from rest_framework import status
@@ -18,58 +18,72 @@ from apps.experts import services
 from apps.experts.nugen_client import NugenError
 
 
-@api_view(["POST"])
-def ask(request):
-    """Non-streaming single-expert (or default-model) ask.
-
-    Body: {"prompt": str, "expert": str|null, "system": str|null,
-           "temperature": float?, "max_tokens": int?}
-    """
+def _parse_request(request) -> tuple[dict | None, Response | None]:
     prompt = (request.data.get("prompt") or "").strip()
     if not prompt:
-        return Response({"error": "prompt is required"}, status=status.HTTP_400_BAD_REQUEST)
-
+        return None, Response({"error": "prompt is required"}, status=status.HTTP_400_BAD_REQUEST)
+    grounded = request.data.get("grounded", True)
+    if isinstance(grounded, str):
+        grounded = grounded.lower() not in {"0", "false", "no"}
     try:
-        answer = services.ask_once(
-            prompt=prompt,
-            expert_key=request.data.get("expert"),
-            system=request.data.get("system"),
-            temperature=float(request.data.get("temperature", 0.25)),
-            max_tokens=int(request.data.get("max_tokens", 512)),
+        params = {
+            "prompt": prompt,
+            "expert_key": request.data.get("expert") or None,
+            "grounded": bool(grounded),
+            "system": request.data.get("system") or None,
+            "temperature": float(request.data.get("temperature", 0.2)),
+            "max_tokens": int(request.data.get("max_tokens", 512)),
+        }
+    except (TypeError, ValueError):
+        return None, Response(
+            {"error": "temperature and max_tokens must be numeric"},
+            status=status.HTTP_400_BAD_REQUEST,
         )
+    return params, None
+
+
+@api_view(["POST"])
+def ask(request):
+    """Non-streaming expert ask.
+
+    Body: {"prompt": str, "expert": str|null, "grounded": bool?, "system": str|null,
+           "temperature": float?, "max_tokens": int?}
+    """
+    params, error = _parse_request(request)
+    if error:
+        return error
+    try:
+        result = services.answer(**params)
+    except KeyError as exc:
+        return Response({"error": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
     except NugenError as exc:
         return Response(
             {"error": str(exc), "hint": exc.hint, "status": exc.status},
             status=status.HTTP_502_BAD_GATEWAY,
         )
-    return Response({"answer": answer})
+    return Response(asdict(result))
 
 
 @api_view(["POST"])
 def ask_stream(request):
-    """Streaming ask via Server-Sent Events."""
-    prompt = (request.data.get("prompt") or "").strip()
-    if not prompt:
-        return Response({"error": "prompt is required"}, status=status.HTTP_400_BAD_REQUEST)
+    """Streaming expert ask via Server-Sent Events.
 
-    expert_key = request.data.get("expert")
-    system = request.data.get("system")
-    temperature = float(request.data.get("temperature", 0.25))
-    max_tokens = int(request.data.get("max_tokens", 512))
+    Each frame is a JSON event: meta, delta, confidence, usage, done, or error.
+    """
+    params, error = _parse_request(request)
+    if error:
+        return error
 
     def event_stream():
         try:
-            for delta in services.ask_stream(
-                prompt=prompt,
-                expert_key=expert_key,
-                system=system,
-                temperature=temperature,
-                max_tokens=max_tokens,
-            ):
-                yield f"data: {json.dumps({'delta': delta})}\n\n"
+            for event in services.stream_answer(**params):
+                yield f"data: {json.dumps(event)}\n\n"
             yield "data: [DONE]\n\n"
+        except KeyError as exc:
+            yield f"data: {json.dumps({'type': 'error', 'error': str(exc)})}\n\n"
         except NugenError as exc:
-            yield f"data: {json.dumps({'error': str(exc), 'hint': exc.hint})}\n\n"
+            payload = {"type": "error", "error": str(exc), "hint": exc.hint}
+            yield f"data: {json.dumps(payload)}\n\n"
 
     response = StreamingHttpResponse(event_stream(), content_type="text/event-stream")
     response["Cache-Control"] = "no-cache"

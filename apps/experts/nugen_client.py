@@ -168,6 +168,32 @@ class NugenClient:
         Yields incremental text deltas (already extracted from the SSE
         `data:` lines). Prefer this for longer answers to avoid 504s.
         """
+        for event in self.chat_events(
+            model=model,
+            messages=messages,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            extra=extra,
+        ):
+            if event["type"] == "delta":
+                yield event["text"]
+
+    def chat_events(
+        self,
+        *,
+        model: str,
+        messages: list[ChatMessage] | list[dict[str, str]],
+        temperature: float = 0.25,
+        max_tokens: int = 512,
+        extra: dict[str, Any] | None = None,
+    ) -> Iterator[dict[str, Any]]:
+        """Streaming chat completion as typed events.
+
+        Yields dicts with a `type` of:
+          - "delta":      {"text": str}
+          - "confidence": {"score": float}  (Nugen's 0-100 confidence frames)
+          - "usage":      {"usage": dict}
+        """
         payload = self._chat_payload(
             model=model,
             messages=messages,
@@ -199,9 +225,19 @@ class NugenClient:
                     status=code,
                     body=json.dumps(err)[:2000],
                 )
+            if not isinstance(chunk, dict):
+                continue
+            if chunk.get("object") == "confidence":
+                score = chunk.get("confidence_score")
+                if isinstance(score, int | float):
+                    yield {"type": "confidence", "score": float(score)}
+                continue
             delta = _extract_delta(chunk)
             if delta:
-                yield delta
+                yield {"type": "delta", "text": delta}
+            usage = chunk.get("usage")
+            if usage:
+                yield {"type": "usage", "usage": usage}
 
     @staticmethod
     def _chat_payload(
@@ -213,9 +249,7 @@ class NugenClient:
         stream: bool,
         extra: dict[str, Any] | None,
     ) -> dict[str, Any]:
-        norm_messages = [
-            m.as_dict() if isinstance(m, ChatMessage) else m for m in messages
-        ]
+        norm_messages = [m.as_dict() if isinstance(m, ChatMessage) else m for m in messages]
         payload: dict[str, Any] = {
             "model": model,
             "messages": norm_messages,
@@ -228,7 +262,9 @@ class NugenClient:
         return payload
 
     # -- documents ---------------------------------------------------------
-    def create_document(self, *, files: list[tuple[str, bytes]], categories: list[str] | None = None) -> dict[str, Any]:
+    def create_document(
+        self, *, files: list[tuple[str, bytes]], categories: list[str] | None = None
+    ) -> dict[str, Any]:
         """Upload one or more documents (multipart). Returns the parsed response.
 
         `files` is a list of (filename, content_bytes). Uses multipart, so we

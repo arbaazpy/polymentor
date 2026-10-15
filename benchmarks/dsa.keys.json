@@ -1,0 +1,25 @@
+{
+  "_doc": "Local grading keys for dsa.json. Each group is a list of alternative phrases; a group is hit if any alternative appears (case-insensitive substring). Score = hit groups / total groups. Any 'forbid' phrase scores the item 0 (used for delegation/abstention items, where answering anyway is the failure).",
+  "items": {
+    "1": {"category": "definition", "groups": [["sorted", "monoton"], ["o(n)", "linear time"], ["o(n^2)", "o(n2)", "quadratic", "n^2"], ["pair", "triplet"]]},
+    "2": {"category": "definition", "groups": [["contiguous"], ["shrink", "contract"], ["left"], ["o(n)", "linear time"], ["monoton", "constraint"]]},
+    "3": {"category": "definition", "groups": [["monoton"], ["predicate", "feasib"], ["boundary", "flip"], ["candidate", "answer space", "search space"]]},
+    "4": {"category": "definition", "groups": [["average"], ["sequence"], ["o(1)"], ["resiz"], ["o(n)"]]},
+    "5": {"category": "distinction", "groups": [["sorted", "monoton"], ["contiguous"], ["shrink", "contract"], ["pair", "triplet"]]},
+    "6": {"category": "distinction", "groups": [["top-down", "top down"], ["bottom-up", "bottom up"], ["cache", "caching", "store"], ["table"], ["overlapping", "recomput"]]},
+    "7": {"category": "distinction", "groups": [["queue"], ["stack", "recursi"], ["fewest", "shortest"], ["unweighted"], ["cycle", "topolog", "flood fill"]]},
+    "8": {"category": "distinction", "groups": [["two-pointer", "two pointer"], ["sliding window"], ["prefix sum"], ["binary search"], ["bfs", "breadth"], ["dynamic programming"]]},
+    "9": {"category": "procedure", "groups": [["feasib"], ["monoton", "never worse"], ["max(", "largest package", "heaviest", "maximum weight", "max weight", "max package"], ["sum("], ["smallest", "minimum"], ["greedy", "simulat"]]},
+    "10": {"category": "procedure", "groups": [["max(x", "max(num", "best_ending_here", "current_sum", "current sum"], ["o(n)"], ["o(1)"], ["negative"], ["extend", "start a new", "restart", "starts a new"]]},
+    "11": {"category": "procedure", "groups": [["left"], ["right"], ["too small", "less than", "smaller than"], ["too large", "greater than", "larger than"], ["o(n)"], ["o(1)"]]},
+    "12": {"category": "procedure", "groups": [["one letter", "single letter", "one character", "single character"], ["increasing distance", "level", "layer"], ["visited"], ["first time", "first reach", "first found"]]},
+    "13": {"category": "failure", "groups": [["infinite loop", "loops forever", "never terminat"], ["round", "floor"], ["mid + 1", "mid+1"], ["never advance", "not advance", "doesn't advance", "does not move", "doesn't move", "stuck", "no progress"], ["shrink"]]},
+    "14": {"category": "failure", "groups": [["shrink", "contract"], ["left"], ["constraint", "invalid", "violat"], ["at most once", "each element", "once"]]},
+    "15": {"category": "failure", "groups": [["memoiz"], ["exponential"], ["overlapping", "recomput", "same subproblem"], ["tabulation", "bottom-up", "bottom up"]]},
+    "16": {"category": "failure", "groups": [["state"], ["recurrence"], ["transition"], ["depend", "variable", "dimension"]]},
+    "17": {"category": "definition", "groups": [["heap"], ["o(log n)"], ["o(1)"], ["dijkstra", "k sorted", "median", "top k", "top-k"]]},
+    "18": {"category": "definition", "groups": [["disjoint"], ["path compression"], ["rank", "size"], ["alpha", "ackermann", "α"], ["connect"]]},
+    "19": {"category": "abstention", "groups": [["delegate", "sysdes", "system design", "system-design"]], "forbid": ["token bucket", "leaky bucket", "redis", "sliding log", "fixed window counter"]},
+    "20": {"category": "abstention", "groups": [["not covered", "does not cover", "doesn't cover", "not in my notes", "outside"]], "forbid": ["blocking flow", "level graph", "o(v^2", "o(v^2e", "o(e v^2"]}
+  }
+}

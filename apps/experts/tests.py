@@ -130,16 +130,75 @@ def test_resolve_model_raises_when_nothing_available():
         services.resolve_model_id(None)
 
 
-def test_ask_once_uses_service(monkeypatch):
+def test_chat_events_surface_confidence_frames(monkeypatch):
+    lines = [
+        'data: {"choices":[{"delta":{"content":"Hi"}}]}',
+        'data: {"object":"confidence","confidence_score":80.0}',
+        'data: {"choices":[{"delta":{"content":"!"}}]}',
+        'data: {"object":"confidence","confidence_score":90.0}',
+        "data: [DONE]",
+    ]
+
+    def fake_request(self, *args, **kwargs):
+        resp = mock.Mock(status_code=200)
+        resp.iter_lines.return_value = iter(lines)
+        return resp
+
+    monkeypatch.setattr(NugenClient, "_request", fake_request)
+    client = NugenClient(api_key="k")
+    events = list(client.chat_events(model="m", messages=[]))
+    assert [e["type"] for e in events] == ["delta", "confidence", "delta", "confidence"]
+    assert events[1]["score"] == 80.0
+    assert "".join(client.chat_stream(model="m", messages=[])) == "Hi!"
+
+
+def test_answer_grounds_prompt_and_averages_confidence(monkeypatch):
     captured = {}
 
-    def fake_chat(self, **kwargs):
+    def fake_events(self, **kwargs):
         captured.update(kwargs)
-        return {"choices": [{"message": {"content": "answer"}}]}
+        yield {"type": "delta", "text": "Use l = mid + 1."}
+        yield {"type": "confidence", "score": 70.0}
+        yield {"type": "confidence", "score": 90.0}
 
-    monkeypatch.setattr(NugenClient, "chat", fake_chat)
-    with override_settings(NUGEN_DEFAULT_MODEL="m"):
-        out = services.ask_once(prompt="q", system="s")
-    assert out == "answer"
-    assert captured["model"] == "m"
-    assert captured["messages"][-1].content == "q"
+    monkeypatch.setattr(NugenClient, "chat_events", fake_events)
+    result = services.answer(
+        prompt="My binary search with l = mid loops forever. Why?",
+        expert_key="dsa",
+        model_id="aligned-dsa",
+    )
+    system = captured["messages"][0].content
+    assert captured["model"] == "aligned-dsa"
+    assert "Reference notes:" in system
+    assert "DELEGATE:" in system
+    assert result.text == "Use l = mid + 1."
+    assert result.confidence == 0.8
+    assert result.confidence_min == 0.7
+    assert result.grounded and any("Failure modes" in ref for ref in result.sections)
+
+
+def test_answer_ungrounded_has_rules_but_no_notes(monkeypatch):
+    captured = {}
+
+    def fake_events(self, **kwargs):
+        captured.update(kwargs)
+        yield {"type": "delta", "text": "ok"}
+
+    monkeypatch.setattr(NugenClient, "chat_events", fake_events)
+    result = services.answer(prompt="q", expert_key="dsa", grounded=False, model_id="m")
+    system = captured["messages"][0].content
+    assert "DELEGATE:" in system and "Reference notes:" not in system
+    assert result.confidence is None and not result.grounded
+
+
+@pytest.mark.django_db
+def test_register_live_version_is_idempotent():
+    from apps.experts.fleet import get_spec
+
+    spec = get_spec("dsa")
+    first = services.register_live_version(spec=spec, model_id="model_x")
+    again = services.register_live_version(spec=spec, model_id="model_x")
+    assert first.pk == again.pk
+    expert = Expert.objects.get(key="dsa")
+    assert expert.current_version_id == first.pk
+    assert services.resolve_model_id("dsa") == "model_x"

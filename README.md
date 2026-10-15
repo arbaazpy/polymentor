@@ -57,6 +57,18 @@ curl http://127.0.0.1:8000/healthz
 uv run python manage.py ping_nugen --model <deployed_model_id> --prompt "Say hi in 5 words"
 ```
 
+### Register an expert and benchmark it
+
+```bash
+# Record a model aligned + deployed in the Nugen dashboard as the LIVE dsa expert
+uv run python manage.py register_expert dsa --model <deployed_model_id>
+
+# Score base / aligned / grounded configurations on the gold benchmark
+uv run python manage.py run_benchmark dsa
+```
+
+Results and methodology: [`EVALUATION.md`](EVALUATION.md).
+
 ---
 
 ## API (early)
@@ -64,8 +76,8 @@ uv run python manage.py ping_nugen --model <deployed_model_id> --prompt "Say hi 
 | Method | Path | Purpose |
 |--------|------|---------|
 | GET  | `/healthz`        | Liveness + live expert count |
-| POST | `/v1/ask`         | Single ask (non-streaming) |
-| POST | `/v1/ask/stream`  | Single ask (SSE stream) |
+| POST | `/v1/ask`         | Grounded expert ask; returns answer, confidence, cited sections |
+| POST | `/v1/ask/stream`  | Same, as SSE events (`meta`, `delta`, `confidence`, `done`) |
 
 More endpoints (sessions, mock interview, feedback, experts registry, admin)
 land as the build progresses — see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).

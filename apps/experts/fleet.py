@@ -26,6 +26,8 @@ class ExpertSpec:
     corpus_files: list[str]
     benchmark_file: str
     owned_namespaces: list[str] = field(default_factory=list)
+    # Local grading keys for the gold benchmark (not uploaded to Nugen).
+    benchmark_keys_file: str = ""
 
     @property
     def corpus_paths(self) -> list[Path]:
@@ -34,6 +36,10 @@ class ExpertSpec:
     @property
     def benchmark_path(self) -> Path:
         return BENCHMARKS_DIR / self.benchmark_file
+
+    @property
+    def benchmark_keys_path(self) -> Path | None:
+        return BENCHMARKS_DIR / self.benchmark_keys_file if self.benchmark_keys_file else None
 
 
 # v1 fleet. More lanes are added as their corpora land.
@@ -46,9 +52,12 @@ FLEET: dict[str, ExpertSpec] = {
             "prefix sums, binary search on the answer, BFS/DFS, DP, union-find), and "
             "common implementation bugs."
         ),
-        base_model="Qwen/Qwen2.5-3B-Instruct",
+        # Must be both alignment_ready and inference_ready.
+        # Qwen2.5-3B is alignment-ready only and cannot host aligned adapters.
+        base_model="meta-llama/Llama-3.2-3B-Instruct",
         corpus_files=["dsa/corpus.md", "dsa/quickref.txt"],
         benchmark_file="dsa.json",
+        benchmark_keys_file="dsa.keys.json",
         owned_namespaces=["complexity", "pattern", "hash", "ds"],
     ),
 }
