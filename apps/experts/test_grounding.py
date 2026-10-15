@@ -9,13 +9,23 @@ from apps.experts.prompts import build_system_prompt
 
 def test_split_sections_handles_markdown_and_underlined_headings():
     md = "# Title\nintro\n## A\nalpha text\n### A.1\nsub text\n"
-    titles = [s.title for s in grounding.split_sections("x.md", md)]
+    titles = [s.title for s in grounding.split_sections("x.md", md, min_words=0)]
     assert titles == ["Title", "A", "A.1"]
 
     txt = "CARD\n====\nhello\n\nBUGS\n----\noff by one\n"
-    sections = grounding.split_sections("x.txt", txt)
+    sections = grounding.split_sections("x.txt", txt, min_words=0)
     assert [s.title for s in sections] == ["CARD", "BUGS"]
     assert sections[1].text == "off by one"
+
+
+def test_split_sections_drops_metadata_and_chunks_long_sections():
+    bullets = "\n".join(f"- **term{i}** " + "word " * 40 for i in range(10))
+    md = "# Header\nVersion: 0.1.0\n## Defs\n" + bullets
+    sections = grounding.split_sections("x.md", md)
+    assert all(s.title.startswith("Defs (part ") for s in sections)
+    assert len(sections) > 1
+    assert all(len(s.text) <= grounding.MAX_SECTION_CHARS for s in sections)
+    assert all(s.text.startswith("- **term") for s in sections)
 
 
 def test_dsa_index_loads_both_corpus_files():
@@ -43,6 +53,16 @@ def test_retrieve_respects_char_budget():
         if "scope" not in s.title.lower() and "abstention" not in s.title.lower()
     ]
     assert len(retrieved) <= 1
+
+
+def test_sysdes_retrieval_and_pinning():
+    query = "A popular cache key expires and the database is overwhelmed"
+    titles = [s.title for s in grounding.retrieve("sysdes", query)]
+    assert any("Failure modes" in t or "COMMON FAILURES" in t for t in titles[:3])
+
+    hits = grounding.retrieve("sysdes", "Define consistent hashing")
+    assert any("Consistent hashing" in s.text and "1/N" in s.text for s in hits[:3])
+    assert any("Abstention" in t for t in titles)
 
 
 def test_system_prompt_lists_other_lanes_and_notes():

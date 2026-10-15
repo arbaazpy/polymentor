@@ -6,7 +6,8 @@ import pytest
 
 from apps.alignment import services
 from apps.experts import services as expert_services
-from apps.experts.fleet import get_spec
+from apps.experts.fleet import FLEET, get_spec
+from apps.experts.nugen_client import NugenError
 
 
 def test_score_answer_counts_groups():
@@ -25,18 +26,26 @@ def test_score_answer_forbidden_phrase_zeroes_abstention_item():
     assert score == 0.0 and forbidden == "token bucket"
 
 
-def test_dsa_keys_cover_every_benchmark_question():
-    items, keys = services.load_benchmark(get_spec("dsa"))
+@pytest.mark.parametrize("expert_key", list(FLEET))
+def test_keys_cover_every_benchmark_question(expert_key):
+    items, keys = services.load_benchmark(get_spec(expert_key))
     assert len(items) == 20
     assert all(str(i["question_num"]) in keys for i in items)
 
 
-def test_gold_answers_score_well_against_their_own_keys():
-    """Sanity check on the keys: the gold answers should pass (abstention items aside)."""
-    items, keys = services.load_benchmark(get_spec("dsa"))
+@pytest.mark.parametrize("expert_key", list(FLEET))
+def test_gold_answers_score_well_against_their_own_keys(expert_key):
+    """Sanity check on the keys: every gold answer must pass its own key."""
+    items, keys = services.load_benchmark(get_spec(expert_key))
     for item in items:
         score, missing, _ = services.score_answer(item["answer"], keys[str(item["question_num"])])
         assert score >= services.PASS_THRESHOLD, (item["question_num"], missing)
+
+
+@pytest.mark.parametrize("expert_key", list(FLEET))
+def test_corpus_files_meet_nugen_minimum_words(expert_key):
+    for path in get_spec(expert_key).corpus_paths:
+        assert len(path.read_text(encoding="utf-8").split()) >= 500, path.name
 
 
 def test_run_benchmark_reports_each_mode(monkeypatch):
@@ -68,6 +77,32 @@ def test_run_benchmark_reports_each_mode(monkeypatch):
     assert report["modes"]["aligned_grounded"]["summary"]["overall"] == 1.0
     assert report["modes"]["aligned_grounded"]["summary"]["confidence_when_pass"] == 0.9
     assert "`aligned_grounded`" in services.render_markdown(report)
+
+
+def test_run_benchmark_retries_transient_errors(monkeypatch):
+    attempts = []
+
+    def flaky_answer(**kwargs):
+        attempts.append(1)
+        if len(attempts) == 1:
+            raise NugenError("Nugen stream interrupted", transient=True)
+        return expert_services.ExpertAnswer(
+            text="sorted O(n) O(n^2) pair",
+            model_id="m",
+            expert_key="dsa",
+            grounded=False,
+            confidence=None,
+            confidence_min=None,
+        )
+
+    monkeypatch.setattr(expert_services, "answer", flaky_answer)
+    monkeypatch.setattr(services, "RETRY_BACKOFF_SECONDS", 0)
+    report = services.run_benchmark(
+        spec=get_spec("dsa"), mode_names=["base"], aligned_model_id=None, limit=1, workers=1
+    )
+    item = report["modes"]["base"]["items"][0]
+    assert len(attempts) == 2
+    assert item["error"] is None and item["score"] == 1.0
 
 
 def test_run_benchmark_requires_aligned_model_for_aligned_modes():

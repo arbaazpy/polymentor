@@ -22,6 +22,10 @@ from apps.experts.fleet import get_spec
 PINNED_TITLE_KEYWORDS = ("scope", "abstention")
 DEFAULT_TOP_K = 3
 DEFAULT_MAX_CHARS = 6000
+# Long sections are chunked so BM25 length normalization doesn't bury them.
+MAX_SECTION_CHARS = 900
+# Header/metadata blocks (license, version) are not useful context.
+MIN_SECTION_WORDS = 30
 
 STOPWORDS = frozenset(
     """
@@ -34,6 +38,7 @@ STOPWORDS = frozenset(
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
 _MD_HEADING = re.compile(r"^#{1,4}\s+(.+?)\s*$")
 _UNDERLINE = re.compile(r"^[-=]{3,}$")
+_BLOCK_START = re.compile(r"^(- |\d+\. |\| )")
 
 
 @dataclass(frozen=True)
@@ -62,7 +67,7 @@ def tokenize(text: str) -> list[str]:
     ]
 
 
-def split_sections(source: str, text: str) -> list[Section]:
+def split_sections(source: str, text: str, *, min_words: int = MIN_SECTION_WORDS) -> list[Section]:
     """Split markdown (`#` headings) or plain text (underlined headings) into sections."""
     lines = text.splitlines()
     sections: list[Section] = []
@@ -71,8 +76,12 @@ def split_sections(source: str, text: str) -> list[Section]:
 
     def flush() -> None:
         body = "\n".join(buf).strip()
-        if body:
-            sections.append(Section(source=source, title=title, text=body))
+        if not body or len(body.split()) < min_words:
+            return
+        chunks = _chunk(body)
+        for n, chunk in enumerate(chunks, start=1):
+            chunk_title = title if len(chunks) == 1 else f"{title} (part {n})"
+            sections.append(Section(source=source, title=chunk_title, text=chunk))
 
     i = 0
     while i < len(lines):
@@ -91,6 +100,28 @@ def split_sections(source: str, text: str) -> list[Section]:
         i += 1
     flush()
     return sections
+
+
+def _chunk(body: str) -> list[str]:
+    """Split a long section into chunks at bullet / paragraph / table-row boundaries."""
+    if len(body) <= MAX_SECTION_CHARS:
+        return [body]
+    blocks: list[str] = []
+    for line in body.splitlines():
+        starts_block = not line.strip() or _BLOCK_START.match(line)
+        if starts_block or not blocks:
+            blocks.append(line)
+        else:
+            blocks[-1] += "\n" + line
+    chunks: list[str] = []
+    for block in (b.strip() for b in blocks):
+        if not block:
+            continue
+        if chunks and len(chunks[-1]) + len(block) + 1 <= MAX_SECTION_CHARS:
+            chunks[-1] += "\n" + block
+        else:
+            chunks.append(block)
+    return chunks
 
 
 class CorpusIndex:

@@ -33,10 +33,24 @@ DEFAULT_TIMEOUT = (10, 120)  # (connect, read) seconds
 class NugenError(RuntimeError):
     """Raised when the Nugen API returns an error or is unreachable."""
 
-    def __init__(self, message: str, status: int | None = None, body: str | None = None):
+    RETRYABLE_STATUSES = frozenset({429, 500, 502, 503, 504})
+
+    def __init__(
+        self,
+        message: str,
+        status: int | None = None,
+        body: str | None = None,
+        *,
+        transient: bool = False,
+    ):
         super().__init__(message)
         self.status = status
         self.body = body
+        self._transient = transient
+
+    @property
+    def retryable(self) -> bool:
+        return self._transient or self.status in self.RETRYABLE_STATUSES
 
     @property
     def hint(self) -> str:
@@ -121,7 +135,7 @@ class NugenClient:
                 timeout=timeout,
             )
         except requests.RequestException as exc:
-            raise NugenError(f"Network error calling Nugen: {exc}") from exc
+            raise NugenError(f"Network error calling Nugen: {exc}", transient=True) from exc
 
         if resp.status_code >= 400:
             body = _safe_body(resp)
@@ -203,7 +217,14 @@ class NugenClient:
             extra=extra,
         )
         resp = self._request("POST", self.EP_CHAT, json_body=payload, stream=True)
-        for line in resp.iter_lines(decode_unicode=True):
+        try:
+            yield from self._parse_events(resp.iter_lines(decode_unicode=True))
+        except requests.RequestException as exc:
+            raise NugenError(f"Nugen stream interrupted: {exc}", transient=True) from exc
+
+    @staticmethod
+    def _parse_events(lines: Iterator[str]) -> Iterator[dict[str, Any]]:
+        for line in lines:
             if not line:
                 continue
             if line.startswith("data:"):

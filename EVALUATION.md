@@ -21,6 +21,11 @@ Reproduce with `uv run python manage.py run_benchmark dsa`.
 The four modes differ only in the model and whether notes are injected, so each
 row isolates one layer.
 
+> **Retrieval update.** After this run, long sections are chunked (≤900 chars)
+> and metadata headers are dropped. A re-check of `aligned_grounded` scored
+> 0.81 overall with a 0.75 pass rate, within noise of the row below. The
+> full table is refreshed with the sysdes run.
+
 ## Results
 
 | mode | overall | pass rate (≥0.75) | abstention | definition | distinction | failure | procedure | Nugen conf (pass) | Nugen conf (fail) |

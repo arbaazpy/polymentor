@@ -152,6 +152,25 @@ def test_chat_events_surface_confidence_frames(monkeypatch):
     assert "".join(client.chat_stream(model="m", messages=[])) == "Hi!"
 
 
+def test_stream_interrupted_mid_body_raises_retryable_nugen_error(monkeypatch):
+    import requests
+
+    def broken_lines():
+        yield 'data: {"choices":[{"delta":{"content":"partial"}}]}'
+        raise requests.exceptions.ChunkedEncodingError("Response ended prematurely")
+
+    def fake_request(self, *args, **kwargs):
+        resp = mock.Mock(status_code=200)
+        resp.iter_lines.return_value = broken_lines()
+        return resp
+
+    monkeypatch.setattr(NugenClient, "_request", fake_request)
+    with pytest.raises(NugenError) as excinfo:
+        list(NugenClient(api_key="k").chat_events(model="m", messages=[]))
+    assert excinfo.value.retryable
+    assert not NugenError("bad", status=404).retryable
+
+
 def test_answer_grounds_prompt_and_averages_confidence(monkeypatch):
     captured = {}
 

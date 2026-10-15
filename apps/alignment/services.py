@@ -17,6 +17,7 @@ from __future__ import annotations
 import json
 import re
 import statistics
+import time
 from collections import defaultdict
 from collections.abc import Callable
 from concurrent.futures import ThreadPoolExecutor
@@ -30,6 +31,8 @@ from apps.experts.fleet import ExpertSpec
 from apps.experts.nugen_client import NugenError
 
 PASS_THRESHOLD = 0.75
+MAX_ATTEMPTS = 3
+RETRY_BACKOFF_SECONDS = 2.0
 
 
 @dataclass(frozen=True)
@@ -100,18 +103,23 @@ def _run_item(
     max_tokens: int,
 ) -> ItemResult:
     result = ItemResult(question_num=item["question_num"], category=key["category"], score=0.0)
-    try:
-        reply = expert_services.answer(
-            prompt=item["question"],
-            expert_key=spec.key,
-            grounded=mode.grounded,
-            model_id=model_id,
-            temperature=0.0,
-            max_tokens=max_tokens,
-        )
-    except NugenError as exc:
-        result.error = str(exc)
-        return result
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        try:
+            reply = expert_services.answer(
+                prompt=item["question"],
+                expert_key=spec.key,
+                grounded=mode.grounded,
+                model_id=model_id,
+                temperature=0.0,
+                max_tokens=max_tokens,
+            )
+            break
+        except NugenError as exc:
+            if exc.retryable and attempt < MAX_ATTEMPTS:
+                time.sleep(RETRY_BACKOFF_SECONDS * attempt)
+                continue
+            result.error = str(exc)
+            return result
     result.score, result.missing, result.forbidden_hit = score_answer(reply.text, key)
     result.answer = reply.text
     result.confidence = reply.confidence
