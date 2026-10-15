@@ -1,0 +1,102 @@
+[
+  {
+    "question_num": 1,
+    "question": "Define STAR and explain why Action and Result carry the signal rather than Situation and Task.",
+    "answer": "STAR stands for Situation, Task, Action, Result. Situation and Task only set context in a sentence or two each; Action and Result carry the signal because the interviewer is scoring what the candidate personally did and what changed because of it, so most of the answer should be spent on them."
+  },
+  {
+    "question_num": 2,
+    "question": "What makes a good behavioral story?",
+    "answer": "A good behavioral story is specific, first-person, and quantified where possible: one real event with concrete details, the candidate's own actions described with 'I' rather than only 'we', and a result with a number or a clear before-and-after, ending with the lesson learned."
+  },
+  {
+    "question_num": 3,
+    "question": "List the four criteria of the story rubric and how each is scored.",
+    "answer": "The four criteria are specificity, ownership, quantification, and lesson. Each is scored 0 (absent), 1 (partial) or 2 (clear), so a strong story scores 7 or 8, a mid story 4 to 6, and a weak story 3 or below."
+  },
+  {
+    "question_num": 4,
+    "question": "List the eight situational buckets interviewers draw behavioral questions from.",
+    "answer": "Conflict, failure, leadership, ambiguity, influence without authority, prioritization, feedback, and ownership."
+  },
+  {
+    "question_num": 5,
+    "question": "Distinguish a strong leadership story from a mid one using the rubric.",
+    "answer": "A strong story is specific, first-person, quantified and names a lesson, scoring 7 to 8 on the rubric. A mid story usually has a clear personal action but a vague result such as 'it went well' and no lesson, scoring 4 to 6; adding a measured result and a lesson makes it strong."
+  },
+  {
+    "question_num": 6,
+    "question": "Distinguish a behavioral question from a hypothetical question. Which gives stronger evidence?",
+    "answer": "A behavioral question asks what you did in the past ('Tell me about a time...'), while a hypothetical asks what you would do. Behavioral questions give stronger evidence because past behavior predicts future behavior; hypotheticals test intentions, not actions."
+  },
+  {
+    "question_num": 7,
+    "question": "Distinguish a red flag from a green flag in a failure story.",
+    "answer": "A red flag is blaming teammates or managers, giving no personal action, or having no result. A green flag is when the candidate owns the outcome, including the mistake, and names the lesson and what they now do differently."
+  },
+  {
+    "question_num": 8,
+    "question": "Distinguish influence without authority from leadership through a reporting line.",
+    "answer": "Leadership through a reporting line relies on managerial authority over people who report to you. Influence without authority is changing the direction of people who do not report to you, using data, prototypes and shared goals rather than rank."
+  },
+  {
+    "question_num": 9,
+    "question": "Grade this candidate answer with the rubric: 'We had a bug and we fixed it and everyone was happy.'",
+    "answer": "Specificity 0, ownership 0, quantification 0, lesson 0: a weak story. There is no specific event, no first-person action, no measured result and no lesson. The interviewer should probe with 'What did you do?' and 'How did you measure that?'"
+  },
+  {
+    "question_num": 10,
+    "question": "Walk through how a candidate should restructure a two-minute answer that spends most of its time on background.",
+    "answer": "Cut Situation and Task to about two sentences, then spend most of the time on Action in the first person, describing your own decisions, and on a quantified Result, finishing with the lesson. Action and Result carry the signal."
+  },
+  {
+    "question_num": 11,
+    "question": "Walk through how a candidate builds a story bank before interviews.",
+    "answer": "Prepare six to ten real stories and tag each with the situational buckets it can answer, such as conflict, failure, leadership and ambiguity, so that one strong story can serve several questions. Check each story against the rubric for specificity, ownership, quantification and lesson."
+  },
+  {
+    "question_num": 12,
+    "question": "List the probing questions an interviewer uses to test a behavioral story and what each tests.",
+    "answer": "'What did you do?' separates personal from team action; 'What would you do differently?' tests the lesson; 'How did you measure that?' tests quantification; 'What did the other person think?' tests empathy in conflict; 'What happened next?' tests whether the result lasted."
+  },
+  {
+    "question_num": 13,
+    "question": "A candidate uses 'we' throughout every story. Which failure mode is this and what probe should the interviewer use?",
+    "answer": "This is the 'we only' failure mode: the interviewer cannot tell what the candidate personally did. The probe is 'What did you do?', and the fix is to rewrite the Action in the first person."
+  },
+  {
+    "question_num": 14,
+    "question": "Asked for a weakness, a candidate says 'I work too hard'. Which failure mode is this and what is the fix?",
+    "answer": "This is a fake failure. The fix is to choose a real mistake with real consequences that the candidate owned, and name the lesson and what they now do differently."
+  },
+  {
+    "question_num": 15,
+    "question": "A candidate's failure story attributes the missed deadline to the QA team being slow. Which failure mode is this and how should it be fixed?",
+    "answer": "This is blaming others, a red flag. The stronger version owns the candidate's part, such as the planning mistake, and names the lesson and the change made afterwards."
+  },
+  {
+    "question_num": 16,
+    "question": "A candidate's polished story falls apart when the interviewer asks follow-up questions. Which failure mode is this and what is the fix?",
+    "answer": "This is an over-rehearsed story: the answer sounds memorized and does not survive probing. The fix is to know the facts of the story well rather than memorizing a script."
+  },
+  {
+    "question_num": 17,
+    "question": "How should I open a salary negotiation after receiving an offer?",
+    "answer": "Salary negotiation is not covered by this corpus, so the behavioral expert should say it is not covered rather than inventing advice."
+  },
+  {
+    "question_num": 18,
+    "question": "How would you design a cache layer for a read-heavy API?",
+    "answer": "This is a system design question, not a behavioral one, so the behavioral expert should delegate it to the sysdes lane rather than answering."
+  },
+  {
+    "question_num": 19,
+    "question": "What is the time complexity of merge sort?",
+    "answer": "This is an algorithm complexity question, so the behavioral expert should delegate it to the dsa lane rather than answering."
+  },
+  {
+    "question_num": 20,
+    "question": "Rewrite this resume bullet to be stronger: 'Worked on the payments service.'",
+    "answer": "Rewriting resume bullets belongs to the resume lane, so the behavioral expert should delegate it to the resume lane rather than answering."
+  }
+]

@@ -1,0 +1,85 @@
+BEHAVIORAL INTERVIEW EXPERT — QUICK REFERENCE CARD
+==================================================
+
+Version 0.1.0. Lane: behav. Public knowledge synthesis only. This card repeats
+the critical lists and phrases from the main corpus.
+
+CORE PHRASES TO ECHO
+--------------------
+- STAR = Situation, Task, Action, Result; Action and Result carry the signal.
+- A good behavioral story is specific, first-person, and quantified where
+  possible.
+- Red flag: the candidate blames the team. Green flag: the candidate owns the
+  outcome and names the lesson.
+- Past behavior predicts future behavior, so behavioral questions beat
+  hypothetical ones as evidence.
+- Keep Situation and Task to about two sentences; spend the time on Action and
+  Result.
+
+THE EIGHT SITUATIONAL BUCKETS
+-----------------------------
+1. Conflict: a disagreement with a teammate or manager.
+2. Failure: something you owned that went wrong.
+3. Leadership: leading a project or a team.
+4. Ambiguity: unclear requirements.
+5. Influence without authority: convincing people who don't report to you.
+6. Prioritization: too much to do.
+7. Feedback: feedback received, or difficult feedback given.
+8. Ownership: going beyond your assigned scope.
+
+THE FOUR-CRITERION STORY RUBRIC
+-------------------------------
+1. Specificity: one concrete event with real details.
+2. Ownership: first-person actions; owns the outcome, including mistakes.
+3. Quantification: a number or a clear before-and-after.
+4. Lesson: what you learned and what you now do differently.
+Score each 0, 1 or 2. Strong story 7 to 8, mid story 4 to 6, weak 3 or below.
+
+PROBING PATTERNS
+----------------
+- "What did you do?" separates personal action from team action.
+- "What would you do differently?" tests the lesson.
+- "How did you measure that?" tests quantification.
+- "What did the other person think?" tests empathy in conflict.
+- "What happened next?" tests whether the result lasted.
+
+COMMON FAILURES AND FIXES
+-------------------------
+- Vague story: habits instead of one event; pick a single incident.
+- "We" only: unclear personal action; probe with "What did you do?" and
+  rewrite the Action in the first person.
+- No result: add a measured outcome.
+- Blaming others: red flag; own your part and name the lesson.
+- Over-rehearsed: know the facts, not a script.
+- Too much setup: cut context to two sentences.
+- Fake failure ("I work too hard"): choose a real mistake.
+
+STORY BANK
+----------
+Prepare six to ten real stories before interviews. Tag each story with the
+buckets it can answer, so one strong story can serve several questions; a
+migration you led might cover leadership, ambiguity and prioritization. Check
+every story against the rubric: specificity, ownership, quantification,
+lesson. Rehearse the facts, not a script, so the story survives probing.
+
+WORKED GRADING EXAMPLE
+----------------------
+"We had a bug and we fixed it and everyone was happy." Specificity 0,
+ownership 0, quantification 0, lesson 0: a weak story. Probe with "What did
+you do?" and "How did you measure that?"
+
+ABSTENTION / DELEGATION
+-----------------------
+- System design questions: delegate to sysdes.
+- Algorithms and complexity: delegate to dsa.
+- Resume bullets and job-description fit: delegate to resume.
+- Not covered: salary negotiation, offer evaluation, visa questions. Say it is
+  not covered.
+- Never invent a story for the candidate; coach structure, ask for real
+  details.
+
+CHECKLIST
+---------
+STAR with the weight on Action and Result. Specific, first-person, quantified.
+Rubric: specificity, ownership, quantification, lesson. A story bank across
+the eight buckets. Own failures and name the lesson.

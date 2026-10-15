@@ -1,0 +1,25 @@
+{
+  "_doc": "Local grading keys for behav.json. Same format as dsa.keys.json.",
+  "items": {
+    "1": {"category": "definition", "groups": [["situation"], ["task"], ["action"], ["result"], ["signal", "scor", "what you did", "personally", "your own"]]},
+    "2": {"category": "definition", "groups": [["specific"], ["first-person", "first person", "\"i\"", "'i'"], ["quantif", "number", "metric", "measur"], ["lesson", "learn"]]},
+    "3": {"category": "definition", "groups": [["specificity", "specific"], ["ownership"], ["quantification", "quantif"], ["lesson"], ["0", "2", "score"]]},
+    "4": {"category": "definition", "groups": [["conflict"], ["failure"], ["leadership"], ["ambiguity"], ["influence"], ["prioritiz"], ["feedback"], ["ownership"]]},
+    "5": {"category": "distinction", "groups": [["specific"], ["quantif", "measur", "number"], ["lesson"], ["vague", "went well", "no result", "missing"]]},
+    "6": {"category": "distinction", "groups": [["past"], ["would", "hypothetical"], ["predict"], ["intention", "stronger"]]},
+    "7": {"category": "distinction", "groups": [["blam"], ["own"], ["lesson", "learn"], ["no result", "no personal", "no clear", "excuse"]]},
+    "8": {"category": "distinction", "groups": [["report"], ["authority", "rank", "title", "power"], ["data", "prototype", "evidence"], ["shared goal", "common goal", "shared", "align"]]},
+    "9": {"category": "procedure", "groups": [["specificity"], ["ownership"], ["quantification", "quantif"], ["lesson"], ["weak", "0/8", "0 out of 8", "total of 0", "total: 0", "= 0"], ["what did you do"]]},
+    "10": {"category": "procedure", "groups": [["two sentences", "2 sentences", "briefly", "short", "cut"], ["action"], ["result"], ["first person", "first-person", "your own", "you personally"], ["quantif", "measur", "number", "metric"]]},
+    "11": {"category": "procedure", "groups": [["six", "6", "ten", "10", "several"], ["tag", "map", "bucket"], ["several questions", "multiple questions", "reuse", "more than one"], ["rubric", "specific", "quantif"]]},
+    "12": {"category": "procedure", "groups": [["what did you do"], ["differently"], ["measure"], ["other person", "other side"], ["what happened next", "happened next"]]},
+    "13": {"category": "failure", "groups": [["\"we\"", "'we'", "we only", "we-only", "uses we", "using we", "says we"], ["what did you do", "what did you personally", "what was your role", "your specific"], ["first person", "first-person", "\"i\"", "'i'"]]},
+    "14": {"category": "failure", "groups": [["fake", "not a real", "humble", "disguised"], ["real mistake", "genuine", "real weakness", "actual weakness", "real failure"], ["lesson", "learn", "differently", "improv"]]},
+    "15": {"category": "failure", "groups": [["blam"], ["red flag"], ["own"], ["lesson", "learn", "differently"]]},
+    "16": {"category": "failure", "groups": [["rehearsed", "memoriz", "scripted"], ["follow-up", "follow up", "probing", "probe"], ["facts", "details", "real"]]},
+    "17": {"category": "abstention", "groups": [["not covered", "does not cover", "doesn't cover", "not in my notes", "outside"]], "forbid": ["anchor", "counteroffer", "counter-offer", "market rate", "%"]},
+    "18": {"category": "abstention", "groups": [["delegate", "defer", "hand off"], ["sysdes"]], "forbid": ["cache-aside", "write-through", "ttl", "redis", "memcached"]},
+    "19": {"category": "abstention", "groups": [["delegate", "defer", "hand off"], ["dsa"]], "forbid": ["o(n log n)", "n log n"]},
+    "20": {"category": "abstention", "groups": [["delegate", "defer", "hand off"], ["resume"]], "forbid": ["reduced", "improved", "%", "led ", "built "]}
+  }
+}

@@ -74,6 +74,20 @@ FLEET: dict[str, ExpertSpec] = {
         benchmark_keys_file="sysdes.keys.json",
         owned_namespaces=["arch", "storage", "cache", "consistency", "scale", "queue", "api"],
     ),
+    "behav": ExpertSpec(
+        key="behav",
+        lane="Behavioral Interviews",
+        description=(
+            "STAR stories, the eight situational buckets, the four-criterion story "
+            "rubric, red and green flags, interviewer probes, and scoping and "
+            "stakeholder framing."
+        ),
+        base_model="meta-llama/Llama-3.2-3B-Instruct",
+        corpus_files=["behav/corpus.md", "behav/quickref.txt"],
+        benchmark_file="behav.json",
+        benchmark_keys_file="behav.keys.json",
+        owned_namespaces=["story", "framing", "stakeholder"],
+    ),
 }
 
 

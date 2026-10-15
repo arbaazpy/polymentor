@@ -67,7 +67,8 @@ class ItemResult:
 
 
 def normalize(text: str) -> str:
-    text = text.lower().replace("²", "^2").replace("−", "-").replace("’", "'")
+    text = text.lower().replace("²", "^2").replace("−", "-")
+    text = text.replace("‘", "'").replace("’", "'").replace("“", '"').replace("”", '"')
     text = re.sub(r"[`*_]", "", text)
     return re.sub(r"\s+", " ", text)
 
