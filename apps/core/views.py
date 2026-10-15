@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import subprocess
 from functools import lru_cache
 
@@ -11,6 +12,8 @@ from django.views.decorators.http import require_GET
 
 @lru_cache(maxsize=1)
 def _git_sha() -> str:
+    if os.environ.get("RENDER_GIT_COMMIT"):
+        return os.environ["RENDER_GIT_COMMIT"][:7]
     try:
         out = subprocess.run(
             ["git", "rev-parse", "--short", "HEAD"],

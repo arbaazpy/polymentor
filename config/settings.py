@@ -32,6 +32,18 @@ def env_list(key: str, default: str = "") -> list[str]:
 # --- Core -----------------------------------------------------------------
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-insecure-secret-key")
 DEBUG = env_bool("DJANGO_DEBUG", True)
+if not DEBUG and SECRET_KEY == "dev-insecure-secret-key":
+    raise RuntimeError("Set DJANGO_SECRET_KEY when DJANGO_DEBUG is false.")
+
+if not DEBUG:
+    # Behind Render's TLS-terminating proxy.
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_SSL_REDIRECT = env_bool("DJANGO_SSL_REDIRECT", True)
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_REFERRER_POLICY = "same-origin"
 ALLOWED_HOSTS = env_list("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1")
 CSRF_TRUSTED_ORIGINS = env_list(
     "DJANGO_CSRF_TRUSTED_ORIGINS",
@@ -173,6 +185,12 @@ NUGEN_API_KEY = os.environ.get("NUGEN_API_KEY", "")
 NUGEN_BASE_URL = os.environ.get("NUGEN_BASE_URL", "https://api.nugen.in")
 NUGEN_DEFAULT_MODEL = os.environ.get("NUGEN_DEFAULT_MODEL", "")
 NUGEN_DAILY_SPEND_USD = float(os.environ.get("NUGEN_DAILY_SPEND_USD", "12") or 12)
+
+# --- Public demo guardrails (protect Nugen credits) -------------------------
+TURN_RATE_LIMIT = int(os.environ.get("TURN_RATE_LIMIT", "6"))  # per client per window
+TURN_RATE_WINDOW_MINUTES = int(os.environ.get("TURN_RATE_WINDOW_MINUTES", "10"))
+DAILY_TURN_CAP = int(os.environ.get("DAILY_TURN_CAP", "200"))  # across all clients
+MAX_PROMPT_CHARS = int(os.environ.get("MAX_PROMPT_CHARS", "1500"))
 
 # --- Admin console ---------------------------------------------------------
 ADMIN_BEARER_TOKEN = os.environ.get("ADMIN_BEARER_TOKEN", "")

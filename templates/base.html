@@ -1,0 +1,32 @@
+{% load static %}<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}PolyMentor: AI interview coach{% endblock %}</title>
+  <meta name="description" content="PolyMentor routes interview-prep questions to a fleet of domain-aligned expert models on Nugen, reconciles their answers, and learns from feedback.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { darkMode: "class" };</script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen antialiased">
+  <header class="border-b border-slate-800">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center gap-6">
+      <a href="{% url 'home' %}" class="font-semibold tracking-tight text-lg">Poly<span class="text-indigo-400">Mentor</span></a>
+      <nav class="flex gap-4 text-sm text-slate-400">
+        <a href="{% url 'home' %}" class="hover:text-slate-100">Ask</a>
+        <a href="{% url 'experts' %}" class="hover:text-slate-100">Experts &amp; history</a>
+        <a href="https://github.com/arbaazpy/polymentor/blob/main/EVALUATION.md" class="hover:text-slate-100">Evaluation</a>
+        <a href="https://github.com/arbaazpy/polymentor" class="hover:text-slate-100">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-4 py-8">{% block content %}{% endblock %}</main>
+  <footer class="max-w-5xl mx-auto px-4 py-8 text-xs text-slate-500 border-t border-slate-900">
+    Built by <a class="underline" href="https://www.linkedin.com/in/arbaaz02">Arbaaz Ali</a> on
+    <a class="underline" href="https://nugen.in">Nugen</a>. Answers come from small (3B) models
+    grounded in curated notes; verify before relying on them.
+  </footer>
+  <script src="{% static 'js/app.js' %}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -6,7 +6,7 @@ import pytest
 
 from apps.alignment import services
 from apps.experts import services as expert_services
-from apps.experts.fleet import FLEET, get_spec
+from apps.experts.fleet import FLEET, benchmarked_experts, get_spec
 from apps.experts.nugen_client import NugenError
 
 
@@ -26,14 +26,14 @@ def test_score_answer_forbidden_phrase_zeroes_abstention_item():
     assert score == 0.0 and forbidden == "token bucket"
 
 
-@pytest.mark.parametrize("expert_key", list(FLEET))
+@pytest.mark.parametrize("expert_key", benchmarked_experts())
 def test_keys_cover_every_benchmark_question(expert_key):
     items, keys = services.load_benchmark(get_spec(expert_key))
     assert len(items) == 20
     assert all(str(i["question_num"]) in keys for i in items)
 
 
-@pytest.mark.parametrize("expert_key", list(FLEET))
+@pytest.mark.parametrize("expert_key", benchmarked_experts())
 def test_gold_answers_score_well_against_their_own_keys(expert_key):
     """Sanity check on the keys: every gold answer must pass its own key."""
     items, keys = services.load_benchmark(get_spec(expert_key))

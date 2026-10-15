@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="mb-6">
+  <h1 class="text-2xl font-semibold">Ask a panel of interview experts</h1>
+  <p class="text-slate-400 mt-1 text-sm">
+    A router sends your question to specialist models (algorithms, system design, behavioral,
+    resume, mock interviewer), each aligned or grounded on its own curated notes. When they
+    disagree, the expert who owns the topic wins, and you can see why.
+  </p>
+</section>
+
+<form id="ask-form" class="space-y-3">
+  <textarea id="prompt" rows="3" maxlength="1500" required
+    class="w-full rounded-lg bg-slate-900 border border-slate-700 p-3 focus:outline-none focus:border-indigo-500"
+    placeholder="e.g. Design a URL shortener for 1B redirects/day. I have 2 weeks to ship."></textarea>
+  <div class="flex flex-wrap gap-2">
+    {% for q in try_these %}
+      <button type="button" data-try="{{ q }}"
+        class="try text-xs rounded-full border border-slate-700 px-3 py-1 text-slate-300 hover:border-indigo-500 {% if forloop.first %}border-indigo-500{% endif %}">{{ q|truncatechars:70 }}</button>
+    {% endfor %}
+  </div>
+  <button id="ask-btn" class="rounded-lg bg-indigo-600 hover:bg-indigo-500 px-4 py-2 font-medium disabled:opacity-50">Ask the panel</button>
+</form>
+
+<div id="result" class="mt-8"></div>
+
+{% if examples %}
+<section class="mt-12">
+  <h2 class="text-sm font-semibold text-slate-400 uppercase tracking-wide">Example answers</h2>
+  <ul class="mt-2 space-y-1 text-sm">
+    {% for t in examples %}<li><a class="text-indigo-300 hover:underline" href="{% url 'turn_detail' t.id %}">{{ t.prompt|truncatechars:110 }}</a></li>{% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}
+{% block scripts %}<script>PolyMentor.initAsk();</script>{% endblock %}

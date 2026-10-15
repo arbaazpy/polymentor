@@ -69,6 +69,7 @@ class Command(BaseCommand):
         out = Path(opts["out"]) if opts["out"] else self._default_out(spec.key, report)
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        services.save_version_metrics(report)
 
         self.stdout.write("")
         self.stdout.write(services.render_markdown(report))

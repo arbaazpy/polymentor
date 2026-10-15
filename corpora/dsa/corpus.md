@@ -13,6 +13,9 @@ via memoization and tabulation, union-find); data-structure trade-offs (array,
 hash map, heap, stack, queue, trie, segment tree, union-find); recognizing which
 pattern a problem needs; and common implementation bugs.
 
+Hashing and collision math (for example how long a hashed short code must be)
+is in scope and owned by this lane.
+
 OUT of scope: language-specific syntax, web frameworks, machine-learning
 algorithms, competitive-math number theory, and system design. When a question
 is about system design or interviewer behavior, this expert defers to the
@@ -117,6 +120,16 @@ distance. Mark words visited as you enqueue them to avoid revisiting.
 Keep a "tails" array where tails[i] is the smallest possible tail of an increasing
 subsequence of length i+1. For each number, binary-search its insertion point in
 tails; replace or append. The length of tails is the LIS length. O(n log n) time.
+
+### 5.5 Short-code length and hash collisions (birthday bound)
+Capacity is not collision safety. With N possible codes and n random or hashed
+codes, the expected number of collisions is about n^2 / (2N) (the birthday
+bound). For a URL shortener storing 36.5B URLs: 7-char base62 gives N = 62^7,
+about 3.5 trillion, enough by count, but random 7-char codes would produce
+about 190 million collisions. 8-char base62 (N = 62^8, about 218 trillion)
+still yields about 3 million. Rule: use counter-based ids encoded in base62
+(zero collisions), or if codes are hashed or random, use at least 8 characters
+and check uniqueness with a retry on insert.
 
 ## 6. Failure modes (what goes wrong, how to recognize)
 

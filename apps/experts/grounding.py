@@ -175,8 +175,22 @@ def retrieve(
     *,
     k: int = DEFAULT_TOP_K,
     max_chars: int = DEFAULT_MAX_CHARS,
+    extra: list[Section] | None = None,
 ) -> list[Section]:
-    """Top-k relevant sections plus the pinned scope/abstention sections."""
+    """Top-k relevant sections plus the pinned scope/abstention sections.
+
+    `extra` sections (learned exemplars) are searched separately; the best
+    matching one is placed first because it is a reviewed correction.
+    """
+    learned: list[Section] = []
+    if extra:
+        extra_index = CorpusIndex(list(extra))
+        learned = [extra_index.sections[i] for i in extra_index.search(query, k=1)]
+        max_chars -= sum(len(s.text) for s in learned)
+    return learned + _retrieve_corpus(expert_key, query, k=k, max_chars=max_chars)
+
+
+def _retrieve_corpus(expert_key: str, query: str, *, k: int, max_chars: int) -> list[Section]:
     index = get_index(expert_key)
     primary_source = get_spec(expert_key).corpus_paths[0].name
     pinned = [

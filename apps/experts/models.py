@@ -46,6 +46,7 @@ class ExpertVersion(BaseModel):
         LIVE = "LIVE", "Live"
         GATED_OUT = "GATED_OUT", "Gated out"
         FAILED = "FAILED", "Failed"
+        RETIRED = "RETIRED", "Retired"
 
     expert = models.ForeignKey(Expert, on_delete=models.CASCADE, related_name="versions")
     semver = models.CharField(max_length=20)  # e.g. "0.2.0"

@@ -207,6 +207,57 @@ def run_benchmark(
     return report
 
 
+GATE_MODE = "aligned_grounded"
+
+
+@dataclass
+class GateResult:
+    passed: bool
+    reason: str
+    candidate: dict[str, Any]
+    current: dict[str, Any] | None
+
+
+def gate_decision(candidate: dict[str, Any], current: dict[str, Any] | None) -> GateResult:
+    """Promotion rule: no regression in overall score or abstention, no errors."""
+    if candidate.get("errors"):
+        return GateResult(False, f"{candidate['errors']} benchmark errors", candidate, current)
+    if not current:
+        return GateResult(True, "first version for this lane", candidate, current)
+    cand_abst = candidate["by_category"].get("abstention", 0.0)
+    curr_abst = current.get("by_category", {}).get("abstention", 0.0)
+    if candidate["overall"] < current["overall"]:
+        return GateResult(
+            False,
+            f"overall regressed {current['overall']:.2f} -> {candidate['overall']:.2f}",
+            candidate,
+            current,
+        )
+    if cand_abst < curr_abst:
+        return GateResult(
+            False, f"abstention regressed {curr_abst:.2f} -> {cand_abst:.2f}", candidate, current
+        )
+    return GateResult(
+        True,
+        f"overall {current['overall']:.2f} -> {candidate['overall']:.2f}, "
+        f"abstention {curr_abst:.2f} -> {cand_abst:.2f}",
+        candidate,
+        current,
+    )
+
+
+def save_version_metrics(report: dict[str, Any]) -> int:
+    """Attach `aligned_grounded` summaries to the ExpertVersion with that model id."""
+    from apps.experts.models import ExpertVersion
+
+    mode = report["modes"].get(GATE_MODE)
+    if not mode:
+        return 0
+    return ExpertVersion.objects.filter(
+        expert__key=report["expert"], nugen_model_id=mode["model"]
+    ).update(metrics=mode["summary"])
+
+
 def render_markdown(report: dict[str, Any]) -> str:
     categories = sorted({c for m in report["modes"].values() for c in m["summary"]["by_category"]})
     header = ["mode", "overall", "pass rate", *categories, "conf (pass)", "conf (fail)", "p50 ms"]

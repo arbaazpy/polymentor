@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Experts &amp; history · PolyMentor{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-semibold">Expert fleet</h1>
+<p class="text-slate-400 text-sm mt-1 mb-6">
+  Every expert version, its benchmark scores, and the feedback the learning loop has collected.
+  A new version goes LIVE only if it passes the evaluation gate (no regression in overall score or
+  abstention). Benchmarks: base vs aligned vs grounded, 20 gold questions per expert, see
+  <a class="underline" href="https://github.com/arbaazpy/polymentor/blob/main/EVALUATION.md">EVALUATION.md</a>.
+</p>
+<div class="space-y-4">
+{% for row in rows %}
+  <div class="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
+    <div class="flex flex-wrap items-baseline gap-3">
+      <span class="font-mono text-indigo-300">expert.{{ row.spec.key }}</span>
+      <span class="font-medium">{{ row.spec.lane }}</span>
+      {% if row.spec.aligned %}
+        <span class="text-xs rounded bg-emerald-900/60 text-emerald-300 px-2 py-0.5">Nugen-aligned + grounded</span>
+      {% else %}
+        <span class="text-xs rounded bg-slate-800 text-slate-300 px-2 py-0.5">base model + grounded</span>
+      {% endif %}
+      {% if row.current %}<span class="text-xs text-slate-400">v{{ row.current.semver }} · <span class="font-mono">{{ row.current.nugen_model_id }}</span></span>{% endif %}
+    </div>
+    <p class="text-sm text-slate-400 mt-1">{{ row.spec.description }}</p>
+
+    {% if row.eval %}
+    <table class="mt-3 text-xs w-full max-w-xl">
+      <thead class="text-slate-500"><tr><th class="text-left font-normal">mode</th><th class="text-right font-normal">overall</th><th class="text-right font-normal">pass rate</th><th class="text-right font-normal">abstention</th></tr></thead>
+      <tbody>
+      {% for mode, s in row.eval.modes.items %}
+        <tr class="border-t border-slate-800"><td class="py-1 font-mono">{{ mode }}</td><td class="text-right">{{ s.overall|floatformat:2 }}</td><td class="text-right">{{ s.pass_rate|floatformat:2 }}</td><td class="text-right">{{ s.by_category.abstention|floatformat:2 }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <div class="text-[11px] text-slate-500 mt-1">source: {{ row.eval.file }}</div>
+    {% else %}
+    <div class="text-xs text-slate-500 mt-3">No benchmark yet (grounded-only lane).</div>
+    {% endif %}
+
+    <div class="mt-3 text-xs text-slate-400 flex flex-wrap gap-4">
+      <span>👍 {{ row.health.up|default:0 }} · 👎 {{ row.health.down|default:0 }}</span>
+      <span>learned exemplars: {{ row.health.approved_exemplars|default:0 }} approved, {{ row.health.pending_exemplars|default:0 }} pending</span>
+      {% if row.health.realign_recommended %}<span class="text-amber-300">re-alignment recommended</span>{% endif %}
+    </div>
+
+    {% if row.versions %}
+    <details class="mt-2 text-xs"><summary class="cursor-pointer text-slate-500">Version history</summary>
+      <ul class="mt-1 space-y-1">
+      {% for v in row.versions %}
+        <li><span class="font-mono">v{{ v.semver }}</span> · {{ v.status }} · <span class="font-mono">{{ v.nugen_model_id }}</span> · {{ v.created_at|date:"j M Y" }}{% if v.metrics.overall %} · overall {{ v.metrics.overall|floatformat:2 }}{% endif %}{% if v.gate_reason %} · <span class="text-slate-400">{{ v.gate_reason }}</span>{% endif %}</li>
+      {% endfor %}
+      </ul>
+    </details>
+    {% endif %}
+  </div>
+{% endfor %}
+</div>
+{% endblock %}

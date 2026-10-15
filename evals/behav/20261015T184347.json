@@ -1,0 +1,1462 @@
+{
+  "expert": "behav",
+  "created_at": "2026-10-15T18:43:47+00:00",
+  "models": {
+    "base": "meta-llama/Llama-3.2-3B-Instruct",
+    "aligned": "model_01m50db0jrcphjrw"
+  },
+  "pass_threshold": 0.75,
+  "num_questions": 20,
+  "modes": {
+    "base": {
+      "model": "meta-llama/Llama-3.2-3B-Instruct",
+      "grounded": false,
+      "summary": {
+        "overall": 0.3746,
+        "pass_rate": 0.15,
+        "by_category": {
+          "abstention": 0.0,
+          "definition": 0.6312,
+          "distinction": 0.625,
+          "failure": 0.3125,
+          "procedure": 0.3042
+        },
+        "confidence_when_pass": null,
+        "confidence_when_fail": null,
+        "p50_latency_ms": 20636,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "STAR is a framework for answering behavioral interview questions, which stands for Situation, Task, Action, and Result. This framework helps candidates structure their responses to behavioral questions in a clear and concise manner.\n\nIn a STAR response, the Situation sets the context for the story, describing the relevant background and environment. The Task explains the specific challenge or problem that the candidate faced. The Action is where the candidate takes ownership of the challenge, describing the specific actions they took to address the problem. The Result is where the candidate shares the outcome of their actions, highlighting the impact and results of their efforts.\n\nAction and Result carry the signal rather than Situation and Task because they demonstrate the candidate's ability to take initiative, problem-solving skills, and impact. By focusing on the actions taken and the results achieved, candidates can showcase their skills and accomplishments in a more concrete and measurable way.\n\nIn contrast, the Situation and Task may be more descriptive and less impactful, as they can be easily inferred from the context. By focusing on the Action and Result, candidates can highlight their skills and accomplishments in a more direct and compelling way, making it easier for the interviewer to assess their fit for the role.\n\nFor example, instead of saying \"I was working on a team project and we had a tight deadline,\" a candidate could say \"I was tasked with leading a team project with a tight deadline, but I took the initiative to prioritize tasks, delegate responsibilities, and ensure timely completion, resulting in a successful project delivery.\" In this revised response, the Action and Result take center stage, showcasing the candidate's leadership and problem-solving skills.",
+          "confidence": null,
+          "latency_ms": 7863,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 0.5,
+          "missing": [
+            [
+              "first-person",
+              "first person",
+              "\"i\"",
+              "'i'"
+            ],
+            [
+              "lesson",
+              "learn"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A good behavioral story typically follows the STAR framework, which stands for Situation, Task, Action, and Result. \n\n- Situation: Set the context for the story, including the relevant details of the environment and the people involved. This should be concise and clear, providing enough information to understand the situation without overwhelming the listener. \n- Task: Clearly define the task or challenge you faced during the situation. This should be specific, measurable, and relevant to the job you're applying for. \n- Action: Describe the actions you took to address the task or challenge. Focus on what you did, rather than what others did. Use specific examples and details to illustrate your actions. \n- Result: Share the outcome of your actions, including any metrics or results that demonstrate your impact. Quantify the results wherever possible, and explain how they relate to the task or challenge.\n\nA good behavioral story should be concise, well-structured, and relevant to the job requirements. It should also demonstrate your skills, experience, and achievements, and provide insight into your thought process and problem-solving abilities.",
+          "confidence": null,
+          "latency_ms": 18862,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 0.4,
+          "missing": [
+            [
+              "ownership"
+            ],
+            [
+              "quantification",
+              "quantif"
+            ],
+            [
+              "lesson"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The STAR story rubric is a widely used framework for evaluating behavioral interview stories. The four criteria are:\n\n1. **S** - Situation: This section sets the context for the story, providing background information about the situation, including the relevant details. It's scored on a scale of 1-5, where 1 is \"bare minimum\" and 5 is \"detailed and specific\".\n\n2. **T** - Task: This section explains the task or challenge you faced, including the specific goals and objectives. It's scored on a scale of 1-5, where 1 is \"vague\" and 5 is \"clear and well-defined\".\n\n3. **A** - Action: This section describes the actions you took to address the challenge, including the specific steps you took and the decisions you made. It's scored on a scale of 1-5, where 1 is \"lacking\" and 5 is \"detailed and effective\".\n\n4. **R** - Result: This section explains the outcome of your actions, including the results and any metrics or data that support your claims. It's scored on a scale of 1-5, where 1 is \"insufficient\" and 5 is \"strong and impactful\".\n\nThe total score for the entire story is typically calculated by adding the scores for each of the four criteria, with a maximum total score of 20.",
+          "confidence": null,
+          "latency_ms": 14108,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 0.625,
+          "missing": [
+            [
+              "failure"
+            ],
+            [
+              "influence"
+            ],
+            [
+              "feedback"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Behavioral interviewers typically draw questions from the following eight situational buckets:\n\n1. **Teamwork and Collaboration**: Questions about working with others, team dynamics, and collaboration.\n2. **Leadership**: Questions about leadership styles, decision-making, and influencing others.\n3. **Problem-Solving and Decision-Making**: Questions about how you approach problems, make decisions, and handle ambiguity.\n4. **Adaptability and Flexibility**: Questions about adapting to change, prioritizing tasks, and handling unexpected situations.\n5. **Communication and Interpersonal Skills**: Questions about communication styles, conflict resolution, and building relationships.\n6. **Achievement and Results**: Questions about achieving goals, measuring success, and driving results.\n7. **Accountability and Ownership**: Questions about taking responsibility, ownership, and accountability for outcomes.\n8. **Behavioral Fit and Culture**: Questions about cultural fit, values alignment, and demonstrating the company's values.\n\nThese buckets are often used to assess a candidate's behavioral fit with the company culture and their ability to perform in various roles and situations.",
+          "confidence": null,
+          "latency_ms": 15697,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "To distinguish a strong leadership story from a mid-level one, let's break down the key elements of a strong leadership story using the STAR method:\n\n**S** - Situation: A strong leadership story typically begins with a clear and concise description of the situation, including the context, challenges, and relevant details. This sets the stage for the rest of the story. In contrast, a mid-level story might gloss over the situation or provide too much unnecessary information.\n\n**T** - Task: A strong leadership story clearly articulates the task or challenge that the leader faced, including the goals, objectives, and any constraints. A mid-level story might not fully define the task or might not make it clear what the leader was trying to achieve.\n\n**A** - Action: A strong leadership story describes specific, concrete actions taken by the leader to address the challenge, including any obstacles overcome and lessons learned. A mid-level story might be too vague or lack specific examples of actions taken.\n\n**R** - Result: A strong leadership story clearly articulates the outcome of the leader's actions, including any metrics, results, or impact on the organization. A mid-level story might not provide a clear outcome or might not quantify the results.\n\nTo illustrate the difference, consider the following examples:\n\n**Strong Leadership Story:**\n\n\"In my previous role as a team lead, we were tasked with launching a new product within a tight deadline. The situation was challenging because our team was short-staffed, and we had to work with a limited budget. I took the initiative to delegate tasks effectively, prioritize the most critical features, and communicate regularly with the team to ensure everyone was on track. I also identified and addressed any roadblocks, such as a technical issue that was causing delays. As a result, we successfully launched the product on time, and it received positive customer feedback. The outcome was a 25% increase in sales within the first quarter, and the team's morale improved significantly.\"\n\n**Mid-Level Leadership Story",
+          "confidence": null,
+          "latency_ms": 18102,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 0.75,
+          "missing": [
+            [
+              "predict"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "In a behavioral interview, the question is designed to assess your past experiences and behaviors, whereas a hypothetical question is a scenario presented to test your thought process and decision-making skills.\n\nA behavioral question typically starts with \"Tell me about a time when...\", \"Can you give an example of...\", or \"Describe a situation where...\". It requires you to recall a specific instance from your past experience and explain how you handled it. The goal is to evaluate your past actions, decisions, and outcomes.\n\nOn the other hand, a hypothetical question is a scenario presented to you, and you're asked to respond as if you were in that situation. It's often used to assess your problem-solving skills, creativity, and ability to think on your feet.\n\nIn terms of providing stronger evidence, a behavioral question gives stronger evidence because it's based on actual experiences and outcomes. Behavioral questions allow the interviewer to assess your past performance, which can be verified and validated. Hypothetical questions, while useful for evaluating your thought process, may not provide the same level of evidence about your past experiences and behaviors.\n\nFor example, a behavioral question like \"Tell me about a time when you overcame a difficult project deadline\" provides stronger evidence about your past performance and ability to manage your time and prioritize tasks. In contrast, a hypothetical question like \"How would you handle a situation where you're working on a project with a tight deadline and a team member is not pulling their weight\" may not provide the same level of evidence about your past experiences and behaviors.",
+          "confidence": null,
+          "latency_ms": 19974,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 0.25,
+          "missing": [
+            [
+              "blam"
+            ],
+            [
+              "own"
+            ],
+            [
+              "no result",
+              "no personal",
+              "no clear",
+              "excuse"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "When analyzing a failure story, it's essential to identify the red flags, which indicate potential issues that could have led to the failure. A red flag is a specific event, action, or circumstance that suggests a problem or a deviation from the expected process. \n\nIn contrast, a green flag is a positive indicator that suggests a successful outcome or a positive action. \n\nTo distinguish between the two, I look for the following:\n\n- Red flags often involve a specific event or action that went wrong, such as a miscommunication, a technical issue, or a lack of resources. \n- Green flags typically involve a positive action or a successful outcome, such as a creative solution, a team effort, or a learning opportunity.\n\nFor example, in a failure story, if I say, \"I was working on a project and we encountered a technical issue with the database,\" that's a red flag. On the other hand, if I say, \"I worked with a cross-functional team to implement a new feature, and we received positive feedback from the stakeholders,\" that's a green flag.\n\nThe STAR method can be applied to identify red and green flags in a failure story. The \"S\" stands for Situation, where I describe the context and the situation. The \"T\" stands for Task, where I explain the task or goal. The \"A\" stands for Action, where I describe the actions taken. The \"R\" stands for Result, where I explain the outcome. By analyzing the Situation, Task, Action, and Result, I can identify the red flags and green flags in the story.\n\nPattern: Identifying Red and Green Flags in Failure Stories\nTime complexity: O(1) for simple analysis, O(n) for more complex analysis\nSpace complexity: O(1) for simple analysis, O(n) for more complex analysis",
+          "confidence": null,
+          "latency_ms": 23349,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 0.5,
+          "missing": [
+            [
+              "data",
+              "prototype",
+              "evidence"
+            ],
+            [
+              "shared goal",
+              "common goal",
+              "shared",
+              "align"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To distinguish influence without authority from leadership through a reporting line, I'd like to share a story from my experience.\n\nIn my previous role as a team lead, I had a team member who was struggling to meet the project deadlines. The team was already under pressure, and the team lead was not available to provide direct guidance. I noticed that the team member was hesitant to take ownership of the task and was seeking constant reassurance from the team lead. \n\nI decided to step in and influence the team member without going through the reporting line. I sat down with the team member and had an open conversation about the project's goals, the deadlines, and the expectations. I explained the importance of taking ownership and how it would impact the team's overall performance. I also offered to provide guidance and support, but not to take over the task. \n\nThe team member was receptive to my approach, and I could see the confidence growing in them. They took ownership of the task, and the project was completed successfully. This experience taught me that influence without authority can be just as effective as leadership through a reporting line, as long as you build trust and rapport with the team member.\n\nPattern: This is an example of \"Influencing without Authority\" which is a key concept in behavioral interviews. \n\nTime complexity: O(1) - the conversation took only one meeting. \nSpace complexity: O(1) - no additional space was required.",
+          "confidence": null,
+          "latency_ms": 20984,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 0.1667,
+          "missing": [
+            [
+              "specificity"
+            ],
+            [
+              "ownership"
+            ],
+            [
+              "quantification",
+              "quantif"
+            ],
+            [
+              "lesson"
+            ],
+            [
+              "what did you do"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "**Grade: C-**\n\n**Strengths:**\n\n* The candidate provided a clear and concise answer that conveys a sense of accomplishment.\n* They mentioned the outcome (everyone was happy) which is a positive indicator.\n\n**Weaknesses:**\n\n* The answer lacks detail and context about the bug, the steps taken to fix it, and the impact on the team or project.\n* The answer does not demonstrate a clear understanding of the problem-solving process or the skills used to resolve the issue.\n* The answer does not provide any insight into the candidate's thought process, decision-making, or problem-solving abilities.\n\n**Rating Breakdown:**\n\n* **Situation:** 2/10 (Lack of detail about the bug and its impact)\n* **Task:** 2/10 (Lack of detail about the steps taken to fix the bug)\n* **Action:** 4/10 (Candidate mentions the outcome, but lacks detail about the process)\n* **Result:** 4/10 (Outcome is positive, but lacks context)\n* **Overall:** 3.5/10 (Candidate provides a basic answer, but lacks depth and insight)\n\n**Recommendation:**\n\nTo improve, the candidate should focus on providing more detail about the bug, the steps taken to fix it, and the impact on the team or project. They should also try to demonstrate their thought process, decision-making, and problem-solving abilities.",
+          "confidence": null,
+          "latency_ms": 20614,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.6,
+          "missing": [
+            [
+              "two sentences",
+              "2 sentences",
+              "briefly",
+              "short",
+              "cut"
+            ],
+            [
+              "first person",
+              "first-person",
+              "your own",
+              "you personally"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "When restructuring a two-minute answer that spends most of its time on background, the candidate should follow the STAR method to ensure they provide a clear and concise story. Here's a step-by-step approach:\n\n1. **S** - Situation: Identify the key context and setting for the story. This should be brief, around 10-15 seconds. Keep it concise and focused on the main issue or challenge.\n\nExample: \"In my previous role as a software engineer at XYZ Corporation, I was working on a project to develop a new e-commerce platform.\"\n\n2. **T** - Task: Clearly state the task or problem the candidate was trying to solve. This should be around 10-15 seconds. Focus on the specific challenge or goal.\n\nExample: \"The task was to integrate a third-party payment gateway into our existing system, which was causing delays in processing transactions.\"\n\n3. **A** - Action: Describe the actions the candidate took to address the challenge. This should be the main body of the answer, around 45-60 seconds. Focus on the specific steps, decisions, and outcomes.\n\nExample: \"I worked with the development team to design and implement a custom integration solution, which involved writing new code and testing it thoroughly. We also collaborated with the payment gateway provider to resolve any issues and ensure seamless integration.\"\n\n4. **R** - Result: Share the outcome of the candidate's actions, including any metrics or results. This should be around 20-30 seconds. Focus on the impact and benefits.\n\nExample: \"The integration was successfully implemented, and we saw a 30% reduction in processing times and a 25% increase in successful transactions.\"\n\nBy following this structure, the candidate can provide a clear and concise story that showcases their skills and experience, while keeping the answer within the two-minute time frame.",
+          "confidence": null,
+          "latency_ms": 20659,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 0.25,
+          "missing": [
+            [
+              "six",
+              "6",
+              "ten",
+              "10",
+              "several"
+            ],
+            [
+              "tag",
+              "map",
+              "bucket"
+            ],
+            [
+              "several questions",
+              "multiple questions",
+              "reuse",
+              "more than one"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "When building a story bank before interviews, a candidate typically starts by reviewing the job description and requirements to understand the key skills and qualifications the interviewer will be looking for. They then reflect on their past experiences, identifying specific instances where they demonstrated those skills and qualifications. \n\nThe candidate will then structure their stories into a framework, using the STAR method: Situation, Task, Action, Result. This framework helps them to concisely and effectively communicate their experiences and accomplishments. \n\nFor example, if the job description mentions \"problem-solving\" as a required skill, the candidate might recall a situation where they encountered a complex problem at work, describe the task they were given to resolve it, the actions they took to address the problem, and the results they achieved. \n\nBy practicing and refining their stories, candidates can ensure that they are able to clearly and confidently communicate their skills and experiences during the interview. This helps to increase their chances of making a positive impression on the interviewer and showcasing their qualifications for the role.",
+          "confidence": null,
+          "latency_ms": 18818,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 0.2,
+          "missing": [
+            [
+              "what did you do"
+            ],
+            [
+              "differently"
+            ],
+            [
+              "other person",
+              "other side"
+            ],
+            [
+              "what happened next",
+              "happened next"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Here are some common probing questions used in behavioral interviews to test a candidate's behavioral stories:\n\n**Contextual Probing Questions**\n\n1. Can you tell me more about that?\n\t* Tests: Understanding of the situation, ability to elaborate on the story\n2. How did you feel about that situation?\n\t* Tests: Emotional intelligence, self-awareness, and ability to reflect on experiences\n3. What was the outcome of that situation?\n\t* Tests: Ability to measure success, impact of actions, and lessons learned\n4. How did you handle the situation?\n\t* Tests: Problem-solving skills, decision-making, and ability to take action\n5. What was the most challenging part of the situation?\n\t* Tests: Ability to identify pain points, critical thinking, and problem-solving skills\n\n**Exploratory Probing Questions**\n\n1. Can you give me an example of a similar situation?\n\t* Tests: Ability to generalize experiences, transfer learning, and apply knowledge to new situations\n2. How did you prepare for that situation?\n\t* Tests: Planning, organization, and ability to take initiative\n3. What was the team's role in the situation?\n\t* Tests: Ability to understand team dynamics, communication, and collaboration\n4. How did you communicate with the team/stakeholders?\n\t* Tests: Communication skills, ability to articulate thoughts, and stakeholder management\n5. What was the impact of your actions on the team/stakeholders?\n\t* Tests: Ability to measure impact, empathy, and understanding of consequences\n\n**Clarifying Probing Questions**\n\n1. Can you clarify what you mean by [specific term or concept]?\n\t* Tests: Understanding of technical concepts, ability to articulate ideas, and attention to detail\n2. How did you define the problem in that situation?\n\t* Tests: Ability to identify problems, critical thinking, and analytical skills\n3. Can you walk me through your thought process in that situation?",
+          "confidence": null,
+          "latency_ms": 21263,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 0.0,
+          "missing": [
+            [
+              "\"we\"",
+              "'we'",
+              "we only",
+              "we-only",
+              "uses we",
+              "using we",
+              "says we"
+            ],
+            [
+              "what did you do",
+              "what did you personally",
+              "what was your role",
+              "your specific"
+            ],
+            [
+              "first person",
+              "first-person",
+              "\"i\"",
+              "'i'"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate is exhibiting a failure mode known as \"Lack of ownership\" or \"Lack of personal responsibility.\" This is a common pitfall in behavioral interviews, where the candidate tends to shift the focus from their own actions to the team or others.\n\nTo probe further, the interviewer could ask:\n\n* Can you give an example of a time when you took ownership of a project or task? How did you handle it?\n* How do you handle it when you're not the one who made a mistake, but you're still responsible for the outcome?\n* Can you walk me through a situation where you had to take ownership of a problem and come up with a solution?\n\nThis will help the interviewer understand the candidate's ability to take responsibility for their actions and decisions, and whether they can separate themselves from the team or others.",
+          "confidence": null,
+          "latency_ms": 47598,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 0.3333,
+          "missing": [
+            [
+              "fake",
+              "not a real",
+              "humble",
+              "disguised"
+            ],
+            [
+              "real mistake",
+              "genuine",
+              "real weakness",
+              "actual weakness",
+              "real failure"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This is a classic example of the \"Overwork\" failure mode, where an individual prioritizes work over self-care and personal well-being, leading to burnout and decreased productivity.\n\nThe \"I work too hard\" response is a symptom of this failure mode, as it indicates that the candidate is not recognizing the impact of their work habits on their overall well-being. To fix this, the candidate needs to develop a better balance between work and personal life, prioritize self-care, and establish clear boundaries.\n\nA potential fix for this failure mode is to implement a \"Stop-Start-Continue\" approach:\n\n1. **Stop** overcommitting and overworking: Learn to say \"no\" to non-essential tasks and prioritize tasks based on their impact and urgency.\n2. **Start** taking care of oneself: Make time for self-care activities, such as exercise, meditation, or spending time with loved ones.\n3. **Continue** to prioritize tasks and delegate when possible: Focus on high-priority tasks and delegate tasks that can be handled by others to maintain a healthy work-life balance.\n\nBy implementing this approach, the candidate can develop healthier work habits, reduce burnout, and improve overall well-being.",
+          "confidence": null,
+          "latency_ms": 48435,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 0.25,
+          "missing": [
+            [
+              "blam"
+            ],
+            [
+              "red flag"
+            ],
+            [
+              "lesson",
+              "learn",
+              "differently"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's failure story attributes the missed deadline to the QA team, which is an example of a \"Lack of Communication\" or \"External Dependency\" failure mode. \n\nIn this scenario, the candidate is unable to meet the deadline because of an external factor (the QA team's performance) that is outside of their control. To fix this, the candidate should have proactively communicated with the QA team to understand the root cause of the delay and worked with them to find a solution. This could involve escalating the issue to a manager or finding alternative testing resources to ensure the work is completed on time. \n\nA more effective approach would be to have a plan in place to mitigate the impact of external dependencies, such as having a buffer in the project timeline or identifying alternative testing resources. This would demonstrate the candidate's ability to think critically and take ownership of the project timeline. \n\nIn terms of a STAR story, this could be structured as follows:\n\n* Situation: The project was nearing its deadline, and the QA team was slow to complete their testing.\n* Task: The candidate was responsible for delivering the project on time.\n* Action: The candidate should have communicated with the QA team to understand the root cause of the delay and worked with them to find a solution.\n* Result: The candidate could have ensured the project was completed on time, or at least provided a revised timeline to stakeholders.",
+          "confidence": null,
+          "latency_ms": 45798,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 0.6667,
+          "missing": [
+            [
+              "rehearsed",
+              "memoriz",
+              "scripted"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This is a classic example of a \"Failure to Expand\" or \"Failure to Elaborate\" failure mode. \n\nWhen a candidate's story falls apart under follow-up questions, it indicates that they may not have a well-thought-out narrative or may not have anticipated the depth of the interviewer's curiosity. \n\nTo fix this, the candidate should focus on:\n\n1. Anticipating potential follow-up questions: Before the interview, research the company and the role to identify potential areas of curiosity for the interviewer. Prepare responses to these questions in advance.\n2. Providing a clear structure: Use the STAR method to structure their responses, which includes setting context, stating the problem, explaining the actions taken, and describing the outcome.\n3. Being prepared to elaborate: When asked follow-up questions, the candidate should be prepared to expand on their previous response, providing more details and examples to support their claims.\n4. Staying calm and composed: It's essential to remain calm and composed under pressure, even when faced with unexpected follow-up questions. This will help the candidate to think clearly and respond thoughtfully.\n\nBy anticipating potential follow-up questions, providing a clear structure, being prepared to elaborate, and staying calm, the candidate can turn a potentially disastrous situation into an opportunity to showcase their skills and experience.",
+          "confidence": null,
+          "latency_ms": 21595,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "not covered",
+              "does not cover",
+              "doesn't cover",
+              "not in my notes",
+              "outside"
+            ]
+          ],
+          "forbidden_hit": "market rate",
+          "answer": "When opening a salary negotiation after receiving an offer, it's essential to start with a positive tone and express your gratitude for the opportunity. You can begin by thanking the hiring manager or the person who extended the offer, and then express your enthusiasm for the role and the company.\n\nFor example, you could say something like: \"Thank you so much for extending the offer to me for the [Position] role at [Company]. I'm truly excited about the opportunity to join the team and contribute to the company's success. However, I did want to discuss the compensation package. I was hoping we could explore the possibility of adjusting the salary to better align with my expectations and industry standards.\"\n\nThis approach sets a collaborative tone and shows that you're interested in finding a mutually beneficial agreement. It's also a good idea to research the market rate for the position and have a clear idea of your target salary range before entering the negotiation.\n\nPattern: This is a classic example of a \"positive opening\" in a salary negotiation, where you start with a positive statement and then transition to the main topic of discussion.\n\nTime complexity: O(1), as it's a simple conversation.\n\nSpace complexity: O(1), as it only involves a few variables (the offer, your target salary range, and the negotiation).",
+          "confidence": null,
+          "latency_ms": 21992,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "sysdes"
+            ]
+          ],
+          "forbidden_hit": "write-through",
+          "answer": "To design a cache layer for a read-heavy API, I would employ a combination of techniques to ensure high performance, scalability, and reliability. \n\nFirst, I would use a Least Recently Used (LRU) eviction policy to manage cache entries, which would help to prevent the cache from growing indefinitely and reduce memory usage. This can be achieved using a data structure like a doubly linked list or a hash table with a fixed-size capacity.\n\nNext, I would implement a distributed cache using a distributed key-value store like Redis or Memcached, which can handle high traffic and provide low-latency reads. This would allow the cache to scale horizontally and provide high availability.\n\nTo handle write operations, I would use a write-through cache, where writes are first written to the underlying database and then cached. This would ensure data consistency and prevent stale data from being served to clients.\n\nTo further optimize the cache, I would implement a time-to-live (TTL) mechanism, which would allow the cache to automatically expire entries after a certain period of inactivity. This would help to reduce memory usage and prevent the cache from growing indefinitely.\n\nIn terms of implementation, I would use a caching framework like Redis or Spring Cache, which provides a simple and efficient way to implement caching in a Java-based application.\n\nHere's a high-level overview of the design:\n\n* Cache Layer:\n\t+ Use a distributed key-value store like Redis or Memcached\n\t+ Implement LRU eviction policy using a data structure like a doubly linked list or hash table\n\t+ Use a write-through cache to ensure data consistency\n\t+ Implement TTL mechanism to expire entries after inactivity\n* Database Layer:\n\t+ Use a relational database like MySQL or PostgreSQL\n\t+ Implement a write-through cache to ensure data consistency\n* API Layer:\n\t+ Use a caching framework like Redis or Spring Cache\n\t+ Implement caching for read-heavy API endpoints\n\nTime complexity:\n* Cache lookup: O(1) (amortized)\n* Cache",
+          "confidence": null,
+          "latency_ms": 24569,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "dsa"
+            ]
+          ],
+          "forbidden_hit": "o(n log n)",
+          "answer": "The time complexity of merge sort is O(n log n). \n\nMerge sort is a divide-and-conquer algorithm that works by recursively dividing the input array into two halves until each subarray contains only one element, and then merging the subarrays back together in sorted order. \n\nThe key to the O(n log n) time complexity is that each merge operation takes linear time, and there are log n levels of merging, resulting in a total time complexity of O(n log n). \n\nThis is because the algorithm divides the array in half at each level, resulting in 2^n possible subarrays, and the merge operation takes linear time, resulting in a total time complexity of O(n log n).",
+          "confidence": null,
+          "latency_ms": 17399,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "resume"
+            ]
+          ],
+          "forbidden_hit": "%",
+          "answer": "Here's a rewritten version of the bullet point:\n\n* Spearheaded the development and optimization of the payments service, resulting in a 30% reduction in latency and a 25% increase in transaction throughput, while ensuring seamless integration with existing infrastructure and adherence to security protocols.\n\nThis rewritten bullet point aims to:\n\n* Use more dynamic verbs like \"Spearheaded\" to convey a sense of leadership and initiative\n* Quantify the impact of the work (30% reduction in latency and 25% increase in transaction throughput)\n* Emphasize the technical aspects of the work (optimization, integration, security protocols)\n* Use more descriptive language to paint a vivid picture of the experience (seamless integration, existing infrastructure)",
+          "confidence": null,
+          "latency_ms": 14884,
+          "error": null
+        }
+      ]
+    },
+    "base_grounded": {
+      "model": "meta-llama/Llama-3.2-3B-Instruct",
+      "grounded": true,
+      "summary": {
+        "overall": 0.8592,
+        "pass_rate": 0.8,
+        "by_category": {
+          "abstention": 0.75,
+          "definition": 1.0,
+          "distinction": 0.9375,
+          "failure": 0.7709,
+          "procedure": 0.8375
+        },
+        "confidence_when_pass": null,
+        "confidence_when_fail": null,
+        "p50_latency_ms": 13329,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "STAR stands for Situation, Task, Action, and Result. It's a framework used to structure behavioral interview questions, which ask about past behavior as evidence of future behavior.\n\nIn a STAR answer, the Situation and Task set the context in one or two sentences each. However, the Action and Result carry the signal, which is the evidence the interviewer can score. This is because the interviewer is primarily interested in what the candidate personally did and what changed because of it.\n\nThe reason Action and Result carry the signal is that they demonstrate the candidate's personal involvement and impact. The Action shows what the candidate did, and the Result shows the outcome of that action. By focusing on the Action and Result, the interviewer can assess the candidate's skills, abilities, and behaviors, which are more relevant to the job requirements.\n\nIn contrast, the Situation and Task are more about setting the scene and providing context. While they are still important, they don't directly demonstrate the candidate's skills or behaviors. The interviewer can infer the Situation and Task from the context of the question, so they don't need to be explicitly stated in the answer.\n\nBy focusing on Action and Result, the STAR framework helps candidates to:\n\n* Emphasize their personal involvement and impact\n* Demonstrate their skills and abilities\n* Show how they overcame challenges or achieved results\n* Highlight their strengths and accomplishments\n\nThis approach also helps the interviewer to assess the candidate's behavior and decision-making skills, which are critical for many job roles.",
+          "confidence": null,
+          "latency_ms": 13131,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "A good behavioral story is specific, first-person, and quantified where possible. It should have a clear structure, which is often referred to as the STAR method: Situation, Task, Action, and Result. The Action and Result parts carry the most weight, as they demonstrate the candidate's skills and behavior.\n\nSpecificity is key, meaning the story should be based on a real event with names of roles, systems, and dates, rather than a summary of habits or general traits. First-person narration is also crucial, as it shows the candidate's personal involvement and ownership of the experience. Quantification is also highly valued, as it provides concrete evidence of the impact of the candidate's actions.\n\nOwnership is also a critical aspect of a good behavioral story. The candidate should take responsibility for the outcome, including any parts that went wrong, rather than blaming teammates or managers. This demonstrates the candidate's ability to learn from their mistakes and grow from the experience.\n\nA good behavioral story should also have a clear lesson or takeaway, which is often referred to as the \"rubric 7 to 8\" level of storytelling. This shows that the candidate can distill their experience into a valuable insight that can be applied to future situations.\n\nOverall, a good behavioral story should be concise, clear, and well-structured, with a strong focus on the candidate's actions, results, and lessons learned.",
+          "confidence": null,
+          "latency_ms": 19310,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "The four criteria of the story rubric are:\n\n1. **Specificity**: one concrete event with real details, not a general description of how you usually work. Scored as:\n   - 0: Absent (no specific details)\n   - 1: Partial (some details, but not enough to make the story concrete)\n   - 2: Clear (concrete event with real details)\n\n2. **Ownership**: first-person actions; the candidate's own decisions are clear and they own the outcome, including mistakes. Scored as:\n   - 0: Absent (no clear ownership)\n   - 1: Partial (some ownership, but not clear)\n   - 2: Clear (clear ownership of the outcome)\n\n3. **Quantification**: the result is measured with a number or a clear before-and-after. Scored as:\n   - 0: Absent (no quantification)\n   - 1: Partial (some quantification, but not clear)\n   - 2: Clear (clear quantification with a number or before-and-after)\n\n4. **Lesson**: the candidate names what they learned and what they now do differently. Scored as:\n   - 0: Absent (no lesson learned)\n   - 1: Partial (some lesson learned, but not clear)\n   - 2: Clear (clear lesson learned and what they now do differently)",
+          "confidence": null,
+          "latency_ms": 6503,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "The eight situational buckets interviewers draw behavioral questions from are:\n\n1. Conflict\n2. Failure\n3. Leadership\n4. Ambiguity\n5. Influence without authority\n6. Prioritization\n7. Feedback\n8. Ownership",
+          "confidence": null,
+          "latency_ms": 14014,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "To distinguish a strong leadership story from a mid one, we can use the rubric provided in the notes. \n\nA strong story is characterized by:\n\n- **Specificity**: The story should be specific, with clear details about the situation, actions taken, and outcomes.\n- **Ownership**: The candidate should take ownership of the situation, stating what they did and how they contributed to the outcome.\n- **Quantification**: The story should include quantifiable results or metrics that demonstrate the impact of their actions.\n- **Lesson**: A strong story should also convey a clear lesson or takeaway, highlighting what was learned and how it was applied.\n\nOn the other hand, a mid story typically lacks one or more of these elements, such as:\n\n- **Specificity**: The story may be vague or lack clear details about the situation.\n- **Ownership**: The candidate may not take ownership of the situation or may not clearly state their role.\n- **Quantification**: The story may not include quantifiable results or metrics.\n- **Lesson**: The story may not convey a clear lesson or takeaway.\n\nFor example, a strong story might be: \"In a project where we were facing a tight deadline, I took ownership of the task and worked closely with the team to deliver the project 2 weeks ahead of schedule. We were able to save the client $100,000 by reducing the project timeline. I learned the importance of effective communication and prioritization in managing multiple tasks under pressure.\"\n\nIn contrast, a mid story might be: \"I was on a project where we had to meet a tight deadline. I worked hard and we delivered the project on time. I think it was a success, but I'm not sure what else I could have done differently.\"\n\nBy analyzing the story against the rubric, we can determine whether it meets the criteria for a strong story or a mid story.",
+          "confidence": null,
+          "latency_ms": 15758,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "A behavioral question is a question that asks about past behavior (\"Tell me about a time when...\") on the premise that past behavior predicts future behavior. This type of question is stronger evidence because it provides concrete examples of the candidate's actions and outcomes, allowing the interviewer to assess their past performance and potential future performance.\n\nA hypothetical question, on the other hand, is a question that asks about what the candidate would do in a hypothetical situation (\"What would you do if...\"). This type of question is weaker evidence because it tests the candidate's intentions, not their actual actions. Hypothetical questions can be influenced by the candidate's imagination and may not accurately reflect their past behavior.\n\nAccording to the reference notes, \"Past behavior predicts future behavior, so behavioral questions beat hypothetical ones as evidence.\" This highlights the importance of behavioral questions in evaluating a candidate's potential fit for a role.",
+          "confidence": null,
+          "latency_ms": 13528,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "A red flag in a failure story is a signal that lowers the score, indicating a lack of ownership, personal action, or a contradictory outcome. On the other hand, a green flag is a signal that raises the score, indicating the candidate takes responsibility for the outcome, names the lesson, and shows changed behavior afterwards.\n\nIn a failure story, a red flag might be:\n\n* Blaming teammates or managers: \"The team didn't deliver the project on time, so I couldn't meet the deadline.\"\n* No clear personal action: \"I tried to do it, but it didn't work out.\"\n* No result: \"I didn't get the desired outcome, but I don't know what I could have done differently.\"\n* Contradictory outcome: \"I thought I did everything right, but it still failed.\"\n\nIn contrast, a green flag in a failure story might be:\n\n* Taking ownership of the outcome: \"I was responsible for the project's delay, and I should have managed my time better.\"\n* Naming the lesson: \"I learned that I need to prioritize tasks more effectively to meet deadlines.\"\n* Showing changed behavior: \"After the failure, I made sure to create a project plan with more realistic timelines and check-in with the team regularly.\"\n\nBy identifying red flags and green flags, you can assess the candidate's ability to take responsibility for their actions, learn from their mistakes, and demonstrate a growth mindset.",
+          "confidence": null,
+          "latency_ms": 18644,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 0.75,
+          "missing": [
+            [
+              "shared goal",
+              "common goal",
+              "shared",
+              "align"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To distinguish influence without authority from leadership through a reporting line, let's consider the key differences between the two.\n\n**Leadership through a reporting line** typically involves having a direct managerial role, where you have the authority to make decisions and give orders to team members who report to you. This is often accompanied by a clear chain of command, where you have the power to delegate tasks, provide feedback, and hold team members accountable for their work.\n\nOn the other hand, **influence without authority** involves using your skills, expertise, and relationships to influence others who do not report to you, without having a direct managerial role. This can include team members, stakeholders, or even external partners. Influence without authority often relies on building trust, establishing credibility, and finding common ground to persuade others to adopt a particular perspective or course of action.\n\nTo illustrate the difference, consider the following example:\n\n**Leadership through a reporting line:**\n\n* You're a project manager with a team of engineers, and you need to decide whether to implement a new feature.\n* You discuss the pros and cons with your team members, gather feedback, and make a decision based on their input.\n* You provide clear instructions to the team on how to implement the feature, and they report to you for updates.\n\n**Influence without authority:**\n\n* You're a technical lead who works closely with a cross-functional team, including product managers, designers, and engineers.\n* You share your expertise on the technical feasibility of a new feature and provide data-driven insights to support your argument.\n* You work with the product manager to understand their goals and priorities, and you find common ground to convince them to adopt the new feature.\n\nIn the first scenario, you have a direct managerial role, and your influence is based on your authority as a project manager. In the second scenario, you don't have a direct managerial role, but you use your expertise and relationships to influence others without having a reporting line.\n\nIn terms of STAR story",
+          "confidence": null,
+          "latency_ms": 19141,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Based on the rubric [3] corpus.md - 2. Weak: vague team story, I would grade this candidate answer as follows:\n\n- Specificity: 0 (no specific event, no dates, no roles, no systems)\n- Ownership: 0 (no personal action, no \"I\" statement)\n- Quantification: 0 (no numbers, no metrics)\n- Lesson: 0 (no clear lesson or takeaway)\n\nThe interviewer should probe with \"What did you do?\" and \"How did you measure that?\" to elicit more information.",
+          "confidence": null,
+          "latency_ms": 17826,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.6,
+          "missing": [
+            [
+              "first person",
+              "first-person",
+              "your own",
+              "you personally"
+            ],
+            [
+              "quantif",
+              "measur",
+              "number",
+              "metric"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "When a candidate's two-minute answer spends most of its time on background, it's often a sign that they're not following the STAR structure. \n\nTo restructure the answer, the candidate should:\n\n1. **Identify the background information**: The candidate should acknowledge the background and its relevance to the story.\n2. **Cut the background**: The candidate should condense or omit the background to make room for the STAR structure.\n3. **Reframe the answer**: The candidate should reframe the answer to focus on the STAR structure, prioritizing the Situation, Task, Action, and Result.\n\nHere's an example:\n\nOriginal answer:\n\"I worked on a project where we were using a third-party library to handle data processing. The library was slow and had a lot of bugs. We had to decide whether to rewrite the entire library or optimize it. I spent a lot of time researching the library and talking to the team about the pros and cons of each option. We decided to rewrite the library because it was the best solution. It took us a week to rewrite the library, and it was a lot of work. The end result was that the project was completed on time and the team was happy.\"\n\nRestructured answer:\n\"In a project where we were using a slow and buggy third-party library, I had to decide whether to rewrite it or optimize it. I spent a lot of time researching the library and discussing the options with the team. However, I realized that the task was to find a solution, not to debate the pros and cons. I proposed a one-week spike to profile the service, which revealed that 80% of the time was spent on three queries. I shared the profile with the team and we agreed to optimize first. The result was a significant reduction in report time, from 40 seconds to 4 seconds, and the rewrite was deferred, saving about a quarter of engineering time. I learned that in the future, I'll prioritize finding a solution over debating the",
+          "confidence": null,
+          "latency_ms": 20354,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 0.75,
+          "missing": [
+            [
+              "several questions",
+              "multiple questions",
+              "reuse",
+              "more than one"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Building a story bank is a crucial step in preparing for behavioral interviews. Here's a step-by-step guide on how a candidate can build a strong story bank:\n\n**Step 1: Identify Relevant Experiences**\nThe candidate starts by reflecting on their past experiences, both personal and professional, to identify relevant events that can be used as stories. They consider experiences that demonstrate their skills and accomplishments, such as leadership, teamwork, problem-solving, and communication.\n\n**Step 2: Determine the STAR Structure**\nThe candidate familiarizes themselves with the STAR structure, which consists of:\n\n* **S** - Situation: Setting the context for the story\n* **T** - Task: Describing the task or challenge faced\n* **A** - Action: Explaining the actions taken to address the challenge\n* **R** - Result: Sharing the outcome and results of the actions taken\n\n**Step 3: Choose Relevant Stories**\nThe candidate selects 6-10 stories that fit the STAR structure and cover various aspects of their experience, such as leadership, teamwork, and problem-solving. They ensure that each story is specific, with concrete details and a clear outcome.\n\n**Step 4: Tagging and Categorization**\nThe candidate tags each story with relevant buckets, such as:\n\n* Leadership\n* Ambiguity\n* Prioritization\n* Influence without authority\n* Conflict\n* Failure\n* Feedback\n* Ownership\n\nThis allows them to quickly identify which story can answer specific interview questions.\n\n**Step 5: Refine and Edit**\nThe candidate refines and edits each story to ensure it meets the four-criterion story rubric:\n\n* **Specificity**: One concrete event with real details\n* **Ownership**: First-person actions and clear ownership of the outcome\n* **Quantification**: Measurable results\n* **Lesson**: What was learned and how it's applied differently\n\n**Step 6: Practice and Rehearse**\nThe candidate practices telling each story, focusing on",
+          "confidence": null,
+          "latency_ms": 20352,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Based on the reference notes, here are the probing questions an interviewer uses to test a behavioral story and what each tests:\n\n1. **\"What did you do?\"** - Tests: personal action, separates personal action from team action.\n2. **\"What would you do differently?\"** - Tests: lesson, self-awareness.\n3. **\"How did you measure that?\"** - Tests: quantification, honesty.\n4. **\"What did the other person think?\"** - Tests: empathy in conflict stories.\n5. **\"What happened next?\"** - Tests: whether the result is real and lasting.\n\nThese probing questions are used to delve deeper into the candidate's story, gather more information, and assess their thought process, decision-making, and behavior.",
+          "confidence": null,
+          "latency_ms": 21222,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 0.6667,
+          "missing": [
+            [
+              "first person",
+              "first-person",
+              "\"i\"",
+              "'i'"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The candidate is using the \"We\" only failure mode. \n\nThe interviewer should probe: \"What did you do?\"",
+          "confidence": null,
+          "latency_ms": 13027,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This is an example of a **Fake failure**, specifically a **Lack of self-awareness**. The candidate is describing a common pitfall, but not a real failure with consequences.\n\nThe fix is to choose a real mistake with real consequences and a lesson learned. For instance:\n\n\"I recall a project where I took on too many tasks and overextended myself, leading to missed deadlines and compromised quality. I learned the importance of prioritizing tasks and delegating effectively to avoid burnout.\"",
+          "confidence": null,
+          "latency_ms": 6439,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 0.75,
+          "missing": [
+            [
+              "red flag"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's failure story attributes the missed deadline to the QA team being slow, which is an example of the \"Blaming others\" failure mode. \n\nTo fix this, the candidate should own their part in the failure and name the lesson learned. The candidate should rewrite the story to take ownership of the planning mistake and describe the change made afterwards.",
+          "confidence": null,
+          "latency_ms": 4595,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 0.6667,
+          "missing": [
+            [
+              "follow-up",
+              "follow up",
+              "probing",
+              "probe"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's failure mode is **Over-rehearsed**.\n\nThe fix is to know the facts of the story well, not a script.",
+          "confidence": null,
+          "latency_ms": 4717,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Not covered.",
+          "confidence": null,
+          "latency_ms": 2633,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: sysdes - System design: scalability, caching, storage, consistency, distributed architecture",
+          "confidence": null,
+          "latency_ms": 1523,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: dsa - This is a classic algorithm question.",
+          "confidence": null,
+          "latency_ms": 1178,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "resume"
+            ]
+          ],
+          "forbidden_hit": "%",
+          "answer": "DELEGATE: resume - rewriting resume bullets\n\nThis bullet is too vague. Here's a rewritten version:\n\n\"Designed and implemented a scalable payment processing system, resulting in a 30% increase in transaction throughput and a 25% reduction in latency, while ensuring 99.99% uptime and compliance with industry regulations.\"",
+          "confidence": null,
+          "latency_ms": 2532,
+          "error": null
+        }
+      ]
+    },
+    "aligned": {
+      "model": "model_01m50db0jrcphjrw",
+      "grounded": false,
+      "summary": {
+        "overall": 0.4383,
+        "pass_rate": 0.25,
+        "by_category": {
+          "abstention": 0.0,
+          "definition": 0.7,
+          "distinction": 0.5625,
+          "failure": 0.5208,
+          "procedure": 0.4083
+        },
+        "confidence_when_pass": 0.7545,
+        "confidence_when_fail": 0.7417,
+        "p50_latency_ms": 18292,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "STAR is a framework for answering behavioral interview questions, which stands for Situation, Task, Action, and Result. This framework helps candidates structure their responses to behavioral questions in a clear and concise manner.\n\n- **S**ituation: This is the context of the story, setting the scene for the question. It should be a brief description of the situation, including the relevant details. The goal is to provide enough information to understand the context without overwhelming the interviewer.\n\n- **T**ask: This is the challenge or problem that the candidate faced. It should be a clear and concise description of the task or goal that needed to be accomplished.\n\n- **A**ction: This is the specific action the candidate took to address the task. It should describe the steps the candidate took, including any decisions, actions, or efforts made to resolve the challenge. The focus is on what the candidate did, rather than how they felt or what they thought.\n\n- **R**esult: This is the outcome of the candidate's actions. It should describe the results of the action taken, including any metrics, feedback, or impact on the organization. The goal is to demonstrate the outcome and its significance.\n\nAction and Result carry the signal rather than Situation and Task because they provide concrete evidence of the candidate's skills and accomplishments. By focusing on what the candidate did and the outcome, the candidate can demonstrate their ability to take action and achieve results, which is a key aspect of behavioral interviews. This approach also helps to shift the focus away from the candidate's feelings or emotions, which can be subjective and difficult to quantify.\n\nFor example, instead of saying \"I was working on a team project and we had a lot of disagreements,\" a candidate could say:\n\n- **S**ituation: \"We were working on a team project with a tight deadline.\"\n- **T**ask: \"Our task was to deliver a high-quality product within the given timeframe.\"\n- **A**ction: \"I took the",
+          "confidence": 0.7463,
+          "latency_ms": 9168,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 0.5,
+          "missing": [
+            [
+              "first-person",
+              "first person",
+              "\"i\"",
+              "'i'"
+            ],
+            [
+              "lesson",
+              "learn"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A good behavioral story typically follows the STAR framework, which stands for Situation, Task, Action, and Result. \n\n- Situation: Set the context for the story, including the relevant details about the environment, the team, and the task at hand. This should be specific and concise, providing enough information to understand the situation. \n- Task: Clearly define the task or challenge that you faced. This should be specific, measurable, and relevant to the role. \n- Action: Describe the actions you took to address the task or challenge. Focus on what you did, rather than what others did. Use specific examples and details to illustrate your actions. \n- Result: Share the outcome of your actions, including any metrics, feedback, or results. Quantify the outcome wherever possible. \n\nA good behavioral story should be concise, clear, and relevant to the role. It should demonstrate your skills, experience, and achievements, and provide insight into your thought process and decision-making.",
+          "confidence": 0.7142,
+          "latency_ms": 20995,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 0.8,
+          "missing": [
+            [
+              "lesson"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The STAR story rubric is a widely used framework for evaluating behavioral interview stories. The four criteria are:\n\n1. **Situation (S)**: This is the context of the story, where the candidate describes the situation they were in. It's scored based on:\n   - Relevance to the job requirements (30%)\n   - Clarity and concision (20%)\n   - Ability to set the scene (20%)\n   - Engagement and interest (30%)\n\n2. **Task (T)**: This is the specific task or challenge the candidate faced. It's scored based on:\n   - Clarity and specificity (30%)\n   - Relevance to the job requirements (30%)\n   - Ability to break down the task (20%)\n   - Ability to convey the task's importance (20%)\n\n3. **Action (A)**: This is the candidate's actions and decisions they took to address the task. It's scored based on:\n   - Effectiveness of the actions (40%)\n   - Ability to convey the thought process (30%)\n   - Ability to demonstrate skills and competencies (20%)\n   - Ability to show ownership and accountability (10%)\n\n4. **Result (R)**: This is the outcome of the candidate's actions. It's scored based on:\n   - Impact and significance of the outcome (40%)\n   - Ability to quantify the results (30%)\n   - Ability to demonstrate the outcome's relevance to the job requirements (20%)\n   - Ability to show the candidate's role in achieving the outcome (10%)\n\nNote that these scores are approximate and may vary depending on the interviewer and the specific job requirements.",
+          "confidence": 0.804,
+          "latency_ms": 16575,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 0.5,
+          "missing": [
+            [
+              "failure"
+            ],
+            [
+              "influence"
+            ],
+            [
+              "prioritiz"
+            ],
+            [
+              "feedback"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Behavioral interviewers typically draw questions from the following eight situational buckets:\n\n1. **Teamwork and Collaboration**: Questions about working with team members, colleagues, or partners to achieve a common goal.\n2. **Leadership**: Questions about leadership styles, decision-making, and guiding others.\n3. **Problem-Solving and Decision-Making**: Questions about how you approach complex problems, make decisions, and handle ambiguity.\n4. **Communication and Interpersonal Skills**: Questions about how you communicate with various stakeholders, including customers, colleagues, and managers.\n5. **Adaptability and Flexibility**: Questions about how you handle change, adapt to new situations, and pivot when necessary.\n6. **Ownership and Accountability**: Questions about taking ownership of projects, tasks, and results, and being accountable for your actions.\n7. **Conflict Resolution and Negotiation**: Questions about how you handle conflicts, negotiate with others, and resolve disputes.\n8. **Achievement and Results**: Questions about your past accomplishments, goals, and how you measure success.\n\nThese buckets are often used to assess a candidate's behavioral fit with the company culture, values, and requirements.",
+          "confidence": 0.8201,
+          "latency_ms": 17030,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 0.75,
+          "missing": [
+            [
+              "lesson"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To distinguish a strong leadership story from a mid-level one, let's break down the key elements of a strong leadership story using the STAR method:\n\n**S** - Situation: A strong leadership story should clearly describe a specific situation where you demonstrated leadership skills. This should be a challenging or unique situation that showcases your abilities. A mid-level story might lack specificity or fail to demonstrate a clear challenge.\n\n**T** - Task: A strong leadership story should clearly articulate the task or goal you were trying to achieve. This should be a specific, measurable objective that you worked towards. A mid-level story might be vague or lack a clear goal.\n\n**A** - Action: A strong leadership story should describe specific actions you took to address the challenge. This should include concrete steps, decisions, and actions you took to achieve the goal. A mid-level story might be too vague or lack specific actions.\n\n**R** - Result: A strong leadership story should clearly describe the outcome of your actions. This should be a measurable, quantifiable result that demonstrates the impact of your leadership. A mid-level story might lack a clear outcome or fail to demonstrate the impact of your actions.\n\nTo distinguish a strong leadership story from a mid-level one, consider the following:\n\n* A strong story should demonstrate a clear challenge, specific goal, concrete actions, and a measurable outcome.\n* A mid-level story might lack specificity, clarity, or a clear outcome.\n* A strong story should showcase your leadership skills and abilities, while a mid-level story might not demonstrate a clear demonstration of those skills.\n\nExample of a strong leadership story:\n\n\"In my previous role as a team lead, I was tasked with leading a team to launch a new product within a tight deadline. The challenge was that the team was struggling to meet the deadline, and we were facing a critical issue with the product's functionality. I took the initiative to re-assign tasks, provide additional training, and hold regular check-ins to ensure everyone was on track. As",
+          "confidence": 0.7637,
+          "latency_ms": 18534,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 0.75,
+          "missing": [
+            [
+              "predict"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A behavioral question is a question that asks you to provide a specific example from your past experience, whereas a hypothetical question is a question that asks you to imagine a scenario and respond as if it were real. \n\nBehavioral questions give stronger evidence because they allow the interviewer to assess your past experiences, skills, and behaviors, which are more reliable indicators of your abilities and fit for the role. Behavioral questions also provide a more concrete and tangible way to evaluate your past performance, as they are based on actual events and outcomes.\n\nHypothetical questions, on the other hand, can be more challenging to evaluate, as they require the interviewer to assess your ability to think critically and respond to a fictional scenario. While hypothetical questions can still provide insight into your problem-solving skills and thought process, they are less reliable than behavioral questions, as they are not based on actual experiences.",
+          "confidence": 0.7065,
+          "latency_ms": 18050,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 0.25,
+          "missing": [
+            [
+              "blam"
+            ],
+            [
+              "own"
+            ],
+            [
+              "no result",
+              "no personal",
+              "no clear",
+              "excuse"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A red flag in a failure story is a specific action or behavior that indicates a significant issue or a potential problem that could have been addressed earlier. It's a warning sign that something went wrong and may have contributed to the failure. A red flag can be a symptom of a larger issue, and identifying it can help in learning from the failure.\n\nOn the other hand, a green flag is a positive indicator that suggests a successful outcome or a promising approach. It's a sign that something went right, and it can be a valuable lesson learned.\n\nTo distinguish between a red flag and a green flag, I would ask myself:\n\n* What was the outcome of the situation? Was it a failure or a success?\n* What were the key actions taken, and were they effective?\n* Were there any warning signs or indicators that something was going wrong?\n\nFor example, in a failure story, a red flag might be: \"We underestimated the complexity of the project, which led to a significant delay.\" This indicates a potential problem that could have been addressed earlier, and it's a warning sign that the project was not properly planned.\n\nIn contrast, a green flag might be: \"We implemented a new testing framework, which significantly reduced the time it took to identify and fix bugs.\" This is a positive indicator that the approach was effective, and it's a valuable lesson learned.\n\nBy identifying red flags and green flags, you can learn from your failures and successes, and make better decisions in the future.",
+          "confidence": 0.6955,
+          "latency_ms": 19537,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 0.5,
+          "missing": [
+            [
+              "data",
+              "prototype",
+              "evidence"
+            ],
+            [
+              "shared goal",
+              "common goal",
+              "shared",
+              "align"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To distinguish influence without authority from leadership through a reporting line, I'd like to share a story from my previous experience.\n\n**Context:** I was working on a project where our team was facing a critical deadline, and we were struggling to meet it. Our team lead was unavailable, and we needed to make a decision quickly. I noticed that one of my team members, who was not in a direct reporting line to our team lead, was taking charge and coordinating with the stakeholders to get the necessary resources. \n\n**What happened:** I observed that this team member was able to effectively communicate with the stakeholders, negotiate with the team, and make decisions that ultimately led to the successful delivery of the project. \n\n**Why:** I realized that this team member was exercising influence without authority through their strong communication skills, building trust with the stakeholders, and demonstrating a deep understanding of the project requirements. They were able to get the necessary resources and support from the stakeholders, which was crucial in meeting the deadline.\n\n**How:** I learned that this team member was able to influence without authority by:\n\n* Building relationships with the stakeholders and establishing trust\n* Communicating effectively and clearly\n* Demonstrating a deep understanding of the project requirements\n* Being proactive and taking initiative\n* Collaborating with the team to find solutions\n\n**Pattern:** This is an example of \"influence without authority,\" which is a key concept in behavioral interviews. It requires the ability to build relationships, communicate effectively, and demonstrate a deep understanding of the project requirements.\n\n**Time and space complexity:** Not applicable to this scenario.\n\n**Conclusion:** Influence without authority is a valuable skill that can be developed through experience, communication, and building relationships. It's essential to recognize and appreciate the contributions of team members who can influence without authority, and to develop similar skills to become a more effective leader.",
+          "confidence": 0.7017,
+          "latency_ms": 18902,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 0.3333,
+          "missing": [
+            [
+              "specificity"
+            ],
+            [
+              "quantification",
+              "quantif"
+            ],
+            [
+              "lesson"
+            ],
+            [
+              "what did you do"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "**Grade: C-**\n\n**Strengths:**\n\n* The candidate provided a clear outcome (the bug was fixed) and a positive result (everyone was happy).\n* The answer is concise and easy to understand.\n\n**Weaknesses:**\n\n* Lack of context: The candidate didn't provide any details about the bug, the solution, or the process of fixing it.\n* Lack of ownership: The candidate didn't take any responsibility for the bug or the solution.\n* Lack of explanation: The candidate didn't explain how they fixed the bug or what they learned from the experience.\n\n**Rating Breakdown:**\n\n* **Situation:** 2/5 (no context provided)\n* **Task:** 2/5 (no details about the task or the bug)\n* **Action:** 2/5 (no explanation of the solution or actions taken)\n* **Result:** 3/5 (positive outcome, but no details about the impact)\n* **Leadership:** 1/5 (no demonstration of leadership skills or ownership)\n\n**Recommendation:**\n\nTo improve, the candidate should focus on providing more context, explaining their actions and decisions, and demonstrating ownership of the outcome.",
+          "confidence": 0.7492,
+          "latency_ms": 20352,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.6,
+          "missing": [
+            [
+              "first person",
+              "first-person",
+              "your own",
+              "you personally"
+            ],
+            [
+              "quantif",
+              "measur",
+              "number",
+              "metric"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A common challenge in behavioral interviews is when a candidate's answer spends too much time on background information and not enough on the specific story. Here's a step-by-step guide on how to restructure a two-minute answer to focus on the STAR method:\n\n**Original Answer:**\n\"Okay, so I was working on a project at my previous company, and I was responsible for [background information about the project, e.g., its goals, team, and timeline]. We were trying to [briefly mention the main objective, but it's not clear what the objective was]. I was part of the [team/department] and worked closely with [colleagues]. We had to [briefly mention a challenge or obstacle]. I [briefly describe a task or action taken]. We [briefly mention the outcome, but it's not clear what it was].\"\n\n**Restructured Answer:**\n\"Here's a story about a project I worked on at my previous company. **Situation:** We were tasked with [clearly state the specific objective of the project, e.g., 'improve customer satisfaction ratings']. **Task:** I was responsible for [clearly state your role and the specific task you were given, e.g., 'developing a new feature']. **Action:** To address the challenge of [clearly state the challenge or obstacle, e.g., reducing response times'], I [clearly describe a specific action you took, e.g., 'implemented a caching mechanism']. **Result:** As a result of my actions, we [clearly state the outcome, e.g., 'increased customer satisfaction ratings by 25%'].\n\n**Tips:**\n\n1. Start with a clear and concise **Situation** statement that sets the context.\n2. Clearly state your **Task** and the specific objective you were given.\n3. Describe a specific **Action** you took to address the challenge or obstacle.\n4. Clearly state the **Result",
+          "confidence": 0.7287,
+          "latency_ms": 22658,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 0.5,
+          "missing": [
+            [
+              "tag",
+              "map",
+              "bucket"
+            ],
+            [
+              "several questions",
+              "multiple questions",
+              "reuse",
+              "more than one"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To build a story bank before interviews, a candidate typically starts by reflecting on their past experiences, identifying key events, and structuring them into a narrative format. They begin by brainstorming a list of relevant experiences, such as projects, internships, or work experiences, and then categorize them into themes or topics. \n\nNext, they identify the most impactful and relevant stories that demonstrate their skills and accomplishments, and select the most compelling ones to include in their story bank. The candidate then organizes these stories into a logical order, often using a chronological or thematic structure, to make it easier to recall and adapt them during interviews.\n\nThey also consider the STAR method, which stands for Situation, Task, Action, and Result, to structure their stories. This framework helps them to clearly articulate the context, the specific challenge they faced, the actions they took, and the outcome or results they achieved. By using this framework, candidates can create a cohesive and effective narrative that showcases their skills and experiences.\n\nAdditionally, they review and refine their stories to ensure they are concise, clear, and free of jargon, and practice telling them out loud to improve their delivery and confidence. This process helps candidates to build a strong foundation for their story bank, enabling them to effectively communicate their experiences and skills during technical interviews.",
+          "confidence": 0.6775,
+          "latency_ms": 20380,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 0.2,
+          "missing": [
+            [
+              "what did you do"
+            ],
+            [
+              "differently"
+            ],
+            [
+              "other person",
+              "other side"
+            ],
+            [
+              "what happened next",
+              "happened next"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Here are some common probing questions used in behavioral interviews to test a candidate's behavioral stories:\n\n**Contextual Probing Questions:**\n\n1. Can you tell me more about that? (Tests: candidate's attention to detail, ability to elaborate)\n2. How did you feel about that situation? (Tests: candidate's emotional intelligence, self-awareness)\n3. What was the outcome of that situation? (Tests: candidate's problem-solving skills, ability to measure success)\n4. Can you give an example of a similar situation? (Tests: candidate's ability to generalize, transfer skills)\n5. How did you handle the situation? (Tests: candidate's decision-making skills, problem-solving approach)\n\n**Exploratory Probing Questions:**\n\n1. What led you to make that decision? (Tests: candidate's thought process, decision-making skills)\n2. Can you walk me through your thought process? (Tests: candidate's problem-solving skills, critical thinking)\n3. How did you prioritize tasks in that situation? (Tests: candidate's time management skills, prioritization)\n4. What were the key factors that influenced your decision? (Tests: candidate's analysis, decision-making skills)\n5. Can you describe the steps you took to achieve that outcome? (Tests: candidate's problem-solving skills, execution)\n\n**Clarifying Probing Questions:**\n\n1. Can you clarify what you mean by...? (Tests: candidate's communication skills, ability to articulate thoughts)\n2. Can you provide more details about...? (Tests: candidate's attention to detail, ability to provide specifics)\n3. How did you define success in that situation? (Tests: candidate's definition of success, goal-setting)\n4. Can you explain the reasoning behind your actions? (Tests: candidate's thought process, decision-making skills)\n5. Can you provide an example of a specific action you took? (Tests: candidate's ability to provide concrete examples)\n\n**Challenge Probing Questions:**",
+          "confidence": 0.8169,
+          "latency_ms": 24121,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 0.3333,
+          "missing": [
+            [
+              "what did you do",
+              "what did you personally",
+              "what was your role",
+              "your specific"
+            ],
+            [
+              "first person",
+              "first-person",
+              "\"i\"",
+              "'i'"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate is exhibiting a failure mode known as \"Lack of ownership\" or \"Lack of personal responsibility.\" They are using the phrase \"we\" to shift the blame to the team or others, rather than taking ownership of their actions and decisions.\n\nTo probe further, the interviewer could ask:\n\n* Can you give an example of a time when you took ownership of a project or task? How did you handle it?\n* How do you handle it when a team member is not pulling their weight? Do you take the lead or delegate?\n* Can you walk me through a situation where you made a mistake and had to own up to it? How did you correct it?\n\nThis will help the interviewer understand the candidate's ability to take responsibility for their actions and decisions, and how they handle challenges and setbacks.",
+          "confidence": 0.714,
+          "latency_ms": 18876,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 0.3333,
+          "missing": [
+            [
+              "fake",
+              "not a real",
+              "humble",
+              "disguised"
+            ],
+            [
+              "real mistake",
+              "genuine",
+              "real weakness",
+              "actual weakness",
+              "real failure"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's weakness is a classic example of the \"Overwork\" or \"Burnout\" failure mode. This occurs when an individual takes on too much responsibility, overcommit themselves, and neglect their own well-being, leading to decreased productivity, increased stress, and potential burnout.\n\nThe \"I work too hard\" response is a common symptom of this failure mode, as it indicates that the candidate is not recognizing the impact of their work habits on their own well-being. To fix this, the candidate needs to develop a better balance between work and personal life, prioritize tasks, and learn to delegate tasks effectively. This can be achieved by:\n\n* Setting realistic goals and deadlines\n* Learning to say \"no\" to non-essential tasks\n* Prioritizing tasks based on importance and urgency\n* Taking regular breaks and practicing self-care\n* Developing a growth mindset to recognize the value of delegation and asking for help\n\nBy addressing this weakness, the candidate can improve their overall performance, reduce stress, and maintain a healthy work-life balance.",
+          "confidence": 0.7357,
+          "latency_ms": 17682,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 0.75,
+          "missing": [
+            [
+              "red flag"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's failure story attributes the missed deadline to the QA team, which is an example of a \"Lack of Ownership\" failure mode. \n\nA Lack of Ownership failure mode occurs when a team member attributes their failure to external factors, rather than taking responsibility for their own actions. In this case, the candidate is shifting the blame to the QA team, rather than acknowledging their own role in the delay.\n\nTo fix this, the candidate should be encouraged to reflect on their own actions and decisions leading up to the missed deadline. They should ask themselves questions like \"What could I have done differently?\" and \"What steps can I take to prevent this from happening again in the future?\" This will help them develop a growth mindset and take ownership of their actions, rather than blaming external factors.",
+          "confidence": 0.7519,
+          "latency_ms": 12179,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 0.6667,
+          "missing": [
+            [
+              "rehearsed",
+              "memoriz",
+              "scripted"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This is a classic example of a \"Failure to Expand\" or \"Failure to Elaborate\" failure mode. \n\nA candidate's polished story falls apart when the interviewer asks follow-up questions because they fail to provide additional details, context, or depth to their story. This can be due to a lack of preparation, poor communication skills, or an inability to think on their feet.\n\nTo fix this, the candidate should focus on the following strategies:\n\n1. **Prepare for potential follow-up questions**: Anticipate the types of questions that may be asked and prepare additional details to support their story.\n2. **Use the STAR method**: Structure their response to include a Situation, Task, Action, and Result, and be prepared to elaborate on each component.\n3. **Practice responding to follow-up questions**: Use mock interviews or practice with a friend or mentor to improve their ability to think on their feet and respond to unexpected questions.\n4. **Show enthusiasm and curiosity**: Demonstrate a willingness to learn and explore the topic further, and ask clarifying questions to ensure understanding.\n\nBy addressing this failure mode, candidates can improve their ability to tell a cohesive and engaging story, and increase their chances of success in the interview.",
+          "confidence": 0.7443,
+          "latency_ms": 13982,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "not covered",
+              "does not cover",
+              "doesn't cover",
+              "not in my notes",
+              "outside"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "When opening a salary negotiation after receiving an offer, it's essential to strike the right balance between being confident and respectful. \n\nFirst, you should express gratitude for the offer and acknowledge the company's interest in you. This sets a positive tone for the conversation. Next, you should clearly state your salary expectations based on your research and industry standards. Be specific about the number you're targeting, and explain why you arrived at that figure. \n\nFor example, \"Based on my research, I was expecting a salary in the range of $X to $Y, considering the company's industry standards and my skills. I'm excited about the opportunity to join the team, but I was hoping we could discuss the possibility of adjusting the salary to meet my expectations.\" \n\nIt's also crucial to be open to negotiation and willing to compromise. You can say, \"I'm excited about the opportunity, but I was hoping we could discuss the possibility of adjusting the salary to meet my expectations. I'm open to finding a mutually beneficial agreement.\" \n\nRemember to stay calm, confident, and professional throughout the conversation.",
+          "confidence": 0.721,
+          "latency_ms": 14181,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "sysdes"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To design a cache layer for a read-heavy API, I would implement a Least Recently Used (LRU) cache. \n\n**Why LRU?**\nLRU is suitable for a read-heavy API because it minimizes the number of cache misses, which reduces the load on the database and improves response times. It also ensures that the most frequently accessed data is kept in the cache, making it a good fit for a read-heavy API.\n\n**Design Overview**\nThe cache layer would consist of a data structure that stores key-value pairs. When a request is made to the API, the cache checks if the requested data is already present. If it is, the data is retrieved from the cache and the corresponding key is removed from the end of the list. If the data is not present, the cache checks if it has reached its capacity. If it has, the least recently used item is evicted to make room for the new data. \n\n**Implementation**\nThe cache would be implemented using a combination of a hash map and a doubly linked list. The hash map would store the key-value pairs, and the doubly linked list would store the order of the keys. When a key is accessed, the corresponding node is moved to the end of the list. When a new key-value pair is added, the new node is added to the end of the list.\n\n**Time and Space Complexity**\n- Time complexity:\n  - Get: O(1) (hash map) + O(1) (linked list) = O(1)\n  - Put: O(1) (hash map) + O(1) (linked list) = O(1)\n- Space complexity: O(n), where n is the number of items in the cache.\n\n**Example**\nSuppose we have a cache with a capacity of 100 items. We make two requests to the API, one for item A and one for item B. The cache stores item A and then item B. The next request",
+          "confidence": 0.7727,
+          "latency_ms": 19538,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "dsa"
+            ]
+          ],
+          "forbidden_hit": "o(n log n)",
+          "answer": "The time complexity of merge sort is O(n log n). \n\nMerge sort is a divide-and-conquer algorithm that splits the input array into two halves, recursively sorts each half, and then merges the two sorted halves. The time complexity can be broken down as follows:\n\n- Best-case scenario: O(n log n)\n- Average-case scenario: O(n log n)\n- Worst-case scenario: O(n log n)\n\nThe time complexity is O(n log n) because each merge operation takes O(n) time and there are log n levels of recursion. The space complexity is O(n) because we need to store the temporary arrays during the merge process.",
+          "confidence": 0.813,
+          "latency_ms": 16964,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "resume"
+            ]
+          ],
+          "forbidden_hit": "%",
+          "answer": "Here's a rewritten version of the bullet point:\n\n* Spearheaded the development and deployment of a high-availability payment processing service, ensuring seamless transactions and resolving issues that impacted user experience, resulting in a 99.9% uptime and a 25% increase in transaction volume within six months.\n\nThis rewritten bullet point aims to:\n\n* Use more dynamic action verbs like \"Spearheaded\" to convey leadership and initiative.\n* Provide more specific details about the impact of the work, such as uptime and transaction volume.\n* Quantify the results to demonstrate the value of the work.\n* Emphasize the challenges and obstacles overcome, such as resolving issues that impacted user experience.",
+          "confidence": 0.7213,
+          "latency_ms": 15044,
+          "error": null
+        }
+      ]
+    },
+    "aligned_grounded": {
+      "model": "model_01m50db0jrcphjrw",
+      "grounded": true,
+      "summary": {
+        "overall": 0.9317,
+        "pass_rate": 0.9,
+        "by_category": {
+          "abstention": 1.0,
+          "definition": 0.9375,
+          "distinction": 1.0,
+          "failure": 0.7709,
+          "procedure": 0.95
+        },
+        "confidence_when_pass": 0.7869,
+        "confidence_when_fail": 0.8347,
+        "p50_latency_ms": 11017,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "STAR stands for Situation, Task, Action, and Result. It's a framework for answering behavioral interview questions, which are designed to assess a candidate's past behavior as a predictor of future behavior.\n\nIn a STAR answer, the Situation and Task are used to set the context, providing a brief overview of the relevant background. However, the Action and Result carry the signal, as they demonstrate what the candidate personally did and what changed as a result of their actions.\n\nAction and Result carry the signal because they show the candidate's personal involvement and ownership of the outcome. By focusing on what the candidate did and what happened as a result, the interviewer can assess their level of responsibility, decision-making, and problem-solving skills. This allows the interviewer to score the candidate's behavior, rather than just their knowledge or intentions.\n\nIn contrast, the Situation and Task are more about setting the scene, and while they provide context, they don't necessarily demonstrate the candidate's personal involvement or ownership. By spending more time on Action and Result, the candidate can showcase their skills and behaviors, making it easier for the interviewer to evaluate their past behavior as a predictor of future performance.",
+          "confidence": 0.7466,
+          "latency_ms": 12976,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "lesson",
+              "learn"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A good behavioral story is specific, first-person, and quantified where possible. It should have a clear Situation, Task, Action, and Result. Action and Result carry the signal, and the candidate should own the outcome, including the parts that went wrong. A good story should be specific, with real events, names of roles, systems, and dates, not a summary of habits. Quantification means the result has a number: latency, revenue, time saved, incidents reduced, people affected. Ownership is key, with the candidate taking responsibility for the outcome, including the parts that went wrong, rather than attributing results to luck or blaming the team.",
+          "confidence": 0.8289,
+          "latency_ms": 3283,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "The four criteria of the story rubric are:\n\n1. **Specificity**: one concrete event with real details, not a general description of how you usually work. Scored as:\n   - 0: absent\n   - 1: partial\n   - 2: clear\n\n2. **Ownership**: first-person actions; the candidate's own decisions are clear and they own the outcome, including mistakes. Scored as:\n   - 0: absent\n   - 1: partial\n   - 2: clear\n\n3. **Quantification**: the result is measured with a number or a clear before-and-after. Scored as:\n   - 0: absent\n   - 1: partial\n   - 2: clear\n\n4. **Lesson**: the candidate names what they learned and what they now do differently. Scored as:\n   - 0: absent\n   - 1: partial\n   - 2: clear",
+          "confidence": 0.9676,
+          "latency_ms": 7719,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "The eight situational buckets interviewers draw behavioral questions from are:\n\n1. Conflict\n2. Failure\n3. Leadership\n4. Ambiguity\n5. Influence without authority\n6. Prioritization\n7. Feedback\n8. Ownership",
+          "confidence": 0.9721,
+          "latency_ms": 10951,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "A strong leadership story can be distinguished from a mid-story using the rubric provided. According to the rubric, a strong story is characterized by:\n\n- **Specificity**: A strong story should be specific, providing clear details about the situation, actions taken, and outcomes achieved. \n- **Ownership**: A strong story should demonstrate ownership, where the candidate takes responsibility for the outcome or result.\n- **Quantification**: A strong story should include quantifiable results or metrics that demonstrate the impact of the actions taken.\n- **Lesson**: A strong story should also convey a clear lesson or takeaway, highlighting what was learned from the experience.\n\nOn the other hand, a mid-story typically lacks one or more of these elements. A mid-story may have a clear action, but the result is vague or no lesson is drawn. \n\nFor example, a strong story might be: \"In a project where we were facing a tight deadline, I took ownership of the task and worked closely with the team to deliver the project 2 weeks ahead of schedule. We achieved a 30% reduction in project costs and a 25% increase in customer satisfaction. This experience taught me the importance of effective communication and collaboration in achieving project goals.\" \n\nIn contrast, a mid-story might be: \"I was part of a team working on a project. We had a tight deadline and I worked hard to get it done. Unfortunately, we missed the deadline. I learned that we need to work harder.\"",
+          "confidence": 0.7322,
+          "latency_ms": 13430,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "A behavioral question asks about past behavior (\"Tell me about a time you...\") on the premise that past behavior predicts future behavior. A hypothetical question, on the other hand, asks about what a candidate would do in a hypothetical situation (\"What would you do if...\").\n\nBehavioral questions give stronger evidence because they provide concrete examples of past actions and outcomes, allowing the interviewer to assess the candidate's past behavior and its relevance to the role. This approach is based on the idea that past behavior is a strong predictor of future behavior.\n\n[3] corpus.md - 1. Core definitions (part 1)",
+          "confidence": 0.8016,
+          "latency_ms": 11084,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "A red flag in a failure story is a signal that lowers the score, indicating a candidate's lack of ownership, accountability, or a lack of personal action. On the other hand, a green flag is a signal that raises the score, indicating a candidate's ownership, accountability, and willingness to learn from their mistakes.\n\nA red flag in a failure story typically includes:\n\n* Blaming teammates or managers\n* No clear personal action taken\n* No result or outcome\n* A story that contradicts itself under probing\n\nA green flag, on the other hand, typically includes:\n\n* The candidate taking ownership of the outcome, including mistakes\n* Naming the lesson learned\n* Showing changed behavior afterwards\n\nFor example, a candidate might say, \"I was working on a project and our team was struggling to meet the deadline. I decided to take charge and re-prioritize the tasks. We were able to deliver the project on time, and I learned that I need to be more proactive in managing my team's workload.\" This is a green flag because the candidate takes ownership of the outcome, names the lesson learned, and shows changed behavior afterwards.\n\nIn contrast, a candidate who says, \"The team was too overwhelmed, and I couldn't do anything about it. We missed the deadline, and it was a disaster.\" is exhibiting a red flag because they blame the team and take no personal action.",
+          "confidence": 0.7618,
+          "latency_ms": 16235,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "To distinguish influence without authority from leadership through a reporting line, let's consider the key differences between the two.\n\nLeadership through a reporting line typically involves having a direct managerial role, where you have the authority to make decisions and give orders to team members. This is often accompanied by a clear chain of command, where you are responsible for the team's performance and outcomes.\n\nInfluence without authority, on the other hand, involves using your skills, expertise, and relationships to persuade others to adopt a particular course of action or direction, without having a direct reporting line. This can be achieved through data-driven insights, shared goals, and collaborative approaches, but it doesn't necessarily imply a managerial role.\n\nTo illustrate the difference, consider the following example:\n\n**Leadership through a reporting line:**\n\n* You're a team lead with a direct reporting line to a manager.\n* You're responsible for the team's performance and outcomes.\n* You give orders and make decisions that affect the team's direction.\n\n**Influence without authority:**\n\n* You're a senior engineer without a direct reporting line to a manager.\n* You work closely with the team and have a strong relationship with the stakeholders.\n* You use data and insights to persuade the team to adopt a particular approach, without having a direct say in the decision-making process.\n\nIn the STAR format, this could be described as:\n\n**Situation:** I worked on a project where we had a tight deadline and limited resources.\n**Task:** I needed to convince the team to adopt a new approach to meet the deadline.\n**Action:** I used data and insights to demonstrate the benefits of the new approach, and worked closely with the team to ensure a smooth transition.\n**Result:** We successfully met the deadline, and the team was able to deliver high-quality results.\n\nIn this example, the key difference is that I didn't have a direct reporting line to the manager, but I was still able to influence the team's direction and achieve the desired outcome.",
+          "confidence": 0.7477,
+          "latency_ms": 18420,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Based on the rubric [3] corpus.md - 2. Weak: vague team story, I would grade this candidate answer as follows:\n\n- Specificity: 0 (no specific event, no first-person action, no number)\n- Ownership: 0 (no mention of personal responsibility)\n- Quantification: 0 (no measurement of impact)\n- Lesson: 0 (no clear takeaway or insight)\n\nThe interviewer should probe with \"What did you do?\" and \"How did you measure that?\" to elicit more information.",
+          "confidence": 0.8233,
+          "latency_ms": 18095,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.8,
+          "missing": [
+            [
+              "first person",
+              "first-person",
+              "your own",
+              "you personally"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A candidate who spends most of its time on background in a two-minute answer should restructure it to prioritize Action and Result, while still providing some context. Here's a step-by-step guide:\n\n1. **Identify the background information**: Review the candidate's original answer and identify the background information that's taking up most of the time. This could be details about the project, team, or specific events.\n2. **Extract the essential context**: Extract the essential context that's necessary to understand the situation, but can be summarized in 1-2 sentences. This will help the candidate to focus on the Action and Result.\n3. **Remove non-essential details**: Remove any non-essential details that aren't crucial to understanding the situation or Action. This might include specific dates, names, or minor events.\n4. **Rephrase the background**: Rephrase the background information to make it concise and to the point. Use phrases like \"As a result of the project's complexity\" or \"Given the team's constraints\" to provide context without getting bogged down in details.\n5. **Focus on Action and Result**: Emphasize the Action and Result sections, using phrases like \"I took the following actions\" or \"As a result of my actions, I achieved.\" Make sure to quantify the results wherever possible.\n6. **Use a more concise structure**: Use a more concise structure, such as the STAR format, to guide the candidate's answer. This will help them focus on the key elements of the story.\n\nExample:\n\nOriginal answer:\n\"I was working on a project with a tight deadline, and we had a team of 10 engineers. We were using a legacy system that was causing performance issues. The system was slow, and we were getting complaints from stakeholders. We had a meeting with the stakeholders to discuss the issues, and we decided to rewrite the system. I led the team to rewrite the system, and we worked for 2 weeks. We encountered some",
+          "confidence": 0.711,
+          "latency_ms": 20761,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Building a story bank is a crucial step in preparing for behavioral interviews. Here's a step-by-step guide on how a candidate can build a strong story bank:\n\n**Step 1: Identify Relevant Experiences**\nThe candidate starts by reflecting on their past experiences, both personal and professional, to identify relevant events that can be turned into stories. They consider experiences that demonstrate their skills, accomplishments, and behaviors that align with the STAR structure ( Situation, Task, Action, Result).\n\n**Step 2: Tagging and Categorization**\nThe candidate tags each story with the buckets it can answer, such as leadership, ambiguity, prioritization, and influence without authority. This allows them to reuse the same story across multiple questions. They also consider the eight situational buckets drawn from the interviewer, such as conflict, failure, and ownership.\n\n**Step 3: Refining the Story**\nThe candidate refines each story to ensure it meets the four-criterion story rubric: specificity, ownership, quantification, and lesson. They make sure the story has a clear and concise narrative, with a specific event, their own actions, measurable results, and a clear lesson learned.\n\n**Step 4: Quantification**\nThe candidate quantifies the results of their actions to provide concrete numbers and metrics. This helps to demonstrate the impact of their actions and makes the story more believable.\n\n**Step 5: Practice and Rehearsal**\nThe candidate practices telling the story, focusing on the facts rather than a script. They rehearse the story to ensure it survives probing and can be easily expanded upon.\n\n**Step 6: Review and Refine**\nThe candidate reviews their story bank regularly, refining and updating the stories as needed. They also seek feedback from others to improve the stories and ensure they are effective.\n\n**Step 7: Story Bank Maintenance**\nThe candidate maintains their story bank by regularly adding new stories, updating existing ones, and ensuring they remain relevant and up-to-date. This helps to",
+          "confidence": 0.7806,
+          "latency_ms": 20748,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Based on the reference notes, here are the probing questions an interviewer uses to test a behavioral story and what each tests:\n\n1. **\"What did you do?\"** - Tests: personal action, separates personal action from team action.\n2. **\"What would you do differently?\"** - Tests: lesson, self-awareness.\n3. **\"How did you measure that?\"** - Tests: quantification, honesty.\n4. **\"What did the other person think?\"** - Tests: empathy in conflict stories.\n5. **\"What happened next?\"** - Tests: whether the result is real and lasting.\n\nThese probing questions help the interviewer to delve deeper into the candidate's story, understand their thought process, and assess their skills and behaviors.",
+          "confidence": 0.8939,
+          "latency_ms": 21738,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 0.6667,
+          "missing": [
+            [
+              "first person",
+              "first-person",
+              "\"i\"",
+              "'i'"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The candidate is exhibiting the \"We\" only failure mode. \n\nThe interviewer should probe: \"What did you do?\"",
+          "confidence": 0.8005,
+          "latency_ms": 13342,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This candidate's response falls under the category of \"Fake failure\" as stated in the reference notes [1]. The candidate is describing a weakness without providing a real mistake with real consequences and a lesson. \n\nThe fix for this is to choose a real mistake with real consequences and a lesson, as mentioned in the same reference notes.",
+          "confidence": 0.6762,
+          "latency_ms": 5881,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 0.75,
+          "missing": [
+            [
+              "red flag"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's failure story attributes the missed deadline to the QA team being slow, which is a classic example of the \"Blaming Others\" failure mode. \n\nTo fix this, the candidate should own their part in the failure and name the lesson learned. The candidate should rewrite the story to take ownership of the planning mistake and describe the change made afterwards.",
+          "confidence": 0.7541,
+          "latency_ms": 4046,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 0.6667,
+          "missing": [
+            [
+              "follow-up",
+              "follow up",
+              "probing",
+              "probe"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's failure mode is **Over-rehearsed**. \n\nThe fix is to know the facts of the story well, not a script.",
+          "confidence": 0.8689,
+          "latency_ms": 4194,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Not covered.",
+          "confidence": 0.7487,
+          "latency_ms": 2765,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: sysdes - System design: scalability, caching, storage, consistency, distributed architecture",
+          "confidence": 0.7523,
+          "latency_ms": 1603,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: dsa - This question falls under the domain of algorithms and complexity analysis.",
+          "confidence": 0.7957,
+          "latency_ms": 1329,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: resume - rewriting resume bullets",
+          "confidence": 0.6691,
+          "latency_ms": 1466,
+          "error": null
+        }
+      ]
+    }
+  }
+}

@@ -16,7 +16,7 @@ from django.conf import settings
 from django.db import transaction
 
 from apps.experts import grounding
-from apps.experts.fleet import ExpertSpec, get_spec
+from apps.experts.fleet import FLEET, ExpertSpec, get_spec
 from apps.experts.models import Expert, ExpertVersion
 from apps.experts.nugen_client import ChatMessage, NugenClient, NugenError
 from apps.experts.prompts import build_system_prompt
@@ -54,6 +54,9 @@ def resolve_model_id(expert_key: str | None = None) -> str:
         expert = Expert.objects.filter(key=expert_key).select_related("current_version").first()
         if expert and expert.current_version and expert.current_version.nugen_model_id:
             return expert.current_version.nugen_model_id
+        spec = FLEET.get(expert_key)
+        if spec and spec.live_model_id:
+            return spec.live_model_id
     if settings.NUGEN_DEFAULT_MODEL:
         return settings.NUGEN_DEFAULT_MODEL
     raise NugenError("No model available: no live expert version and NUGEN_DEFAULT_MODEL is unset.")
@@ -65,18 +68,21 @@ def prepare_messages(
     expert_key: str | None,
     grounded: bool = True,
     system: str | None = None,
+    collaborative: bool = False,
+    exemplars: list[grounding.Section] | None = None,
 ) -> tuple[list[ChatMessage], list[grounding.Section]]:
     """Build the chat messages for an expert call.
 
     An explicit `system` overrides the lane prompt. Without an expert key the
-    prompt is sent as-is (default-model smoke tests).
+    prompt is sent as-is (default-model smoke tests). `exemplars` are approved
+    corrections from the learning loop, retrieved alongside the corpus.
     """
     sections: list[grounding.Section] = []
     if system is None and expert_key:
         spec = get_spec(expert_key)
         if grounded:
-            sections = grounding.retrieve(expert_key, prompt)
-        system = build_system_prompt(spec, sections)
+            sections = grounding.retrieve(expert_key, prompt, extra=exemplars)
+        system = build_system_prompt(spec, sections, collaborative=collaborative)
     messages: list[ChatMessage] = []
     if system:
         messages.append(ChatMessage(role="system", content=system))
@@ -93,6 +99,8 @@ def stream_answer(
     model_id: str | None = None,
     temperature: float = 0.2,
     max_tokens: int = 512,
+    collaborative: bool = False,
+    exemplars: list[grounding.Section] | None = None,
 ) -> Iterator[dict[str, Any]]:
     """Stream an expert answer as events.
 
@@ -101,7 +109,12 @@ def stream_answer(
     """
     model = model_id or resolve_model_id(expert_key)
     messages, sections = prepare_messages(
-        prompt=prompt, expert_key=expert_key, grounded=grounded, system=system
+        prompt=prompt,
+        expert_key=expert_key,
+        grounded=grounded,
+        system=system,
+        collaborative=collaborative,
+        exemplars=exemplars,
     )
     yield {
         "type": "meta",
@@ -129,6 +142,8 @@ def answer(
     model_id: str | None = None,
     temperature: float = 0.2,
     max_tokens: int = 512,
+    collaborative: bool = False,
+    exemplars: list[grounding.Section] | None = None,
 ) -> ExpertAnswer:
     """Collect a full expert answer (streams under the hood to avoid 504s)."""
     started = time.monotonic()
@@ -143,6 +158,8 @@ def answer(
         model_id=model_id,
         temperature=temperature,
         max_tokens=max_tokens,
+        collaborative=collaborative,
+        exemplars=exemplars,
     ):
         kind = event["type"]
         if kind == "meta":

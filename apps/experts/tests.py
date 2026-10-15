@@ -107,8 +107,9 @@ def test_error_hints():
 @pytest.mark.django_db
 @override_settings(NUGEN_DEFAULT_MODEL="base-fallback-model")
 def test_resolve_model_prefers_live_expert_then_default():
-    # With no expert, falls back to the default model.
-    assert services.resolve_model_id("dsa") == "base-fallback-model"
+    # No DB version: the fleet manifest's committed model, then the env default.
+    assert services.resolve_model_id("dsa") == "model_01m4zv707z9qzt7z"
+    assert services.resolve_model_id(None) == "base-fallback-model"
 
     expert = Expert.objects.create(key="dsa", lane="DSA")
     version = ExpertVersion.objects.create(

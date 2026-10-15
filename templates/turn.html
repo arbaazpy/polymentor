@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ turn.prompt|truncatechars:60 }} · PolyMentor{% endblock %}
+{% block content %}
+<div class="text-xs text-slate-500 mb-2">Permalink · {{ turn.created_at|date:"j M Y, H:i" }} · {{ turn.latency_ms }} ms</div>
+<h1 class="text-xl font-semibold mb-6">{{ turn.prompt }}</h1>
+<div id="result"></div>
+<p class="mt-8 text-sm"><a class="text-indigo-300 hover:underline" href="{% url 'home' %}">Ask another question →</a></p>
+{{ payload|json_script:"turn-data" }}
+{% endblock %}
+{% block scripts %}<script>PolyMentor.renderSaved(JSON.parse(document.getElementById("turn-data").textContent));</script>{% endblock %}
