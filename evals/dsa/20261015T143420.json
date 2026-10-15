@@ -1,0 +1,1520 @@
+{
+  "expert": "dsa",
+  "created_at": "2026-10-15T14:34:20+00:00",
+  "models": {
+    "base": "meta-llama/Llama-3.2-3B-Instruct",
+    "aligned": "model_01m4zv707z9qzt7z"
+  },
+  "pass_threshold": 0.75,
+  "num_questions": 20,
+  "modes": {
+    "base": {
+      "model": "meta-llama/Llama-3.2-3B-Instruct",
+      "grounded": false,
+      "summary": {
+        "overall": 0.495,
+        "pass_rate": 0.4,
+        "by_category": {
+          "abstention": 0.0,
+          "definition": 0.4833,
+          "distinction": 0.5333,
+          "failure": 0.6625,
+          "procedure": 0.5542
+        },
+        "confidence_when_pass": null,
+        "confidence_when_fail": null,
+        "p50_latency_ms": 23229,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "o(n^2)",
+              "o(n2)",
+              "quadratic",
+              "n^2"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The two-pointer pattern is a common technique used in algorithms to solve problems that involve finding a specific element or range of elements within a sorted array or list. It typically involves two pointers, one starting at the beginning of the data structure and another at the end, which are then moved towards each other to find the desired element or range.\n\nThe two-pointer pattern applies to problems that require finding a specific element or range of elements within a sorted array or list, such as:\n\n* Finding the first or last occurrence of an element\n* Finding the intersection of two sorted arrays\n* Finding the closest pair of elements in a sorted array\n* Merging two sorted lists\n\nThe two-pointer pattern reduces complexity by:\n\n* Reducing the search space: By moving the pointers towards each other, the search space is reduced, making it more efficient to find the desired element or range.\n* Avoiding unnecessary comparisons: By using two pointers, we can avoid comparing elements that are already known to be outside the desired range, reducing the number of comparisons required.\n* Improving time complexity: The time complexity of the two-pointer pattern is typically O(n), where n is the length of the data structure, making it a efficient solution for large datasets.\n\nFor example, in the problem of finding the first or last occurrence of an element in a sorted array, the two-pointer pattern can be used to reduce the time complexity from O(n) to O(n), where n is the length of the array.",
+          "confidence": null,
+          "latency_ms": 23726,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 0.2,
+          "missing": [
+            [
+              "contiguous"
+            ],
+            [
+              "shrink",
+              "contract"
+            ],
+            [
+              "left"
+            ],
+            [
+              "monoton",
+              "constraint"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The sliding window pattern is a common algorithmic technique used to solve problems that involve finding a subset of data within a larger dataset. It involves maintaining a \"window\" of elements that are considered relevant to the problem, and then moving this window over the dataset to find the desired solution.\n\nThe basic idea is to fix the size of the window and then move it over the data, at each position, to find the maximum/minimum/sum/other desired value within the window. This technique is particularly useful when the dataset is too large to fit into memory, or when the dataset is too large to process sequentially.\n\nThe sliding window pattern reduces complexity in several ways:\n\n1.  **Reduced number of operations**: By fixing the size of the window, we can reduce the number of operations required to process the dataset, as we only need to consider a fixed-size subset of the data at each position.\n2.  **Simplified data access**: The sliding window pattern allows us to access data in a more efficient manner, as we can use a single pointer to traverse the data and access the elements within the window.\n3.  **Improved cache locality**: By moving the window over the data, we can improve cache locality, which can lead to significant performance improvements.\n\nThe sliding window pattern is commonly used in problems such as:\n\n*   Maximum/Minimum Subarray Sum\n*   Longest Substring without repeating characters\n*   Maximum/Minimum Window Subarray\n*   Valid Parentheses\n*   Maximum/Minimum Window Sum\n\nThe time complexity of the sliding window pattern depends on the specific problem and the size of the window. However, in general, it can be O(n), where n is the size of the dataset, as we only need to traverse the data once.\n\nThe space complexity is typically O(1), as we only need to maintain a fixed-size window of data in memory.\n\nExample:\n\nSuppose we want to find the maximum sum of a subarray of size k",
+          "confidence": null,
+          "latency_ms": 8999,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 0.0,
+          "missing": [
+            [
+              "monoton"
+            ],
+            [
+              "predicate",
+              "feasib"
+            ],
+            [
+              "boundary",
+              "flip"
+            ],
+            [
+              "candidate",
+              "answer space",
+              "search space"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "**Binary Search**\n================\n\nBinary search is a fast search algorithm used to find an element in a sorted array or list by repeatedly dividing the search interval in half. It compares the target element to the middle element of the interval and eliminates half of the remaining elements in each iteration.\n\n**Condition for Applicability**\n-----------------------------\n\nBinary search is applicable when:\n\n1.  The input array or list is **sorted** in ascending or descending order.\n2.  The target element is an **exact match** for the value being searched.\n3.  The array or list is **large enough** to warrant a more efficient search algorithm than a linear search.\n\n**How it Works**\n----------------\n\nHere's a step-by-step explanation of the binary search algorithm:\n\n1.  Start with a sorted array or list of elements.\n2.  Find the middle index of the array or list.\n3.  Compare the middle element to the target element.\n4.  If the middle element is equal to the target element, return the index of the middle element.\n5.  If the middle element is less than the target element, repeat the process with the right half of the array or list.\n6.  If the middle element is greater than the target element, repeat the process with the left half of the array or list.\n7.  Continue this process until the target element is found or the search interval is empty.\n\n**Time and Space Complexity**\n---------------------------\n\nThe time complexity of binary search is O(log n), where n is the number of elements in the array or list. This is because the algorithm divides the search interval in half with each iteration, effectively reducing the number of elements to search by half.\n\nThe space complexity of binary search is O(1), as it only requires a constant amount of additional memory to store the middle index and the target element.",
+          "confidence": null,
+          "latency_ms": 17201,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 0.6,
+          "missing": [
+            [
+              "sequence"
+            ],
+            [
+              "o(n)"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Amortized complexity is a concept in computer science that refers to the average-case time or space complexity of an algorithm, taking into account the worst-case scenario. It's a way to analyze the performance of an algorithm that has varying time or space requirements depending on the input.\n\nIn the context of dynamic arrays, amortized complexity is used to analyze the cost of operations like insertions and deletions. The key idea is to consider the total cost of all operations over time, rather than just the cost of a single operation.\n\nHere's an example of a dynamic array implementation with amortized analysis:\n\n**Dynamic Array with Amortized Analysis**\n\n```python\nclass DynamicArray:\n    def __init__(self, initial_capacity=1):\n        self.capacity = initial_capacity\n        self.size = 0\n        self.array = [None] * self.capacity\n\n    def append(self, value):\n        if self.size == self.capacity:\n            self._resize(2 * self.capacity)\n        self.array[self.size] = value\n        self.size += 1\n\n    def _resize(self, new_capacity):\n        new_array = [None] * new_capacity\n        for i in range(self.size):\n            new_array[i] = self.array[i]\n        self.capacity = new_capacity\n        self.array = new_array\n\n    def delete(self, index):\n        if index < 0 or index >= self.size:\n            raise IndexError(\"Index out of bounds\")\n        for i in range(index, self.size - 1):\n            self.array[i] = self.array[i + 1]\n        self.size -= 1\n```\n\n**Amortized Analysis:**\n\n*   The `append` operation has an amortized time complexity of O(1), because we only resize the array when it's full, and the cost of resizing is spread across multiple append operations.\n*   The `delete` operation has an amortized time complexity of O(1), because we only need to shift",
+          "confidence": null,
+          "latency_ms": 23524,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 0.0,
+          "missing": [
+            [
+              "sorted",
+              "monoton"
+            ],
+            [
+              "contiguous"
+            ],
+            [
+              "shrink",
+              "contract"
+            ],
+            [
+              "pair",
+              "triplet"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The two-pointer pattern and the sliding window pattern are two related but distinct techniques used in algorithm design.\n\n**Two-Pointer Pattern:**\nThe two-pointer pattern involves using two pointers, typically two indices or iterators, to traverse and manipulate data structures such as arrays, linked lists, or trees. The two pointers are usually initialized to the start and end of the data structure, and then moved towards each other, often in a synchronized manner, to achieve a specific goal. The two-pointer pattern is commonly used in problems that require finding a specific element, removing elements, or rearranging data.\n\n**Sliding Window Pattern:**\nThe sliding window pattern is a variation of the two-pointer pattern that involves maintaining a \"window\" of elements within a data structure, and then moving this window over the data to find a solution. The key difference between the two patterns is that the sliding window pattern involves a fixed-size window, whereas the two-pointer pattern can be used with any size of data structure. The sliding window pattern is commonly used in problems that require finding a subset of elements within a larger dataset, such as finding the maximum sum of a subarray or the minimum window containing a specific element.\n\n**When to use each:**\n\n* Use the two-pointer pattern when:\n\t+ You need to find a specific element or perform an operation within a data structure without knowing the size of the data.\n\t+ You need to remove elements from a data structure.\n\t+ You need to rearrange data within a data structure.\n* Use the sliding window pattern when:\n\t+ You need to find a subset of elements within a larger dataset.\n\t+ You need to find the maximum or minimum value within a subset of elements.\n\t+ You need to find the sum or product of a subset of elements.\n\nIn summary, the two-pointer pattern is a more general technique that can be applied to any data structure, while the sliding window pattern is a specific variation that involves a fixed-size window.",
+          "confidence": null,
+          "latency_ms": 24015,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Memoization and tabulation are two techniques used in dynamic programming to optimize the solution of complex problems by breaking them down into smaller subproblems and storing the results of these subproblems to avoid redundant computation.\n\n**Memoization** is a technique where the results of expensive function calls are stored in a cache, so that if the function is called again with the same arguments, the cached result can be returned instead of recalculating it. This approach is particularly useful when the function has overlapping subproblems, where the solution to the larger problem depends on the solutions to the smaller subproblems. Memoization is typically implemented using a hash table or array to store the cached results.\n\n**Tabulation**, on the other hand, is a technique where the solution to a problem is built up from the bottom up, starting from the smallest subproblems and combining the solutions to these subproblems to solve the larger problem. In tabulation, the solution to each subproblem is computed and stored in a table, which is then used to compute the solution to the larger problem. Tabulation is often used for problems that have a clear bottom-up structure, such as the Fibonacci sequence or the Longest Common Subsequence problem.\n\nThe key differences between memoization and tabulation are:\n\n* Memoization is typically used for top-down problems, where the solution to the larger problem depends on the solutions to the smaller subproblems. Tabulation is used for bottom-up problems, where the solution to the larger problem is built up from the solutions to the smaller subproblems.\n* Memoization uses a cache to store the results of function calls, while tabulation uses a table to store the solutions to subproblems.\n\nBoth memoization and tabulation have a time complexity of O(n), where n is the size of the input, since they both avoid redundant computation by storing the results of subproblems. However, tabulation typically has a higher space complexity, since it requires a table to store the solutions to subproblems.",
+          "confidence": null,
+          "latency_ms": 26186,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 0.8,
+          "missing": [
+            [
+              "cycle",
+              "topolog",
+              "flood fill"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Breadth-First Search (BFS) and Depth-First Search (DFS) are two fundamental graph traversal algorithms used to explore or search through nodes in a graph or tree data structure.\n\n**Breadth-First Search (BFS):**\n\nBFS is a traversal algorithm that visits all the nodes at the present depth prior to moving on to nodes at the next depth level. It uses a queue data structure to keep track of nodes to be visited. BFS is best suited for finding the shortest path between two nodes in an unweighted graph, as it explores all the nodes at the current level before moving to the next level. This makes it particularly useful for finding the minimum spanning tree of a graph.\n\n**Depth-First Search (DFS):**\n\nDFS is a traversal algorithm that visits as far as possible along each branch before backtracking. It uses a stack data structure to keep track of nodes to be visited. DFS is best suited for finding connected components in a graph, as it can identify all the nodes in a connected component by traversing the graph depth-first.\n\n**Example Problem:**\n\n*   **BFS:** Finding the shortest path between two nodes in an unweighted graph. For instance, finding the shortest path between two cities in a road network.\n*   **DFS:** Finding connected components in a graph. For example, identifying all the nodes in a social network that are connected to a specific user.\n\n**Time and Space Complexity:**\n\n*   **BFS:** Time complexity: O(V + E), where V is the number of vertices and E is the number of edges. Space complexity: O(V), as we need to store the queue of nodes to be visited.\n*   **DFS:** Time complexity: O(V + E), where V is the number of vertices and E is the number of edges. Space complexity: O(V), as we need to store the recursion stack or the stack of nodes to be visited.",
+          "confidence": null,
+          "latency_ms": 25996,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 0.3333,
+          "missing": [
+            [
+              "two-pointer",
+              "two pointer"
+            ],
+            [
+              "sliding window"
+            ],
+            [
+              "prefix sum"
+            ],
+            [
+              "bfs",
+              "breadth"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Here are six common algorithmic patterns along with their triggers:\n\n1. **Divide and Conquer**: This pattern involves breaking down a complex problem into smaller sub-problems, solving each sub-problem, and then combining the solutions to solve the original problem. Trigger: Problems that can be divided into smaller sub-problems that have the same structure, such as merge sort, binary search, and fast Fourier transform.\n\n2. **Dynamic Programming**: This pattern involves breaking down a problem into smaller sub-problems, solving each sub-problem only once, and storing the solutions to sub-problems to avoid redundant computation. Trigger: Problems that have overlapping sub-problems, such as the Fibonacci sequence, longest common subsequence, and shortest path problems.\n\n3. **Greedy Algorithm**: This pattern involves making the locally optimal choice at each step, hoping that these local choices will lead to a global optimum solution. Trigger: Problems that have an optimal substructure, such as Huffman coding, activity selection, and the knapsack problem.\n\n4. **Backtracking**: This pattern involves trying all possible solutions to a problem, exploring each branch, and backtracking when a dead end is reached. Trigger: Problems that have a large search space, such as N-Queens, Sudoku, and the Traveling Salesman Problem.\n\n5. **Recursion**: This pattern involves solving a problem by breaking it down into smaller instances of the same problem, with the solution to the original problem being the solution to the recursive calls. Trigger: Problems that have a recursive structure, such as tree traversals, binary search, and recursive descent parsing.\n\n6. **Sorting and Searching**: This pattern involves finding an element in a sorted or unsorted list, or arranging elements in a sorted order. Trigger: Problems that require finding an element or arranging elements in a specific order, such as binary search, merge sort, and quicksort.",
+          "confidence": null,
+          "latency_ms": 25708,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 0.1667,
+          "missing": [
+            [
+              "feasib"
+            ],
+            [
+              "monoton",
+              "never worse"
+            ],
+            [
+              "max(",
+              "largest package",
+              "heaviest",
+              "maximum weight",
+              "max weight",
+              "max package"
+            ],
+            [
+              "sum("
+            ],
+            [
+              "greedy",
+              "simulat"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The problem of finding the minimum ship capacity to deliver all packages within D days is a classic example of a dynamic programming problem. \n\n**Problem Statement:**\nGiven a list of packages with their respective weights and a list of days, find the minimum ship capacity required to deliver all packages within D days.\n\n**Approach:**\nWe can use a dynamic programming approach to solve this problem. The idea is to use a 2D table to store the minimum capacity required for each day and each possible total weight.\n\nLet `dp[i][j]` represent the minimum capacity required to deliver the first `i` packages within `j` days. We initialize `dp[0][0] = 0` and `dp[0][j] = infinity` for all `j > 0`.\n\nWe then iterate over each package and each day. For each package, we consider two possibilities: \n\n1. We include the current package in the current day's shipment.\n2. We exclude the current package from the current day's shipment.\n\nWe choose the possibility that requires the minimum capacity. If we include the current package, we update `dp[i][j]` as the minimum of its current value and the capacity required to deliver the previous packages within the remaining days. If we exclude the current package, we update `dp[i][j]` as the minimum of its current value and the capacity required to deliver the previous packages within the same day.\n\n**Algorithm:**\n\n1. Initialize a 2D table `dp` with dimensions `(n+1) x (D+1)`, where `n` is the number of packages and `D` is the number of days.\n2. Set `dp[0][0] = 0` and `dp[0][j] = infinity` for all `j > 0`.\n3. Iterate over each package `i` from 1 to `n`.\n4. Iterate over each day `j` from",
+          "confidence": null,
+          "latency_ms": 25785,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.8,
+          "missing": [
+            [
+              "negative"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Kadane's algorithm is a dynamic programming approach to find the maximum sum of a subarray within a one-dimensional array of numbers. The algorithm works by iterating through the array and at each step, it decides whether to continue the current subarray or start a new one.\n\nHere's a step-by-step breakdown:\n\n1. Initialize two variables, `max_sum` and `current_sum`, to the first element of the array. `max_sum` stores the maximum sum found so far, and `current_sum` stores the sum of the current subarray.\n2. Iterate through the array starting from the second element (index 1).\n3. For each element, calculate the maximum of the current element and the sum of the current element and the previous `current_sum`. This is the key step where the algorithm decides whether to continue the current subarray or start a new one.\n4. Update `max_sum` if the new `current_sum` is greater than the current `max_sum`.\n5. After iterating through the entire array, `max_sum` will hold the maximum sum of a subarray.\n\nThe time complexity of Kadane's algorithm is O(n), where n is the length of the array, because it makes a single pass through the array. The space complexity is O(1), as it only uses a constant amount of space to store the `max_sum` and `current_sum` variables.\n\nThis algorithm is efficient because it only keeps track of the maximum sum seen so far, and it doesn't require any additional data structures. It's a great example of how dynamic programming can be used to solve a problem by breaking it down into smaller subproblems and solving each one only once.",
+          "confidence": null,
+          "latency_ms": 24649,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "The two-sum problem is a classic algorithmic challenge where we need to find two elements in a sorted array that add up to a given target sum. Here's a step-by-step solution using the two-pointer technique:\n\n**Problem Statement:**\nGiven a sorted array of integers `nums` and an integer `target`, return indices of the two numbers such that they add up to `target`. You may assume that each input would have exactly one solution, and return the indices that point to those elements.\n\n**Solution:**\n\n1. Initialize two pointers, `left` and `right`, to the start and end of the array, respectively.\n2. Calculate the sum of the elements at the `left` and `right` indices.\n3. If the sum is equal to the `target`, return the indices `left` and `right`.\n4. If the sum is less than the `target`, increment `left` to increase the sum.\n5. If the sum is greater than the `target`, decrement `right` to decrease the sum.\n6. Repeat steps 2-5 until `left` and `right` meet or cross each other.\n\n**Example:**\nInput: `nums = [2, 7, 11, 15], target = 9`\nOutput: `[0, 1]`\nExplanation: `nums[0] + nums[1] = 2 + 7 = 9`, so we return `[0, 1]`.\n\n**Time Complexity:** O(n), where n is the length of the input array. We only traverse the array once, using two pointers.\n\n**Space Complexity:** O(1), as we only use a constant amount of space to store the two pointers and the target sum.\n\nThis solution has a time complexity of O(n) because we only need to traverse the array once, and a space complexity of O(1) because we only use a constant amount of space.",
+          "confidence": null,
+          "latency_ms": 24843,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 0.25,
+          "missing": [
+            [
+              "one letter",
+              "single letter",
+              "one character",
+              "single character"
+            ],
+            [
+              "visited"
+            ],
+            [
+              "first time",
+              "first reach",
+              "first found"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The Word Ladder problem is a classic problem in graph theory and computer science, where we need to find the shortest sequence of single-character changes (insertions, deletions, or substitutions) to transform one word into another.\n\nBreadth-First Search (BFS) is an efficient algorithm to solve this problem. Here's why:\n\n**Why BFS?**\n\nBFS is suitable for this problem because it explores all the neighboring nodes (words) at the current level before moving on to the next level. This ensures that we find the shortest path (the shortest transformation) by avoiding cycles and dead ends.\n\n**How BFS works**\n\n1. We start with the initial word and add it to a queue.\n2. We then explore all the neighboring words of the current word by applying each possible single-character change (insertion, deletion, or substitution).\n3. For each neighboring word, we add it to the queue if it's not already present.\n4. We repeat steps 2-3 until the queue is empty, which means we've explored all possible transformations.\n\n**Example**\n\nSuppose we want to transform the word \"kitten\" into \"sitting\". The BFS traversal would be:\n\n1. Start with \"kitten\" in the queue.\n2. Explore neighboring words: \"kitten\" -> \"kitten\" (no change) -> \"kitten\" -> \"sitting\" (substitution: 'k' -> s')\n3. Add \"sitting\" to the queue.\n4. Explore neighboring words: \"kitten\" -> \"kitten\" (no change) -> \"kitten\" -> \"kitten\" (no change) -> \"kitten\" -> \"kitten\" (no change) -> \"kitten\" -> \"kitten\" (no change) -> \"kitten\" -> \"kitten\" (no change) -> \"kitten\" -> \"kitten\" (no change) -> \"kitten\" -> \"",
+          "confidence": null,
+          "latency_ms": 24796,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 0.4,
+          "missing": [
+            [
+              "round",
+              "floor"
+            ],
+            [
+              "never advance",
+              "not advance",
+              "doesn't advance",
+              "does not move",
+              "doesn't move",
+              "stuck",
+              "no progress"
+            ],
+            [
+              "shrink"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's binary search implementation has a failure mode known as \"infinite loop\" or \"infinite recursion\" due to the condition `l = mid` instead of `l = mid + 1`. \n\nThe reason is that when `l` equals `r`, the loop condition `l < r` is still true, causing the loop to continue indefinitely. This is because `l` is not being incremented, so it remains equal to `r` on the next iteration.\n\nTo fix this, the condition should be changed to `l = mid + 1`, ensuring that `l` is incremented after each iteration, preventing the loop from running indefinitely. The corrected binary search algorithm should be:\n\n```\nl = 0\nr = last index of the array\nwhile l < r:\n    mid = l + (r - l) // 2\n    if arr[mid] == target:\n        return mid\n    elif arr[mid] < target:\n        l = mid + 1\n    else:\n        r = mid - 1\n```\n\nTime complexity remains O(log n), and space complexity remains O(1), as it only uses a constant amount of space to store the indices and the target value.",
+          "confidence": null,
+          "latency_ms": 22847,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 0.5,
+          "missing": [
+            [
+              "shrink",
+              "contract"
+            ],
+            [
+              "constraint",
+              "invalid",
+              "violat"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A common mistake that causes a sliding-window solution to run in O(n^2) is when the inner loop is not properly bounded by the outer loop. \n\nFor example, consider a problem where you need to find the maximum sum of a subarray of size k within a given array. A naive implementation might look like this:\n\n```python\ndef max_sum_subarray(arr, k):\n    max_sum = float('-inf')\n    for i in range(len(arr)):\n        for j in range(i, len(arr)):\n            if j - i + 1 > k:\n                max_sum = max(max_sum, sum(arr[i:j+1]))\n    return max_sum\n```\n\nThis solution has a time complexity of O(n^2) because the inner loop runs for all possible subarrays of size k, resulting in a quadratic number of iterations.\n\nTo fix this, we need to ensure that the inner loop is bounded by the outer loop. We can do this by using two pointers, one starting at the beginning of the array and one at the end of the window. We then move the end pointer forward and adjust the start pointer accordingly to maintain the window size. Here's the corrected implementation:\n\n```python\ndef max_sum_subarray(arr, k):\n    max_sum = float('-inf')\n    window_sum = 0\n    left = 0\n    for right in range(len(arr)):\n        window_sum += arr[right]\n        if right - left + 1 > k:\n            window_sum -= arr[left]\n            left += 1\n        if right - left + 1 == k:\n            max_sum = max(max_sum, window_sum)\n    return max_sum\n```\n\nIn this corrected implementation, the time complexity is O(n), where n is the length of the array, because each element is visited at most twice (once by the left pointer and once by the right pointer). The space complexity is O(1) because we only use a constant amount of",
+          "confidence": null,
+          "latency_ms": 22935,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "The failure mode in this case is **Stack Overflow**. This occurs when the recursive function calls itself too many times, exceeding the maximum recursion depth allowed by the system, leading to a stack overflow error.\n\nThe fix for this issue is to use **Memoization** or **Dynamic Programming** to store and reuse the results of subproblems, avoiding redundant calculations. This can be achieved by:\n\n1. Storing the results of subproblems in a cache (e.g., an array or a hash table).\n2. Checking the cache before solving a subproblem, and returning the cached result if it exists.\n3. Using a bottom-up approach, where the solution to a larger problem is built from the solutions of smaller subproblems.\n\nBy using memoization or dynamic programming, we can avoid the exponential number of recursive calls and prevent the stack overflow error.\n\nExample: In the Fibonacci sequence problem, a naive recursive solution would have a time complexity of O(2^n) due to the overlapping subproblems. By using memoization, the time complexity can be reduced to O(n).",
+          "confidence": null,
+          "latency_ms": 18882,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 0.75,
+          "missing": [
+            [
+              "recurrence"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This is a classic issue known as the \"Non-Overlapping Subproblems\" problem, which is a common failure mode in dynamic programming (DP) problems.\n\nThe problem arises when the state in the DP table does not contain enough information to uniquely determine the optimal solution for a given subproblem. In other words, the state is not sufficient to uniquely identify the solution, making it impossible to transition from one state to another.\n\nTo fix this issue, you can use one of the following techniques:\n\n1. **Add more state**: If possible, add more information to the state so that it can uniquely determine the optimal solution for a given subproblem. This might involve adding more variables, arrays, or data structures to the state.\n2. **Use a different data structure**: If adding more state is not feasible, consider using a different data structure, such as a graph or a tree, to represent the problem. This can help to avoid the non-overlapping subproblems issue.\n3. **Use memoization with a different approach**: If the problem can be solved using a different approach, consider using memoization to store the results of subproblems. This can help to avoid the need for overlapping subproblems.\n4. **Use dynamic programming with a different algorithm**: If none of the above techniques work, consider using a different dynamic programming algorithm that is better suited to the problem. For example, if the problem involves finding the shortest path in a graph, consider using Dijkstra's algorithm or Bellman-Ford algorithm instead of dynamic programming.\n\nIn general, the key to fixing the non-overlapping subproblems issue is to identify the root cause of the problem and use a different approach or data structure to solve it.",
+          "confidence": null,
+          "latency_ms": 20922,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "dijkstra",
+              "k sorted",
+              "median",
+              "top k",
+              "top-k"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The data structure that provides O(log n) push and pop operations with O(1) access to the current min or max is a Binary Search Tree (BST) with a self-balancing property, specifically an AVL tree or a Red-Black tree.\n\nIn an AVL tree, each node has a balance factor that ensures the tree remains approximately balanced, which guarantees O(log n) time complexity for search, insert, and delete operations. This balance also allows for O(1) access to the minimum or maximum value in the tree.\n\nYou would use an AVL tree or a Red-Black tree when you need to maintain a sorted data structure that supports efficient insertion, deletion, and querying of the minimum or maximum value, such as in a priority queue, a heap, or a database index.\n\nTime complexity:\n- Insert: O(log n)\n- Delete: O(log n)\n- Search: O(log n)\n- Access to min/max: O(1)\n\nSpace complexity: O(n)",
+          "confidence": null,
+          "latency_ms": 16627,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "definition",
+          "score": 0.6,
+          "missing": [
+            [
+              "path compression"
+            ],
+            [
+              "rank",
+              "size"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Union-Find, also known as Disjoint-Set, is a data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets. It allows you to perform two main operations:\n\n1. `find(x)`: Returns the representative element (or root) of the subset that contains `x`.\n2. `union(x, y)`: Merges the subsets containing `x` and `y` into a single subset.\n\nThe amortized cost of Union-Find operations is O(α(n)), where α(n) is the inverse Ackermann function, which grows very slowly. This is because the cost of each operation is initially O(β(n)), where β(n) is the number of nodes in the tree, but the tree is rebalanced after each union operation, reducing the cost to O(α(n)).\n\nThe right choice for Union-Find is when you need to:\n\n* Check if two elements are in the same subset (e.g., in a graph, to detect cycles).\n* Perform a minimum spanning tree (MST) algorithm, where you need to union the subsets of each edge.\n* Solve problems like finding the connected components of a graph, or the strongly connected components of a directed graph.\n\nIn general, Union-Find is a good choice when you need to efficiently manage a set of elements that can be partitioned into disjoint subsets, and you need to perform frequent union and find operations.",
+          "confidence": null,
+          "latency_ms": 18537,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "sysdes",
+              "system design",
+              "system-design"
+            ]
+          ],
+          "forbidden_hit": "redis",
+          "answer": "To design a horizontally scalable rate limiter for an API, we can use a combination of distributed locking and a distributed data store. \n\nOne approach is to use a distributed lock manager like Redis or ZooKeeper to manage the locks, and a distributed data store like Redis or a NoSQL database to store the rate limiting information. \n\nHere's a high-level overview of the system:\n\n1. When a request is received, the API server checks if the request is within the allowed rate limit by querying the distributed data store. If the request is not within the limit, the server returns an error response.\n2. If the request is within the limit, the server acquires a lock on the rate limiting key using the distributed lock manager. This ensures that only one server can update the rate limiting information at a time.\n3. The server updates the rate limiting information in the distributed data store, including the timestamp of the last request and the number of requests made within the time window.\n4. The server then releases the lock on the rate limiting key, allowing other servers to update the rate limiting information.\n\nThis approach allows the system to scale horizontally by adding more servers to the cluster, as each server can handle requests independently and the distributed lock manager and data store can be replicated across multiple servers.\n\nTime complexity: O(1) for acquiring and releasing the lock, O(1) for updating the rate limiting information in the data store.\n\nSpace complexity: O(1) for the lock manager, O(1) for the rate limiting information in the data store.\n\nPattern: Distributed Lock Manager + Distributed Data Store.\n\nNote: This is a simplified example and may require additional features such as handling for cases where the system is under heavy load or has network partitions.",
+          "confidence": null,
+          "latency_ms": 18702,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "not covered",
+              "does not cover",
+              "doesn't cover",
+              "not in my notes",
+              "outside"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Dinic's algorithm is a popular method for computing the maximum flow in a flow network. It's an improvement over the Ford-Fulkerson algorithm, with a time complexity of O(max(n^2), where n is the number of vertices in the flow network. \n\nDinic's algorithm works by maintaining a residual graph, which is a graph that keeps track of the remaining capacities in the original graph. It iteratively finds augmenting paths in the residual graph using breadth-first search (BFS) and augments the flow along these paths. The algorithm terminates when no more augmenting paths can be found, at which point the maximum flow is the flow in the residual graph. \n\nThe key insight behind Dinic's algorithm is that it can handle capacities of zero, which is not possible with the Ford-Fulkerson algorithm. This makes it more efficient for certain types of flow problems.",
+          "confidence": null,
+          "latency_ms": 18223,
+          "error": null
+        }
+      ]
+    },
+    "base_grounded": {
+      "model": "meta-llama/Llama-3.2-3B-Instruct",
+      "grounded": true,
+      "summary": {
+        "overall": 0.7567,
+        "pass_rate": 0.7,
+        "by_category": {
+          "abstention": 0.5,
+          "definition": 0.8083,
+          "distinction": 0.9375,
+          "failure": 0.7125,
+          "procedure": 0.6708
+        },
+        "confidence_when_pass": null,
+        "confidence_when_fail": null,
+        "p50_latency_ms": 19058,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "pair",
+              "triplet"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The two-pointer pattern is a common algorithmic technique used to solve problems involving sorted or monotonic inputs. It involves using two indices, typically represented by pointers, to traverse the input data. The two pointers are initialized to the start and end of the input array or data structure, and then moved towards each other based on a comparison.\n\nThe two-pointer pattern applies to problems where we need to find a specific element, perform an operation on a range of elements, or count the number of elements that satisfy a certain condition. It is particularly useful when the input is sorted or monotonic, as it allows us to reduce the time complexity from O(n^2) to O(n).\n\nThe two-pointer pattern reduces complexity by taking advantage of the fact that the input is sorted or monotonic. By moving the pointers towards each other, we can eliminate half of the remaining elements at each step, effectively reducing the search space. This is because the pointers can be moved in a way that ensures that the elements at the two pointers are always in the correct order, allowing us to compare them efficiently.\n\nFor example, in a problem where we need to find the first and last occurrence of an element in a sorted array, we can use the two-pointer technique. We initialize one pointer to the start of the array and the other to the end, and then move them towards each other based on the comparison. When the pointers meet, we have found the first occurrence of the element. We then move the right pointer to the right until we find the last occurrence.\n\nThe time complexity of the two-pointer pattern is O(n), where n is the size of the input array. This is because we only need to traverse the array once, and the number of operations performed is proportional to the size of the input.\n\nHere is an example of how the two-pointer pattern can be used to solve a problem:\n\n```python\ndef find_first_last(arr, target):\n    left, right = 0, len(arr) -",
+          "confidence": null,
+          "latency_ms": 12639,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 0.6,
+          "missing": [
+            [
+              "contiguous"
+            ],
+            [
+              "o(n)",
+              "linear time"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The sliding window pattern is a common algorithmic technique used to solve problems that involve finding a subset of elements within a larger set, often with certain constraints. It involves maintaining a \"window\" of elements that moves over the larger set, examining the elements within the window to find a solution.\n\nThe key characteristic of the sliding window pattern is that the window is allowed to shrink from the left side, not the right side. This means that as the window moves to the right, the leftmost element is removed, and the rightmost element is added. This ensures that each element is processed at most once.\n\nThe sliding window pattern reduces complexity in two main ways:\n\n1.  **Reducing the number of comparisons**: By maintaining a window of fixed size, the number of comparisons required to examine all elements is reduced. This is particularly effective when the problem requires examining all elements within a certain range or with certain properties.\n2.  **Avoiding nested loops**: By using a single loop to iterate over the window, the sliding window pattern avoids the need for nested loops, which can significantly reduce the time complexity of the algorithm.\n\nThe sliding window pattern is commonly used in problems such as finding the maximum sum of a subarray, the minimum window containing a certain element, or the longest substring with a specific property.",
+          "confidence": null,
+          "latency_ms": 18460,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "boundary",
+              "flip"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Binary search on the answer is a technique used to find an element in a sorted array by repeatedly dividing the search interval in half. \n\nThe condition that makes binary search applicable is that the array must be sorted in ascending or descending order. This is because binary search relies on the fact that the array is sorted to determine which half of the array to search in next. If the array is not sorted, the algorithm will not work correctly.\n\nIn other words, binary search requires a monotone predicate over the answer space, meaning that the comparison function (e.g., comparison of two elements) must return the same result if the elements are equal, and different results if they are not. This is only possible if the array is sorted, as the comparison function can be based on the sorted order of the elements.",
+          "confidence": null,
+          "latency_ms": 3887,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Amortized complexity is the average cost per operation across a worst-case sequence of operations. It's a way to analyze the performance of an algorithm by considering the average cost of each operation, rather than just the cost of the worst-case scenario. This is useful for analyzing algorithms that have varying costs, such as dynamic arrays, where a single operation might be expensive, but the overall average cost is much lower.\n\nA classic example of amortized complexity is the dynamic array append operation. When you append an element to a dynamic array, the array may need to resize, which can be an expensive operation. However, if we analyze the cost of each individual append operation, we might see that it's O(n), where n is the current size of the array. But if we consider the average cost over a sequence of n operations, the cost of the resize operation is amortized to O(1), because the cost of the resize is spread across n operations.\n\nFor example, consider a dynamic array that starts with a size of 1 and doubles in size every time an element is appended. The first append operation takes O(n) time, where n is 1. The second append operation takes O(n) time, where n is 2. The third append operation takes O(n) time, where n is 4. The fourth append operation takes O(n) time, where n is 8. If we calculate the total cost of each operation, we get:\n\nOperation 1: O(1) (resize)\nOperation 2: O(2)\nOperation 3: O(4)\nOperation 4: O(8)\nOperation 5: O(16)\n\nThe total cost of the first 5 operations is O(1) + O(2) + O(4) + O(8) + O(16) = O(31). If we divide this by 5 operations, the average cost per operation is O(31/5) = O",
+          "confidence": null,
+          "latency_ms": 23415,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 0.75,
+          "missing": [
+            [
+              "contiguous"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The two-pointer pattern and the sliding window pattern are two distinct algorithmic patterns used to solve various problems efficiently.\n\nThe two-pointer pattern involves using two indices, typically starting from both ends of a sorted or monotonic input, and advancing them based on a comparison. This pattern is used to find a specific element, such as a pair or triplet, in an array or a similar data structure. The key characteristic of the two-pointer pattern is that the indices are advanced in a way that maintains the monotonicity of the input. This pattern reduces the time complexity from O(n^2) to O(n) when the predicate is monotone.\n\nOn the other hand, the sliding window pattern involves maintaining a subarray (or window) of a fixed size within the input array. The window is advanced based on a constraint, such as a minimum or maximum sum, and the pattern is used to find a specific subarray or to solve a problem that involves a range of values. The key characteristic of the sliding window pattern is that the window can shrink or expand as it moves through the input array, and the pattern is used to reduce the time complexity from O(n^2) to O(n) when the subarray constraint is monotone.\n\nTo summarize:\n\n* Use the two-pointer pattern when:\n\t+ You need to find a specific element or pair/triplet in a sorted or monotonic input.\n\t+ The input is sorted or monotonic.\n* Use the sliding window pattern when:\n\t+ You need to find a subarray that satisfies a specific constraint, such as a minimum or maximum sum.\n\t+ The subarray constraint is monotone.\n\nBoth patterns are used to reduce the time complexity of algorithms from O(n^2) to O(n), but they are used in different contexts and have different characteristics.",
+          "confidence": null,
+          "latency_ms": 22719,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Memoization and tabulation are two techniques used in dynamic programming to optimize the solution of problems by storing the results of subproblems to avoid redundant computation.\n\nMemoization is a top-down approach where the results of subproblems are stored in a cache (usually a hash map) as the function recurses. The cache is updated after each recursive call, and the results are reused when the same subproblem is encountered again. Memoization is typically used in recursive functions where the subproblems have overlapping subproblems.\n\nTabulation, on the other hand, is a bottom-up approach where the results of subproblems are stored in a table (usually a 2D array) and filled in a bottom-up manner. The table is filled in a way that each cell contains the result of the corresponding subproblem. Tabulation is typically used in iterative functions where the subproblems have overlapping subproblems.\n\nThe key differences between memoization and tabulation are:\n\n*   **Approach**: Memoization is a top-down approach, while tabulation is a bottom-up approach.\n*   **Cache**: Memoization uses a hash map, while tabulation uses a 2D array.\n*   **Update**: Memoization updates the cache after each recursive call, while tabulation fills the table in a bottom-up manner.\n\nHere's an example to illustrate the difference:\n\nSuppose we want to find the Fibonacci sequence using dynamic programming. A naive recursive approach would be:\n\n```python\ndef fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)\n```\n\nThis approach has an exponential time complexity due to the repeated computation of the same subproblems. We can optimize this using memoization:\n\n```python\ndef fibonacci(n, memo={}):\n    if n in memo:\n        return memo[n]\n    if n <= 1:\n        return n\n    result = fibonacci(n-1, memo) + fibonacci(n-2, memo)\n    memo[n",
+          "confidence": null,
+          "latency_ms": 25661,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Breadth-First Search (BFS) and Depth-First Search (DFS) are two fundamental graph traversal algorithms.\n\n**Breadth-First Search (BFS)**\n\nBFS is a traversal algorithm that explores all the nodes at the present depth prior to moving on to nodes at the next depth level. It uses a queue data structure to keep track of nodes to visit next. BFS is best suited for finding the shortest path between two nodes in an unweighted graph, detecting cycles, and performing flood fill operations.\n\n**Depth-First Search (DFS)**\n\nDFS is a traversal algorithm that explores as far as possible along each branch before backtracking. It uses a stack data structure to keep track of nodes to visit next. DFS is best suited for finding connected components in a graph, topological sorting, and solving problems that require exploring deeply.\n\nTo illustrate the difference, consider a graph with two nodes A and B connected by an edge. If we want to find the shortest path between A and B, BFS would explore all nodes at the current depth level before moving on to the next level, resulting in the path A -> B. On the other hand, DFS would explore as far as possible along the first branch (A -> C) before backtracking, resulting in the path A -> C -> B.\n\nTime complexity: BFS - O(V + E), DFS - O(V + E) in the worst case, where V is the number of vertices and E is the number of edges.\nSpace complexity: BFS - O(V), DFS - O(V) in the worst case.",
+          "confidence": null,
+          "latency_ms": 23916,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Here are the six named algorithmic patterns along with their triggers:\n\n1. **Two-pointer** - trigger: sorted array, pair/triplet sums, or comparing from both ends.\n2. **Sliding window** - trigger: longest/shortest contiguous subarray or substring meeting a constraint (sum, distinct characters, at-most-k).\n3. **Prefix sums** - trigger: many range-sum queries, or counting subarrays with a target sum.\n4. **Binary search on the answer** - trigger: \"minimum/maximum X such that a feasibility check passes\", where feasibility is monotone.\n5. **BFS / DFS** - trigger: shortest path in an unweighted graph (BFS), connectivity, cycle detection, topological order (DFS or Kahn's algorithm), or flood fill.\n6. **Dynamic programming** - trigger: optimal substructure plus overlapping subproblems; count-the-ways or optimize-a-value problems.",
+          "confidence": null,
+          "latency_ms": 20145,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 0.3333,
+          "missing": [
+            [
+              "feasib"
+            ],
+            [
+              "max(",
+              "largest package",
+              "heaviest",
+              "maximum weight",
+              "max weight",
+              "max package"
+            ],
+            [
+              "sum("
+            ],
+            [
+              "greedy",
+              "simulat"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To solve the problem of finding the minimum ship capacity to deliver all packages within D days using binary search on the answer, we need to define a monotone predicate over the answer space.\n\nLet's define the monotone predicate as follows: given a ship capacity C, is it possible to deliver all packages within D days?\n\nThe answer space is the set of all possible ship capacities. We want to find the minimum C such that the predicate is true.\n\nWe can represent the answer space as a range [0, ∞). We can define the monotone predicate as follows:\n\nf(C) = ∃(number of packages) ≤ D\n\nIn other words, the predicate is true if there exists a number of packages that can be delivered within D days with a ship capacity of C.\n\nWe can use binary search on the answer by repeatedly dividing the answer space in half and checking if the predicate is true for the midpoint.\n\nHere's the algorithm:\n\n1. Initialize the search range to [0, ∞).\n2. While the search range is not empty:\n   a. Calculate the midpoint C = (lower bound + upper bound) / 2.\n   b. Check if the predicate is true for C. If it is, update the upper bound to C. Otherwise, update the lower bound to C.\n3. The final answer is the lower bound of the search range.\n\nThe time complexity of this algorithm is O(log ∞) = O(log n), where n is the number of packages. The space complexity is O(1).\n\nThis algorithm is an example of binary search on the answer, where the monotone predicate is the existence of a number of packages that can be delivered within D days.",
+          "confidence": null,
+          "latency_ms": 18971,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.6,
+          "missing": [
+            [
+              "o(n)"
+            ],
+            [
+              "o(1)"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Kadane's algorithm is a linear-time algorithm for finding the maximum contiguous subarray sum within a one-dimensional array of numbers. The algorithm works by maintaining two variables: `best_ending_here` and `global_best`.\n\nInitially, `best_ending_here` is set to the first element of the array, and `global_best` is set to the first element as well. As we scan the array from left to right, we update `best_ending_here` to be the maximum of the current element and the sum of the current element and `best_ending_here`. This effectively decides whether to extend the current subarray or start a new one.\n\nThe key insight is that a prefix with a negative running sum can never help a future subarray, so we discard it. Therefore, we don't need to keep track of the previous `best_ending_here` value; we only need to keep track of the current `best_ending_here` and the global `best`.\n\nHere's a step-by-step example:\n\nSuppose we have the array `[3, -2, 5, -1, 4, 2, 1, -3, 3, 4]`. We initialize `best_ending_here` and `global_best` to 3.\n\n1. `x = 3`, `best_ending_here = 3`, `global_best = 3`\n2. `x = -2`, `best_ending_here = max(-2, 3 - 2) = 1`, `global_best = 3`\n3. `x = 5`, `best_ending_here = max(1, 1 + 5) = 6`, `global_best = 6`\n4. `x = -1`, `best_ending_here = max(6, 6 - 1) = 6`, `global_best = 6`\n5. `x = 4`, `best",
+          "confidence": null,
+          "latency_ms": 20706,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Let's walk through solving the two-sum problem on a sorted array using the two-pointer technique.\n\n**Problem Statement:**\nGiven a sorted array of integers and a target sum, find two elements in the array that add up to the target sum.\n\n**Pattern:** Two-pointer\n\n**Trigger:** Sorted array, pair/triplet sums, or comparing from both ends.\n\n**Step-by-Step Solution:**\n\n1. Initialize two pointers, one at the start of the array (`left`) and one at the end (`right`).\n2. Calculate the sum of the elements at the `left` and `right` indices.\n3. If the sum is equal to the target sum, return the pair of elements.\n4. If the sum is less than the target sum, move the `left` pointer to the right to increase the sum.\n5. If the sum is greater than the target sum, move the `right` pointer to the left to decrease the sum.\n6. Repeat steps 2-5 until the `left` pointer meets the `right` pointer.\n\n**Example:**\n\nInput: `arr = [2, 7, 11, 15], target = 9`\n\n* Initialize `left = 0` and `right = 3`\n* Calculate `arr[left] + arr[right] = 2 + 15 = 17` (greater than target)\n* Move `right` to `2` to decrease the sum\n* Calculate `arr[left] + arr[right] = 2 + 7 = 9` (equal to target)\n* Return the pair `(2, 7)`\n\n**Time Complexity:** O(n), where n is the length of the array, because each element is visited at most twice.\n\n**Space Complexity:** O(1), because only a constant amount of space is used to store the two pointers.\n\nThis solution is efficient because it takes advantage of the fact that the array is sorted, allowing us to",
+          "confidence": null,
+          "latency_ms": 25278,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 0.75,
+          "missing": [
+            [
+              "first time",
+              "first reach",
+              "first found"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The word ladder problem is a classic problem in graph theory, and BFS is the most efficient algorithm to solve it.\n\n**Why BFS?**\n\nThe key insight here is that we want to find the shortest transformation from the start word to the target word by changing one letter at a time. We can represent each word as a node in a graph, where two nodes are connected by an edge if the corresponding words differ by exactly one letter.\n\nThe reason BFS is the best choice for this problem is that it explores the graph in a way that minimizes the number of nodes visited. In a graph, BFS visits nodes in a layer-by-layer manner, starting from the source node (the start word). This ensures that we visit the closest nodes first, which are the ones that require the fewest transformations to reach the target word.\n\n**How BFS finds the shortest transformation**\n\nHere's a step-by-step explanation of how BFS finds the shortest transformation:\n\n1. We start with the start word as the source node.\n2. We mark the source node as visited and enqueue it.\n3. We dequeue a node (i.e., the next node to visit) from the queue.\n4. For each neighbor of the dequeued node, we check if it is the target word. If it is, we have found the shortest transformation.\n5. If not, we mark the neighbor as visited and enqueue it.\n6. We repeat steps 3-5 until we find the target word or the queue becomes empty.\n\nThe key insight here is that BFS explores the graph in a way that minimizes the number of nodes visited. By visiting the closest nodes first, we ensure that we find the shortest transformation.\n\n**Time and space complexity**\n\nThe time complexity of BFS is O(N), where N is the number of nodes in the graph. This is because we visit each node exactly once. The space complexity is also O(N), as we need to store the queue of nodes to visit.\n\n**Example**\n\nSuppose",
+          "confidence": null,
+          "latency_ms": 26611,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 0.6,
+          "missing": [
+            [
+              "round",
+              "floor"
+            ],
+            [
+              "never advance",
+              "not advance",
+              "doesn't advance",
+              "does not move",
+              "doesn't move",
+              "stuck",
+              "no progress"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's code is suffering from the **Binary search infinite loop** failure mode.\n\nThe fix is to advance past `mid` to the branch that excludes it, or use `l = mid + 1` / `r = mid`. This ensures that the search space strictly shrinks each iteration, preventing the loop from running indefinitely.",
+          "confidence": null,
+          "latency_ms": 19402,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 0.75,
+          "missing": [
+            [
+              "at most once",
+              "each element",
+              "once"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The common mistake that causes a sliding window solution to run in O(n^2) is forgetting to shrink the window from the left when the constraint breaks, leading to a situation where the window never advances and the algorithm degenerates to O(n^2).\n\nTo fix this, the window must shrink from the left as soon as the constraint breaks, ensuring that the window contracts and the algorithm remains efficient. This can be achieved by adding a check to see if the constraint is still satisfied when moving the left pointer to the next position, and if not, moving the left pointer to the next position and re-evaluating the constraint.",
+          "confidence": null,
+          "latency_ms": 13507,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 0.5,
+          "missing": [
+            [
+              "exponential"
+            ],
+            [
+              "overlapping",
+              "recomput",
+              "same subproblem"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This is an example of the **Recursion without memoization** failure mode.\n\nThe fix is to add memoization or convert the recursive solution to tabulation. Memoization involves storing the results of expensive function calls and reusing them when the same inputs occur again, preventing the need for redundant calculations. Tabulation is a bottom-up approach where the solution is built up from smaller subproblems, storing the results of each subproblem in an array or table to avoid recalculating them.",
+          "confidence": null,
+          "latency_ms": 6836,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This is a description of the **Wrong DP state** failure mode.\n\nThe problem is that the DP state is not capturing enough history, making it impossible or double-counting the transition. To fix this, the first step is to write the recurrence in words, and then name exactly the variables it depends on.\n\nIn other words, instead of jumping straight to writing the recurrence, try to break it down into smaller, more manageable pieces, and describe each step in words. This will help you identify what information the state needs to carry to make the transition valid.\n\nFor example, if you're trying to solve a problem using dynamic programming, ask yourself: \"What information do I need to know about the current state to make the transition to the next state?\" and \"What information do I need to know about the previous state to make the transition to the current state?\" By answering these questions, you can identify the necessary variables and ensure that your DP state is capturing enough history to make the transition valid.",
+          "confidence": null,
+          "latency_ms": 9769,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "dijkstra",
+              "k sorted",
+              "median",
+              "top k",
+              "top-k"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The data structure that provides O(log n) push and pop operations with O(1) access to the current min or max is a Binary Heap.\n\nA Binary Heap is a specialized tree-based data structure that satisfies the heap property: the parent node is either greater than (in a max heap) or less than (in a min heap) its child nodes. This property allows for efficient insertion and deletion of elements while maintaining the heap property.\n\nIn a Binary Heap, the time complexity of push (insertion) and pop (deletion) operations is O(log n), where n is the number of elements in the heap. This is because the heap is rearranged after each insertion or deletion, which can take up to log(n) time.\n\nThe O(1) access to the current min or max element is achieved by maintaining a reference to the root node, which is the minimum or maximum element in the heap, depending on the type of heap.\n\nBinary Heaps are commonly used in various applications, such as:\n\n* Priority Queues: to manage tasks or jobs with different priorities\n* Sorting algorithms: to implement heap sort or merge sort\n* Graph algorithms: to find the minimum spanning tree or the shortest path in a graph\n* Resource allocation: to manage resources with different priorities\n\nExample use cases:\n\n* A job scheduler that needs to prioritize tasks based on their urgency and deadlines\n* A compiler that needs to optimize the order of operations based on their priority\n* A network routing algorithm that needs to find the shortest path in a graph with different priority nodes\n\nTime complexity: O(log n) for push and pop operations, O(1) for access to the current min or max element.\nSpace complexity: O(n) for the heap itself.",
+          "confidence": null,
+          "latency_ms": 14667,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Union-find is a data structure that tracks a partition of elements into disjoint sets with near-constant operations. It is a fundamental data structure in computer science, used to solve various problems such as finding the parent of an element, checking if two elements are in the same set, and performing union and intersection operations.\n\nThe amortized cost of union-find is amortized alpha(n), which means that the average cost of a sequence of operations is constant, effectively making it an O(1) operation. This is achieved through the use of path compression and union by rank, which reduces the time complexity of subsequent operations.\n\nUnion-find is the right choice when you need to:\n\n*   Find the parent of an element: O(1) time complexity\n*   Check if two elements are in the same set: O(1) time complexity\n*   Perform union operation: O(alpha(n)) amortized time complexity\n*   Perform intersection operation: O(alpha(n)) amortized time complexity\n\nUnion-find is particularly useful in problems that require frequent union and intersection operations, such as:\n\n*   Connected components in a graph\n*   Minimum spanning tree\n*   Network connectivity\n*   Set operations in graph algorithms\n\nIt is also useful in problems that require fast membership testing, such as:\n\n*   Finding the representative of a set\n*   Checking if an element is in a set\n\nOverall, union-find is a powerful data structure that provides fast and efficient operations for solving a wide range of problems.",
+          "confidence": null,
+          "latency_ms": 19146,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: sysdes - System design: scalability, caching, storage, consistency, distributed architecture",
+          "confidence": null,
+          "latency_ms": 15124,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "not covered",
+              "does not cover",
+              "doesn't cover",
+              "not in my notes",
+              "outside"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: sysdes - System design: scaling, caching, consistency",
+          "confidence": null,
+          "latency_ms": 7710,
+          "error": null
+        }
+      ]
+    },
+    "aligned": {
+      "model": "model_01m4zv707z9qzt7z",
+      "grounded": false,
+      "summary": {
+        "overall": 0.5117,
+        "pass_rate": 0.35,
+        "by_category": {
+          "abstention": 0.0,
+          "definition": 0.475,
+          "distinction": 0.5458,
+          "failure": 0.725,
+          "procedure": 0.575
+        },
+        "confidence_when_pass": 0.8102,
+        "confidence_when_fail": 0.7896,
+        "p50_latency_ms": 21861,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 0.5,
+          "missing": [
+            [
+              "o(n^2)",
+              "o(n2)",
+              "quadratic",
+              "n^2"
+            ],
+            [
+              "pair",
+              "triplet"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The two-pointer pattern is a common technique used in algorithms to solve problems involving arrays, linked lists, or other sequential data structures. It involves using two pointers, typically one that traverses the data structure from one end (e.g., from the start or end) and another that traverses from the other end, meeting in the middle or at a specific point.\n\nThis pattern is particularly useful when we need to find a specific element, perform a comparison, or manipulate elements within a data structure. It reduces complexity by allowing us to:\n\n1. Traverse the data structure in a linear fashion, without having to iterate over the entire structure.\n2. Avoid unnecessary comparisons or operations by meeting the pointers in the middle or at a specific point.\n3. Simplify the code by reducing the number of conditional statements or loops.\n\nCommon applications of the two-pointer pattern include:\n\n* Finding the middle element of an array or linked list\n* Merging two sorted arrays or linked lists\n* Removing duplicates from an array or linked list\n* Checking for palindromes or anagrams\n\nTime complexity for the two-pointer pattern is typically O(n), where n is the size of the data structure, as we only traverse the structure once. Space complexity is usually O(1), as we only use a constant amount of extra memory to store the pointers.",
+          "confidence": 0.7475,
+          "latency_ms": 14092,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 0.2,
+          "missing": [
+            [
+              "contiguous"
+            ],
+            [
+              "shrink",
+              "contract"
+            ],
+            [
+              "left"
+            ],
+            [
+              "monoton",
+              "constraint"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The sliding window pattern is a common algorithmic technique used to solve problems that involve finding a subset of data within a larger dataset. It involves maintaining a \"window\" of elements that are considered relevant to the problem, and then moving this window over the dataset to find the desired solution.\n\nThe basic idea is to fix the size of the window and then move it over the dataset, at each position, considering the elements within the window. This technique is particularly useful when the problem requires finding a subset of elements that satisfy certain conditions, such as maximum sum, minimum value, or frequency.\n\nThe sliding window pattern reduces complexity in several ways:\n\n1.  **Reduced search space**: By fixing the size of the window, we reduce the search space from O(n) to O(k), where n is the size of the dataset and k is the size of the window.\n2.  **Avoidance of nested loops**: The sliding window pattern avoids the need for nested loops, which can significantly reduce the time complexity of the algorithm.\n3.  **Efficient use of memory**: By maintaining a window of elements, we can avoid storing the entire dataset in memory, which can be particularly useful for large datasets.\n\nCommon applications of the sliding window pattern include:\n\n*   Maximum/Minimum Subarray Sum\n*   Longest Substring without repeating characters\n*   Maximum/Minimum Window Substring\n*   Valid Parentheses\n*   Maximum/Minimum Window Sum\n\nTime complexity of the sliding window pattern depends on the specific problem and the operations performed within the window. However, in general, it can be O(n), O(k), or O(n + k), where n is the size of the dataset and k is the size of the window.",
+          "confidence": 0.77,
+          "latency_ms": 8056,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 0.0,
+          "missing": [
+            [
+              "monoton"
+            ],
+            [
+              "predicate",
+              "feasib"
+            ],
+            [
+              "boundary",
+              "flip"
+            ],
+            [
+              "candidate",
+              "answer space",
+              "search space"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Binary search is a fast search algorithm that finds the position of a target value within a sorted array. It works by repeatedly dividing the search interval in half. \n\nHere's the step-by-step process:\n\n1. Start with a sorted array and a target value to search for.\n2. Compare the target value with the middle element of the array.\n3. If the target value is less than the middle element, repeat the process with the left half of the array.\n4. If the target value is greater than the middle element, repeat the process with the right half of the array.\n5. Continue this process until the target value is found or the search interval is empty.\n\nBinary search is applicable when:\n\n- The input array is sorted in ascending or descending order.\n- The array is large enough to make the search interval smaller than 1 (i.e., the array has at least two elements).\n- The target value is an exact match for one of the elements in the array.\n\nTime complexity: O(log n), where n is the number of elements in the array. This is because with each iteration, the search interval is halved, effectively reducing the number of elements to search by half.\n\nSpace complexity: O(1), as only a constant amount of space is required to store the middle element and the current search interval.",
+          "confidence": 0.8333,
+          "latency_ms": 20138,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 0.6,
+          "missing": [
+            [
+              "sequence"
+            ],
+            [
+              "o(1)"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Amortized complexity refers to the average-case time or space complexity of an algorithm, taking into account the worst-case scenario. It's a way to analyze the performance of an algorithm that exhibits varying performance depending on the input. Amortized complexity is particularly useful for algorithms that have a high overhead or that perform well on average but poorly in the worst case.\n\nConsider a dynamic array implementation of a queue, where we add and remove elements. Initially, the array has a fixed capacity. When we add an element, we need to resize the array if it's full. This operation can be expensive. However, if we add many elements and then remove them, the array will be mostly empty, and resizing will be less frequent.\n\nLet's analyze the amortized complexity of this algorithm. Assume we add `n` elements to the queue. The worst-case scenario occurs when we add all `n` elements one by one, requiring `n` resizes. However, the average-case scenario occurs when we add `n` elements and then remove them, requiring only one resize. The total number of resizes is `n`, but the average cost per resize is `n/m`, where `m` is the average array size.\n\nUsing the concept of amortized analysis, we can calculate the average cost per element as follows:\n\nAverage cost per element = Total cost / Number of elements\n= (n * (n + m)) / n\n= n + m\n\nSince `m` is the average array size, we can assume it's proportional to `n`. Therefore, the average cost per element is approximately `2n`.\n\nTime complexity: O(n)\nSpace complexity: O(n)\n\nIn summary, the amortized complexity of this algorithm is O(n), which is the average-case time complexity.",
+          "confidence": 0.6856,
+          "latency_ms": 20171,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 0.25,
+          "missing": [
+            [
+              "contiguous"
+            ],
+            [
+              "shrink",
+              "contract"
+            ],
+            [
+              "pair",
+              "triplet"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The two-pointer pattern and the sliding window pattern are two related but distinct techniques used in algorithm design.\n\n**Two-Pointer Pattern:**\nThe two-pointer pattern involves using two pointers, typically two indices or iterators, to traverse and manipulate data structures, such as arrays, linked lists, or trees. The two pointers are usually initialized to the start and end of the data structure, and then moved towards each other, often in a synchronized manner, to achieve a specific goal. This pattern is commonly used in problems that require finding a specific element, removing elements, or rearranging data. The two-pointer pattern is often used in problems that involve:\n\n* Finding an element in a sorted array or linked list\n* Removing elements from a sorted array or linked list\n* Rearranging elements in a sorted array or linked list\n\n**Sliding Window Pattern:**\nThe sliding window pattern involves creating a \"window\" of elements that moves over the data structure, and analyzing the elements within that window. This pattern is often used in problems that require finding a subset of elements within a larger dataset, such as finding the maximum sum of a subarray or the minimum window containing a specific element. The sliding window pattern is commonly used in problems that involve:\n\n* Finding the maximum/minimum sum of a subarray\n* Finding the minimum window containing a specific element\n* Counting the frequency of elements within a window\n\n**Key differences:**\n\n* The two-pointer pattern focuses on manipulating individual elements, whereas the sliding window pattern focuses on analyzing a subset of elements.\n* The two-pointer pattern typically involves moving two pointers towards each other, whereas the sliding window pattern involves moving a single window over the data structure.\n\n**When to use each:**\n\n* Use the two-pointer pattern when you need to manipulate individual elements or rearrange data.\n* Use the sliding window pattern when you need to analyze a subset of elements or find a specific pattern within a larger dataset.\n\nTime and space complexity:\n\n* Two-pointer pattern: O",
+          "confidence": 0.8069,
+          "latency_ms": 23338,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 0.6,
+          "missing": [
+            [
+              "top-down",
+              "top down"
+            ],
+            [
+              "bottom-up",
+              "bottom up"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Memoization and tabulation are two techniques used in dynamic programming to optimize the solution of complex problems by breaking them down into smaller subproblems and storing their results to avoid redundant computation.\n\nMemoization is a technique where the results of expensive function calls are stored in a cache, so that if the function is called again with the same inputs, the cached result can be returned instead of recalculating it. This approach is particularly useful when the function has overlapping subproblems, where the solution to the larger problem depends on the solutions to the smaller subproblems. Memoization is typically implemented using a hash table or array to store the cached results.\n\nTabulation, on the other hand, is a technique where the solution to a problem is built up iteratively, row by row or column by column, using a table to store the intermediate results. Tabulation is often used for problems that have a grid-like structure, where each cell in the table represents a subproblem. The table is filled in row by row or column by column, using the values from the previous cells to compute the values for the current cell.\n\nKey differences between memoization and tabulation are:\n\n- Memoization is typically used for problems with overlapping subproblems, while tabulation is used for problems with a grid-like structure.\n- Memoization uses a hash table or array to store the cached results, while tabulation uses a table to store the intermediate results.\n- Memoization is often used for problems with a single input, while tabulation is used for problems with multiple inputs.\n\nExample: Fibonacci sequence using memoization and tabulation. \n\nMemoization:\n```python\ndef fibonacci(n, memo = {}):\n    if n <= 1:\n        return n\n    if n not in memo:\n        memo[n] = fibonacci(n-1) + fibonacci(n-2)\n    return memo[n]\n```\nTabulation:\n```python\ndef fibonacci(n):\n    fib = [0] * (n+1)\n    fib[",
+          "confidence": 0.8262,
+          "latency_ms": 26292,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Breadth-First Search (BFS) and Depth-First Search (DFS) are two fundamental graph traversal algorithms used to explore or search through nodes in a graph or tree data structure.\n\n**Breadth-First Search (BFS):**\n\nBFS traverses a graph level by level, starting from a given source node. It explores all the nodes at the current level before moving to the next level. This algorithm is best suited for finding the shortest path between two nodes in an unweighted graph, as it ensures that the path found is the shortest possible path. BFS is also useful for finding connected components in a graph, as it visits all nodes in a connected component before moving to the next one.\n\n**Depth-First Search (DFS):**\n\nDFS traverses a graph by exploring as far as possible along each branch before backtracking. It uses a stack or recursion to keep track of the nodes to visit next. DFS is best suited for finding a path between two nodes in a graph, especially when the graph is very large and the shortest path is not guaranteed to be the one with the fewest number of edges. DFS is also useful for topological sorting, finding strongly connected components, and detecting cycles in a graph.\n\n**Example Use Cases:**\n\n* BFS: Finding the shortest path between two nodes in a social network, where the goal is to find the minimum number of connections between two people.\n* DFS: Finding a path between two nodes in a maze, where the goal is to find a path from the entrance to the exit.\n\n**Time and Space Complexity:**\n\n* BFS: Time complexity: O(V + E), where V is the number of vertices and E is the number of edges. Space complexity: O(V), as we need to store the queue of nodes to visit.\n* DFS: Time complexity: O(V + E), where V is the number of vertices and E is the number of edges. Space complexity: O(V), as we need to",
+          "confidence": 0.8264,
+          "latency_ms": 27102,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 0.3333,
+          "missing": [
+            [
+              "two-pointer",
+              "two pointer"
+            ],
+            [
+              "sliding window"
+            ],
+            [
+              "prefix sum"
+            ],
+            [
+              "bfs",
+              "breadth"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Here are six named algorithmic patterns along with their triggers:\n\n1. **Divide and Conquer**: This pattern involves breaking down a complex problem into smaller sub-problems, solving each sub-problem, and then combining the solutions to solve the original problem. Trigger: Problems that can be divided into smaller sub-problems that have the same structure, such as merge sort, binary search, and fast Fourier transform.\n\n2. **Dynamic Programming**: This pattern involves breaking down a problem into smaller sub-problems, solving each sub-problem only once, and storing the solutions to sub-problems to avoid redundant computation. Trigger: Problems that have overlapping sub-problems, such as Fibonacci sequence, longest common subsequence, and shortest path problems.\n\n3. **Greedy Algorithm**: This pattern involves making the locally optimal choice at each step, hoping that it will lead to a global optimum solution. Trigger: Problems that have an optimal substructure, such as Huffman coding, activity selection, and fractional knapsack.\n\n4. **Backtracking**: This pattern involves exploring all possible solutions to a problem by recursively trying different choices and backtracking when a dead end is reached. Trigger: Problems that have a large search space, such as N-Queens, Sudoku, and traveling salesman problem.\n\n5. **Sorting**: This pattern involves arranging elements in a specific order, such as ascending or descending. Trigger: Problems that require ordering elements, such as sorting an array, finding the median, and nearest neighbor search.\n\n6. **Graph Algorithms**: This pattern involves traversing or manipulating graphs to solve problems, such as finding shortest paths, minimum spanning trees, and graph coloring. Trigger: Problems that involve graph structures, such as social network analysis, network routing, and network optimization.",
+          "confidence": 0.8392,
+          "latency_ms": 25809,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 0.1667,
+          "missing": [
+            [
+              "feasib"
+            ],
+            [
+              "monoton",
+              "never worse"
+            ],
+            [
+              "max(",
+              "largest package",
+              "heaviest",
+              "maximum weight",
+              "max weight",
+              "max package"
+            ],
+            [
+              "sum("
+            ],
+            [
+              "greedy",
+              "simulat"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Binary search is not directly applicable to the problem of finding the minimum ship capacity to deliver all packages within D days. However, we can use a modified version of binary search to solve this problem.\n\nLet's assume we have a list of packages with their respective weights and deadlines. We want to find the minimum ship capacity required to deliver all packages within D days.\n\nHere's a step-by-step approach:\n\n1. Sort the packages by their deadlines. This is because we want to prioritize packages with earlier deadlines.\n2. Initialize two pointers, `low` and `high`, to represent the range of possible capacities. We start with `low = 0` and `high = sum of all package weights`.\n3. Calculate the mid capacity `mid` as the average of `low` and `high`.\n4. Calculate the number of packages that can be delivered with the mid capacity. This can be done by iterating through the sorted list of packages and counting the number of packages that can be delivered within the mid capacity.\n5. If the number of packages that can be delivered is greater than or equal to the number of packages, we update `high` to `mid`. Otherwise, we update `low` to `mid + 1`.\n6. Repeat steps 3-5 until `low` and `high` converge.\n7. The minimum ship capacity is the value of `low` when `low` and `high` converge.\n\nTime complexity: O(n log m), where n is the number of packages and m is the sum of all package weights.\n\nSpace complexity: O(1), as we only use a constant amount of space to store the pointers and variables.\n\nThis approach is a variation of the binary search algorithm, where we're searching for the minimum capacity that can deliver all packages within D days.",
+          "confidence": 0.8214,
+          "latency_ms": 24985,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.8,
+          "missing": [
+            [
+              "negative"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Kadane's algorithm is a dynamic programming approach to find the maximum sum of a subarray within a one-dimensional array. It works by iterating through the array and at each step, it decides whether to continue the current subarray or start a new one. \n\nHere's a step-by-step breakdown:\n\n1. Initialize two variables, `max_sum` and `current_sum`, to the first element of the array. `max_sum` stores the maximum sum found so far, and `current_sum` stores the sum of the current subarray.\n\n2. Iterate through the array starting from the second element. For each element, calculate the maximum of the current element and the sum of the current element and the previous `current_sum`. This decision is based on whether including the current element in the subarray would increase the sum.\n\n3. Update `max_sum` if `current_sum` exceeds it.\n\n4. After iterating through the entire array, `max_sum` will hold the maximum sum of a subarray.\n\nTime complexity: O(n), where n is the number of elements in the array. This is because we make a single pass through the array.\n\nSpace complexity: O(1), as we only use a constant amount of space to store `max_sum` and `current_sum`.",
+          "confidence": 0.8661,
+          "latency_ms": 21954,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 0.8333,
+          "missing": [
+            [
+              "o(1)"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Two-Sum on a Sorted Array with Two Pointers\n=============================================\n\n**Problem Statement:**\nGiven a sorted array of integers and a target sum, find two elements that add up to the target sum.\n\n**Approach:**\nWe will use a two-pointer technique to solve this problem. The idea is to fix one pointer at the start of the array and another pointer at the end. We will then move the pointers towards each other based on the sum of the values at the pointers.\n\n**Step-by-Step Solution:**\n\n1. Initialize two pointers, `left` and `right`, to the start and end of the array, respectively.\n2. Calculate the sum of the values at the `left` and `right` indices.\n3. If the sum is equal to the target sum, return the indices of the two elements.\n4. If the sum is less than the target sum, move the `left` pointer to the right to increase the sum.\n5. If the sum is greater than the target sum, move the `right` pointer to the left to decrease the sum.\n6. Repeat steps 2-5 until the pointers meet or cross each other.\n\n**Example:**\n\nInput: `nums = [2, 7, 11, 15], target = 9`\nOutput: `[0, 1]`\n\n**Code:**\n```python\ndef two_sum(nums, target):\n    left, right = 0, len(nums) - 1\n    while left < right:\n        current_sum = nums[left] + nums[right]\n        if current_sum == target:\n            return [left, right]\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n```\n**Time Complexity:** O(n), where n is the length of the input array. We only traverse the array once, and the operations inside the loop are constant time.\n\n**Space Complexity:**",
+          "confidence": 0.9111,
+          "latency_ms": 23040,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 0.5,
+          "missing": [
+            [
+              "one letter",
+              "single letter",
+              "one character",
+              "single character"
+            ],
+            [
+              "first time",
+              "first reach",
+              "first found"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Word Ladder Problem:\nGiven two words, find a sequence of single-character edits (insertions, deletions, or substitutions) to transform one word into another. This is also known as the Word Ladder Problem.\n\nBreadth-First Search (BFS) is an efficient algorithm to solve this problem. Here's why:\n\n1. **Exploration Strategy**: BFS explores all the neighboring nodes at the current level before moving to the next level. In the context of the Word Ladder Problem, this means that BFS starts with the first word and generates all possible words by applying a single-character edit to it. It then moves on to the next level, exploring all possible words that can be reached by applying a single-character edit to the words in the previous level.\n\n2. **Shortest Path**: BFS guarantees to find the shortest transformation path between the two words because it explores all possible paths of a given length before moving on to longer paths. This is due to its breadth-first nature, where it visits all nodes at a given depth before moving on to the next depth level.\n\n3. **No Backtracking**: BFS does not backtrack, which means it does not revisit nodes that have already been explored. This is crucial in the Word Ladder Problem, as it prevents the algorithm from revisiting words that have already been visited, thus avoiding infinite loops.\n\n4. **Word Set**: BFS uses a set data structure to keep track of visited words. This ensures that each word is only visited once, preventing duplicate words from being added to the queue.\n\nHere's a high-level outline of the algorithm:\n\n1. Initialize a queue with the starting word.\n2. Initialize a set to keep track of visited words.\n3. While the queue is not empty:\n   a. Dequeue a word from the queue.\n   b. If the dequeued word is the target word, return the path.\n   c. Generate all possible words by applying a single-character edit to the dequeued word.",
+          "confidence": 0.7772,
+          "latency_ms": 23814,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 0.4,
+          "missing": [
+            [
+              "round",
+              "floor"
+            ],
+            [
+              "never advance",
+              "not advance",
+              "doesn't advance",
+              "does not move",
+              "doesn't move",
+              "stuck",
+              "no progress"
+            ],
+            [
+              "shrink"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's binary search implementation has a failure mode known as \"infinite loop\" or \"infinite recursion\" due to a logical error in the termination condition.\n\nThe issue lies in the line `l = mid`. This line is not updating the `l` variable correctly. It should be `l = l + 1` to move to the next index after finding the middle element. \n\nHere's the corrected code snippet:\n\n```python\ndef binary_search(arr, target):\n    l, r = 0, len(arr) - 1\n    while l <= r:\n        mid = (l + r) // 2  # Corrected line\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            l = mid + 1\n        else:\n            r = mid - 1\n    return -1  # Return -1 if target not found\n```\n\nTime complexity: O(log n)\nSpace complexity: O(1)",
+          "confidence": 0.8262,
+          "latency_ms": 22549,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 0.5,
+          "missing": [
+            [
+              "shrink",
+              "contract"
+            ],
+            [
+              "constraint",
+              "invalid",
+              "violat"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A common mistake that causes a sliding-window solution to run in O(n^2) is when the window size is not properly updated or when the window boundaries are not correctly checked.\n\nFor example, consider a problem where you need to find the maximum sum of a subarray of size k. A naive implementation might use a sliding window of size k, but it would iterate over the array n times, resulting in O(n^2) time complexity. This is because for each element, it checks all previous elements to update the window.\n\nTo fix this, you need to update the window boundaries correctly. One way to do this is to use two pointers, one at the start of the window and one at the end. As you move the end pointer, you need to remove the elements that are out of the window from the start pointer. This ensures that the window size remains constant, resulting in O(n) time complexity.\n\nHere's an example of how to implement this:\n\n```\ndef maxSubarraySum(nums, k):\n    max_sum = float('-inf')\n    window_sum = 0\n    left = 0\n    for right in range(len(nums)):\n        window_sum += nums[right]\n        while window_sum > max_sum and left <= right:\n            max_sum = max(max_sum, window_sum - nums[left])\n            left += 1\n        if right - left + 1 == k:\n            return max_sum\n```\n\nIn this code, `left` and `right` are the pointers, `window_sum` is the sum of the current window, and `max_sum` is the maximum sum found so far. The time complexity is O(n) because we only iterate over the array once, and the space complexity is O(1) because we only use a constant amount of space.",
+          "confidence": 0.8173,
+          "latency_ms": 21768,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This failure mode is known as **Stack Overflow**. It occurs when a recursive function calls itself too many times, exceeding the maximum recursion depth allowed by the system, leading to a stack overflow error.\n\nThe main reason for this in an overlapping-subproblem problem is that the recursive function is not properly memoizing (storing) the results of subproblems, causing it to recompute the same subproblems multiple times. This results in an exponential number of recursive calls, leading to a stack overflow.\n\nTo fix this, you can use **Memoization** techniques, such as:\n\n1. **Top-Down Dynamic Programming**: Store the results of subproblems in a cache (e.g., a hash table or array) and reuse them when the same subproblem is encountered again.\n2. **Bottom-Up Dynamic Programming**: Build up the solution from smaller subproblems and store the results in a cache.\n\nBy memoizing the results of subproblems, you can avoid redundant computations and prevent stack overflows.\n\nExample in Python:\n```python\ndef overlapping_subproblem(n, memo={}):\n    if n in memo:\n        return memo[n]\n    #... recursive logic...\n    memo[n] = result\n    return result\n```\nTime complexity: O(n) with memoization, O(2^n) without memoization.",
+          "confidence": 0.7715,
+          "latency_ms": 18803,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This is a classic issue known as the \"Non-Overlapping Subproblems\" problem. It occurs when a dynamic programming (DP) problem requires information that is not stored in the state, making it impossible to transition between states.\n\nTo fix this, you can use a technique called \"memoization\" or \"bottom-up dynamic programming with auxiliary information\". One common approach is to introduce an auxiliary variable that stores the required information, and update it as you transition between states.\n\nFor example, let's say you're trying to solve the \"Longest Common Subsequence\" problem, where you need to find the length of the longest common subsequence between two sequences. Without memoization, the state would only store the current subsequence, making it impossible to determine the length of the longest common subsequence.\n\nTo fix this, you can introduce an auxiliary variable `dp[i][j]` that stores the length of the longest common subsequence ending at position `i` in the first sequence and position `j` in the second sequence. As you transition between states, you update `dp[i][j]` using the following recurrence relation:\n\n`dp[i][j] = max(dp[i-1][j-1] + 1, dp[i-1][j], dp[i][j-1])`\n\nThis way, you can store the required information in the auxiliary variable `dp[i][j]` and transition between states correctly.\n\nTime complexity: O(n*m), where n and m are the lengths of the two sequences.\nSpace complexity: O(n*m), for the auxiliary variable `dp`.",
+          "confidence": 0.7905,
+          "latency_ms": 21428,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "dijkstra",
+              "k sorted",
+              "median",
+              "top k",
+              "top-k"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The data structure that gives O(log n) push and pop operations with O(1) access to the current min or max is a Binary Search Tree (BST) with a self-balancing property, specifically an AVL tree or a Red-Black tree.\n\nIn an AVL tree, each node has a balance factor, which is the difference between the heights of its left and right subtrees. The tree is self-balancing, meaning that when the balance factor becomes too large, the tree is rotated to restore balance. This ensures that search, insertion, and deletion operations remain efficient.\n\nRed-Black trees are another type of self-balancing BST. They use a set of rules to maintain balance, ensuring that the tree remains approximately balanced, which guarantees O(log n) time complexity for search, insert, and delete operations.\n\nYou would use these data structures when you need to maintain a sorted collection of elements and frequently perform search, insertion, or deletion operations. Examples include:\n\n- Database indexing: to quickly locate specific records\n- Priority queues: to manage tasks or events with varying priorities\n- Range queries: to efficiently retrieve a subset of elements within a specific range\n- Heap data structures: to implement priority queues or sorting algorithms\n\nTime complexity:\n- O(log n) for search, insert, and delete operations\n- O(1) for accessing the current min or max element\n\nSpace complexity: O(n) for storing the tree nodes.",
+          "confidence": 0.7554,
+          "latency_ms": 19652,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "definition",
+          "score": 0.8,
+          "missing": [
+            [
+              "rank",
+              "size"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Union-Find, also known as Disjoint-Set, is a data structure that keeps track of a set of elements partitioned into a number of disjoint (non-overlapping) subsets. It consists of two main operations: `find(x)` and `union(x, y)`. The `find(x)` operation returns the representative element of the subset that contains `x`, while the `union(x, y)` operation merges the subsets containing `x` and `y`.\n\nAmortized cost of Union-Find operations:\n- `find(x)` has an amortized cost of O(1) because it only needs to traverse the path from `x` to the root of its subset, which is typically stored in a path compression data structure like a binary tree or a linked list.\n- `union(x, y)` has an amortized cost of O(α(n)), where α(n) is the inverse Ackermann function, which grows very slowly. This is because each `union` operation involves finding the roots of `x` and `y`, which can be expensive, but these costs are spread across multiple `find` operations.\n\nUnion-Find is the right choice when:\n\n- You need to efficiently manage a collection of elements that have a natural notion of \"connectedness\" or \"belonging\" to a group.\n- You need to perform frequent `find` operations, as they are typically faster than `union` operations.\n- You need to efficiently merge multiple subsets into a single subset.\n\nExamples of use cases include:\n- Network connectivity problems, where you want to group nodes into connected components.\n- Set operations, such as finding the union of multiple sets.\n- Data deduplication, where you want to group duplicate elements into a single subset.",
+          "confidence": 0.7502,
+          "latency_ms": 21602,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "sysdes",
+              "system design",
+              "system-design"
+            ]
+          ],
+          "forbidden_hit": "token bucket",
+          "answer": "To design a horizontally scalable rate limiter for an API, we can use a combination of distributed locking and a distributed hash table (DHT) to achieve high scalability and fault tolerance.\n\nHere's a high-level overview of the design:\n\n1. **Distributed Locking**: We'll use a distributed locking mechanism, such as Redis or ZooKeeper, to ensure that only one instance can process a request at a time. This prevents multiple instances from incrementing the counter simultaneously, which could lead to incorrect rate limiting.\n2. **Distributed Hash Table (DHT)**: We'll use a DHT, such as Chord or Kademlia, to store the rate limiting information. Each node in the DHT will store a portion of the rate limiting data, and the nodes will work together to maintain the overall rate limiting state.\n3. **Sharding**: To further scale the system horizontally, we'll use sharding to distribute the rate limiting data across multiple nodes. Each node will be responsible for a subset of the rate limiting data, and the nodes will communicate with each other to ensure that the rate limiting state is consistent across the system.\n4. **Rate Limiting Algorithm**: We'll use a simple rate limiting algorithm, such as a token bucket algorithm, to enforce the rate limit. Each node will maintain a bucket of tokens, and when a request is made, the node will check if there are enough tokens in the bucket. If there are, the node will decrement the bucket and allow the request to proceed. If there aren't, the node will block the request until the bucket is refilled.\n\nTime complexity:\n\n* Distributed locking: O(1) (amortized)\n* DHT operations: O(log n) (amortized)\n* Sharding: O(1) (amortized)\n* Rate limiting algorithm: O(1) (per request)\n\nSpace complexity:\n\n* Distributed locking: O(n) (per node)\n* DHT: O",
+          "confidence": 0.8069,
+          "latency_ms": 23259,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "not covered",
+              "does not cover",
+              "doesn't cover",
+              "not in my notes",
+              "outside"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Dinic's algorithm is a popular method for computing the maximum flow in a flow network. It's an improvement over the Ford-Fulkerson algorithm, with a time complexity of O(max(n^2), where n is the number of vertices in the flow network. \n\nDinic's algorithm works by maintaining a residual graph, which is a graph that keeps track of the remaining capacities in the original graph. It iteratively finds augmenting paths in the residual graph using breadth-first search (BFS) and augments the flow along these paths. \n\nThe algorithm terminates when no more augmenting paths can be found, at which point the maximum flow is the flow in the residual graph. Dinic's algorithm is particularly useful for finding maximum flows in networks with capacity constraints and is widely used in various applications, including network optimization and resource allocation.",
+          "confidence": 0.707,
+          "latency_ms": 20594,
+          "error": null
+        }
+      ]
+    },
+    "aligned_grounded": {
+      "model": "model_01m4zv707z9qzt7z",
+      "grounded": true,
+      "summary": {
+        "overall": 0.8117,
+        "pass_rate": 0.75,
+        "by_category": {
+          "abstention": 0.5,
+          "definition": 0.8583,
+          "distinction": 1.0,
+          "failure": 0.85,
+          "procedure": 0.6708
+        },
+        "confidence_when_pass": 0.8048,
+        "confidence_when_fail": 0.8282,
+        "p50_latency_ms": 18869,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "pair",
+              "triplet"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The two-pointer pattern is a common algorithmic technique used to solve problems involving sorted or monotonic input arrays or sequences. It involves using two indices, typically named `left` and `right`, to traverse the input data.\n\n**Pattern:** Two-pointer pattern\n\n**When it applies:**\n\n1. **Sorted or monotonic input**: The input array or sequence is sorted in ascending or descending order, or the elements are monotonic (i.e., either always increasing or always decreasing).\n2. **Linear search or traversal**: The goal is to find a specific element, perform a linear scan, or traverse the input data in a specific order.\n\n**Why it reduces complexity:**\n\nBy using two pointers, we can reduce the time complexity of certain algorithms from O(n^2) to O(n). Here's why:\n\n* When the input is sorted or monotonic, we can compare elements at the `left` and `right` indices and move the pointer that points to the smaller (or larger) element. This ensures that we visit each element at most once, reducing the number of comparisons.\n* By always allowing the `left` pointer to shrink, we avoid revisiting elements that have already been processed, which further reduces the number of comparisons.\n\n**Example:** Finding the first duplicate in an array using the two-pointer technique.\n\n```markdown\nInput: [1, 2, 3, 4, 5, 2, 7, 8, 9]\n```\n\n* Initialize `left` to 0 and `right` to 9.\n* Compare `arr[left]` and `arr[right]`. If they are equal, we found a duplicate.\n* If `arr[left] < arr[right]`, move `left` to `left + 1`.\n* If `arr[left] > arr[right]`, move `right` to `right - 1`.\n* Repeat until `left >= right`.\n\nTime complexity: O(n), where n",
+          "confidence": 0.7959,
+          "latency_ms": 12404,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 0.8,
+          "missing": [
+            [
+              "left"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "The sliding window pattern is a common algorithmic technique used to solve problems that involve finding a subset of elements within a larger set, often with constraints on the size or structure of the subset. It typically involves maintaining a \"window\" of elements that moves over the input data, expanding or shrinking as necessary to satisfy the problem constraints.\n\nThe sliding window pattern reduces complexity in two main scenarios:\n\n1. **Reducing time complexity from O(n^2) to O(n)**: When the problem requires finding a subset of elements that satisfy certain conditions, and the subset is constrained to be contiguous. For example, finding the maximum sum of a subarray of size k in an array. By maintaining a window of size k, we can avoid checking every pair of elements, reducing the time complexity from O(n^2) to O(n).\n2. **Reducing space complexity from O(n)**: When the problem requires finding a subset of elements that satisfy certain conditions, and the subset is not necessarily contiguous. For example, finding the maximum sum of a subarray of size k in an array, where k can be any size. By maintaining a window of size k, we can avoid storing the entire array, reducing the space complexity from O(n) to O(1).\n\nIn both cases, the key insight is to maintain a window of elements that can be expanded or shrunk as necessary to satisfy the problem constraints. By doing so, we can avoid checking every element in the input data, reducing the time and space complexity of the algorithm.",
+          "confidence": 0.7822,
+          "latency_ms": 19491,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Binary search on the answer is a technique used to find an element in a sorted array by repeatedly dividing the search interval in half. It's applicable when the answer space is a sorted array, and we have a monotone predicate (a function that returns true or false) that defines the condition for the answer.\n\nIn other words, binary search is applicable when we have a sorted array and a predicate that says \"is this element in the array?\" or \"is this element greater than/less than the current element?\" or any other monotone condition. The binary search algorithm works by repeatedly dividing the search interval in half and searching for the boundary where the predicate flips from false to true.",
+          "confidence": 0.7137,
+          "latency_ms": 3365,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Amortized complexity is the average cost per operation across a worst-case sequence of operations. It's a way to analyze the cost of a sequence of operations by considering the average cost per operation, rather than just the cost of a single operation in the worst case.\n\nA classic example of amortized complexity is the dynamic array append operation. When you append an element to a dynamic array, it may trigger a resize operation, which can be expensive. However, if we consider the amortized cost, we can see that the average cost per append operation is O(1), even though the cost of a single resize operation is O(n).\n\nHere's why: when the array is full, the resize operation can be expensive, but it only happens once every k appends. So, the average cost per append operation is the cost of the resize operation divided by k, which is O(1). This is an example of amortized O(1) complexity.\n\nTo illustrate this, consider the following sequence of operations:\n\n1. Append 1, 2, 3,..., k-1 (no resize)\n2. Append k (resize, O(n) cost)\n3. Append k+1, k+2,..., 2k-1 (no resize)\n4. Append 2k (resize, O(n) cost)\n5. Append 2k+1, 2k+2,..., 3k-1 (no resize)\n6. Append 3k (resize, O(n) cost)\n\nThe total cost of these operations is O(n) + O(n) + O(n) + O(n) = O(4n), but the average cost per append operation is O(1), since the cost of the resize operations is spread across 4 appends.\n\nTime complexity: O(1) amortized\nSpace complexity: O(1) amortized",
+          "confidence": 0.7985,
+          "latency_ms": 24907,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "The two-pointer pattern and the sliding window pattern are two distinct algorithmic patterns used to solve various problems. While they share some similarities, they serve different purposes and are used in different scenarios.\n\n**Two-Pointer Pattern:**\nThe two-pointer pattern involves using two indices, typically starting from both ends of an array or a sorted input, to traverse the data. Each pointer advances on a comparison, reducing the time complexity from O(n^2) to O(n) when the predicate is monotone. This pattern is useful when:\n\n* You need to find a pair or triplet by value in a sorted input.\n* You need to find the minimum or maximum value within a range.\n* You need to find the first or last occurrence of a specific element.\n\nExample: Find the middle element of a sorted array.\n\n**Sliding Window Pattern:**\nThe sliding window pattern involves maintaining a fixed-size window over a data structure, typically an array or a string, and moving it over the input. This pattern reduces O(n^2) to O(n) when the subarray constraint is monotone. The window can shrink from the left once it becomes invalid, ensuring each element enters and leaves the window at most once. This pattern is useful when:\n\n* You need to find the longest or shortest contiguous run under a constraint.\n* You need to find the sum of all elements within a range.\n* You need to find the minimum or maximum value within a range.\n\nKey differences:\n\n* The two-pointer pattern focuses on finding a specific element or range, whereas the sliding window pattern focuses on finding a range or a contiguous subarray.\n* The two-pointer pattern typically uses two indices, while the sliding window pattern uses a fixed-size window.\n* The two-pointer pattern is often used for finding a single element or a small range, whereas the sliding window pattern is used for finding a larger range or a contiguous subarray.\n\nIn summary, if you need to find a specific element or a small range, use the",
+          "confidence": 0.806,
+          "latency_ms": 25022,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Memoization and tabulation are both techniques used in dynamic programming to avoid redundant calculations by storing the results of subproblems. However, they differ in their approach and implementation.\n\nMemoization is a top-down approach where the results of subproblems are stored in a cache (usually a hash map) as they are computed. This way, if a subproblem is encountered again, the result can be retrieved directly from the cache instead of recomputing it. Memoization is typically used in recursive functions where the function calls itself with different parameters.\n\nTabulation, on the other hand, is a bottom-up approach where the results of subproblems are stored in a table (usually a 2D array) as they are computed. This way, if a subproblem is encountered again, the result can be retrieved directly from the table instead of recomputing it. Tabulation is typically used in iterative functions where the function iterates over the input and fills up the table.\n\nTo illustrate the difference, consider the Fibonacci sequence problem. Memoization would involve storing the Fibonacci numbers as they are computed, like this:\n\n```\nF(0) = 0\nF(1) = 1\nF(2) = F(1) + F(0) = 1\nF(3) = F(2) + F(1) = 2\nF(4) = F(3) + F(2) = 3\n```\n\nIn this example, the result of F(2) is stored in the cache, so if F(3) is computed, it can be retrieved directly from the cache instead of recomputing it.\n\nOn the other hand, tabulation would involve filling up a table with the Fibonacci numbers, like this:\n\n```\nF[0] = 0\nF[1] = 1\nF[2] = F[1] + F[0] = 1\nF[3] = F[2",
+          "confidence": 0.8381,
+          "latency_ms": 27073,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Breadth-First Search (BFS) and Depth-First Search (DFS) are two fundamental graph traversal algorithms. The key difference between them lies in the order in which they explore the graph.\n\n**Breadth-First Search (BFS)**: BFS explores all the nodes at a given depth level before moving on to the next level. It uses a queue data structure to keep track of nodes to visit next. BFS is best suited for finding the shortest path between two nodes in an unweighted graph, detecting cycles, and performing flood fill operations.\n\n**Depth-First Search (DFS)**: DFS explores as far as possible along each branch before backtracking. It uses a stack data structure to keep track of nodes to visit next. DFS is best suited for finding connected components in a graph, topological sorting, and solving mazes.\n\nIn summary, BFS is ideal for finding the shortest path in an unweighted graph, while DFS is better suited for finding connected components or topological ordering.",
+          "confidence": 0.8526,
+          "latency_ms": 22958,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Here are the six named algorithmic patterns along with their triggers:\n\n1. **Two-pointer** - trigger: sorted array, pair/triplet sums, or comparing from both ends.\n2. **Sliding window** - trigger: longest/shortest contiguous subarray or substring meeting a constraint (sum, distinct characters, at-most-k).\n3. **Prefix sums** - trigger: many range-sum queries, or counting subarrays with a target sum.\n4. **Binary search on the answer** - trigger: \"minimum/maximum X such that a feasibility check passes\", where feasibility is monotone.\n5. **BFS / DFS** - trigger: shortest path in an unweighted graph (BFS), connectivity, cycle detection, topological order (DFS or Kahn's algorithm), or flood fill.\n6. **Dynamic programming** - trigger: optimal substructure plus overlapping subproblems; count-the-ways or optimize-a-value problems.",
+          "confidence": 0.9737,
+          "latency_ms": 18247,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 0.3333,
+          "missing": [
+            [
+              "feasib"
+            ],
+            [
+              "max(",
+              "largest package",
+              "heaviest",
+              "maximum weight",
+              "max weight",
+              "max package"
+            ],
+            [
+              "sum("
+            ],
+            [
+              "greedy",
+              "simulat"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To solve the problem of finding the minimum ship capacity to deliver all packages within D days using binary search on the answer, we need to define a monotone predicate over the answer space.\n\nLet's define the monotone predicate as follows: given a ship capacity C, is it possible to deliver all packages within D days?\n\nWe can represent the answer space as a range [0, ∞), where C is the minimum ship capacity required. We want to find the smallest C such that the answer is true.\n\nWe can use binary search to find this C. We start with a range [0, ∞) and repeatedly divide it in half. For each half, we check if it's possible to deliver all packages within D days. If it is, we know that the answer is true for all values in this half, so we can discard this half. If it's not, we know that the answer is false for all values in this half, so we can discard this half as well.\n\nHere's a high-level outline of the algorithm:\n\n1. Initialize the range [L, R] = [0, ∞), where L is the minimum possible ship capacity and R is the maximum possible ship capacity.\n2. While L < R:\n   a. Calculate the midpoint M = (L + R) / 2.\n   b. Check if it's possible to deliver all packages within D days with ship capacity M.\n   c. If it is, update L = M. Otherwise, update R = M.\n3. Return L as the minimum ship capacity.\n\nTime complexity: O(log ∞) = O(log D), since we're dividing the range in half at each step.\n\nSpace complexity: O(1), since we only need to keep track of the current range [L, R].\n\nThis algorithm is a classic example of binary search on the answer, where we're searching for the smallest value that satisfies a monotone predicate.",
+          "confidence": 0.8072,
+          "latency_ms": 18081,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.6,
+          "missing": [
+            [
+              "o(1)"
+            ],
+            [
+              "negative"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Kadane's algorithm is a linear-time algorithm for finding the maximum contiguous subarray sum within a one-dimensional array of numbers. Here's a step-by-step walkthrough of the algorithm:\n\n**Algorithm:**\n\n1. Initialize two variables: `best_ending_here` and `global_best`. `best_ending_here` stores the maximum sum of the subarray ending at the current position, and `global_best` stores the maximum sum of all subarrays seen so far.\n2. Iterate through the array from left to right. For each element `x` at position `i`, calculate `best_ending_here` as the maximum of `x` and `best_ending_here + x`. This effectively decides whether to extend the current subarray or start a new one.\n3. After processing each element, update `global_best` if `best_ending_here` is greater than `global_best`.\n\n**Example Walkthrough:**\n\nSuppose we have the array `[3, -2, 5, -1, 4, 2, 1, -3, 3]`. Here's how Kadane's algorithm would process it:\n\n| Position | x | best_ending_here | global_best |\n| --- | --- | --- | --- |\n| 0 | 3 | 3 | 3 |\n| 1 | -2 | -2 | 3 |\n| 2 | 5 | 5 | 5 |\n| 3 | -1 | 4 | 5 |\n| 4 | 4 | 8 | 8 |\n| 5 | 2 | 10 | 10 |\n| 6 | 1 | 11 | 11 |\n| 7 | -3 | 8 | 11 |\n| 8 | 3 | 11 | 11 |\n\n**Complexity Analysis:**\n\n* Time complexity: O(n), where n is the length of the input array. This is because we only",
+          "confidence": 0.8986,
+          "latency_ms": 22450,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Let's break down the solution to two-sum on a sorted array using two pointers.\n\n**Problem Statement:**\nGiven a sorted array of integers `nums` and an integer `target`, find two elements in the array that add up to `target`. Return their indices.\n\n**Pattern:** Two-pointer\n\n**Trigger:** Sorted array\n\n**How:**\n\n1. Initialize two pointers, `left` and `right`, to the start and end of the array, respectively.\n2. Calculate the sum of the elements at the `left` and `right` indices.\n3. If the sum is equal to `target`, return the indices.\n4. If the sum is less than `target`, move the `left` pointer to the right to increase the sum.\n5. If the sum is greater than `target`, move the `right` pointer to the left to decrease the sum.\n6. Repeat steps 2-5 until `left` meets `right`.\n\n**Example:**\n\nInput: `nums = [2, 7, 11, 15], target = 9`\nOutput: `[0, 1]` ( indices of 2 and 7)\n\n**Time Complexity:** O(n), where n is the length of the array. This is because each element is visited at most twice.\n\n**Space Complexity:** O(1), as we only use a constant amount of space to store the two pointers.\n\n**Code:**\n```python\ndef two_sum(nums, target):\n    left, right = 0, len(nums) - 1\n    while left < right:\n        current_sum = nums[left] + nums[right]\n        if current_sum == target:\n            return [left, right]\n        elif current_sum < target:\n            left += 1\n        else:\n            right -= 1\n    return None\n```\nThis solution takes advantage of the fact that the array is sorted, allowing us to use a two-pointer approach to efficiently find",
+          "confidence": 0.8964,
+          "latency_ms": 27150,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 0.75,
+          "missing": [
+            [
+              "first time",
+              "first reach",
+              "first found"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Let's break down why Breadth-First Search (BFS) finds the shortest transformation in a word ladder.\n\n**Problem Statement:** Given two words, find the shortest sequence of single-character edits (insertions, deletions, or substitutions) to transform one word into another.\n\n**Key Insight:** We treat each word as a node in a graph, where two nodes are connected by an edge if the corresponding words differ by exactly one letter.\n\n**BFS Approach:**\n\n1. Initialize a queue with the starting word as the first node.\n2. Enqueue the starting word and mark it as visited.\n3. While the queue is not empty:\n   - Dequeue a word from the front of the queue.\n   - For each letter in the dequeued word:\n     - Create a new word by changing the letter at that position to every possible letter (a-z).\n     - If the new word is not visited, mark it as visited and enqueue it.\n4. The BFS traversal will explore all possible transformations level by level, starting from the starting word. Since we're exploring all possible transformations at each level, we're guaranteed to find the shortest transformation.\n\n**Why BFS is Optimal:**\n\n- BFS explores nodes in increasing order of distance from the starting node. This ensures that we consider the closest possible transformations first.\n- By exploring all possible transformations at each level, we avoid revisiting nodes that have already been explored, which would lead to longer transformations.\n- Since we're only considering single-character edits, the number of possible transformations at each level grows linearly with the number of letters in the word. This makes BFS a suitable choice for this problem.\n\n**Time and Space Complexity:**\n\n- Time complexity: O(N \\* M), where N is the length of the starting word and M is the number of possible letters (26).\n- Space complexity: O(N), as we need to store the queue of words to be processed.\n\nIn summary, BFS finds the shortest transformation",
+          "confidence": 0.7956,
+          "latency_ms": 27285,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 0.4,
+          "missing": [
+            [
+              "round",
+              "floor"
+            ],
+            [
+              "never advance",
+              "not advance",
+              "doesn't advance",
+              "does not move",
+              "doesn't move",
+              "stuck",
+              "no progress"
+            ],
+            [
+              "shrink"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This candidate's code is suffering from the **Binary search infinite loop** failure mode.\n\nThe fix is to advance past `mid` to the branch that excludes it, or use `l = mid + 1` / `r = mid`.",
+          "confidence": 0.8036,
+          "latency_ms": 19514,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "A common mistake that causes a sliding window solution to degrade to O(n^2) is forgetting to shrink the window from the left when the constraint breaks. \n\nWhen the constraint is not met, the window should be moved to the left to exclude the invalid elements, but if this is not done, the window remains the same size, and the algorithm effectively becomes O(n^2) because it has to check every element in the array again.\n\nTo fix this, the window must shrink from the left as soon as the constraint breaks. This ensures that the algorithm only needs to check each element once, resulting in a time complexity of O(n).",
+          "confidence": 0.7314,
+          "latency_ms": 13446,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This is an example of the **Recursion without memoization** failure mode.\n\nWhen a recursive solution to an overlapping-subproblem problem times out, it's often because the function is recalculating the same subproblems multiple times, leading to an exponential blowup in the number of computations. This happens when the recursive function does not store or reuse the results of previously computed subproblems, causing redundant calculations.\n\nTo fix this issue, you can apply memoization or convert the recursive solution to an iterative one using tabulation. Memoization involves storing the results of subproblems in a cache (e.g., a hash map) and reusing them when the same subproblem is encountered again. Tabulation involves converting the recursive function to an iterative one, where each state is stored in a table and the results are computed only once.\n\nTime complexity remains O(n), but space complexity increases to O(n) for memoization or O(n) for tabulation.",
+          "confidence": 0.7567,
+          "latency_ms": 8739,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This is a description of the **Wrong DP state** failure mode.\n\nWrong DP state occurs when a dynamic programming (DP) state is chosen that does not capture enough history, making it impossible or double-counting. This can lead to incorrect results or infinite loops.\n\nTo fix this, the first step is to write the recurrence relation in words, and then name the variables it depends on. This ensures that the state is well-defined and captures the necessary history.\n\nFor example, consider a problem where you want to find the maximum sum of a subarray of a given array. A naive approach might try to use a DP state that only keeps track of the maximum sum seen so far, but this would not capture the necessary history of the subarray.\n\nTo fix this, we can write the recurrence relation in words: `max_sum[i] = max(max_sum[i-1], sum[i-1] + arr[i])`. This relation depends on the previous maximum sum and the current element, so we can define the state as `max_sum[i] = max(max_sum[i-1], sum[i-1] + arr[i])`.\n\nBy writing the recurrence relation in words and defining the state carefully, we can ensure that the DP transition is valid and produces the correct result.",
+          "confidence": 0.7509,
+          "latency_ms": 13335,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "The data structure that provides O(log n) push and pop operations with O(1) access to the current min or max is a Binary Heap.\n\nA Binary Heap is a specialized tree-based data structure that satisfies the heap property: the parent node is either greater than (max heap) or less than (min heap) its child nodes. This property allows for efficient insertion and deletion of elements while maintaining the heap property.\n\nIn a max heap, the parent node is greater than its child nodes, and in a min heap, the parent node is less than its child nodes. This ordering allows for O(log n) time complexity for push and pop operations, as well as O(1) time complexity for accessing the current max or min element.\n\nBinary Heaps are commonly used in priority queues, scheduling algorithms, and graph algorithms, such as Dijkstra's algorithm. They are particularly useful when you need to efficiently manage a collection of elements that need to be ordered and prioritized.\n\nExample use cases include:\n\n* Scheduling tasks with varying priorities\n* Managing a queue of jobs with varying processing times\n* Finding the k largest or smallest elements in an unsorted array\n* Implementing a priority queue for a game or simulation\n\nTime complexity:\n\n* O(log n) push and pop operations\n* O(1) access to the current max or min element\n\nSpace complexity: O(n) for the heap itself, O(1) for the additional metadata.",
+          "confidence": 0.7956,
+          "latency_ms": 16944,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "definition",
+          "score": 0.6,
+          "missing": [
+            [
+              "path compression"
+            ],
+            [
+              "rank",
+              "size"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Union-find is a data structure that tracks a partition of elements into disjoint sets with near-constant operations. It is used to manage a collection of elements and perform operations such as finding the representative (or \"root\") of a set, merging two sets, and checking if two elements are in the same set.\n\nThe amortized cost of union-find is O(α(n)), where α(n) is the inverse Ackermann function, which grows very slowly. This means that the average cost of each operation is effectively constant, making union-find suitable for applications where frequent set operations are performed.\n\nUnion-find is the right choice when:\n\n1.  You need to manage a collection of elements and perform frequent set operations such as union, find, and merge.\n2.  The number of elements is large, and the cost of each operation is relatively low.\n3.  You need to ensure that the sets are disjoint, meaning that no two elements are in the same set.\n\nUnion-find is particularly useful in applications such as:\n\n*   Network connectivity problems, where you need to find connected components in a graph.\n*   Data partitioning, where you need to divide a collection of elements into disjoint groups.\n*   Set intersection and union problems, where you need to find the common elements between two sets.\n\nExample use case:\n\nSuppose you are building a social network, and you want to group users into communities based on their interests. You can use union-find to manage the communities and perform operations such as adding a new user to a community, finding the representative of a community, and checking if two users are in the same community.",
+          "confidence": 0.7728,
+          "latency_ms": 19896,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: sysdes - System design: scalability, caching, storage, consistency, distributed architecture",
+          "confidence": 0.7841,
+          "latency_ms": 14572,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "not covered",
+              "does not cover",
+              "doesn't cover",
+              "not in my notes",
+              "outside"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: sysdes - System design: scaling, caching, consistency",
+          "confidence": 0.8589,
+          "latency_ms": 8353,
+          "error": null
+        }
+      ]
+    }
+  }
+}

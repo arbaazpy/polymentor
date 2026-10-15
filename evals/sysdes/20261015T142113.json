@@ -1,0 +1,1667 @@
+{
+  "expert": "sysdes",
+  "created_at": "2026-10-15T14:21:13+00:00",
+  "models": {
+    "base": "meta-llama/Llama-3.2-3B-Instruct",
+    "aligned": "model_01m4zyvrxn5f988a"
+  },
+  "pass_threshold": 0.75,
+  "num_questions": 20,
+  "modes": {
+    "base": {
+      "model": "meta-llama/Llama-3.2-3B-Instruct",
+      "grounded": false,
+      "summary": {
+        "overall": 0.3175,
+        "pass_rate": 0.15,
+        "by_category": {
+          "abstention": 0.25,
+          "definition": 0.375,
+          "distinction": 0.3,
+          "failure": 0.375,
+          "procedure": 0.2875
+        },
+        "confidence_when_pass": null,
+        "confidence_when_fail": null,
+        "p50_latency_ms": 35264,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 0.0,
+          "missing": [
+            [
+              "upstream"
+            ],
+            [
+              "downstream",
+              "slow consumer",
+              "slowness"
+            ],
+            [
+              "bounded queue",
+              "bounded buffer"
+            ],
+            [
+              "429",
+              "503",
+              "demand",
+              "credit",
+              "reactive",
+              "block"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Back-pressure is a technique used in system design to manage the flow of data or requests between components, particularly in distributed systems, networks, or queues. It involves intentionally slowing down or limiting the rate at which data is sent or processed to prevent overwhelming the receiving component or system, thereby preventing congestion, errors, or performance degradation.\n\nTwo common mechanisms that implement back-pressure are:\n\n1. **Token Bucket Algorithm**: This algorithm uses a bucket that fills up at a constant rate and drains at a rate proportional to the number of requests being processed. When the bucket is full, new requests are delayed until the bucket is refilled. The token bucket algorithm is often used in rate limiting, traffic shaping, and load balancing.\n2. **Leaky Bucket Algorithm**: This algorithm is similar to the token bucket algorithm but uses a leaky bucket instead of a refill mechanism. The leaky bucket drains at a constant rate, and new requests are delayed until the bucket is refilled. The leaky bucket algorithm is often used in network congestion control and traffic management.\n\nBoth algorithms are designed to regulate the flow of data and prevent congestion, ensuring that the receiving component or system can handle the incoming data without becoming overwhelmed.",
+          "confidence": null,
+          "latency_ms": 17199,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 0.5,
+          "missing": [
+            [
+              "1/n",
+              "small fraction",
+              "minimal",
+              "minimiz",
+              "only the keys"
+            ],
+            [
+              "virtual node"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Consistent hashing is a technique used to map keys to nodes in a distributed system, ensuring that the mapping remains consistent even when nodes join or leave the system. It's a variant of hashing that uses a mathematical function to map keys to a range of values, and it's particularly useful in distributed systems where nodes are added or removed dynamically.\n\nIn a traditional hashing approach, when a node joins or leaves the system, the mapping of keys to nodes would need to be updated, which can lead to a significant amount of work to rebalance the load. Consistent hashing solves this problem by using a single, large hash table that spans the entire range of possible keys, and each node is assigned a range of keys.\n\nWhen a new node joins the system, its range of keys is calculated and added to the hash table, and when a node leaves, its range of keys is removed. This ensures that the mapping of keys to nodes remains consistent, even in the presence of node failures or additions.\n\nDistributed caches and databases use consistent hashing because it provides several benefits, including:\n\n*   **Improved scalability**: Consistent hashing allows for efficient addition and removal of nodes, making it easier to scale the system horizontally.\n*   **Reduced rebalancing**: By maintaining a consistent mapping of keys to nodes, consistent hashing eliminates the need for rebalancing, which can be a time-consuming and resource-intensive process.\n*   **Improved availability**: Consistent hashing ensures that the system remains available even in the presence of node failures, as the mapping of keys to nodes remains consistent.\n\nOverall, consistent hashing is a key technique used in distributed systems to ensure that the mapping of keys to nodes remains consistent, even in the presence of dynamic changes to the system.",
+          "confidence": null,
+          "latency_ms": 25005,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "payment",
+              "order",
+              "charge"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "An idempotency key is a unique identifier used to ensure that a set of operations on a resource can be safely executed multiple times without causing unintended side effects. It's a critical concept in distributed systems, particularly in scenarios where multiple requests may be sent to the same resource, such as in a load balancer or a distributed cache.\n\nWhen do you need an idempotency key? You need an idempotency key when you're dealing with operations that can be safely repeated without changing the outcome, such as:\n\n* Creating a new resource\n* Updating a resource\n* Deleting a resource\n\nIn these cases, an idempotency key ensures that even if multiple requests are sent to the same resource, the outcome will be the same as if only one request was sent. This is particularly important in distributed systems where multiple nodes or services may be involved in the operation.\n\nFor example, in a distributed cache, an idempotency key can be used to ensure that multiple cache updates are treated as a single update, even if multiple requests are sent to the cache. This prevents the cache from becoming inconsistent or causing unexpected behavior.\n\nThe idempotency key can be a unique identifier for the request, a timestamp, or a combination of both. The key is used to identify the request and ensure that it's treated as a single operation, even if multiple requests are sent.\n\nIn terms of design, an idempotency key can be implemented using various techniques, such as:\n\n* Using a unique identifier for each request\n* Storing the request timestamp\n* Using a distributed lock to ensure that only one request is processed at a time\n\nThe time complexity of implementing idempotency is O(1), as it typically involves storing and retrieving a small amount of data. The space complexity is also O(1), as it typically involves storing a small amount of data to identify the request.",
+          "confidence": null,
+          "latency_ms": 11839,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 0.25,
+          "missing": [
+            [
+              "session"
+            ],
+            [
+              "own write"
+            ],
+            [
+              "weaker"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Read-your-writes consistency is a consistency model that ensures that a read operation sees the effects of all write operations that occurred before it, but does not guarantee that it sees the effects of all write operations that occurred after it. In other words, it ensures that a read operation will see the most recent write operation that affected the data, but may not see subsequent writes.\n\nLinearizability, on the other hand, is a stronger consistency model that ensures that all operations, both read and write, are executed in a linear sequence, as if they were performed in a single, uninterrupted sequence. This means that a read operation will see the effects of all operations that occurred before it, and all operations will be executed in the order they were received.\n\nThe key difference between the two is that linearizability requires that all operations be executed in a linear sequence, whereas read-your-writes consistency only requires that a read operation see the effects of all write operations that occurred before it.\n\nTo illustrate the difference, consider a scenario where two threads, T1 and T2, write to a shared variable x. T1 writes x = 1, and then T2 writes x = 2. In a linearizable system, both writes will be executed in the order x = 1, x = 2, whereas in a read-your-writes system, T1 will see x = 1, but T2's write will not be visible to T1 until it completes.\n\nTime complexity: \n- Read-your-writes consistency: O(1) for reads, O(1) for writes\n- Linearizability: O(1) for reads, O(n) for writes (where n is the number of operations)\n\nSpace complexity: O(1) for both consistency models.",
+          "confidence": null,
+          "latency_ms": 30977,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 0.5,
+          "missing": [
+            [
+              "celebrit",
+              "millions of followers",
+              "many followers"
+            ],
+            [
+              "hybrid"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Fanout-on-write and fanout-on-read are two different strategies used in distributed systems to handle the propagation of updates in a newsfeed. \n\n**Fanout-on-write**: In this approach, when a new update is written to the newsfeed, it is immediately replicated to all nodes in the system. This ensures that all nodes have the same view of the newsfeed, but it can lead to high latency and increased storage requirements.\n\n**Fanout-on-read**: In this approach, updates are only propagated to nodes when a read operation is requested. This approach reduces latency and storage requirements, but it can lead to inconsistencies between nodes if multiple updates are made concurrently.\n\nFanout-on-write wins in the following scenarios:\n\n1. **High-latency networks**: When the network latency is high, it's better to propagate updates immediately to ensure that all nodes have the latest information, even if it means sacrificing some latency.\n2. **Low-latency requirements**: In applications where real-time updates are critical, such as financial trading or live updates, fanout-on-write is preferred to ensure that updates are propagated quickly.\n3. **High-concurrency**: In systems with high concurrency, fanout-on-write helps to ensure that all nodes have the same view of the newsfeed, reducing the likelihood of conflicts.\n\nFanout-on-read wins in the following scenarios:\n\n1. **Low-latency requirements**: When low latency is more important than consistency, fanout-on-read can be used to reduce latency without sacrificing consistency.\n2. **High-availability**: In systems where high availability is critical, fanout-on-read can be used to reduce the load on nodes and improve overall system availability.\n3. **Low-concurrency**: In systems with low concurrency, fanout-on-read can be used to reduce the load on nodes and improve performance.\n\nIn summary, the choice between fanout-on-write and fanout-on-read depends on the specific requirements of the system, including latency, concurrency, and consistency.",
+          "confidence": null,
+          "latency_ms": 34381,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 0.2,
+          "missing": [
+            [
+              "miss",
+              "not found in the cache",
+              "not in the cache"
+            ],
+            [
+              "lazy",
+              "on a miss",
+              "populate"
+            ],
+            [
+              "synchronous",
+              "same write",
+              "both the cache and the database",
+              "cache and the database",
+              "cache and database"
+            ],
+            [
+              "stale"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Cache-aside and write-through are two popular caching strategies used in distributed systems to improve performance by reducing the number of requests to the underlying storage.\n\n**Cache-Aside (CAS) Caching:**\n\nIn a cache-aside caching strategy, the cache is a separate entity that stores frequently accessed data. When a request is made to the cache, the cache checks if the requested data is already present. If it is, the data is returned directly from the cache. If not, the request is forwarded to the underlying storage, and the data is retrieved. The retrieved data is then stored in the cache for future requests. This approach allows for faster access to frequently accessed data, as the cache can serve the data directly without involving the storage.\n\n**Write-Through (WT) Caching:**\n\nIn a write-through caching strategy, every write operation is forwarded to the underlying storage, and the data is written to both the cache and the storage simultaneously. This approach ensures data consistency and prevents data inconsistencies that can arise from caching. However, it can lead to slower write performance, as the data must be written to both the cache and the storage.\n\n**Key differences:**\n\n1. **Consistency**: Write-through caching ensures data consistency by writing to both the cache and the storage, while cache-aside caching may lead to data inconsistencies if the cache is updated after the underlying storage.\n2. **Write performance**: Write-through caching is slower due to the additional write operation to the storage, while cache-aside caching can provide faster write performance.\n3. **Cache invalidation**: Cache-aside caching requires a cache invalidation mechanism to ensure that the cache is updated when the underlying storage is modified, while write-through caching does not require cache invalidation.\n\n**Time and space complexity:**\n\n* Cache-aside caching: O(1) for read operations, O(1) for write operations (assuming a hash table for cache storage)\n* Write-through caching: O(1) for read operations,",
+          "confidence": null,
+          "latency_ms": 35485,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 0.0,
+          "missing": [
+            [
+              "scale up",
+              "bigger machine",
+              "more cpu",
+              "more powerful"
+            ],
+            [
+              "scale out",
+              "more machines",
+              "adding machines",
+              "add machines"
+            ],
+            [
+              "ceiling",
+              "limit"
+            ],
+            [
+              "single point of failure"
+            ],
+            [
+              "stateless",
+              "partition",
+              "replicat"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Vertical scaling, also known as scaling up, refers to increasing the power of a single server or instance to handle increased load by adding more resources such as CPU, memory, or storage. This approach is typically used when the workload is relatively consistent and can be handled by a single server. The goal is to increase the processing power of a single server to meet the growing demands, without adding new servers.\n\nOn the other hand, horizontal scaling, also known as scaling out, involves adding more servers to distribute the workload across multiple machines. This approach is used when the workload is unpredictable, variable, or has a high degree of concurrency. By adding more servers, the load is distributed across multiple instances, allowing for more efficient use of resources and improved scalability.\n\nThe key differences between vertical and horizontal scaling are:\n\n- Vertical scaling is typically used for workloads with consistent and predictable demand, while horizontal scaling is used for workloads with variable or unpredictable demand.\n- Vertical scaling increases the power of a single server, while horizontal scaling adds more servers to distribute the workload.\n- Vertical scaling is generally more expensive and complex to implement, while horizontal scaling is often more cost-effective and easier to manage.\n\nTime complexity: O(1) for vertical scaling, O(n) for horizontal scaling (where n is the number of servers).\n\nSpace complexity: O(1) for vertical scaling, O(n) for horizontal scaling (where n is the number of servers).",
+          "confidence": null,
+          "latency_ms": 34881,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 0.5,
+          "missing": [
+            [
+              "every subscriber",
+              "all subscribers",
+              "each subscriber",
+              "every consumer"
+            ],
+            [
+              "broadcast",
+              "independent"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A work queue and a publish-subscribe (pub/sub) system are two different architectural patterns used for message passing and communication between components in a distributed system.\n\nA work queue is a First-In-First-Out (FIFO) data structure that stores messages or tasks to be processed by a worker or a service. It's designed to handle a single producer and a single consumer, where the producer adds messages to the queue and the consumer removes them one by one. The key characteristics of a work queue are:\n\n* FIFO order of messages\n* Single producer and single consumer\n* Message is processed as soon as it's available\n\nOn the other hand, a pub/sub system is a publish-subscribe pattern where multiple publishers send messages to multiple subscribers. In a pub/sub system, publishers send messages to a topic, and subscribers listen to that topic and receive the messages. The key characteristics of a pub/sub system are:\n\n* Multiple publishers and multiple subscribers\n* Messages are not necessarily processed in order\n* Publishers and subscribers can be decoupled\n\nTo distinguish between the two, consider the following scenarios:\n\n* Use a work queue when:\n\t+ You need to process messages in a specific order (e.g., order of arrival).\n\t+ You have a single producer and a single consumer.\n\t+ You need to implement a simple, lightweight message passing mechanism.\n* Use a pub/sub system when:\n\t+ You need to handle multiple publishers and subscribers.\n\t+ You need to decouple publishers and subscribers.\n\t+ You need to handle high volumes of messages and want to scale horizontally.\n\nIn terms of time and space complexity, a work queue typically has O(1) insertion and O(1) removal operations, while a pub/sub system can have O(n) insertion and O(n) lookup operations for subscribers. However, pub/sub systems can be designed to be more scalable and fault-tolerant.\n\nPattern: Producer-Consumer, Message Queue, Publish-Subscribe\n\nTime and space complexity:",
+          "confidence": null,
+          "latency_ms": 35043,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 0.25,
+          "missing": [
+            [
+              "requirement"
+            ],
+            [
+              "11,600",
+              "11.6k",
+              "11600",
+              "12,000",
+              "12k",
+              "11,574"
+            ],
+            [
+              "116",
+              "10m",
+              "10 million"
+            ],
+            [
+              "api"
+            ],
+            [
+              "base62"
+            ],
+            [
+              "301",
+              "302",
+              "trade-off",
+              "tradeoff"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To design a URL shortener for 1B redirects/day with a 100:1 read:write ratio, we'll follow an 8-step procedure:\n\n**Step 1: Problem Definition**\nThe URL shortener needs to handle 1 billion redirects per day, with a read:write ratio of 100:1. This means for every 100 writes (redirects), there will be 1 read (fetching the original URL).\n\n**Step 2: Data Model**\nWe'll use a simple data model consisting of:\n- A database to store the mapping between original URLs and shortened URLs (e.g., `url_map` table).\n- A cache to store frequently accessed shortened URLs (e.g., `url_cache` table).\n\n**Step 3: Read Path**\nTo handle the high read load, we'll use a caching layer to store frequently accessed shortened URLs. We'll use a Least Recently Used (LRU) cache eviction policy to ensure that the least recently accessed URLs are evicted first.\n\n**Step 4: Write Path**\nFor writes, we'll use a queue-based system to handle the high write load. We'll use a message queue (e.g., Apache Kafka or Amazon SQS) to handle the writes, which will then be processed by a worker node that updates the `url_map` table.\n\n**Step 5: Database Design**\nThe `url_map` table will have the following columns:\n- `id` (primary key): unique identifier for the shortened URL\n- `original_url`: the original URL being shortened\n- `shortened_url`: the shortened URL\n- `redirect_count`: the number of times the shortened URL has been redirected\n\n**Step 6: Cache Design**\nThe `url_cache` table will have the following columns:\n- `id` (primary key): unique identifier for the cached URL\n- `shortened_url`: the shortened URL\n- `last_accessed`: the timestamp of the last access",
+          "confidence": null,
+          "latency_ms": 38000,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.5,
+          "missing": [
+            [
+              "3.5 trillion",
+              "3.52 trillion",
+              "3.5t",
+              "3,521",
+              "3.5 x 10^12",
+              "3.52 x 10^12"
+            ],
+            [
+              "36.5 billion",
+              "36.5b",
+              "36,500,000,000",
+              "3.65 x 10^10"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To determine if a 7-character base62 short code is sufficient for a URL shortener, we need to calculate the total number of possible URLs that can be generated.\n\nBase62 uses 62 characters (A-Z, a-z, 0-9, and some special characters), so the total number of possible URLs is 62^7.\n\nLet's calculate the total number of possible URLs:\n\n62^7 = 1,503,052,003,274,489\n\nSince the URL shortener creates 10M URLs per day, we need to calculate the total number of days for 10 years:\n\n10 years = 365.25 days/year (accounting for leap years)\n\nTotal number of days = 10 years * 365.25 days/year = 3,652.5 days\n\nNow, let's calculate the total number of URLs that can be generated in 3,652.5 days:\n\nTotal number of URLs = 1,503,052,003,274,489 URLs / 3,652.5 days ≈ 410,911,111 URLs/day\n\nSince the URL shortener creates 10M URLs per day, the 7-character base62 short code is not sufficient to handle the demand for 10 years.\n\nTo put this into perspective, the URL shortener would need to generate approximately 4,109,110 URLs per day to meet the demand for 10 years with a 7-character base62 short code.\n\nPattern: This problem can be solved using the concept of exponential growth and can be modeled using the formula for exponential growth: N(t) = N0 \\* r^t, where N0 is the initial number of URLs, r is the growth rate, and t is the time period.\n\nTime complexity: O(1) since it's a constant-time calculation.\n\nSpace complexity: O(1) since it's a constant amount of space required to store the calculation result.",
+          "confidence": null,
+          "latency_ms": 40288,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 0.2,
+          "missing": [
+            [
+              "token bucket"
+            ],
+            [
+              "refill"
+            ],
+            [
+              "redis",
+              "shared store",
+              "centralized store",
+              "shared"
+            ],
+            [
+              "atomic",
+              "lua",
+              "transaction"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Designing a distributed rate limiter for an API involves several key considerations to ensure fairness, scalability, and reliability. Here's a high-level overview of the design:\n\n**Overview**\n\nThe distributed rate limiter will be responsible for controlling the number of requests an IP address can make to the API within a specified time window. This is often referred to as a \"rate limiter\" or \"IP rate limiter.\"\n\n**Components**\n\n1. **Database**: A distributed database (e.g., Cassandra, MongoDB) will be used to store the rate limit information for each IP address. The database will store the timestamp of the last request, the number of requests made by the IP address, and the current limit (e.g., 100 requests per minute).\n2. **Load Balancer**: A load balancer (e.g., HAProxy, NGINX) will distribute incoming requests to the API servers. The load balancer will also be configured to forward requests to the IP address that is not currently being rate limited.\n3. **API Server**: The API server will be responsible for enforcing the rate limit. It will query the database to check if the IP address is rate limited and, if so, return an error response to the client.\n\n**Algorithm**\n\nThe algorithm used to implement the rate limiter is a simple one:\n\n1. When a request is received, the API server queries the database to check if the IP address is rate limited.\n2. If the IP address is not rate limited, the API server increments the request count and updates the timestamp in the database.\n3. If the IP address is rate limited, the API server returns an error response to the client with a 429 status code (Too Many Requests).\n4. The load balancer will forward the request to another available API server.\n\n**Time and Space Complexity**\n\n* Time complexity: O(1) for database queries and O(1) for load balancer forwarding.\n* Space complexity: O(1)",
+          "confidence": null,
+          "latency_ms": 40291,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 0.2,
+          "missing": [
+            [
+              "websocket"
+            ],
+            [
+              "at-least-once",
+              "at least once"
+            ],
+            [
+              "dedup",
+              "message id"
+            ],
+            [
+              "offline",
+              "reconnect"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To deliver messages reliably and in order, a chat system typically employs a combination of message queuing, acknowledgement, and retransmission mechanisms. Here's a high-level overview of the process:\n\n**Architecture:**\n\n1. **Message Queue**: Messages are stored in a message queue, which is a First-In-First-Out (FIFO) data structure. This ensures that messages are processed in the order they were received.\n2. **Producer**: The client (e.g., a user's device) sends messages to the message queue.\n3. **Broker**: The message queue is typically implemented using a message broker, which is a centralized component that manages the queue and handles message delivery.\n4. **Consumer**: The broker forwards messages to the consumer, which is typically a server that handles the chat functionality.\n\n**Reliability Mechanisms:**\n\n1. **Message Acknowledgement**: When a message is sent, the broker sends an acknowledgement (ACK) to the producer, indicating that the message has been received. This ensures that the producer knows the message has been delivered.\n2. **Message Redelivery**: If the broker fails to deliver a message, it will retransmit the message after a certain time period (e.g., 30 seconds). This ensures that messages are not lost in case of network failures.\n3. **Message Persistence**: The broker stores messages in a persistent storage system, such as a database, to ensure that messages are not lost in case of a failure.\n\n**Ordering Mechanisms:**\n\n1. **Sequence Numbers**: Each message is assigned a unique sequence number, which is used to maintain the order of messages.\n2. **Timestamps**: Each message is assigned a timestamp, which is used to determine the order of messages in case of concurrent sends.\n\n**Time and Space Complexity:**\n\n* Time complexity: O(1) for message insertion, O(1) for message retrieval, and O(n) for message retransmission (in the worst case).\n*",
+          "confidence": null,
+          "latency_ms": 48260,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 0.75,
+          "missing": [
+            [
+              "outbox"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "When a team uses a primary database as a job queue by polling a jobs table, several issues arise at scale:\n\n1. **High latency**: As the number of jobs increases, the polling frequency of the database will also increase, leading to a high number of database queries, which can result in increased latency and decreased performance.\n2. **Database contention**: With many concurrent requests accessing the jobs table, contention between threads can occur, leading to slower query execution and potential deadlocks.\n3. **Data consistency**: In a queue system, data consistency is crucial. However, polling a database can lead to inconsistent data, as the order of job processing may not be preserved, and jobs may be processed out of order.\n\nTo fix these issues, a more suitable approach is to use a message queue system, such as Apache Kafka, RabbitMQ, or Amazon SQS. These systems are designed for high-throughput and low-latency message queuing, and they provide features like:\n\n* **Decoupling**: The producer (job submitter) and consumer (job processor) are decoupled, allowing for independent scaling and fault tolerance.\n* **Message ordering**: Messages are stored in a queue and can be processed in the order they were received, ensuring data consistency.\n* **Scalability**: Message queues can handle a large volume of messages and scale horizontally by adding more nodes to the cluster.\n\nIn a message queue system, jobs are typically stored in a queue, and the consumer processes them in a First-In-First-Out (FIFO) order. The producer sends the job to the queue, and the consumer retrieves and processes the job from the queue. This approach eliminates the need for polling and reduces latency, improving overall system performance and scalability.",
+          "confidence": null,
+          "latency_ms": 47398,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 0.0,
+          "missing": [
+            [
+              "synchronous fanout",
+              "synchronous fan-out",
+              "fanout synchronously",
+              "fan out synchronously",
+              "synchronously"
+            ],
+            [
+              "asynchronous",
+              "async",
+              "background"
+            ],
+            [
+              "queue"
+            ],
+            [
+              "celebrit",
+              "fanout-on-read",
+              "fanout on read",
+              "hybrid"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This is an example of a classic problem known as the \"N+1 query problem\" or \"Eager Loading\" in the context of a social media feed. \n\nIn this scenario, every time a user requests their feed, the service needs to query the database for all the posts from all the users they follow, resulting in a large number of database queries. This can lead to performance issues and timeouts for accounts with many followers.\n\nTo fix this issue, we can implement a technique called \"Batching\" or \"Caching\" to reduce the number of database queries. \n\nOne possible solution is to use a caching layer, such as Redis or Memcached, to store the followers' feeds in memory. When a user requests their feed, the service can first check the cache to see if the feed is already available. If it is, the service can return the cached feed immediately. If not, the service can query the database to retrieve the feed and store it in the cache for future requests.\n\nAlternatively, we can use a technique called \"Materialized Views\" to pre-compute and store the followers' feeds in a denormalized database table. This way, when a user requests their feed, the service can simply query the pre-computed feed from the denormalized table, reducing the number of database queries.\n\nBoth of these approaches can significantly improve the performance of the service and reduce the number of database queries, making it more scalable and efficient.\n\nTime complexity: O(1) for caching, O(n) for materialized views (where n is the number of followers)\n\nSpace complexity: O(n) for caching, O(n) for materialized views (where n is the number of followers)",
+          "confidence": null,
+          "latency_ms": 46097,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 0.5,
+          "missing": [
+            [
+              "idempoten"
+            ],
+            [
+              "key"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This failure mode is known as \"double charging\" or \"double billing.\" It occurs when a payment retry attempt is treated as a new payment, resulting in the customer being charged twice.\n\nThe root cause of this issue is likely due to the fact that the payment retry mechanism is not properly handling the existing payment session. When a payment retry is initiated, the system should check if a payment session already exists for the customer, and if so, cancel the retry attempt and return the existing session. However, in this case, the system is treating the retry attempt as a new payment, resulting in duplicate charges.\n\nTo fix this issue, the system should implement a mechanism to check for existing payment sessions before initiating a retry attempt. This can be achieved by storing the payment session ID or a unique identifier for each payment attempt. When a retry attempt is initiated, the system can check the database or cache for an existing payment session with the same customer ID and session ID. If a session exists, the retry attempt should be cancelled and the existing session should be returned. If no session exists, a new session can be created and the retry attempt can proceed.\n\nTime complexity: O(1) for checking the database or cache, O(1) for updating the database or cache.\n\nSpace complexity: O(1) for storing the payment session ID or unique identifier.\n\nPattern: This problem can be solved using a combination of caching and database transactions, with a focus on ensuring that only one payment session is active for each customer at a time.",
+          "confidence": null,
+          "latency_ms": 44116,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 0.25,
+          "missing": [
+            [
+              "stampede",
+              "thundering herd",
+              "dogpile"
+            ],
+            [
+              "coalesc",
+              "single flight",
+              "singleflight",
+              "lock",
+              "mutex"
+            ],
+            [
+              "jitter",
+              "random ttl",
+              "stagger"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This failure mode is known as a \"cache thrashing\" or \"cache thrashing phenomenon.\" It occurs when the cache is constantly being updated and invalidated, causing the database to be overwhelmed with requests.\n\nTo fix this issue, we can implement a technique called \"time-to-live\" (TTL) expiration. We can set a TTL for each cache entry, which specifies how long the entry remains valid before it is automatically invalidated. This way, when a cache key expires, the cache will be updated and the database will not be overwhelmed.\n\nAnother approach is to use a \"least recently used\" (LRU) eviction policy, which removes the least recently accessed cache entry when the cache is full. This ensures that the most frequently accessed entries remain in the cache, reducing the likelihood of cache thrashing.\n\nAdditionally, we can also implement a \"cache warm-up\" mechanism, where we periodically clean out expired or stale cache entries to prevent the cache from becoming too full and causing thrashing.\n\nTime complexity: O(1) for setting TTL, O(1) for LRU eviction, and O(n) for cache warm-up.\n\nSpace complexity: O(n) for the cache.\n\nPattern: Least Recently Used (LRU) eviction, Time-To-Live (TTL) expiration.\n\nNote: The specific implementation details may vary depending on the caching framework or library being used.",
+          "confidence": null,
+          "latency_ms": 42547,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "not covered",
+              "does not cover",
+              "doesn't cover",
+              "not in my notes",
+              "outside"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "For Conflict-Free Replicated Data Types (CRDTs), the system design expert recommends using a combination of data structures and algorithms to achieve conflict-free merge semantics. \n\nOne popular approach is to use a **Multi-Value Vector (MVV)** data structure, which is a type of CRDT that allows multiple values to coexist in a single data structure. The MVV is designed to merge conflicts in a way that preserves the history of all values, ensuring that the resulting merged value is consistent with all previous values.\n\nWhen merging two MVVs, the system can use a **Last-Writer-Wins (LWW) strategy**, where the most recent value wins in case of a conflict. This approach is simple to implement but can lead to data loss in case of a prolonged conflict.\n\nAnother approach is to use a **Multi-Value Map (MVM)**, which is similar to an MVV but allows for more complex data structures, such as lists and sets. MVMs can be merged using a combination of LWW and **Last-Reader-Wins (LRW) strategies**, where the most recent value wins in case of a conflict, but the most recent reader is given priority in case of a tie.\n\nIn terms of time and space complexity, the MVV and MVM data structures have a time complexity of O(n) for merge operations, where n is the number of values in the data structure. The space complexity is O(n) as well, as each value is stored in the data structure.\n\nOverall, the choice of CRDT and merge strategy depends on the specific use case and requirements of the system.",
+          "confidence": null,
+          "latency_ms": 42144,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "dsa"
+            ]
+          ],
+          "forbidden_hit": "o((v + e) log v)",
+          "answer": "Dijkstra's algorithm with a binary heap is an efficient implementation of the algorithm, with a time complexity of O((V + E) log V) in the worst case, where V is the number of vertices and E is the number of edges in the graph.\n\nThe binary heap is used to store the vertices to be processed, with the starting vertex (source) at the root of the heap. The heap operations (insertion and extraction) take O(log V) time, which dominates the overall time complexity. The algorithm iteratively extracts the vertex with the minimum distance from the heap, updates the distances of its neighbors, and re-heapifies the affected subtree. This process is repeated until the heap is empty, resulting in a total time complexity of O((V + E) log V).",
+          "confidence": null,
+          "latency_ms": 29105,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: behav - I don't have personal experiences, but I can provide a general framework for resolving conflicts in a team setting.\n\nWhen conflicts arise in a team, it's essential to address them promptly and professionally. The first step is to remain calm and composed, ensuring that emotions don't escalate the situation. Active listening is crucial, allowing you to understand the other person's perspective and concerns. \n\nNext, identify the root cause of the conflict, focusing on the issue rather than the person. This can be achieved by asking open-ended questions to clarify the problem and gather more information. \n\nOnce the root cause is identified, work together to find a mutually beneficial solution. This may involve compromising, finding alternative solutions, or seeking input from other team members. Effective communication and empathy are key to resolving conflicts in a team setting.\n\nIn terms of patterns, this process can be seen as a variation of the \"Mediation\" pattern, where a neutral third party facilitates a discussion to find a resolution. The time complexity of this process can be considered O(1) since it's a one-time event, and the space complexity is O(1) as well since it doesn't require any additional data structures.",
+          "confidence": null,
+          "latency_ms": 26607,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "not covered",
+              "does not cover",
+              "doesn't cover",
+              "not in my notes",
+              "outside"
+            ]
+          ],
+          "forbidden_hit": "$",
+          "answer": "The cost of a managed cloud key-value database can vary depending on the provider and the specific service. However, I can provide some general information on the costs of popular managed key-value databases.\n\nAmazon DynamoDB, for example, charges based on the amount of data stored and the number of reads and writes. The cost per million writes is not explicitly stated, but according to Amazon, the cost is around $0.000004 per read and $0.000006 per write. Assuming an average of 1 read and 1 write per million writes, the total cost would be around $0.000010 per million writes.\n\nGoogle Cloud Bigtable, on the other hand, charges based on the amount of data stored and the number of reads and writes. The cost per million writes is not explicitly stated, but according to Google, the cost is around $0.000005 per read and $0.000007 per write. Assuming an average of 1 read and 1 write per million writes, the total cost would be around $0.000012 per million writes.\n\nAzure Cosmos DB, a globally distributed, multi-model database service, charges based on the amount of data stored and the number of reads and writes. The cost per million writes is not explicitly stated, but according to Microsoft, the cost is around $0.000005 per read and $0.000007 per write. Assuming an average of 1 read and 1 write per million writes, the total cost would be around $0.000012 per million writes.\n\nIt's worth noting that these costs are estimates and may vary depending on the specific use case and region. Additionally, these costs do not include other expenses such as data transfer out of the region, which can add to the overall cost.\n\nPattern: This problem can be solved using a simple formula: Cost = (Number of writes / 1,000,000) * (Cost per write). \n\nTime and space complexity: O(1)",
+          "confidence": null,
+          "latency_ms": 28210,
+          "error": null
+        }
+      ]
+    },
+    "base_grounded": {
+      "model": "meta-llama/Llama-3.2-3B-Instruct",
+      "grounded": true,
+      "summary": {
+        "overall": 0.8187,
+        "pass_rate": 0.85,
+        "by_category": {
+          "abstention": 0.75,
+          "definition": 0.875,
+          "distinction": 0.8375,
+          "failure": 0.9375,
+          "procedure": 0.6937
+        },
+        "confidence_when_pass": null,
+        "confidence_when_fail": null,
+        "p50_latency_ms": 36209,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Back-pressure is a flow-control signal that propagates slowness from downstream to upstream in a system, preventing queue blowup. It is a mechanism to manage the rate at which data is produced and consumed, ensuring that the system does not become overwhelmed.\n\nTwo mechanisms that implement back-pressure are:\n\n1. **Bounded queues with blocking**: In this mechanism, the queue is bounded, meaning it has a limited capacity. When the queue reaches its capacity, new requests are blocked until space becomes available. This prevents the queue from growing indefinitely and allows the system to slow down production to match the rate of consumption.\n2. **Demand signals (reactive streams)**: In this mechanism, a demand signal is sent to the producer when the queue is full or the consumer is slow. The producer then reduces its rate of production, allowing the queue to drain and preventing it from overflowing. This mechanism is often used in reactive streams, where the producer and consumer are decoupled, and the demand signal is used to regulate the flow of data.\n\nBoth mechanisms aim to prevent queue blowup by propagating slowness from downstream to upstream, ensuring that the system remains stable and responsive.",
+          "confidence": null,
+          "latency_ms": 41826,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "ring"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Consistent hashing is a technique used to map keys to nodes in a distributed system, such as a cache or database, in a way that minimizes the likelihood of key collisions and ensures that keys are evenly distributed across the system.\n\nIn a traditional hashing approach, when a key is added or removed from the system, the entire hash table needs to be rebalanced, which can lead to a significant amount of overhead and potential downtime. Consistent hashing solves this problem by using a single, large hash function that maps keys to a range of virtual nodes, rather than individual physical nodes.\n\nHere's how it works:\n\n1. A large hash function is used to map keys to a range of virtual nodes, typically in the range [0, 2^k), where k is the number of virtual nodes.\n2. Each virtual node is assigned a physical node in the system, and the physical node is associated with a range of virtual nodes.\n3. When a key is added or removed, the virtual node associated with the key is updated, but the physical node remains the same.\n4. The system ensures that the virtual node range is always contiguous, so that when a key is moved, the number of nodes that need to be updated is minimized.\n\nDistributed caches and databases use consistent hashing to achieve several benefits:\n\n* **Improved availability**: By minimizing the number of nodes that need to be updated when a key is added or removed, consistent hashing ensures that the system remains available even in the event of node failures.\n* **Reduced rebalancing overhead**: Consistent hashing eliminates the need for rebalancing the entire hash table, which can be a time-consuming and resource-intensive process.\n* **Improved scalability**: Consistent hashing allows the system to scale more easily, as new nodes can be added or removed without affecting the overall system performance.\n* **Reduced collisions**: Consistent hashing minimizes the likelihood of key collisions, which can lead to errors and inconsistencies in the system.\n\nIn the",
+          "confidence": null,
+          "latency_ms": 36467,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "payment",
+              "order",
+              "charge"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "An idempotency key is a client ID that makes retried writes apply once. It's used to ensure that retried writes have the same effect as the original write, even if the write is retried multiple times.\n\nYou need an idempotency key when you want to ensure that a write operation is executed only once, even if it's retried due to network failures, timeouts, or other transient issues. This is particularly important in distributed systems where writes can be retried multiple times, and you want to avoid duplicate or inconsistent data.\n\nFor example, in a distributed cache, if a write operation is retried after a network failure, you want to ensure that the cache is updated only once, even if the original write was lost. The idempotency key helps to achieve this by allowing the system to recognize that the write has already been applied and skip the retry.\n\nIn the context of the CAP theorem, idempotency is closely related to consistency, as it ensures that the system maintains a consistent state even in the presence of failures. By using an idempotency key, you can achieve a stronger consistency guarantee, such as linearizability, which ensures that all nodes see the same sequence of operations.\n\nTime and space complexity: O(1) for storing and retrieving the idempotency key, O(1) for checking if a write has already been applied.",
+          "confidence": null,
+          "latency_ms": 27652,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "**Read-your-writes** is a session-level consistency guarantee that ensures a client always sees its own writes, but other clients may still see stale data. This is achieved by routing a user's reads to the leader or a replica that has caught up to the user's last write, for a short window. This approach is weaker than **linearizability**, which ensures that every read sees the most recent completed write, as if there were a single copy of the data.\n\nIn read-your-writes, the guarantee only applies to the client's own writes, not to other clients. This means that if a client writes data and then reads it, it will see the most recent version of the data. However, if another client writes data to the same location while the first client is reading, the first client may still see the old data.\n\nIn contrast, linearizability ensures that every read sees the most recent completed write, regardless of the client that wrote it. This means that if a client writes data and then reads it, it will see the most recent version of the data, even if another client wrote to the same location while the first client was reading.\n\n**Time complexity:** The time complexity of read-your-writes is O(1) for the client's own writes, and O(log N) for reads, where N is the number of nodes in the system. The time complexity of linearizability is also O(1) for the client's own writes, and O(log N) for reads.\n\n**Space complexity:** The space complexity of read-your-writes is O(1) for the client's own writes, and O(N) for the cache. The space complexity of linearizability is also O(1) for the client's own writes, and O(N) for the cache.\n\n**Pattern:** Read-your-writes is a common approach in distributed systems, particularly in caching and database systems, where it is used to balance the trade-off between consistency and availability",
+          "confidence": null,
+          "latency_ms": 44306,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 0.75,
+          "missing": [
+            [
+              "hybrid"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Fanout-on-write and fanout-on-read are two different strategies for handling fanout in a newsfeed system. The key difference between them lies in when the fanout operation is performed.\n\n**Fanout-on-write** is a strategy where a new post is written to every follower's feed immediately when the post is created. This approach ensures that followers see the latest post as soon as it is published. However, it can lead to a large number of synchronous writes to the follower's feed, which can be expensive and may lead to performance issues.\n\n**Fanout-on-read**, on the other hand, is a strategy where the feed is assembled at read time by merging the recent posts from the accounts a user follows. This approach avoids the need for synchronous writes to the follower's feed, making it more efficient for write-heavy workloads. However, it may lead to stale data if the follower's feed is not updated in real-time.\n\nThe choice between fanout-on-write and fanout-on-read depends on the workload characteristics of the system. \n\n- **Fanout-on-write wins** when the workload is read-heavy and tolerates slight staleness. In this case, the cost of synchronous writes to the follower's feed is acceptable, and the system can afford to update the follower's feed immediately.\n\n- **Fanout-on-read wins** when the workload is write-heavy and can tolerate a small window of staleness. In this case, the cost of synchronous writes to the follower's feed is too high, and the system can benefit from batching writes and avoiding millions of writes per post.\n\nIn the context of the newsfeed system, fanout-on-write is suitable for celebrity accounts with millions of followers, where the cost of synchronous writes to the follower's feed is too high. Fanout-on-read is suitable for normal accounts with few followers, where the cost of synchronous writes to the follower's feed is acceptable.",
+          "confidence": null,
+          "latency_ms": 44106,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 0.8,
+          "missing": [
+            [
+              "synchronous",
+              "same write",
+              "both the cache and the database",
+              "cache and the database",
+              "cache and database"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "**Cache-aside** and **write-through** are two distinct caching strategies used to improve system performance by reducing the number of database queries.\n\n**Cache-aside** is a caching strategy where the application first checks the cache for a requested item. If the item is found in the cache, it is returned immediately. If the item is not found in the cache, the application reads the item from the database, stores it in the cache, and then returns it to the requester. This approach is also known as \"lazy loading\" because the cache is populated only when the item is actually needed.\n\n**Write-through**, on the other hand, is a caching strategy where every write operation is synchronized with the database. When a write operation is performed, the data is first written to the cache and then to the database. This approach ensures that the cache is always up-to-date and never stale, but it can be slower because it requires two database writes.\n\nThe key differences between cache-aside and write-through caching are:\n\n*   **Cache population**: Cache-aside caches are populated on demand, while write-through caches are populated with every write operation.\n*   **Cache staleness**: Cache-aside caches can become stale over time, while write-through caches are always up-to-date.\n*   **Write performance**: Write-through caching can be slower because it requires two database writes, while cache-aside caching can be faster because it only requires one database read.\n\n**Time complexity**: The time complexity of cache-aside caching is O(1) for read operations and O(1) for write operations (because the cache is populated on demand), while the time complexity of write-through caching is O(1) for read operations and O(2) for write operations (because every write operation requires two database writes).\n\n**Space complexity**: The space complexity of both cache-aside and write-through caching is O(n), where n is the number of items in the cache.\n\nIn summary, cache-aside caching",
+          "confidence": null,
+          "latency_ms": 47776,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 0.8,
+          "missing": [
+            [
+              "scale up",
+              "bigger machine",
+              "more cpu",
+              "more powerful"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Vertical scaling refers to increasing the capacity of a single machine by adding more resources such as CPU, memory, or disk space. This approach is simple and straightforward, as it only requires modifying a single system component. However, it has a hard ceiling, meaning that there is a limit to how much capacity can be added before the system becomes too large and unwieldy. Additionally, vertical scaling can lead to a single point of failure, as all the resources are concentrated in a single machine.\n\nOn the other hand, horizontal scaling involves adding more machines to the system, spreading the load across multiple machines. This approach removes the ceiling on capacity, as more machines can be added as needed. However, it requires stateless services, partitioning, and replication to ensure that data is distributed and consistent across the multiple machines. Horizontal scaling is often used in cloud computing and distributed systems.\n\nPattern: Scaling\nTime and space complexity: O(1) for vertical scaling, O(n) for horizontal scaling (where n is the number of machines)\nWhy: Vertical scaling is simple and efficient, but has a hard ceiling. Horizontal scaling is more complex, but can handle large amounts of data and traffic.",
+          "confidence": null,
+          "latency_ms": 35532,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "A work queue and pub/sub are two distinct queueing patterns used in distributed systems. The primary difference between them lies in their purpose and behavior.\n\n**Work Queue:**\nA work queue is used to process messages or tasks that should be executed by exactly one consumer from a competing pool. Each message is processed by a single consumer, and the queue ensures that each message is processed only once. This pattern is suitable for background jobs, such as sending emails, processing images, or running scheduled tasks.\n\n**Pub/Sub:**\nA pub/sub (publish-subscribe) pattern is used to broadcast messages to multiple independent consumers. Each message is delivered to every subscriber group, and the pattern is designed to handle high volumes of messages and multiple consumers. Pub/sub is typically used for event-driven systems, such as real-time analytics, logging, or notification systems.\n\n**When to use each:**\n\n* Use a work queue when:\n\t+ You need to process messages or tasks that should be executed by exactly one consumer.\n\t+ The processing time is relatively long, and you want to avoid overwhelming the consumer.\n\t+ You need to ensure that each message is processed only once.\n* Use pub/sub when:\n\t+ You need to broadcast messages to multiple independent consumers.\n\t+ You want to handle high volumes of messages and multiple consumers.\n\t+ You need to support real-time or near-real-time processing.\n\nIn summary, if you need to process messages or tasks by a single consumer, use a work queue. If you need to broadcast messages to multiple independent consumers, use pub/sub.\n\n**Time and space complexity:**\n\n* Work queue: O(1) for adding a message, O(n) for removing a message, O(1) for processing a message.\n* Pub/sub: O(1) for publishing a message, O(n) for subscribing to a topic, O(1) for unsubscribing from a topic.\n\nNote: The time and space complexity assume a basic implementation of the queue",
+          "confidence": null,
+          "latency_ms": 35952,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 0.625,
+          "missing": [
+            [
+              "api"
+            ],
+            [
+              "base62"
+            ],
+            [
+              "301",
+              "302",
+              "trade-off",
+              "tradeoff"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To design a URL shortener for 1B redirects/day with a 100:1 read:write ratio, we'll follow the 8-step procedure outlined in the provided notes. Here's the step-by-step design:\n\n**Step 1: Define the problem and requirements**\n\nThe URL shortener needs to handle 1B redirects/day with a 100:1 read:write ratio. This means we need to handle 10M new URLs/day (100 times the number of reads) and 11,600 reads/s (1B redirects/day / 100).\n\n**Step 2: Determine the capacity and scalability requirements**\n\nBased on the requirements, we need to estimate the capacity of the system. The notes mention that 1B redirects/day is equivalent to 11,600 reads/s and 10M new URLs/day. Assuming an average of 500 bytes per row, we can estimate the total storage capacity needed for 10 years: 36.5B URLs * 500 bytes/URL = 18 TB.\n\n**Step 3: Choose a data model and storage solution**\n\nWe'll use a key-value store partitioned by short_code to store the mapping between short_code and long_url. This allows for efficient lookups and updates. We'll use a distributed key-value store to ensure high availability and scalability.\n\n**Step 4: Design the caching strategy**\n\nTo improve performance, we'll implement a cache-aside strategy. We'll cache the hottest 20% of codes (80/20 rule) to reduce the number of reads to the underlying storage. This will also help reduce the load on the database.\n\n**Step 5: Design the database architecture**\n\nWe'll use a distributed database with consistent hashing to ensure that data is evenly distributed across nodes. This will allow us to scale horizontally and handle high traffic. We'll use a leader-follower replication strategy to ensure high availability.\n\n**Step 6: Design the load balancing and scaling strategy**\n\nWe'll use",
+          "confidence": null,
+          "latency_ms": 35746,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.75,
+          "missing": [
+            [
+              "3.5 trillion",
+              "3.52 trillion",
+              "3.5t",
+              "3,521",
+              "3.5 x 10^12",
+              "3.52 x 10^12"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Not covered by my notes - closest concept: capacity estimation.\n\nHowever, we can estimate the capacity of a 7-character base62 short code for a URL shortener.\n\nA 7-character base62 code uses 62^7 possible codes. \n\nLet's calculate the capacity:\n\n62^7 = 3,402,373,705,176,841,6\n\nThis is more than enough to cover the 10M URLs created per day for 10 years. \n\nTo be more precise, let's calculate the total number of URLs created in 10 years:\n\n10M URLs/day * 365 days/year = 3,650,000,000 URLs/year\n3,650,000,000 URLs/year * 10 years = 36,500,000,000 URLs\n\nThe 7-character base62 code can handle more than this number, so it's sufficient for the URL shortener's capacity.",
+          "confidence": null,
+          "latency_ms": 43949,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 0.8,
+          "missing": [
+            [
+              "429"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To design a distributed rate limiter for an API, we'll follow the 8-step design procedure outlined in the reference notes.\n\n**Step 1: Clarify Requirements**\nWe need to understand the requirements of the rate limiter, including:\n\n* The number of requests per second (QPS) we want to limit\n* The read-write ratio (e.g., 10:1)\n* The storage requirements (e.g., Redis)\n* The bandwidth requirements\n* The cache size requirements\n\n**Step 2: Capacity Estimation**\nBased on the requirements, we estimate the capacity of the rate limiter:\n\n* We want to limit 1000 requests per second (QPS)\n* We assume a read-write ratio of 10:1, so we need to limit 1000 reads per second\n* We choose a Redis store with a 1 GB cache size\n\n**Step 3: API Design**\nWe design the API endpoints, including:\n\n* A single endpoint for rate limiting (e.g., `/rate-limit`)\n* A pagination mechanism to handle large numbers of requests (e.g., 100 requests per page)\n\n**Step 4: Data Model**\nWe define the data model, including:\n\n* A Redis hash table to store the rate limiting data for each client key\n* A Redis list to store the timestamps of the last 100 requests for each client key\n\n**Step 5: High-Level Architecture**\nWe design the high-level architecture, including:\n\n* A load balancer to distribute traffic across multiple instances of the rate limiter\n* A stateless service to handle requests and update the rate limiting data\n* A Redis cluster to store the rate limiting data\n\n**Step 6: Deep Dives**\nWe dive deeper into the rate limiting algorithm, including:\n\n* We use a token bucket algorithm to implement the rate limiter\n* We refill the token bucket atomically in a single script or transaction to avoid races\n\n**Step 7: Scaling and",
+          "confidence": null,
+          "latency_ms": 43897,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 0.6,
+          "missing": [
+            [
+              "at-least-once",
+              "at least once"
+            ],
+            [
+              "dedup",
+              "message id"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To deliver messages reliably and in order, the chat system employs a combination of techniques from the consistency ladder. \n\nFirst, the system uses a **Transactional Outbox** (from [3] corpus.md) to atomically write the business row and an outbox row in the same database transaction. This eliminates the dual-write problem, ensuring that either both the business row and the outbox row are written, or neither is.\n\nNext, the system uses a **Pub/Sub** pattern (from [3] corpus.md) to publish the outbox row to a message queue. This allows the message to be delivered to every subscriber group, including the client's WebSocket connection.\n\nThe message queue is designed to use a **Work Queue** pattern (from [3] corpus.md), where each message is processed by exactly one consumer from a competing pool. This ensures that messages are processed in the order they were received, and that there is no duplication or loss of messages.\n\nTo ensure that messages are delivered in order, the system uses a monotonically increasing sequence number for each conversation. This allows clients to order messages and detect gaps in the delivery.\n\nFinally, the system uses durable storage (from [1] corpus.md) to store messages when a client is offline. When the client reconnects, it receives messages from the durable storage, ensuring that it catches up on any messages it missed while offline.\n\nOverall, this design ensures that messages are delivered reliably and in order, using a combination of transactional outbox, pub/sub, work queue, and durable storage. The time complexity of this design is O(1) for publishing messages to the queue, and O(n) for processing messages in the queue, where n is the number of messages in the queue. The space complexity is O(n) for storing messages in the queue and durable storage.",
+          "confidence": null,
+          "latency_ms": 43442,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "When a team uses the primary database as a job queue by polling a jobs table, several issues arise at scale:\n\n1. **Lock contention**: As the number of jobs increases, the primary database becomes a bottleneck, leading to contention among concurrent requests to update the jobs table. This can result in slower performance and increased latency.\n2. **Hot rows**: The primary database table becomes a hot spot, causing performance issues and potentially leading to index bloat.\n3. **Vacuum or index bloat**: The database's vacuum process, which periodically cleans up deleted data, can become overwhelmed, leading to index bloat and further performance degradation.\n\nTo fix these issues, the recommended approach is to move jobs to a real message queue, such as Apache Kafka, RabbitMQ, or Amazon SQS, and use a transactional outbox if the job must be created atomically with a row in the primary database.\n\nBy moving jobs to a message queue, the primary database is no longer used as a queue, reducing lock contention and hot rows. The message queue can handle a large volume of jobs, and the transactional outbox ensures that the job is created atomically with the row in the primary database, maintaining data consistency.\n\n**Pattern:** Database as a queue -> Move to message queue -> Transactional outbox\n\n**Time complexity:** O(1) for message queue operations, O(1) for transactional outbox operations\n\n**Space complexity:** O(n) for the message queue, where n is the number of jobs in the queue.",
+          "confidence": null,
+          "latency_ms": 43423,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This is an example of the **Synchronous fanout** failure mode, where writing to every follower's feed inside the request causes post latency to grow with follower count and times out for accounts with many followers.\n\nTo fix this, we can use a hybrid approach that combines fanout-on-write and fanout-on-read. Specifically, we can publish one event and fan out asynchronously through a work queue, and use fanout-on-read for celebrity accounts with millions of followers, merging their recent posts at read time. This approach avoids millions of synchronous writes per celebrity post.",
+          "confidence": null,
+          "latency_ms": 37091,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 0.75,
+          "missing": [
+            [
+              "duplicate",
+              "twice",
+              "double"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This is an example of the **Missing idempotency** failure mode. \n\nThe fix is to require idempotency keys; idempotency keys collapse retried writes to a single effect. This means that the client should include a unique id with each write operation, and the server should store this id with the first result and return the same result for any retry.",
+          "confidence": null,
+          "latency_ms": 30598,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This is an example of the **Cache Stampede (Thundering Herd) failure mode**.\n\nWhen a very popular cache key expires, thousands of requests that previously cached the key suddenly miss and hammer the database, causing a temporary overload. This is because the cache is not designed to handle the sudden surge in requests, leading to a bottleneck in the database.\n\nTo fix this issue, we can implement a few strategies:\n\n1. **Request Coalescing (Single Flight)**: Instead of handling each request individually, we can group multiple requests together into a single flight, reducing the number of requests to the database.\n2. **Locking**: We can introduce a lock on the cache key to prevent multiple requests from accessing the key simultaneously, ensuring that only one request can update the cache at a time.\n3. **Jittered TTLs**: We can use a jittered time-to-live (TTL) for the cache key, so that the expiration time is not perfectly uniform, reducing the likelihood of a large number of requests expiring at the same time.\n4. **Serving Stale While Revalidating**: We can serve stale data from the cache while revalidating the data in the background, reducing the load on the database.\n\nBy implementing one or more of these strategies, we can mitigate the cache stampede and prevent the database from becoming overwhelmed.",
+          "confidence": null,
+          "latency_ms": 15734,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "CRDT (Consensus-based Replicated Data Types) merge semantics are not covered by my notes. The closest covered concept is the consistency ladder.",
+          "confidence": null,
+          "latency_ms": 13890,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "dsa"
+            ]
+          ],
+          "forbidden_hit": "o(e log v)",
+          "answer": "Dijkstra's algorithm with a binary heap is used to find the shortest path from a source node to all other nodes in a graph. The time complexity of Dijkstra's algorithm with a binary heap is O(E + V log V), where E is the number of edges and V is the number of vertices.\n\nThe binary heap is used to store the nodes to be processed, and the heap operations (insert and extract-min) take O(log V) time. The algorithm iterates over all edges E, and for each edge, it extracts the minimum node from the heap, which takes O(log V) time. Therefore, the overall time complexity is O(E log V).\n\nThe space complexity is O(V) for the heap.",
+          "confidence": null,
+          "latency_ms": 15347,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: behav - This question falls outside my domain of system design, as it pertains to behavioral interviewing and conflict resolution, which is the expertise of the behav specialist.",
+          "confidence": null,
+          "latency_ms": 16052,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Not covered by my notes. The closest covered concept is the consistency ladder, which discusses trade-offs and considerations for consistency models, but not specific pricing for managed cloud key-value databases.",
+          "confidence": null,
+          "latency_ms": 16217,
+          "error": null
+        }
+      ]
+    },
+    "aligned": {
+      "model": "model_01m4zyvrxn5f988a",
+      "grounded": false,
+      "summary": {
+        "overall": 0.2863,
+        "pass_rate": 0.1,
+        "by_category": {
+          "abstention": 0.25,
+          "definition": 0.3125,
+          "distinction": 0.2375,
+          "failure": 0.3125,
+          "procedure": 0.3187
+        },
+        "confidence_when_pass": 0.7465,
+        "confidence_when_fail": 0.7392,
+        "p50_latency_ms": 32093,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 0.0,
+          "missing": [
+            [
+              "upstream"
+            ],
+            [
+              "downstream",
+              "slow consumer",
+              "slowness"
+            ],
+            [
+              "bounded queue",
+              "bounded buffer"
+            ],
+            [
+              "429",
+              "503",
+              "demand",
+              "credit",
+              "reactive",
+              "block"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Back-pressure refers to a technique used in distributed systems to manage the flow of data between nodes or services. It involves controlling the rate at which data is sent from a producer to a consumer, preventing the consumer from becoming overwhelmed and ensuring that it can handle the incoming data. Back-pressure helps prevent network congestion, reduces latency, and improves overall system reliability.\n\nTwo common mechanisms that implement back-pressure are:\n\n1. **Token Bucket Algorithm**: This algorithm uses a bucket that fills up with tokens at a constant rate and empties it at a constant rate. When a request is made, a token is removed from the bucket. If the bucket is empty, the request is queued until a token becomes available. This ensures that the consumer can handle incoming requests without becoming overwhelmed.\n\nTime complexity: O(1) for adding tokens, O(1) for removing tokens, and O(n) for queuing requests.\n\n2. **Leaky Bucket Algorithm**: Similar to the token bucket algorithm, this algorithm uses a bucket that fills up with tokens at a constant rate and empties it at a constant rate. However, instead of removing tokens when a request is made, the bucket's capacity is reduced by a fixed amount. If the bucket overflows, it triggers an alert or back-pressure signal to the producer.\n\nTime complexity: O(1) for adding tokens, O(1) for reducing capacity, and O(n) for queuing requests.\n\nBoth algorithms can be used to implement back-pressure in various distributed systems, such as load balancers, caching systems, and message queues.",
+          "confidence": 0.7545,
+          "latency_ms": 25248,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "virtual node"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Consistent hashing is a technique used to map keys to nodes in a distributed system, ensuring that keys are evenly distributed across nodes and minimizing the likelihood of key collisions. It achieves this by using a hash function that maps keys to a continuous range of values, rather than discrete buckets. This allows for efficient insertion, deletion, and lookup operations.\n\nIn a distributed cache or database, consistent hashing is used to distribute keys across multiple nodes, ensuring that each node handles a consistent portion of the total keys. This is particularly important in distributed systems where nodes can join or leave dynamically, as consistent hashing ensures that keys are redistributed accordingly.\n\nConsistent hashing solves the problem of key collisions, where a key might map to the same node as another key. This can lead to hotspots where a single node handles a disproportionate amount of traffic. By using consistent hashing, each node handles a consistent portion of keys, reducing the likelihood of hotspots and improving overall system performance.\n\nThe benefits of consistent hashing include:\n\n* Efficient key distribution: keys are evenly distributed across nodes, reducing the likelihood of hotspots.\n* Dynamic node management: nodes can join or leave dynamically without affecting key distribution.\n* Improved scalability: consistent hashing allows for efficient handling of a large number of keys.\n\nTime complexity: O(1) for lookup, insertion, and deletion operations.\n\nSpace complexity: O(n), where n is the number of nodes in the system.\n\nPattern: Consistent hashing is a key concept in distributed systems, particularly in caching and database design.",
+          "confidence": 0.7022,
+          "latency_ms": 17983,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 0.25,
+          "missing": [
+            [
+              "retr"
+            ],
+            [
+              "single effect",
+              "only once",
+              "exactly once",
+              "same result",
+              "once"
+            ],
+            [
+              "payment",
+              "order",
+              "charge"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "An idempotency key is a unique identifier used to ensure that duplicate requests for the same operation do not result in unintended side effects. It's typically used in distributed systems, particularly in scenarios where multiple nodes or services need to perform the same operation concurrently. The idempotency key helps to prevent duplicate updates, insertions, or deletions, ensuring that the system remains in a consistent state.\n\nIdempotency keys are often used in scenarios like:\n\n1.  Distributed transactions: When multiple nodes need to update the same data, an idempotency key ensures that each update is treated as a single, atomic operation.\n2.  Caching: Idempotency keys help prevent cache invalidation issues when multiple requests are made to update the same cached data.\n3.  Event sourcing: Idempotency keys are used to ensure that duplicate events do not create duplicate state.\n\nTo implement idempotency, you can use techniques like:\n\n1.  Versioning: Store a version number with each update, and use the version number as the idempotency key.\n2.  UUIDs: Use a unique identifier, like a UUID, as the idempotency key.\n3.  Hash-based keys: Use a hash function to generate a unique key from the request data.\n\nTime complexity: O(1) for generating the idempotency key, O(1) for checking the idempotency key.\n\nSpace complexity: O(1) for storing the idempotency key.\n\nPattern: Idempotency key is a common pattern used in distributed systems to ensure consistency and prevent duplicate operations.",
+          "confidence": 0.7246,
+          "latency_ms": 32930,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 0.25,
+          "missing": [
+            [
+              "session"
+            ],
+            [
+              "own write"
+            ],
+            [
+              "weaker"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Read-your-writes consistency refers to a consistency model where every read operation sees the effects of all previous writes to the same data item. This means that if multiple threads write to the same data item, a read operation will see the latest write, not the oldest one. \n\nLinearizability, on the other hand, is a stronger consistency model that ensures every read operation sees a consistent view of the data, as if all operations were executed in a linear sequence. This means that even if multiple threads write to the same data item concurrently, a read operation will see the effects of all writes in the order they were received, not necessarily the order they were executed.\n\nLinearizability is a stronger consistency model than read-your-writes consistency because it guarantees that reads see a consistent view of the data, whereas read-your-writes consistency only guarantees that reads see the latest write. However, linearizability can be more difficult to achieve in practice due to the need to ensure that writes are executed in a linear sequence.\n\nTime complexity: \n- Read-your-writes consistency: O(1) for reads, O(n) for writes (in the worst case, where all writes need to be retried)\n- Linearizability: O(1) for reads, O(n) for writes (similar to read-your-writes consistency)\n\nSpace complexity: O(n) for storing the history of writes.",
+          "confidence": 0.712,
+          "latency_ms": 32402,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 0.5,
+          "missing": [
+            [
+              "celebrit",
+              "millions of followers",
+              "many followers"
+            ],
+            [
+              "hybrid"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Fanout-on-write and fanout-on-read are two different strategies used in distributed systems to handle the propagation of updates to multiple nodes in a network. \n\nFanout-on-write is a strategy where updates are written to a central node (e.g., a master node) first, and then replicated to multiple follower nodes. This approach is typically used in master-slave architectures. \n\nFanout-on-read, on the other hand, is a strategy where updates are written directly to follower nodes, bypassing the central node. This approach is typically used in peer-to-peer architectures.\n\nFanout-on-write wins in scenarios where:\n\n1. **High availability**: By writing to a central node first, fanout-on-write ensures that the central node is always up-to-date, even if some follower nodes fail. This is particularly important in applications where data consistency is crucial, such as financial transactions.\n2. **Low-latency**: Fanout-on-write reduces the latency associated with writing to follower nodes, as updates are written to the central node first and then replicated to followers.\n\nFanout-on-read wins in scenarios where:\n\n1. **Low-latency is more important**: In applications where real-time updates are critical, fanout-on-read can provide faster write performance, as updates are written directly to follower nodes.\n2. **High write volume**: Fanout-on-read can handle high write volumes more efficiently, as updates are written directly to follower nodes, reducing the load on the central node.\n\nHowever, fanout-on-read can lead to inconsistencies if the follower nodes fail or become outdated. Fanout-on-write, on the other hand, ensures data consistency but may introduce additional latency.",
+          "confidence": 0.7096,
+          "latency_ms": 32741,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 0.2,
+          "missing": [
+            [
+              "miss",
+              "not found in the cache",
+              "not in the cache"
+            ],
+            [
+              "lazy",
+              "on a miss",
+              "populate"
+            ],
+            [
+              "synchronous",
+              "same write",
+              "both the cache and the database",
+              "cache and the database",
+              "cache and database"
+            ],
+            [
+              "stale"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Cache-aside and write-through caching are two popular caching strategies used to improve performance by storing frequently accessed data in a faster, smaller cache. \n\n**Cache-Aaside:**\n\nCache-aside is a caching strategy where the cache is a separate entity from the main storage. When a request is made for a piece of data, the cache first checks if the data is already present in the cache. If it is, the data is retrieved from the cache. If not, the request is sent to the main storage, and the data is stored in the cache before being returned to the client. This approach allows for faster access to frequently accessed data, as it eliminates the need to access the slower main storage. However, it can lead to inconsistencies if the cache becomes outdated.\n\n**Write-Through:**\n\nWrite-through caching, on the other hand, stores data in the cache and writes it to the main storage immediately. When a write operation is performed, the data is first written to the cache and then to the main storage. This approach ensures data consistency, as all writes are reflected in both the cache and the main storage. However, it can lead to slower write performance, as the write operation must be performed twice.\n\n**Key differences:**\n\n1. **Consistency:** Write-through caching ensures consistency, while cache-aside may lead to inconsistencies if the cache becomes outdated.\n2. **Write performance:** Write-through caching is slower due to the need to write to both the cache and main storage, while cache-aside can be faster for reads.\n3. **Cache invalidation:** Cache-aside requires cache invalidation mechanisms to ensure data consistency, while write-through caching does not require explicit invalidation.\n\nTime complexity: Cache-aside - O(1) for reads, O(1) for writes; Write-through - O(1) for reads, O(1) for writes.\n\nSpace complexity: Cache-aside - O(n), where n is the number of cache entries; Write-through",
+          "confidence": 0.7501,
+          "latency_ms": 34237,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 0.0,
+          "missing": [
+            [
+              "scale up",
+              "bigger machine",
+              "more cpu",
+              "more powerful"
+            ],
+            [
+              "scale out",
+              "more machines",
+              "adding machines",
+              "add machines"
+            ],
+            [
+              "ceiling",
+              "limit"
+            ],
+            [
+              "single point of failure"
+            ],
+            [
+              "stateless",
+              "partition",
+              "replicat"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Vertical scaling refers to increasing the power of a single server or instance by adding more resources such as CPU, memory, or storage. This approach involves upgrading the capacity of a single server to handle increased load, which can be achieved through techniques like adding more RAM, upgrading to a faster processor, or increasing storage capacity. Vertical scaling is typically used when the load is relatively predictable and can be handled by a single server.\n\nHorizontal scaling, on the other hand, involves adding more servers to distribute the load across multiple machines. This approach allows for more efficient use of resources and can handle unpredictable loads more effectively. Horizontal scaling is typically used when the load is unpredictable or varies significantly over time.\n\nPattern: Load Balancing\n\nTime complexity: O(1) for vertical scaling, O(n) for horizontal scaling (where n is the number of servers)\n\nSpace complexity: O(1) for vertical scaling, O(n) for horizontal scaling",
+          "confidence": 0.7296,
+          "latency_ms": 30729,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 0.25,
+          "missing": [
+            [
+              "one consumer",
+              "single consumer",
+              "exactly one",
+              "only one"
+            ],
+            [
+              "every subscriber",
+              "all subscribers",
+              "each subscriber",
+              "every consumer"
+            ],
+            [
+              "broadcast",
+              "independent"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "A work queue and a publish-subscribe (pub/sub) system are two different architectural patterns used for message passing between components in a distributed system.\n\n**Work Queue:**\nA work queue is a First-In-First-Out (FIFO) data structure that stores messages or tasks to be processed by a worker. It's typically used for tasks that need to be executed in a specific order, such as job processing, message processing, or batch processing. The producer adds messages to the queue, and the consumer dequeues and processes them one by one. Work queues are often used in message-oriented middleware (MOM) systems, such as Apache Kafka, RabbitMQ, or Amazon SQS.\n\n**Publish-Subscribe (Pub/Sub):**\nA pub/sub system is a publish-subscribe pattern that allows producers to publish messages to a topic, and multiple subscribers can subscribe to receive those messages. It's used for real-time data dissemination, event-driven architecture, and event sourcing. Pub/sub systems are often used in applications that require low-latency, high-throughput, and fault-tolerance, such as social media platforms, real-time analytics, or IoT sensor networks.\n\n**Key differences:**\n\n* **Order of processing**: Work queues ensure that messages are processed in the order they were received, while pub/sub systems do not guarantee any order.\n* **Message duplication**: Pub/sub systems can lead to message duplication if subscribers miss messages, while work queues typically ensure that messages are processed exactly once.\n* **Scalability**: Pub/sub systems are designed for high-throughput and scalability, while work queues are optimized for throughput and reliability.\n\n**When to use each:**\n\n* Use a work queue when:\n\t+ You need to process tasks in a specific order.\n\t+ You need to ensure message duplication prevention.\n\t+ You prioritize reliability over low-latency.\n* Use a pub/sub system when:\n\t+ You need to disseminate messages to multiple subscribers.\n\t+ You require low-latency and high",
+          "confidence": 0.7591,
+          "latency_ms": 32146,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 0.375,
+          "missing": [
+            [
+              "11,600",
+              "11.6k",
+              "11600",
+              "12,000",
+              "12k",
+              "11,574"
+            ],
+            [
+              "116",
+              "10m",
+              "10 million"
+            ],
+            [
+              "api"
+            ],
+            [
+              "base62"
+            ],
+            [
+              "301",
+              "302",
+              "trade-off",
+              "tradeoff"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To design a URL shortener for 1B redirects/day with a 100:1 read:write ratio, we'll follow an 8-step procedure. \n\n**Step 1: Problem Definition**\nWe need to design a system that can handle 1 billion redirects per day with a read:write ratio of 100:1. This means we'll need to handle 100 times more reads than writes.\n\n**Step 2: Requirements Gathering**\n- Handle 1 billion redirects per day\n- Maintain a 100:1 read:write ratio\n- Ensure high availability and scalability\n- Optimize for low latency\n- Store redirects in a database\n\n**Step 3: Data Model Design**\nWe'll use a simple database schema with two tables: `redirects` and `redirects_cache`. The `redirects` table stores the mapping between original URLs and shortened URLs, while the `redirects_cache` table stores the cached redirects.\n\n**Step 4: Cache Design**\nWe'll implement a Least Recently Used (LRU) cache to store the top 1000 most frequently accessed redirects. This ensures that the most popular redirects are stored in memory for faster access.\n\n**Step 5: Write Path**\n- When a new redirect is created, we'll store it in the `redirects` table.\n- We'll use a message queue (e.g., RabbitMQ) to handle the write load and ensure that writes are processed asynchronously.\n\n**Step 6: Read Path**\n- When a read request is received, we'll check the cache first.\n- If the redirect is cached, we'll return the cached value.\n- If not, we'll query the `redirects` table and store the result in the cache.\n\n**Step 7: Scaling**\n- We'll use a load balancer to distribute reads across multiple instances of the service.\n- We'll use a distributed database (e.g., Cassandra) to handle writes and ensure high availability.\n- We",
+          "confidence": 0.7535,
+          "latency_ms": 32040,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.5,
+          "missing": [
+            [
+              "3.5 trillion",
+              "3.52 trillion",
+              "3.5t",
+              "3,521",
+              "3.5 x 10^12",
+              "3.52 x 10^12"
+            ],
+            [
+              "36.5 billion",
+              "36.5b",
+              "36,500,000,000",
+              "3.65 x 10^10"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To determine if a 7-character base62 short code is sufficient for a URL shortener, we need to calculate the total number of possible unique short codes and compare it to the expected usage.\n\nBase62 uses 62 characters (0-9, a-z, A-Z), so each character can be one of these 62 values. With 7 characters, the total number of possible unique short codes is:\n\n62^7 = 2,821,109,406,862,624\n\nNow, let's calculate the total number of short codes needed for 10 years:\n\n10 years × 365 days/year × 24 hours/day × 60 minutes/hour × 60 seconds/minute = 31,536,000 seconds/year\n\nWith 10 million URLs per day, the total number of short codes needed per year is:\n\n10,000,000 URLs/day × 365 days/year = 3,650,000,000 URLs/year\n\nSince each short code can be used only once, we need at least 3,650,000,000 short codes per year. \n\nComparing this to the total number of possible unique short codes (2,821,109,406,862,624), we can see that a 7-character base62 short code is sufficient for the given usage.",
+          "confidence": 0.8042,
+          "latency_ms": 29728,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 0.2,
+          "missing": [
+            [
+              "token bucket"
+            ],
+            [
+              "refill"
+            ],
+            [
+              "atomic",
+              "lua",
+              "transaction"
+            ],
+            [
+              "429"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Designing a distributed rate limiter for an API involves several key considerations. \n\n**Problem Statement:**\nWe want to limit the number of requests an IP address can make to our API within a certain time window. This ensures that no single IP address floods our API with too many requests, preventing abuse and maintaining a stable user experience.\n\n**Architecture:**\nTo design a distributed rate limiter, we'll use a combination of a centralized database and a distributed caching layer. \n\n1. **Database Layer:** We'll use a relational database (e.g., MySQL) to store IP addresses and their respective request counts. Each row will contain the IP address, timestamp, and request count. This layer will be responsible for storing historical data and handling queries.\n\n2. **Distributed Caching Layer:** We'll use a distributed caching layer (e.g., Redis) to store the current request counts for each IP address. This layer will be responsible for providing fast lookups and updates.\n\n3. **Load Balancer:** We'll use a load balancer to distribute incoming requests across multiple instances of our API. Each instance will have its own Redis instance for caching.\n\n**Algorithm:**\n\n1. When a request arrives, the load balancer forwards the request to an instance of the API.\n2. The instance checks the Redis instance for the IP address. If it finds a cached value, it updates the count and checks if the rate limit has been exceeded. If exceeded, it returns an error response.\n3. If the count is not cached, the instance queries the database to retrieve the count. If the count is within the limit, it updates the Redis instance and returns the response.\n4. If the count exceeds the limit, it updates the database and returns an error response.\n\n**Time Complexity:**\n\n- Database query: O(1) (assuming a hash-based index)\n- Redis lookup: O(1)\n- Redis update: O(1)\n- Load balancer: O(1",
+          "confidence": 0.7241,
+          "latency_ms": 29738,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 0.2,
+          "missing": [
+            [
+              "websocket"
+            ],
+            [
+              "at-least-once",
+              "at least once"
+            ],
+            [
+              "dedup",
+              "message id"
+            ],
+            [
+              "offline",
+              "reconnect"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To deliver messages reliably and in order, a chat system typically employs a combination of message queuing, buffering, and acknowledgement mechanisms. Here's a high-level overview of the process:\n\n1. **Message Submission**: When a user sends a message, it is received by a message broker or a load balancer, which forwards it to a message queue. This ensures that messages are not lost in transit and allows for efficient handling of high volumes of messages.\n\n2. **Message Queue**: The message queue is a buffer that stores messages until they are processed. It is typically implemented as a First-In-First-Out (FIFO) queue, ensuring that messages are processed in the order they were received. Message queues can be implemented using various data structures, such as arrays, linked lists, or message queues like RabbitMQ or Apache Kafka.\n\n3. **Message Processing**: When a message is dequeued from the queue, it is processed by a worker node, which performs any necessary operations, such as formatting, validation, or encryption. The processed message is then sent to the intended recipient.\n\n4. **Message Acknowledgement**: To ensure message reliability, the system sends an acknowledgement (ACK) back to the sender after the message has been processed. This acknowledgement confirms that the message has been received and processed successfully.\n\n5. **Message Re-delivery**: If the message is not acknowledged within a certain time window (typically 1-5 seconds), it is considered lost and re-sent. This ensures that messages are not lost due to network failures or other issues.\n\n6. **Message Ordering**: To maintain message ordering, the system uses a sequence number or timestamp associated with each message. This allows the system to re-order messages if they are received out of sequence.\n\nPattern: **Producer-Consumer Model**\n\nTime Complexity: O(1) for message submission, O(n) for message processing, and O(1) for acknowledgement.\n\nSpace Complexity: O(n) for the message queue.\n\nNote: This",
+          "confidence": 0.7239,
+          "latency_ms": 29783,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 0.5,
+          "missing": [
+            [
+              "lock",
+              "contention"
+            ],
+            [
+              "outbox"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "When a team uses a primary database as a job queue by polling a jobs table, several issues arise at scale:\n\n1. **High latency**: Polling the database for new jobs can lead to high latency, as the team needs to wait for the database to respond with new job data. This can cause delays in processing jobs, leading to a backlog.\n2. **Database load**: Frequent polling can put a heavy load on the database, leading to performance issues, slow query execution, and potential database bottlenecks.\n3. **Data consistency**: Polling a database can lead to inconsistent data, as the team may retrieve outdated job data or miss new jobs.\n\nTo fix these issues, a more scalable approach is to use a message queueing system, such as Apache Kafka, RabbitMQ, or Amazon SQS. These systems are designed to handle high volumes of messages and provide low-latency, fault-tolerant, and scalable processing.\n\nHere's a high-level overview of the architecture:\n\n1. **Producer**: The job submission system sends jobs to a message queue.\n2. **Consumer**: The message queue is polled by a worker process, which retrieves jobs from the queue and processes them.\n3. **Message queue**: The message queue stores jobs until they are processed, ensuring that jobs are not lost or duplicated.\n\nPattern: **Message Queue Pattern**\n\nTime complexity: O(1) for adding jobs to the queue, O(1) for retrieving jobs from the queue.\n\nSpace complexity: O(n), where n is the number of jobs in the queue.\n\nNote: This is a simplified example, and the specific implementation details may vary depending on the chosen message queueing system.",
+          "confidence": 0.7522,
+          "latency_ms": 36007,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 0.25,
+          "missing": [
+            [
+              "synchronous fanout",
+              "synchronous fan-out",
+              "fanout synchronously",
+              "fan out synchronously",
+              "synchronously"
+            ],
+            [
+              "asynchronous",
+              "async",
+              "background"
+            ],
+            [
+              "celebrit",
+              "fanout-on-read",
+              "fanout on read",
+              "hybrid"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This failure mode is known as a \"hotfix\" or \"write-heavy\" scalability issue. It occurs when a system writes to every follower's feed for every post, leading to a high load on the database and causing performance issues.\n\nTo fix this, we can implement a caching layer to reduce the number of writes to the database. One approach is to use a message queue or a publish-subscribe pattern, where the post is written to the queue, and then subscribers (followers) can pull the post from the queue instead of the database. This decouples the write operation from the read operation, reducing the load on the database.\n\nAnother approach is to use a caching layer, such as Redis or Memcached, to store the followers' feeds. When a new post is published, the cache layer can update the followers' feeds, and then periodically flush the cache to ensure data consistency. This approach requires careful tuning of cache expiration times and flushing intervals to ensure data consistency.\n\nTime complexity: O(n) for writing to the queue or cache, O(1) for reading from the queue or cache.\n\nSpace complexity: O(n) for storing followers' feeds in the cache.\n\nPattern: Publish-Subscribe or Caching Layer.\n\nNote: This is a simplified solution, and the actual implementation would depend on the specific requirements and constraints of the system.",
+          "confidence": 0.6973,
+          "latency_ms": 33116,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 0.5,
+          "missing": [
+            [
+              "idempoten"
+            ],
+            [
+              "key"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This failure mode is known as a \"double-billed\" or \"double-charged\" scenario. It occurs when a payment retry attempt is retried multiple times, resulting in duplicate charges to the customer.\n\nTo fix this issue, we can implement a retry mechanism with a timeout, but we also need to ensure that we don't retry a payment if it's already been retried. We can achieve this by adding a retry limit and a timestamp to track when a payment was retried. Here's a possible solution:\n\n1. When a payment retry is initiated, check if the payment has already been retried within a certain time window (e.g., 5 minutes). If it has, skip retrying and return an error.\n2. If the payment retry is successful, update the retry timestamp and return success.\n3. If the payment retry fails, retry again after a certain delay (e.g., 30 seconds) and update the retry timestamp.\n4. If the retry limit is exceeded (e.g., 3 retries), return an error.\n\nPattern: This solution uses a retry mechanism with exponential backoff and a retry limit to handle transient failures. Time complexity: O(1) for checking retry limit and timestamp, O(1) for updating retry timestamp. Space complexity: O(1) for storing retry timestamp.\n\nExample code snippet in Python:\n```python\nimport time\n\nclass PaymentProcessor:\n    def __init__(self):\n        self.retry_limit = 3\n        self.retry_delay = 30  # seconds\n        self.retry_timestamp = {}\n\n    def retry_payment(self, payment_id):\n        if payment_id in self.retry_timestamp:\n            if time.time() - self.retry_timestamp[payment_id] < 300:  # 5 minutes\n                return \"Payment already retried recently\"\n            else:\n                self.retry_timestamp[payment_id] = time.time()\n                return self.retry_payment(payment_id)\n\n        for attempt in range(self.retry_limit):\n            try",
+          "confidence": 0.749,
+          "latency_ms": 33050,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 0.0,
+          "missing": [
+            [
+              "stampede",
+              "thundering herd",
+              "dogpile"
+            ],
+            [
+              "coalesc",
+              "single flight",
+              "singleflight",
+              "lock",
+              "mutex"
+            ],
+            [
+              "jitter",
+              "random ttl",
+              "stagger"
+            ],
+            [
+              "stale"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This failure mode is known as a \"cache thrashing\" or \"cache thrashing problem.\" It occurs when the cache eviction policy is not properly configured, leading to a rapid replacement of cache entries, causing the database to be constantly refetched from disk, resulting in performance degradation.\n\nTo fix this issue, we can implement a Least Recently Used (LRU) cache eviction policy. This policy ensures that the least recently accessed cache entries are evicted first, preventing the database from being overwhelmed.\n\nHere's a high-level design:\n\n1. Implement a doubly linked list to store cache entries, where each node represents a cache entry.\n2. Use a hash map to store the cache entries, where the key is the cache key and the value is the corresponding node in the linked list.\n3. When a cache miss occurs, add the new entry to the end of the linked list and update the hash map.\n4. When the cache size exceeds the limit, remove the least recently used entry (the head of the linked list) and update the hash map.\n5. Use a timer or a scheduling mechanism to periodically clean up expired cache entries.\n\nTime complexity:\n\n* Cache miss: O(1) (hash map lookup)\n* Cache hit: O(1) (hash map lookup)\n* Cache eviction: O(1) (linked list removal)\n* Periodic cleanup: O(n) (linked list traversal)\n\nSpace complexity: O(n), where n is the number of cache entries.\n\nNote: This design assumes a simple cache eviction policy. Depending on the specific requirements, more advanced policies like LFU (Least Frequently Used) or Time-To-Live (TTL) can be used.",
+          "confidence": 0.7589,
+          "latency_ms": 33907,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "not covered",
+              "does not cover",
+              "doesn't cover",
+              "not in my notes",
+              "outside"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "CRDTs (Conflict-Free Replicated Data Types) are designed to handle concurrent updates in a distributed system. There are several merge semantics for CRDTs, each with its trade-offs. \n\nOne popular approach is the \"Last Writer Wins\" (LWW) semantics, where the last update to a value wins in case of conflicts. This approach is simple to implement but can lead to data loss. \n\nAnother approach is the \"Multi-Value Conflict Resolution\" (MVCR) semantics, which allows multiple values to be stored and resolves conflicts by selecting one of them. This approach can lead to inconsistencies if not implemented carefully.\n\nA more robust approach is the \"Multi-Value Last Writer Wins\" (MV-LWW) semantics, which allows multiple writers to update a value and resolves conflicts by selecting the last writer's update. This approach ensures consistency but can be more complex to implement.\n\nFor a distributed system, a good CRDT merge semantics should be designed to handle high availability, consistency, and fault tolerance. The system should also be designed to minimize the impact of network partitions and ensure eventual consistency.\n\nIn terms of system design, a good approach would be to use a distributed hash table (DHT) to store the CRDT values, with each node in the DHT responsible for a subset of the keys. When a node receives an update, it should broadcast the update to its neighbors, which then update their local copies of the CRDT. The updates should be stored in a way that ensures eventual consistency, such as using a conflict-free merge algorithm.\n\nTime complexity for merge operations would depend on the specific CRDT implementation, but it's typically O(log n) for a distributed hash table. Space complexity would depend on the size of the CRDT values and the number of nodes in the DHT.\n\nPattern: Distributed Hash Table, Conflict-Free Merge Algorithm.",
+          "confidence": 0.6664,
+          "latency_ms": 36227,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "dsa"
+            ]
+          ],
+          "forbidden_hit": "o((v + e) log v)",
+          "answer": "Dijkstra's algorithm with a binary heap as the priority queue has a time complexity of O((V + E) log V), where V is the number of vertices and E is the number of edges. This is because each insertion and deletion operations on the heap take O(log V) time, and we perform these operations V + E times. The binary heap data structure allows us to maintain the priority queue efficiently, ensuring that the vertex with the minimum distance from the source is always at the root.",
+          "confidence": 0.7539,
+          "latency_ms": 29475,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: behav - This question falls outside my domain.",
+          "confidence": 0.7907,
+          "latency_ms": 13645,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "not covered",
+              "does not cover",
+              "doesn't cover",
+              "not in my notes",
+              "outside"
+            ]
+          ],
+          "forbidden_hit": "$",
+          "answer": "The cost of a managed cloud key-value database can vary depending on the provider and the specific service. However, I can provide some general estimates.\n\nAmazon DynamoDB, a popular managed key-value database service, charges based on the amount of data stored and the number of reads and writes. According to Amazon, the cost of DynamoDB is $0.006 per GB-month for storage, and $0.25 per 1 million writes.\n\nGoogle Cloud Bigtable, another managed NoSQL database service, charges based on the amount of data stored and the number of reads and writes. According to Google Cloud, the cost of Bigtable is $0.006 per GB-month for storage, and $0.000006 per write.\n\nAzure Cosmos DB, a globally distributed, multi-model database service, charges based on the amount of data stored and the number of reads and writes. According to Microsoft, the cost of Cosmos DB is $0.000006 per write.\n\nIt's worth noting that these costs are subject to change, and actual costs may vary depending on the specific use case and region.",
+          "confidence": 0.7832,
+          "latency_ms": 10173,
+          "error": null
+        }
+      ]
+    },
+    "aligned_grounded": {
+      "model": "model_01m4zyvrxn5f988a",
+      "grounded": true,
+      "summary": {
+        "overall": 0.8225,
+        "pass_rate": 0.8,
+        "by_category": {
+          "abstention": 0.75,
+          "definition": 0.875,
+          "distinction": 0.9375,
+          "failure": 0.875,
+          "procedure": 0.675
+        },
+        "confidence_when_pass": 0.7599,
+        "confidence_when_fail": 0.794,
+        "p50_latency_ms": 19344,
+        "errors": 0
+      },
+      "items": [
+        {
+          "question_num": 1,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Back-pressure is a flow-control signal that propagates slowness from downstream to upstream in a system, preventing queue blowup. It signals that the downstream system is slow or unable to handle the current rate of requests, and prevents the upstream system from sending more requests until the downstream system catches up.\n\nTwo mechanisms that implement back-pressure are:\n\n1. **Bounded queues with blocking**: This mechanism uses a queue with a limited capacity. When the queue reaches its capacity, new requests are blocked until space becomes available. This prevents the queue from growing indefinitely and allows the upstream system to slow down its production of requests.\n2. **Demand signals (reactive streams)**: This mechanism uses a reactive stream that signals when the downstream system is slow. When the stream receives a signal, it reduces the rate at which it sends requests to the upstream system, preventing it from overwhelming the upstream system. This allows the upstream system to slow down its production of requests and prevents queue blowup.\n\nBoth mechanisms aim to prevent queue blowup by propagating slowness from downstream to upstream, ensuring that the upstream system does not overwhelm the downstream system.",
+          "confidence": 0.7579,
+          "latency_ms": 24848,
+          "error": null
+        },
+        {
+          "question_num": 2,
+          "category": "definition",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Consistent hashing is a technique used to map keys to nodes in a distributed system, ensuring that keys are evenly distributed across nodes and minimizing the likelihood of key collisions. It achieves this by using a hash function to map keys to a range of values, which are then mapped to a set of virtual nodes. These virtual nodes are distributed across the physical nodes in the system, allowing for efficient distribution and retrieval of data.\n\nConsistent hashing is used in distributed caches and databases because it provides several benefits:\n\n1.  **Improved load balancing**: Consistent hashing ensures that keys are distributed evenly across nodes, reducing the likelihood of hotspots and improving overall system performance.\n2.  **Reduced key collisions**: By mapping keys to a set of virtual nodes, consistent hashing minimizes the likelihood of key collisions, which can occur when using traditional hashing techniques.\n3.  **Efficient node addition and removal**: When a node joins or leaves the system, consistent hashing allows for efficient redistribution of keys, minimizing downtime and ensuring that the system remains available.\n4.  **Improved scalability**: Consistent hashing enables distributed systems to scale more efficiently, as new nodes can be added or removed without affecting the overall system performance.\n\nIn the context of the URL shortener system, consistent hashing is used to map keys (URLs) to virtual nodes, ensuring that hot keys are distributed across nodes and minimizing the likelihood of cache stampede. This allows the system to scale more efficiently and maintain high performance under heavy loads.\n\nTime complexity: O(1) for key lookup, O(n) for node addition/removal.\n\nSpace complexity: O(n), where n is the number of virtual nodes.\n\nPattern: Consistent hashing.\n\nNot covered by my notes: specifics of consistent hashing algorithms, such as the MDS (Multi-Dimensional Scaling) algorithm used in some implementations.",
+          "confidence": 0.7394,
+          "latency_ms": 19542,
+          "error": null
+        },
+        {
+          "question_num": 3,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "payment",
+              "order",
+              "charge"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "An idempotency key is a client identifier that makes retried writes apply once. It ensures that retried writes have the same effect as the first write. This is necessary to prevent cascading failures and maintain consistency in distributed systems.\n\nYou need an idempotency key when you want to ensure that retried writes have the same effect as the first write, especially in systems that use eventual consistency or session guarantees like read-your-writes. This is particularly important in systems that handle retried writes, such as retry mechanisms, backpressure, and transactional outboxes.",
+          "confidence": 0.6695,
+          "latency_ms": 27618,
+          "error": null
+        },
+        {
+          "question_num": 4,
+          "category": "definition",
+          "score": 0.75,
+          "missing": [
+            [
+              "weaker"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Read-your-writes consistency is a session-level guarantee that ensures a client always sees its own writes, but other clients may still see stale data. It is implemented by routing a user's reads to the leader, or to a replica that has caught up to the user's last write, for a short window. This approach allows for higher availability and scalability, as it reduces the need for strong consistency guarantees.\n\nLinearizability, on the other hand, is a stronger consistency guarantee that ensures every read sees the most recent completed write, as if there were a single copy of the data. It is achieved through techniques like two-phase commit and vector clocks. Linearizability provides stronger consistency guarantees than read-your-writes, but it can lead to higher latency and reduced availability.\n\nKey differences between read-your-writes and linearizability:\n\n*   Read-your-writes: session-level guarantee, allows stale data, higher availability and scalability\n*   Linearizability: stronger consistency guarantee, ensures most recent completed write, higher latency and reduced availability\n\nTime complexity: read-your-writes (O(1) for reads, O(n) for writes), linearizability (O(log n) for writes, O(1) for reads)\n\nSpace complexity: read-your-writes (O(n) for cache), linearizability (O(n) for cache)\n\nPattern: read-your-writes, linearizability",
+          "confidence": 0.7955,
+          "latency_ms": 15277,
+          "error": null
+        },
+        {
+          "question_num": 5,
+          "category": "distinction",
+          "score": 0.75,
+          "missing": [
+            [
+              "hybrid"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Fanout-on-write and fanout-on-read are two different strategies for handling fanout in a newsfeed. \n\nFanout-on-write writes a new post into every follower's feed when it is created. This approach is suitable for celebrity accounts with millions of followers, as it avoids millions of synchronous writes per post. It ensures that followers see the latest post immediately. However, it incurs a high overhead due to the large number of writes.\n\nFanout-on-read, on the other hand, assembles a feed at read time from the accounts a user follows. This approach is suitable for normal accounts with few followers, as it incurs a low overhead due to the small number of writes. It also allows for cheap reads, as followers only need to read the posts they care about.\n\nFanout-on-write wins when:\n\n* Celebrity accounts with millions of followers need to see the latest post immediately.\n* Write-heavy workloads are present, and the cost of writes is high.\n\nFanout-on-read wins when:\n\n* Read-heavy workloads are present, and the cost of writes is low.\n* Normal accounts with few followers need to see their feeds frequently.",
+          "confidence": 0.7498,
+          "latency_ms": 15354,
+          "error": null
+        },
+        {
+          "question_num": 6,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Cache-aside and write-through are two popular caching strategies used to improve application performance by reducing the number of database queries. The key difference between them lies in how they handle writes to the cache.\n\n**Cache-Aside:**\n\nIn a cache-aside strategy, the cache is a separate entity that stores frequently accessed data. When a read request is made, the cache is checked first. If the requested data is found in the cache, it is returned immediately. If the data is not found in the cache, a database query is executed to retrieve the data, and the result is stored in the cache for future reads. This approach is also known as lazy loading.\n\n**Write-Through:**\n\nIn a write-through strategy, every write operation is executed synchronously, and the data is written to both the cache and the database simultaneously. This ensures that the cache is always up-to-date, but it can lead to slower write performance.\n\n**Key differences:**\n\n1. **Write consistency:** Cache-aside allows stale data to be served from the cache, while write-through ensures that writes are always consistent across both the cache and the database.\n2. **Write performance:** Write-through is slower than cache-aside because it involves writing to both the cache and the database, while cache-aside only writes to the cache.\n3. **Cache invalidation:** Cache-aside requires a separate invalidation mechanism to ensure that stale data is removed from the cache when it becomes outdated. Write-through does not require explicit invalidation because writes are always consistent.\n\n**Time and space complexity:**\n\nCache-aside:\n- Time complexity: O(1) for reads, O(n) for writes (where n is the number of cache entries)\n- Space complexity: O(n) for the cache\n\nWrite-through:\n- Time complexity: O(1) for reads, O(n) for writes\n- Space complexity: O(n) for the cache\n\nIn summary, cache-aside is suitable for read-heavy applications",
+          "confidence": 0.7867,
+          "latency_ms": 21758,
+          "error": null
+        },
+        {
+          "question_num": 7,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Vertical scaling refers to increasing the capacity of a single machine by adding more CPU, memory, or disk resources. This approach is simple and straightforward, as it doesn't require significant changes to the underlying architecture. However, it has a hard ceiling, meaning that once a machine reaches its maximum capacity, it cannot be scaled further. Additionally, vertical scaling introduces a single point of failure, as all the data and services are concentrated on a single machine.\n\nOn the other hand, horizontal scaling involves adding more machines to distribute the load across them. This approach removes the ceiling and reduces the risk of a single point of failure, as data and services are spread across multiple machines. However, horizontal scaling requires stateless services, partitioning, and replication, which can add complexity to the system.\n\nPattern: Scaling\nTime complexity: O(1) for vertical scaling, O(n) for horizontal scaling\nSpace complexity: O(1) for vertical scaling, O(n) for horizontal scaling",
+          "confidence": 0.7942,
+          "latency_ms": 19146,
+          "error": null
+        },
+        {
+          "question_num": 8,
+          "category": "distinction",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "**Work Queue vs Pub/Sub**\n\nBoth work queues and pub/sub messaging patterns are used to handle asynchronous communication between systems, but they serve different purposes and have distinct characteristics.\n\n**Work Queue**\n\nA work queue is a messaging pattern where each message is processed by exactly one consumer from a competing pool. It's typically used for background jobs, such as:\n\n* Batch processing\n* Scheduled tasks\n* Long-running operations\n\nCharacteristics:\n\n* Each message is processed by one consumer\n* Message ordering is guaranteed\n* Message processing is idempotent (can be retried if failed)\n* Typically used for batch processing, where a single consumer can handle multiple messages\n\nExample: Sending a report to a data processing system that needs to process the report in batches.\n\n**Pub/Sub**\n\nPub/sub messaging pattern is used to broadcast events to independent services. It's typically used for:\n\n* Event-driven architecture\n* Real-time updates\n* Decoupling systems\n\nCharacteristics:\n\n* Each message is delivered to every subscriber\n* Message ordering is not guaranteed\n* Message processing is not idempotent (multiple consumers may process the same message)\n\nExample: Publishing a new user's login event to multiple services that need to react to the event.\n\n**When to use each**\n\nUse a work queue when:\n\n* You need to process messages in batches\n* Message processing is idempotent\n* You need to ensure message ordering\n\nUse pub/sub when:\n\n* You need to broadcast events to multiple independent services\n* Message ordering is not critical\n* You need to decouple systems\n\nIn summary, work queues are suitable for batch processing and idempotent message processing, while pub/sub is suitable for event-driven architecture and broadcasting events to multiple services.",
+          "confidence": 0.7601,
+          "latency_ms": 21628,
+          "error": null
+        },
+        {
+          "question_num": 9,
+          "category": "procedure",
+          "score": 0.75,
+          "missing": [
+            [
+              "api"
+            ],
+            [
+              "301",
+              "302",
+              "trade-off",
+              "tradeoff"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To design a URL shortener for 1B redirects/day with a 100:1 read:write ratio, we'll follow an 8-step procedure. \n\n**Step 1: Requirements Gathering**\nWe need to create a short link, redirect fast (p99 under 50 ms), links live for years, and maintain high availability for redirects. We'll also need to handle 1B redirects/day, with an average of 11,600 reads/s and 35,000 reads/s peak, and 10M new URLs/day, with 116 writes/s.\n\n**Step 2: Capacity Estimation**\nBased on the requirements, we estimate the capacity needed. With 1B redirects/day, we'll need a database that can handle 36.5B URLs over 10 years, with each URL requiring about 500 bytes. This translates to approximately 18 TB of storage.\n\n**Step 3: Data Model**\nWe'll use a key-value store partitioned by short_code. Each entry will contain the long_url, created_at, and owner. This design allows for efficient retrieval of URLs and ensures that each short_code maps to a unique long_url.\n\n**Step 4: Key Generation**\nTo generate unique short_codes, we'll use a distributed counter encoded in base62. This approach ensures that collisions are avoided, as the probability of generating a duplicate short_code is extremely low. With 7-char base62, we get approximately 3.5 trillion codes, which is roughly 100x the 36.5B URLs needed for 10 years.\n\n**Step 5: Architecture**\nOur architecture will consist of a load balancer, stateless app servers, and a cache-aside Redis for hot codes. We'll use consistent hashing to partition the key-value database, ensuring that no two short_codes map to the same long_url. We'll replicate the database leader-follower to ensure high availability.\n\n**Step 6: Caching**\nWe'll cache",
+          "confidence": 0.7856,
+          "latency_ms": 21530,
+          "error": null
+        },
+        {
+          "question_num": 10,
+          "category": "procedure",
+          "score": 0.75,
+          "missing": [
+            [
+              "3.5 trillion",
+              "3.52 trillion",
+              "3.5t",
+              "3,521",
+              "3.5 x 10^12",
+              "3.52 x 10^12"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Not covered by my notes. The closest covered concept is capacity estimation.\n\nTo determine if a 7-character base62 short code is enough for a URL shortener, we need to calculate the total number of possible codes and compare it to the required capacity.\n\nAssuming a 7-character base62 code, we have 62^7 possible codes. \n\n7-char base62 = 62^7 = 3,486,784,401,664\n\nNow, let's calculate the total capacity required for 10 years:\n\n10M new URLs/day * 365 days/year = 3,650,000,000 URLs/year\n3,650,000,000 URLs/year * 10 years = 36,500,000,000 URLs\n\nSince each URL requires 500 bytes per row, the total capacity required is:\n\n36,500,000,000 URLs * 500 bytes/URL = 18,250,000,000 bytes\n\nNow, let's compare the capacity required to the number of possible codes:\n\n18,250,000,000 bytes / 500 bytes/row = 36,500,000 rows\n\nNow, let's calculate the capacity required for a 7-character base62 code:\n\n3,486,784,401,664 codes / 36,500,000 rows = approximately 95.5 codes per row\n\nSince we need to account for some overhead and potential collisions, it's better to use a larger number of characters. A 7-character base62 code might not be enough for a URL shortener that creates 10M URLs per day for 10 years.",
+          "confidence": 0.7906,
+          "latency_ms": 24501,
+          "error": null
+        },
+        {
+          "question_num": 11,
+          "category": "procedure",
+          "score": 0.6,
+          "missing": [
+            [
+              "refill"
+            ],
+            [
+              "atomic",
+              "lua",
+              "transaction"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "Designing a distributed rate limiter for an API involves several key considerations. \n\n**Problem Statement:** We need to limit the number of requests from a client to an API within a certain time window. This ensures that the API doesn't get overwhelmed with too many requests from a single client, which can lead to performance issues and security vulnerabilities.\n\n**Pattern:** Token Bucket Algorithm\n\nWe'll use a token bucket algorithm to implement the rate limiter. Each client will have its own bucket, which represents a pool of tokens. Tokens are added to the bucket at a constant rate, and when a request is made, one token is removed from the bucket. If the bucket is empty, the client is blocked until more tokens are added.\n\n**Components:**\n\n1. **Client Key Store:** A shared store (e.g., Redis) to store client keys and their corresponding bucket counters.\n2. **Rate Limiter Service:** A service responsible for managing the token buckets. It will handle adding tokens to the buckets, removing tokens when requests are made, and checking if a client is blocked.\n3. **API Gateway:** The entry point for clients to make requests to the API. It will forward requests to the Rate Limiter Service.\n\n**Flow:**\n\n1. When a client makes a request to the API, the API Gateway sends the client's key to the Rate Limiter Service.\n2. The Rate Limiter Service checks if the client's bucket is empty. If it is, it returns a 429 response with a Retry-After header indicating when the client can make the next request.\n3. If the bucket is not empty, the Rate Limiter Service removes one token from the bucket.\n4. If the bucket is empty, the Rate Limiter Service adds new tokens to the bucket at the configured rate.\n5. If the bucket is full, the Rate Limiter Service returns a 429 response with a Retry-After header indicating when the client can make the next request.\n\n**Trade",
+          "confidence": 0.7842,
+          "latency_ms": 25849,
+          "error": null
+        },
+        {
+          "question_num": 12,
+          "category": "procedure",
+          "score": 0.6,
+          "missing": [
+            [
+              "at-least-once",
+              "at least once"
+            ],
+            [
+              "dedup",
+              "message id"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "To deliver messages reliably and in order, a chat system uses a combination of message queuing and caching. \n\nHere's a high-level overview of the process:\n\n1. **Client Connection**: Clients establish WebSocket connections to gateway servers. Each client is assigned a unique monotonically increasing sequence number to ensure that messages can be ordered correctly.\n\n2. **Message Receipt**: When a client sends a message, the gateway server stores it in a durable storage system (e.g., a message queue) along with the client's sequence number. This ensures that messages are not lost in case of a failure.\n\n3. **Message Delivery**: When a client reconnects, the gateway server checks for any missed messages by querying the durable storage system. If messages are found, they are delivered to the client in the correct order based on their sequence numbers.\n\n4. **Caching**: To improve performance, the gateway server caches a subset of messages. This cache is typically a least-recently-used (LRU) cache. When a client reconnects, the cached messages are delivered to the client before any messages from the durable storage system.\n\n5. **Message Ordering**: To ensure that messages are delivered in order, the gateway server maintains a monotonically increasing sequence number for each client. When a client sends a message, the sequence number is incremented, and the message is stored in the durable storage system.\n\n6. **Idempotency**: To prevent duplicate messages, each message is assigned a unique idempotency key. If a client retries a message, the idempotency key ensures that only one copy of the message is stored in the durable storage system.\n\nPattern: **Transactional Outbox**\n\nTime complexity: O(1) for message insertion, O(n) for message retrieval from durable storage.\n\nSpace complexity: O(n) for storing messages in durable storage.\n\nThis approach ensures that messages are delivered reliably and in order, while also handling client disconnections and retries.",
+          "confidence": 0.7267,
+          "latency_ms": 25918,
+          "error": null
+        },
+        {
+          "question_num": 13,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "**What goes wrong at scale:**\n\nWhen a team uses the primary database as a job queue by polling a jobs table, several issues arise at scale:\n\n1. **Lock contention**: Polling the primary database table for jobs causes contention among concurrent requests, leading to slower performance and increased latency.\n2. **Hot rows**: Frequent updates to the jobs table can lead to hot rows, causing the database to become unbalanced and inefficient.\n3. **Vacuum or index bloat**: Frequent inserts, updates, and deletes can lead to vacuum or index bloat, further degrading performance.\n4. **Competing with user traffic**: Polling the primary database table competes with user traffic, leading to decreased responsiveness and user experience.\n\n**Fix:**\n\nTo address these issues, a better approach is to move jobs to a real message queue and use a transactional outbox if the job must be created atomically with a row. This involves:\n\n1. **Using a message queue**: Store jobs in a message queue, allowing for decoupling between producers and consumers.\n2. **Transactional outbox**: Use a transactional outbox to ensure that job creation is atomic with a row in the primary database, preventing duplicate charges or other issues.\n\nBy decoupling the job queue from the primary database, the team can improve scalability, reduce contention, and increase overall system performance.",
+          "confidence": 0.7956,
+          "latency_ms": 24825,
+          "error": null
+        },
+        {
+          "question_num": 14,
+          "category": "failure",
+          "score": 0.5,
+          "missing": [
+            [
+              "asynchronous",
+              "async",
+              "background"
+            ],
+            [
+              "queue"
+            ]
+          ],
+          "forbidden_hit": null,
+          "answer": "This is an example of the **Synchronous fanout** failure mode. Writing to every follower's feed inside the request causes post latency to grow with follower count and times out for accounts with many followers.\n\nTo fix this, we can use a hybrid approach: **Fanout-on-write** (push) for normal accounts, where a post is pushed into each follower's precomputed feed list, making reads cheap, and **Fanout-on-read** (pull) for celebrity accounts with millions of followers, where their recent posts are merged at read time. This hybrid approach avoids millions of synchronous writes per celebrity post.",
+          "confidence": 0.8461,
+          "latency_ms": 18530,
+          "error": null
+        },
+        {
+          "question_num": 15,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This is an example of the **Missing idempotency** failure mode. \n\nMissing idempotency occurs when a client or gateway retries a write operation, resulting in duplicate charges. \n\nTo fix this issue, we need to require idempotency keys. Idempotency keys are client-generated unique IDs sent with a write operation. The server stores the key with the first result and returns that same result for any retry.",
+          "confidence": 0.8189,
+          "latency_ms": 11548,
+          "error": null
+        },
+        {
+          "question_num": 16,
+          "category": "failure",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "This scenario describes a **Cache Stampede** failure mode. When a very popular cache key expires, it triggers a large number of requests to the database, leading to a temporary overload and potential performance issues.\n\nTo fix this issue, we can implement a technique called **request coalescing**. This involves batching multiple requests together into a single request, allowing the cache to handle the expiration of multiple keys at once. This reduces the number of requests sent to the database, preventing a \"thundering herd\" effect.\n\nAlternatively, we can use other techniques such as:\n\n*   Adding a lock to prevent multiple requests from accessing the database simultaneously\n*   Implementing jittered TTLs (time-to-live) to stagger the expiration of cache keys\n*   Serving stale data while revalidating to reduce the load on the database\n\nBy implementing one of these techniques, we can mitigate the cache stampede failure mode and ensure a smoother experience for users.",
+          "confidence": 0.7267,
+          "latency_ms": 9583,
+          "error": null
+        },
+        {
+          "question_num": 17,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "CRDT merge semantics is not covered by my notes. The closest covered concept is the consistency ladder.",
+          "confidence": 0.8625,
+          "latency_ms": 7285,
+          "error": null
+        },
+        {
+          "question_num": 18,
+          "category": "abstention",
+          "score": 0.0,
+          "missing": [
+            [
+              "delegate",
+              "defer",
+              "hand off"
+            ],
+            [
+              "dsa"
+            ]
+          ],
+          "forbidden_hit": "o(e + v log v)",
+          "answer": "Dijkstra's algorithm with a binary heap is used to find the shortest path from a source node to all other nodes in a graph. \n\nThe time complexity of Dijkstra's algorithm with a binary heap is O(E + V log V), where E is the number of edges and V is the number of vertices.",
+          "confidence": 0.8189,
+          "latency_ms": 6674,
+          "error": null
+        },
+        {
+          "question_num": 19,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "DELEGATE: behav - This question falls outside my domain.",
+          "confidence": 0.7228,
+          "latency_ms": 2631,
+          "error": null
+        },
+        {
+          "question_num": 20,
+          "category": "abstention",
+          "score": 1.0,
+          "missing": [],
+          "forbidden_hit": null,
+          "answer": "Not covered by my notes. The closest covered concept is the consistency ladder, which discusses trade-offs and considerations for consistency models, but not pricing.",
+          "confidence": 0.6024,
+          "latency_ms": 2832,
+          "error": null
+        }
+      ]
+    }
+  }
+}
