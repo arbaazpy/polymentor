@@ -288,7 +288,7 @@ def _run_collaborative(turn, decision, ask) -> Iterator[dict[str, Any]]:
     turn.experts = [results[lane] for lane in decision.lanes]
 
     claims = [
-        Claim(id=c["id"], text=c["text"], lane=e["lane"])
+        Claim(id=c["id"], text=c["text"], lane=e["lane"], value=c.get("value", ""))
         for e in turn.experts
         for c in e.get("claims", [])
     ]

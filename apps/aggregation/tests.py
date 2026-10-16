@@ -76,8 +76,9 @@ def test_collaborative_turn_reconciles_and_synthesizes(monkeypatch):
     replies = {
         "sysdes": 'Counter ids. [[claim id="hash.length"]]7-char base62 codes.[[/claim]]',
         "dsa": '[[claim id="hash.length"]]Hashed codes need 8 chars.[[/claim]]',
-        "behav": "Ship redirects first; cut analytics.",
+        "behav": "Ship redirects first on Cassandra; cut analytics.",
     }
+    replies["sysdes"] += " Store mappings in Cassandra."
 
     def fake_answer(**kwargs):
         assert kwargs["collaborative"] is True
@@ -88,8 +89,11 @@ def test_collaborative_turn_reconciles_and_synthesizes(monkeypatch):
     events = list(agg.run_turn("Design a URL shortener for 1B redirects/day. 2 weeks to ship."))
     kinds = [e["type"] for e in events]
     assert kinds[0] == "route" and kinds[-1] == "done"
-    recon = next(e for e in events if e["type"] == "reconciliation")["notes"]
-    assert recon[0]["winner"] == "dsa"
+    recon = {
+        n["claim_id"]: n for n in next(e for e in events if e["type"] == "reconciliation")["notes"]
+    }
+    assert recon["hash.length"]["winner"] == "dsa"
+    assert recon["arch.datastore"]["agreed"] is True
     turn = Turn.objects.get()
     assert turn.synthesis == "- plan [dsa]"
     assert turn.status == Turn.Status.OK
