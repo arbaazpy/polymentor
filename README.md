@@ -109,7 +109,7 @@ uv run python manage.py promote_expert dsa --model <new_model_id>
 | POST | `/v1/turns/stream` | Run a turn; SSE events `route`, `expert_start`, `expert`, `delegation`, `reconciliation`, `delta`, `done` |
 | POST | `/v1/turns/<id>/feedback` | `{expert, rating: 1 \| -1, correction?}` |
 | POST | `/v1/admin/mine` | Mine feedback (Bearer `ADMIN_BEARER_TOKEN`) |
-| POST | `/v1/ask`, `/v1/ask/stream` | Single grounded expert, no routing |
+| POST | `/v1/ask`, `/v1/ask/stream` | Single grounded expert, no routing (dev only; `ENABLE_RAW_ASK`) |
 | GET | `/healthz` | Liveness, git sha, live expert count |
 
 Abuse controls: requests per IP are rate-limited (IPs are stored only as salted hashes), there is a global daily turn cap, and prompt length is capped. All of these are configurable in `config/settings.py`.

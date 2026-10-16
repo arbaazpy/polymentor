@@ -198,6 +198,8 @@ TURN_RATE_LIMIT = int(os.environ.get("TURN_RATE_LIMIT", "6"))  # per client per 
 TURN_RATE_WINDOW_MINUTES = int(os.environ.get("TURN_RATE_WINDOW_MINUTES", "10"))
 DAILY_TURN_CAP = int(os.environ.get("DAILY_TURN_CAP", "200"))  # across all clients
 MAX_PROMPT_CHARS = int(os.environ.get("MAX_PROMPT_CHARS", "1500"))
+# /v1/ask* takes raw system prompts and token limits with no rate limit: dev tooling only.
+ENABLE_RAW_ASK = env_bool("ENABLE_RAW_ASK", DEBUG)
 
 # --- Admin console ---------------------------------------------------------
 ADMIN_BEARER_TOKEN = os.environ.get("ADMIN_BEARER_TOKEN", "")
