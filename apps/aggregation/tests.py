@@ -9,6 +9,7 @@ from django.test import override_settings
 
 from apps.aggregation import services as agg
 from apps.experts import services as expert_services
+from apps.experts.nugen_client import NugenError
 from apps.sessions.models import Turn
 
 
@@ -98,6 +99,30 @@ def test_collaborative_turn_reconciles_and_synthesizes(monkeypatch):
     assert turn.synthesis == "- plan [dsa]"
     assert turn.status == Turn.Status.OK
     assert {e["lane"] for e in turn.experts} == {"sysdes", "dsa", "behav"}
+
+
+def test_expert_retries_transient_failure_once(monkeypatch):
+    calls = []
+
+    def flaky(**kwargs):
+        calls.append(1)
+        if len(calls) == 1:
+            raise NugenError("stream dropped", transient=True)
+        return _answer("Use l = mid + 1.")
+
+    monkeypatch.setattr(expert_services, "answer", flaky)
+    entry = agg._ask_expert(
+        "dsa", "q", model_id="m", version="0.1.0", collaborative=False, exemplars=[]
+    )
+    assert entry["status"] == "answered" and len(calls) == 2
+
+    monkeypatch.setattr(
+        expert_services, "answer", lambda **kw: (_ for _ in ()).throw(NugenError("bad", 400))
+    )
+    entry = agg._ask_expert(
+        "dsa", "q", model_id="m", version="0.1.0", collaborative=False, exemplars=[]
+    )
+    assert entry["status"] == "error"
 
 
 @pytest.mark.django_db

@@ -33,6 +33,7 @@ from apps.sessions.models import Turn
 logger = logging.getLogger("polymentor.aggregation")
 
 EXPERT_MAX_TOKENS = 450
+EXPERT_ATTEMPTS = 2  # one retry for transient Nugen failures (dropped streams, 429, 5xx)
 SYNTHESIS_MAX_TOKENS = 320
 CLAIM_RE = re.compile(
     r"\[\[\s*claim\s+id\s*=\s*[\"']?([a-z_]+\.[a-z_]+)[\"']?[^\]]*\]\](.*?)\[\[\s*/\s*claim\s*\]\]",
@@ -180,18 +181,21 @@ def _ask_expert(
         "model": model_id,
         "aligned": spec.aligned,
     }
-    try:
-        result = expert_services.answer(
-            prompt=question,
-            expert_key=lane,
-            model_id=model_id,
-            collaborative=collaborative,
-            exemplars=exemplars,
-            max_tokens=EXPERT_MAX_TOKENS,
-        )
-    except NugenError as exc:
-        logger.warning("expert %s failed: %s", lane, exc)
-        return entry | {"status": "error", "error": str(exc), "text": "", "raw": ""}
+    for attempt in range(1, EXPERT_ATTEMPTS + 1):
+        try:
+            result = expert_services.answer(
+                prompt=question,
+                expert_key=lane,
+                model_id=model_id,
+                collaborative=collaborative,
+                exemplars=exemplars,
+                max_tokens=EXPERT_MAX_TOKENS,
+            )
+            break
+        except NugenError as exc:
+            logger.warning("expert %s failed (attempt %d): %s", lane, attempt, exc)
+            if not exc.retryable or attempt == EXPERT_ATTEMPTS:
+                return entry | {"status": "error", "error": str(exc), "text": "", "raw": ""}
     claims = extract_claims(result.text, lane)
     return entry | {
         "status": "answered",

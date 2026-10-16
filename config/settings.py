@@ -116,18 +116,21 @@ ASGI_APPLICATION = "config.asgi.application"
 DATABASE_URL = os.environ.get("DATABASE_URL")
 if DATABASE_URL:
     # Minimal parser to avoid an extra dependency; supports postgres URLs.
-    from urllib.parse import urlparse
+    from urllib.parse import parse_qsl, unquote, urlparse
 
     parsed = urlparse(DATABASE_URL)
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
             "NAME": parsed.path.lstrip("/"),
-            "USER": parsed.username or "",
-            "PASSWORD": parsed.password or "",
+            "USER": unquote(parsed.username or ""),
+            "PASSWORD": unquote(parsed.password or ""),
             "HOST": parsed.hostname or "",
             "PORT": str(parsed.port or ""),
             "CONN_MAX_AGE": 600,
+            "CONN_HEALTH_CHECKS": True,
+            # e.g. ?sslmode=require on Render's external URL
+            "OPTIONS": dict(parse_qsl(parsed.query)),
         }
     }
 else:
