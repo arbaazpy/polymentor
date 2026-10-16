@@ -1,5 +1,6 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 
+from apps.feedback import services
 from apps.feedback.models import Feedback, LearnedExemplar
 
 
@@ -8,6 +9,17 @@ class FeedbackAdmin(admin.ModelAdmin):
     list_display = ("created_at", "expert_key", "rating", "mined", "turn")
     list_filter = ("rating", "expert_key", "mined")
     raw_id_fields = ("turn",)
+    actions = ("mine",)
+
+    @admin.action(description="Mine all unmined feedback into pending exemplars")
+    def mine(self, request, queryset):
+        # Mines every unmined row, not only the selection, matching `manage.py mine_feedback`.
+        counts = services.mine_feedback()
+        self.message_user(
+            request,
+            f"Created {counts['created']} pending exemplars, skipped {counts['skipped']}.",
+            messages.SUCCESS,
+        )
 
 
 @admin.register(LearnedExemplar)

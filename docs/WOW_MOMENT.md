@@ -1,5 +1,13 @@
 # PolyMentor — The "Wow" Interaction
 
+> **Design document, written before the build.** What shipped is described in the
+> [README](../README.md) and measured in [EVALUATION.md](../EVALUATION.md). Main changes
+> during the build: turns run synchronously in gunicorn thread workers (no Celery worker
+> or Redis); the UI is Tailwind + vanilla JS streaming (no HTMX); experts' decisions are
+> extracted from prose because 3B models ignored claim tags; re-alignment is done on the
+> Nugen dashboard and promoted through the `promote_expert` eval gate; the router is
+> keyword + corpus BM25 with an LLM fallback rather than a separately aligned model.
+
 > A reviewer at Nugen will open the demo URL, click two things, and form an opinion in about 90 seconds. This doc defines the **one interaction** that has to carry the whole thesis — multi-model, aligned, aggregated, improving — and makes the architecture *visible* instead of merely present.
 
 ---

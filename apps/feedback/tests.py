@@ -22,6 +22,22 @@ def _turn():
 
 
 @pytest.mark.django_db
+def test_admin_actions_mine_then_approve(admin_client):
+    fb = services.record_feedback(turn=_turn(), rating=1, expert_key="dsa")
+    resp = admin_client.post(
+        "/admin/feedback/feedback/", {"action": "mine", "_selected_action": [fb.pk]}, follow=True
+    )
+    assert "Created 1 pending exemplars" in resp.content.decode()
+    exemplar = LearnedExemplar.objects.get()
+    admin_client.post(
+        "/admin/feedback/learnedexemplar/",
+        {"action": "approve", "_selected_action": [exemplar.pk]},
+    )
+    exemplar.refresh_from_db()
+    assert exemplar.status == LearnedExemplar.Status.APPROVED
+
+
+@pytest.mark.django_db
 def test_feedback_mining_creates_exemplars_and_grounding_uses_them():
     turn = _turn()
     services.record_feedback(

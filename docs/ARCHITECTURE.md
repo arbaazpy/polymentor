@@ -1,5 +1,13 @@
 # PolyMentor — Architecture
 
+> **Design document, written before the build.** What shipped is described in the
+> [README](../README.md) and measured in [EVALUATION.md](../EVALUATION.md). Main changes
+> during the build: turns run synchronously in gunicorn thread workers (no Celery worker
+> or Redis); the UI is Tailwind + vanilla JS streaming (no HTMX); experts' decisions are
+> extracted from prose because 3B models ignored claim tags; re-alignment is done on the
+> Nugen dashboard and promoted through the `promote_expert` eval gate; the router is
+> keyword + corpus BM25 with an LLM fallback rather than a separately aligned model.
+
 > AI tech-interview coach powered by a **router (mother) model** that delegates to a **fleet of domain-aligned expert models** on Nugen, aggregates their expertise, and **improves over time** from candidate feedback and benchmark drift.
 
 ---

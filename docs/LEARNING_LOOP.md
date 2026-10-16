@@ -1,5 +1,13 @@
 # PolyMentor — Learning Loop Design
 
+> **Design document, written before the build.** What shipped is described in the
+> [README](../README.md) and measured in [EVALUATION.md](../EVALUATION.md). Main changes
+> during the build: turns run synchronously in gunicorn thread workers (no Celery worker
+> or Redis); the UI is Tailwind + vanilla JS streaming (no HTMX); experts' decisions are
+> extracted from prose because 3B models ignored claim tags; re-alignment is done on the
+> Nugen dashboard and promoted through the `promote_expert` eval gate; the router is
+> keyword + corpus BM25 with an LLM fallback rather than a separately aligned model.
+
 > The brief says the system must **"improve over time."** In a 96-hour demo that's a credibility problem: real improvement takes weeks of real users. This doc defines a concrete mechanic that is (a) genuinely closed-loop in code, (b) visible to a reviewer in under 60 seconds, and (c) honest — nothing is faked, only *staged* for demo pacing.
 
 ---
